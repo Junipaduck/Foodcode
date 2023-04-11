@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.foodcode.mapper.ReviewMapper">
+	<insert id="insertReview">
+		<selectKey keyProperty="review_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(review_idx), 0) FROM review
+		</selectKey>
+		INSERT INTO review
+			VALUES (
+				#{review_idx} + 1 -- 리뷰 글번호
+				,#{review_content} -- 리뷰 내용
+				,#{review_star} -- 리뷰 평점
+				,now() -- 리뷰 작성일
+				,#{review_idx} + 1 -- 리뷰 참조글번호
+				,1 -- review_re_lev
+				,1 -- review_re_seq
+				,1 -- store_idx
+				,'ididid' -- customer_id
+				,1 -- pay_idx
+				,#{review_file} -- 리뷰 이미지 파일
+			)
+	</insert>
+	
+	<update id="updateReview">
+		UPDATE review 
+			SET
+			review_content = #{review_content}
+			,review_star = #{review_star}
+			,review_file = #{review_file}
+			WHERE
+			review_idx = 2 -- 하드코딩
+	</update>
+	
+	<delete id="deleteReview">
+		DELETE 
+			FROM review
+			WHERE review_idx = 1
+	</delete>
+	
+	<select id="selectReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+		SELECT *
+			FROM review
+			ORDER BY 
+				review_re_ref
+			LIMIT 10	
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

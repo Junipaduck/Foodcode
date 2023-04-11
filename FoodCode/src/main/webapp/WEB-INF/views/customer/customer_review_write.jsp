@@ -73,40 +73,41 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
-            <form class="contact-form bg-white">
+            <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
+            <form class="contact-form bg-white" action="reviewWritePro.me">
+<!--               <div class="form-group"> -->
+<!--                 <label class="text-black" for="customer_id">아이디</label> -->
+<!--                 <input type="text" class="form-control" id="customer_id" name="customer_id" aria-describedby="emailHelp"> -->
+<!--               </div> -->
+<!--               <div class="form-group"> -->
+<!--                 <label class="text-black" for="email">업체명</label> -->
+<!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
+<!--               </div> -->
               <div class="form-group">
-                <label class="text-black" for="email">아이디</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="email">업체명</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="message">내용</label>
-                <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+                <label class="text-black" for="review_content">내용</label>
+                <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5"></textarea>
               </div>
               <!-- 별점 선택 코드  -->
               <div class="form-group">
-                <label class="text-black" for="email">별점</label>
-				<div class="rating">
-				  <input type="radio" id="star5" name="rating" value="5" />
-				  <label for="star5" title="5점">☆</label>
-				  <input type="radio" id="star4" name="rating" value="4" />
-				  <label for="star4" title="4점">☆</label>
-				  <input type="radio" id="star3" name="rating" value="3" />
-				  <label for="star3" title="3점">☆</label>
-				  <input type="radio" id="star2" name="rating" value="2" />
-				  <label for="star2" title="2점">☆</label>
-				  <input type="radio" id="star1" name="rating" value="1" />
-				  <label for="star1" title="1점">☆</label>
+                <label class="text-black" for="review_star">별점</label>
+				<div class="review_star">
+				  <input type="radio" id="review_star5" name="review_star" value="5" />
+				  <label for="review_star5" title="5점">☆</label>
+				  <input type="radio" id="review_star4" name="review_star" value="4" />
+				  <label for="review_star4" title="4점">☆</label>
+				  <input type="radio" id="review_star3" name="review_star" value="3" />
+				  <label for="review_star3" title="3점">☆</label>
+				  <input type="radio" id="review_star2" name="review_star" value="2" />
+				  <label for="review_star2" title="2점">☆</label>
+				  <input type="radio" id="review_star1" name="review_star" value="1" />
+				  <label for="review_star1" title="1점">☆</label>
 				</div>
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
                 <small id="emailHelp" class="form-text text-muted">1 ~ 5점 사이 별점을 선택하세요</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="email">리뷰 사진 등록</label>
-                <input type="file" name="review_image_file" id="review_image_file" >
+                <label class="text-black" for="review_file">리뷰 사진 등록</label>
+                <input type="file" name="review_file" id="review_file" >
               </div>
               <button type="submit" class="btn btn-primary">작성</button>
             </form>

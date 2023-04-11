@@ -31,8 +31,9 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
-
-  <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+  <!-- 별점 기능 css -->
+  <link href="${pageContext.request.contextPath }/resources/css/star.css" rel="stylesheet"/>
+  <title>리뷰 수정 페이지</title>
 </head>
 
 <body>
@@ -70,25 +71,38 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
-            <form class="contact-form bg-white">
+            <form class="contact-form bg-white" action="reviewModifyPro.me">
+<!--               <div class="form-group"> -->
+<!--                 <label class="text-black" for="email">아이디</label> -->
+<!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
+<!--               </div> -->
               <div class="form-group">
-                <label class="text-black" for="email">아이디</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <label class="text-black" for="review_content">내용</label>
+                <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5"></textarea>
               </div>
+              <!-- 별점 선택 코드  -->
               <div class="form-group">
-                <label class="text-black" for="email">별점</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">0점 ~ 5점</small>
+                <label class="text-black" for="review_star">별점</label>
+				<div class="review_star">
+				  <input type="radio" id="review_star5" name="review_star" value="5" />
+				  <label for="review_star5" title="5점">☆</label>
+				  <input type="radio" id="review_star4" name="review_star" value="4" />
+				  <label for="review_star4" title="4점">☆</label>
+				  <input type="radio" id="review_star3" name="review_star" value="3" />
+				  <label for="review_star3" title="3점">☆</label>
+				  <input type="radio" id="review_star2" name="review_star" value="2" />
+				  <label for="review_star2" title="2점">☆</label>
+				  <input type="radio" id="review_star1" name="review_star" value="1" />
+				  <label for="review_star1" title="1점">☆</label>
+				</div>
+<!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
+                <small id="emailHelp" class="form-text text-muted">1 ~ 5점 사이 별점을 선택하세요</small>
               </div>
-              <div class="form-group">
-                <label class="text-black" for="message">내용</label>
-                <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+               <div class="form-group">
+                <label class="text-black" for="review_file">리뷰 사진 수정</label>
+                <input type="file" name="review_file" id="review_file" >
               </div>
-              <div class="form-group">
-                <label class="text-black" for="email"></label>
-                <input type="button" class="btn btn-primary" value="첨부이미지" id="email" aria-describedby="emailHelp">
-              </div>
-              <button type="submit" class="btn btn-primary">작성</button>
+              <button type="submit" class="btn btn-primary">수정</button>
             </form>
           </div>
 

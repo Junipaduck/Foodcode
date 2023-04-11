@@ -38,9 +38,9 @@ public class CustomerController {
     }
 
 
-    @GetMapping(value = "MemberInfo.me")
+    @GetMapping(value = "customerMypage.me")
     public String MemberInfo() {
-        System.out.println("MemberInfo.me");
+        System.out.println("customerMypage.me");
 
 
         return "customer/customer_mypage";
@@ -78,11 +78,11 @@ public class CustomerController {
         return "customer/customer_review";
     }
 
-    // 예약관리 -> 방문후 -> 리뷰 
-    @GetMapping(value = "/customerReviewWrite.me")
-    public String customerReviewWrite() {
-    	return "customer/customer_review_write";
-    }
+//    // 예약관리 -> 방문후 -> 리뷰 리뷰컨트롤러로 이동 
+//    @GetMapping(value = "/customerReviewWrite.me")
+//    public String customerReviewWrite() {
+//    	return "customer/customer_review_write";
+//    }
     
     @GetMapping(value = "/customerModify.me")
     public String customerModify() {

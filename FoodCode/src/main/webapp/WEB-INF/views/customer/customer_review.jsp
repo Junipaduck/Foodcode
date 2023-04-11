@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
 
-  <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+  <title>리뷰목록</title>
 </head>
 
 <body>
@@ -76,64 +76,64 @@
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me?review_idx=1'"></td>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>프로젝트 2팀</td>
 					<td>23.03.29</td>
 					<td>100</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
 				</tr>
 			</table>
   </div>

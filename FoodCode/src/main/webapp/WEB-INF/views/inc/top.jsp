@@ -31,7 +31,8 @@
 							<li><a href="login.me">로그인</a>  <a href="memberJoin.me">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="MemberInfo.me">${sessionScope.sId } 님</a></li> 
+							<!-- ㅇㅇ님 클릭시 마이페이지로 이동 -->
+							<li><a href="customerMypage.me">${sessionScope.sId } 님</a></li> 
 							 <li><a href="logout.me" id="logout" onclick="return confirmLogout()">로그아웃</a></li>
 							<c:if test="${sessionScope.sId eq 'admin' }">
 								 <li><a href="adminMain">관리자 페이지</a></li>

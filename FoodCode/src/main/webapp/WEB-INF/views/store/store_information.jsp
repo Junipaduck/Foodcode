@@ -48,7 +48,27 @@
 </style>
 
   <title>아이티윌 2팀</title>
-  
+<script type="text/javascript">
+// 	$(function () {
+// 		$("#btnReview").on("click", function() {
+// 			let sendData = $("#reviewTable").serialize();
+			
+// 			$.ajax({
+// 				type = "post",
+// 				url: "reviewList.me",
+// 				data: sendData,
+// 				dataType: "html",
+// 				success: function(response){
+// 					$("#reviewArea").html(response);
+// 				},
+// 				error: function(xhr, testStatus, errorThrown){
+// 					$("#reviewArea").html("xhr = " + xhr + "<br>testStatus = " + textStatus + "<br>errorThrown = " + errorThrown);
+// 				}
+// 			});
+// 		});
+// 	});
+
+</script>  
 </head>
 
 <body>
@@ -430,9 +450,14 @@
  </div>
   
 	<div>
+	<!--  [리뷰목록] 클릭 시 리뷰 게시판으로 이동  -->
+	<input type="button" value="리뷰목록" onclick="location.href='reviewList.me'">
 	
+	<!-- 리뷰 게시판 영역 -->
+	<div id="reviewArea"></div>
+
 	
-    <table  class="rwd-table">
+    <table  class="rwd-table" id="reviewTable">
         <tbody>
         <tr>
             <th>글번호</th>
@@ -445,7 +470,6 @@
             <th></th>
         </tr>
 
-		
         <tr class="KOTRA-fontsize-80">
           <td>1</td>
           <td>양선정</td>
