@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.foodcode.mapper.OwnerMapper">
+
+	<!-- 점주 회원가입 -->
+	<insert id="insertOwner">
+	
+		<selectKey keyProperty="owner_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(owner_idx), 0) FROM owner 
+ 		</selectKey>
+ 		
+		INSERT
+			INTO owner
+			VALUES (
+				#{owner_idx} + 1
+				,#{owner_id}
+				,#{owner_passwd}
+				,#{owner_name}
+				,#{owner_phone}
+				,#{owner_email}
+				,now()
+			)
+	</insert>
+	
+	<select id="isSuccessOwner" parameterType="String" resultType="boolean">
+		SELECT IF(COUNT(*) = 1, 1, 0)
+			FROM owner
+			WHERE owner_id = #{owner_id} AND owner_passwd = #{owner_passwd}
+	</select>
+	
+</mapper>

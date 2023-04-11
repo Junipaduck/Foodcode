@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.foodcode.mapper.CustomerMapper">
+	<insert id="insertCustomer">
+<!-- 		<selectKey keyProperty="board_num" resultType="int" order="BEFORE"> -->
+<!-- 			SELECT IFNULL(MAX(c_idx), 0) FROM customer -->
+<!-- 		</selectKey> -->
+		INSERT 
+		INTO customer
+		VALUES(
+		7
+		,#{c_passwd}
+		,#{c_name}
+		,#{c_email}
+		,#{c_phone}
+		,#{c_birth}
+		,now()
+		,#{c_gender}
+		,#{c_id}
+		)
+	
+	</insert>
+	
+	<select id="isSuccessCustomer" parameterType="String" resultType="boolean">
+	SELECT IF(COUNT(*) = 1, 1, 0)
+		FROM customer
+			WHERE c_id = #{c_id} AND c_passwd = #{c_passwd}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

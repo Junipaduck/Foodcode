@@ -1,0 +1,21 @@
+@charset "UTF-8";
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.rating input {
+  display: none;
+}
+.rating label {
+  font-size: 30px;
+  color: gray;
+  cursor: pointer;
+}
+.rating input:checked ~ label {
+  color: orange;
+}
+
+
+
+
