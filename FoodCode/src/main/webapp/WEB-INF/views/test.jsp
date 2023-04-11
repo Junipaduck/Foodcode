@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>테스트용</h1>
+	<a href="hana_test">하나테스트</a>
 </body>
 </html>

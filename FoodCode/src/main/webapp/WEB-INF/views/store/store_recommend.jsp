@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,234 +98,76 @@ $(document).ready(function() {
 <!-- 중간body 시작 ----------------------------------------------------------------------------------------- -->
 
 　
-
 <section class="contents">
 	<div class="tab_menu">
 		<ul class="webtong_tab_type04">
-			<li class="on"><a href="#none1">한식</a></li>
-			<li><a href="#none2">일식</a></li>
-			<li><a href="#none3">중식</a></li>
-			<li><a href="#none4">양식</a></li>
-			<li><a href="#none5">씨푸드</a></li>
-			<li><a href="#none6">술</a></li>
-			<li><a href="#none7">카페/디저트</a></li>
+			<li class="on"><a href="#한식">한식</a></li>
+			<li><a href="#일식2">일식</a></li>
+			<li><a href="#중식3">중식</a></li>
+			<li><a href="#양식4">양식</a></li>
+<!-- 			<li><a href="#씨푸드">씨푸드</a></li> --> <!-- 배하나) 씨푸드 삭제함 -->
+			<li><a href="#요리주점5">요리주점</a></li>
+			<li><a href="#카페/디저트6">카페/디저트</a></li>
 		</ul>	
 	</div>
 	<div class="tabBox">
     	<div class="on"> <!-- 한식 시작 (왼쪽에 + 누르면 코드 나옵니다) -->
-    	
-			  <!-- 가게설명 카드 시작 -->
+    		
+			<!-- 가게설명 카드 시작 -->
 				<section class="py-5">
-		            <div class="container px-4 px-lg-5 mt-5">
-		                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                   식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		        			</div>
-		         	   </div>
-		        </section>
+			            <div class="container px-4 px-lg-5 mt-5">
+			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+								 <c:forEach var="store" items="${storeList }"> <!-- list를 뿌려주는 forEach문 시작 -->
+				                    <div class="col-lg-3 col-md-6">
+				                        <div class="card h-100">
+				                            <img class="card-img-top" src="https://images.pexels.com/photos/5773968/pexels-photo-5773968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <div class="card-body p-4">
+				                                <div class="text-center">
+				                                    <h5 class="fw-bolder">${store.store_name }</h5> <!-- 가게명 -->
+				                                   	${store.store_content } <!-- 가게상세내용 -->
+				                                </div>
+				                            </div>
+				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
+				                            </div>
+				                        </div>
+				                    </div>
+								</c:forEach>  
+		       				</div>
+		        	   </div>
+		   	   	 </section>
 			<!-- 가게설명 카드 끝 -->		
+			
 			
 			
 			
 		</div>
 		<div style="display: none;"> <!-- 일식 시작 -->
 		
-				 <!-- 가게설명 카드 시작 -->
-				<section class="py-5">
-		            <div class="container px-4 px-lg-5 mt-5">
-		                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">일식!!!</h5>
-		                                    <!-- Product price-->
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                   식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		        			</div>
-		         	   </div>
-		        </section>
-			<!-- 가게설명 카드 끝 -->		
+			<!-- 가게설명 카드 시작 -->
+					<section class="py-5">
+				            <div class="container px-4 px-lg-5 mt-5">
+				                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+									 <c:forEach var="store2" items="${storeList2 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+					                    <div class="col-lg-3 col-md-6">
+					                        <div class="card h-100">
+					                            <img class="card-img-top" src="https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+					                            <div class="card-body p-4">
+					                                <div class="text-center">
+					                                    <h5 class="fw-bolder">${store2.store_name }</h5> <!-- 가게명 -->
+					                                   	${store2.store_content } <!-- 가게상세내용 -->
+					                                </div>
+					                            </div>
+					                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+					                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
+					                            </div>
+					                        </div>
+					                    </div>
+									</c:forEach>  
+			       				</div>
+			        	   </div>
+			   	   	 </section>
+				<!-- 가게설명 카드 끝 -->		
 		
 				
 		</div> <!-- 일식 끝 -->
@@ -331,106 +175,27 @@ $(document).ready(function() {
 			
 			 <!-- 가게설명 카드 시작 -->
 				<section class="py-5">
-		            <div class="container px-4 px-lg-5 mt-5">
-		                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">중식~~~</h5>
-		                                    <!-- Product price-->
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                   식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		        			</div>
-		         	   </div>
-		        </section>
+			            <div class="container px-4 px-lg-5 mt-5">
+			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+								 <c:forEach var="store3" items="${storeList3 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+				                    <div class="col-lg-3 col-md-6">
+				                        <div class="card h-100">
+				                            <img class="card-img-top" src="https://images.pexels.com/photos/955137/pexels-photo-955137.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <div class="card-body p-4">
+				                                <div class="text-center">
+				                                    <h5 class="fw-bolder">${store3.store_name }</h5> <!-- 가게명 -->
+				                                   	${store3.store_content } <!-- 가게상세내용 -->
+				                                </div>
+				                            </div>
+				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
+				                            </div>
+				                        </div>
+				                    </div>
+								</c:forEach>  
+		       				</div>
+		        	   </div>
+		   	   	 </section>
 			<!-- 가게설명 카드 끝 -->		
 			
 		</div> <!-- 중식 끝 -->
@@ -438,424 +203,81 @@ $(document).ready(function() {
 		
 			 <!-- 가게설명 카드 시작 -->
 				<section class="py-5">
-		            <div class="container px-4 px-lg-5 mt-5">
-		                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">양식 ! !</h5>
-		                                    <!-- Product price-->
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                   식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		        			</div>
-		         	   </div>
-		        </section>
+			            <div class="container px-4 px-lg-5 mt-5">
+			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+								 <c:forEach var="store4" items="${storeList4 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+				                    <div class="col-lg-3 col-md-6">
+				                        <div class="card h-100">
+				                            <img class="card-img-top" src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <div class="card-body p-4">
+				                                <div class="text-center">
+				                                    <h5 class="fw-bolder">${store4.store_name }</h5> <!-- 가게명 -->
+				                                   	${store4.store_content } <!-- 가게상세내용 -->
+				                                </div>
+				                            </div>
+				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
+				                            </div>
+				                        </div>
+				                    </div>
+								</c:forEach>  
+		       				</div>
+		        	   </div>
+		   	   	 </section>
 			<!-- 가게설명 카드 끝 -->		
 		
 		</div>
-		<div style="display: none;"> <!-- 씨푸드 시작 -->
-			
-			 <!-- 가게설명 카드 시작 -->
+		
+		<div style="display: none;"> <!-- 요리주점 시작 -->
+			  <!-- 가게설명 카드 시작 -->
 				<section class="py-5">
-		            <div class="container px-4 px-lg-5 mt-5">
-		                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">씨푸드^^</h5>
-		                                    <!-- Product price-->
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                   식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		        			</div>
-		         	   </div>
-		        </section>
-			<!-- 가게설명 카드 끝 -->		
-			
-		</div>
-		<div style="display: none;"> <!-- 술 시작 -->
-			 <!-- 가게설명 카드 시작 -->
-				<section class="py-5">
-		            <div class="container px-4 px-lg-5 mt-5">
-		                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">술..</h5>
-		                                    <!-- Product price-->
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                   식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		        			</div>
-		         	   </div>
-		        </section>
+			            <div class="container px-4 px-lg-5 mt-5">
+			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+								 <c:forEach var="store5" items="${storeList5 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+				                    <div class="col-lg-3 col-md-6">
+				                        <div class="card h-100">
+				                            <img class="card-img-top" src="https://images.pexels.com/photos/340996/pexels-photo-340996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <div class="card-body p-4">
+				                                <div class="text-center">
+				                                    <h5 class="fw-bolder">${store5.store_name }</h5> <!-- 가게명 -->
+				                                   	${store5.store_content } <!-- 가게상세내용 -->
+				                                </div>
+				                            </div>
+				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
+				                            </div>
+				                        </div>
+				                    </div>
+								</c:forEach>  
+		       				</div>
+		        	   </div>
+		   	   	 </section>
 			<!-- 가게설명 카드 끝 -->		
 		</div>
 		<div style="display: none;"> <!-- 카페/디저트 시작 -->
 			 <!-- 가게설명 카드 시작 -->
 				<section class="py-5">
-		            <div class="container px-4 px-lg-5 mt-5">
-		                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">카페/디저트</h5>
-		                                    <!-- Product price-->
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through"></span>
-		                                    식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="..." onclick="location.href='store.so'" alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">한식</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                   식당 설명란 입니다.
-		                                </div>
-		                            </div>
-		                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-		                            </div>
-		        			</div>
-		         	   </div>
-		        </section>
+			            <div class="container px-4 px-lg-5 mt-5">
+			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+								 <c:forEach var="store6" items="${storeList6 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+				                    <div class="col-lg-3 col-md-6">
+				                        <div class="card h-100">
+				                            <img class="card-img-top" src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <div class="card-body p-4">
+				                                <div class="text-center">
+				                                    <h5 class="fw-bolder">${store6.store_name }</h5> <!-- 가게명 -->
+				                                   	${store6.store_content } <!-- 가게상세내용 -->
+				                                </div>
+				                            </div>
+				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
+				                            </div>
+				                        </div>
+				                    </div>
+								</c:forEach>  
+		       				</div>
+		        	   </div>
+		   	   	 </section>
 			<!-- 가게설명 카드 끝 -->		
 		</div>
 	</div>

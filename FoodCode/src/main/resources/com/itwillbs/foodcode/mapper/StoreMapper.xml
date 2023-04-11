@@ -5,25 +5,75 @@
 
 	<!-- 새로운 가게 등록 작업을 위한 <insert>태그 -->
 	 <insert id="insertStore">
+	 
+	 	<selectKey keyProperty="store_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(store_idx), 0) FROM store 
+ 		</selectKey>
+
+ 		
 	 	INSERT
 	 		INTO store
 	 		VALUES (
-	 			3
+	 			#{store_idx} + 1
 	 			,#{store_name} 
 	 			,#{store_phone} 
 	 			,#{store_address}  
-	 			,#{store_type}  
-	 			,'store_content'
+	 			,#{store_type}
+	 			,#{store_content}
 	 			,#{store_time}  
 	 			,#{store_license} 
-	 			,'store_date'
-	 			,3  
+	 			,now()
+	 			,(SELECT owner_idx FROM owner where owner_id = #{owner_id}) <!-- IFNULL((SELECT MAX(store_idx) FROM owner)+1, 1) -->
+	 			,#{owner_id}
+	 			,#{store_etc}
 	 		)
 	 </insert>
 
 
 
 
+	 <!-- 게시물 목록 조회 <select> 태그 -->
+		 <select id="selectStoreList" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		 	SELECT *
+		 		FROM store
+		 		WHERE store_type = '한식'
+		 		ORDER BY store_idx DESC;
+	 	 </select>
+	 	 
+	 	 <select id="selectStoreList2" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		 	SELECT *
+		 		FROM store
+		 		WHERE store_type = '일식'
+		 		ORDER BY store_idx DESC;
+	 	 </select>
+	 	 
+	 	 <select id="selectStoreList3" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		 	SELECT *
+		 		FROM store
+		 		WHERE store_type = '중식'
+		 		ORDER BY store_idx DESC;
+	 	 </select>
+	 	 
+	 	 <select id="selectStoreList4" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		 	SELECT *
+		 		FROM store
+		 		WHERE store_type = '양식'
+		 		ORDER BY store_idx DESC;
+	 	 </select>
+	 	 
+	 	 <select id="selectStoreList5" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		 	SELECT *
+		 		FROM store
+		 		WHERE store_type = '요리주점'
+		 		ORDER BY store_idx DESC;
+	 	 </select>
+	
+		<select id="selectStoreList6" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		 	SELECT *
+		 		FROM store
+		 		WHERE store_type = '카페/디저트'
+		 		ORDER BY store_idx DESC;
+	 	 </select>
 
 
 

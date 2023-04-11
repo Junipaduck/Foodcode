@@ -21,10 +21,38 @@
 	
 	</insert>
 	
+	
+	
 	<select id="isSuccessCustomer" parameterType="String" resultType="boolean">
-	SELECT IF(COUNT(*) = 1, 1, 0)
-		FROM customer
-			WHERE c_id = #{c_id} AND c_passwd = #{c_passwd}
+	
+	<!-- 찬영씨가 적은 코드 -->
+<!-- 	SELECT IF(COUNT(*) = 1, 1, 0) -->
+<!-- 		FROM customer -->
+<!-- 			WHERE c_id = #{c_id} AND c_passwd = #{c_passwd} -->
+	
+	
+	<!-- 고객,점주 로그인 할 수 있게 4/9 배하나가 임시로 수정 -->
+	select IF(COUNT(*) = 1, 1, 0)
+		from (
+				(
+				select
+					c_id as id,
+					c_passwd as pw
+				from
+					customer
+				where
+					c_id = #{c_id}
+					and c_passwd = #{c_passwd})
+				union all
+				(
+				select
+					owner_id as id,
+					owner_passwd as pw
+				from
+					owner
+				where
+					owner_id = #{c_id}
+				and owner_passwd = #{c_passwd})) A		
 	</select>
 	
 </mapper>

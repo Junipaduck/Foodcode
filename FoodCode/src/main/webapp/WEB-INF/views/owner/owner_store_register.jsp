@@ -71,7 +71,7 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">STORE</h2>
-            <form class="contact-form bg-white" action="storeRegisterPro.so">
+           <form class="contact-form bg-white" action="storeRegisterPro.so">
               <div class="row">
               	<div class="col-md-6">
                   <div class="form-group">
@@ -132,8 +132,12 @@
                 <input type="text" class="form-control" name="store_time" id="store_time">
               </div>
               <div class="form-group">
-                <label class="text-black" for="etc">기타</label>
-                <input type="text" class="form-control" id="etc" placeholder="주차, 결제가능한 페이 종류, 화장실 유무 등 기타 안내사항을 입력해주세요.">
+                <label class="text-black" for="storeTime">가게 소개글</label>
+                <input type="text" class="form-control" name="store_content" id="store_content">
+              </div>
+              <div class="form-group">
+                <label class="text-black" for="storeEtc">기타</label>
+                <input type="text" class="form-control" name="store_etc" id="store_etc" placeholder="주차, 결제가능한 페이 종류, 화장실 유무 등 기타 안내사항을 입력해주세요.">
               </div>
               <div class="form-group">
                 <label class="text-black" for="storeMenu">메뉴 등록</label>

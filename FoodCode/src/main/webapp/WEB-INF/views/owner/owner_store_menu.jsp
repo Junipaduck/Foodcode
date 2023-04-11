@@ -63,8 +63,8 @@
                 <input type="textarea" class="form-control" name="menu_content" id="menu_content">
               </div>
               
-             <button type="submit" class="btn btn-primary">메뉴 등록하기</button>
-             <button type="button" class="btn btn-primary" onClick="window.close()">등록창 종료</button>
+             <button type="submit" class="btn btn-primary">등록하기</button>
+             <button type="submit" class="btn btn-primary">돌아가기</button>
             </form>
           </div>
 		</div>
