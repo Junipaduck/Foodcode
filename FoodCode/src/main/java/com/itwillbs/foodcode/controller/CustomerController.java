@@ -37,14 +37,14 @@ public class CustomerController {
         }
     }
 
-
-    @GetMapping(value = "customerMypage.me")
-    public String MemberInfo() {
-        System.out.println("customerMypage.me");
-
-
-        return "customer/customer_mypage";
-    }
+    // 일반회원/점주회원 구분하여 마이페이지 이동하기 위해 MainController로 이동 - 0411 최보아
+//    @GetMapping(value = "customerMypage.me")
+//    public String MemberInfo() {
+//        System.out.println("customerMypage.me");
+//
+//
+//        return "customer/customer_mypage";
+//    }
 
     @GetMapping(value = "/customerBooking.me")
     public String customerBooking() {

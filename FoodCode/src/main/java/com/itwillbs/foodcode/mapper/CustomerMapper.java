@@ -9,5 +9,8 @@ public interface CustomerMapper {
 	
 	// 로그인
 	boolean isSuccessCustomer(CustomerVO vo);
+
+	// 회원 정보 조회
+	CustomerVO selectMemberInfo(String id);
 	
 }

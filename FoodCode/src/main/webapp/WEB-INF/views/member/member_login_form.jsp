@@ -52,8 +52,8 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">점주 로그인</h1>
-            <p class="text-white">글씨체 뭐야..여기 뭐 적ㅈㅣ? </p>
+            <h1 class="mb-0">&nbsp;</h1>
+<!--             <p class="text-white">글씨체 뭐야..여기 뭐 적ㅈㅣ? </p> -->
           </div>
         </div>
       </div>

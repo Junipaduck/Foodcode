@@ -55,6 +55,13 @@
 				and owner_passwd = #{c_passwd})) A		
 	</select>
 	
+	<!-- 로그인한 아이디 customer 테이블에서 조회 -->
+	<select id="selectMemberInfo" resultType="com.itwillbs.foodcode.vo.CustomerVO">
+		SELECT *
+			FROM customer
+			WHERE c_id = #{c_id}
+	</select>
+	
 </mapper>
 
 

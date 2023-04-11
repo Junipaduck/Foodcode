@@ -19,4 +19,10 @@ public class OwnerService {
 	public boolean isSuccessOwner(OwnerVO vo) {
 		return mapper.isSuccessOwner(vo);
 	}
+	
+	// 점주회원인지 조회
+	public OwnerVO getOwnerInfo(String id) {
+		return mapper.selectOwnerInfo(id);
+	}
+
 }

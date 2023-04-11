@@ -23,4 +23,9 @@ public class CustomerService {
 		return mapper.isSuccessCustomer(vo);
 	}
 
+	// 일반회원인지 조회
+	public CustomerVO getMemberInfo(String id) {
+		return mapper.selectMemberInfo(id);
+	}
+
 }

@@ -24,6 +24,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  
+  <!-- 캘린더 css -->
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/owner_reservation_cal.css">
+  
 
 
 <style type="text/css">
@@ -80,7 +84,8 @@
 
 
 	  <div class="row justify-content-center">
-        <div class="col-lg-4">
+	  <!-- 왼쪽 달력 출력 -->
+        <div class="col-lg-3">
           <div class="custom-block" data-aos="fade-up">
             <h2 class="section-title">예약달력</h2>
             <div class="custom-accordion" id="accordion_1">
@@ -88,44 +93,41 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion_1">
                   <div class="accordion-body">
                     <!-- 캘린더 옵션 { -->
-                    	<input type="datetime-local" name="" value="" class="datepicker inp"  />
-						<script>
-// 					    $.datepicker.setDefaults({
-// 					      closeText: "닫기",
-// 					      prevText: "이전달",
-// 					      nextText: "다음달",
-// 					      currentText: "오늘",
-// 					      monthNames: ["1월", "2월", "3월", "4월", "5월", "6월",
-// 					        "7월", "8월", "9월", "10월", "11월", "12월"
-// 					      ],
-// 					      monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월",
-// 					        "7월", "8월", "9월", "10월", "11월", "12월"
-// 					      ],
-// 					      dayNames: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"],
-// 					      dayNamesShort: ["일", "월", "화", "수", "목", "금", "토"],
-// 					      dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
-// 					      weekHeader: "주",
-// 					      dateFormat: "yy.m.d", // 날짜형태 예)yy년 m월 d일
-// 					      firstDay: 0,
-// 					      isRTL: false,
-// 					      showMonthAfterYear: true,
-// 					      yearSuffix: "년"
-// 					    })
-// 					    $(".datepicker").datepicker({
-// 					      minDate: 2
-// 					    })
-					    
-						</script>
-                  </div>
+<!--                     	<label for="rowKeyStartDate"></label> -->
+<!-- 							<mat-form-field appearance="outline"> -->
+<!-- 							    <input matInput id="rowKeyStartDate" type="datetime-local" step="0.001" formControlName="rowKeyStartDate" required> -->
+<!-- 							</mat-form-field> -->
+							
+					<div class="container2">
+						<div class="item" id="today">
+							<div id="week"></div>
+							<div id="date"></div>
+						</div>
+							<div class="item">
+								<button type="button" onclick="prev()"><&nbsp;&nbsp;</button>
+							<div id="year" class="top-bar"></div>
+							<div id="month" class="top-bar"></div>
+							<button type="button" onclick="next()">&nbsp;&nbsp;></button><br>
+							<table>
+								<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+                  	</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        </div>
         <div class="col-lg-6">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
+          <!-- 오른쪽 예약 리스트 출력 -->
             <h2 class="section-title">예약목록</h2>
-            
             <table class="table">
 			  <thead class="undefined">
 			    <tr>
@@ -201,23 +203,7 @@
           </div>
         </div>
       </div>
-  
-  
- 
-  
-  
 
-  <div class="py-5 cta-section">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-          <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-          <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="site-footer">
     <div class="inner first">
@@ -307,9 +293,9 @@
   <script src="${pageContext.request.contextPath }/resources/js/aos.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/moment.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/daterangepicker.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/owner_reservation_cal.js" type="text/javascript" defer></script>
 
   <script src="${pageContext.request.contextPath }/resources/js/typed.js"></script>
-  
   <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
 
 </body>

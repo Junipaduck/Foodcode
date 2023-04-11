@@ -7,4 +7,7 @@ public interface OwnerMapper {
 	int insertOwner(OwnerVO vo);
 	
 	boolean isSuccessOwner(OwnerVO vo);
+
+	OwnerVO selectOwnerInfo(String id);
+	
 }

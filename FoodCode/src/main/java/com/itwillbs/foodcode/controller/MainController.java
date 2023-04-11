@@ -15,6 +15,8 @@ public class MainController {
 
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private OwnerService ownerService;
 	
 	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() {
@@ -34,12 +36,12 @@ public class MainController {
 	// 로그인 화면으로 이동
 	@RequestMapping(value = "login.me", method = {RequestMethod.GET, RequestMethod.POST})
 	public String ownerLogin() {
-		return "owner/owner_login_form";
+		return "member/member_login_form";
 	}
 	
 	
 	
-	// 점주 로그인 버튼 클릭 시 
+	// 로그인 버튼 클릭 시 
 	@PostMapping(value = "loginPro.me")
 	public String ownerLoginPro(CustomerVO vo, HttpSession session, Model model) {
 		
@@ -54,9 +56,28 @@ public class MainController {
 			
 		} else {
 			model.addAttribute("msg","로그인 실패!");
-			return "customer/fail_back";
+			return "fail_back";
 		}
 		
+	}
+	
+	// 로그인 후 아이디 클릭시 일반회원인지 점주인지 판별하여 각각 마이페이지 이동
+	@GetMapping("/mypage.me")
+	public String mypage(HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("sId");
+		CustomerVO customer = customerService.getMemberInfo(id);
+		OwnerVO owner = ownerService.getOwnerInfo(id);
+		if(id.equals(owner.getOwner_id())) {
+			model.addAttribute("owner", owner);
+			return "owner/owner_mypage";
+		} else if(id.equals(customer.getC_id())) {
+			model.addAttribute("customer", customer);
+			return "customer/customer_mypage";
+		} else {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 	}
 	
 	// 로그아웃 
