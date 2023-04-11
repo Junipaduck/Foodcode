@@ -37,22 +37,27 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 			
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminMain"> 
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3"><sup>2팀</sup>관리자 페이지</div>
-            </a>
-
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath }/">
+                    <i class=""></i>
+                    <span>
+                    <i class="fas fa-arrow-left"></i>
+                    관리자 페이지 나가기
+                    </span></a>
+            </li>
+           
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath }/">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>대시 보드</span></a>
-            </li>
+             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminMain"> 
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3"><sup>관리자페이지</sup>FoodCode</div>
+             </a>
+             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -102,7 +107,7 @@
 			
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Pages
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -151,9 +156,15 @@
             </li>
 			
 			<li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_list">
+                <a class="nav-link" href="${pageContext.request.contextPath }/adminOwner_list">
                     <i class="fas fa-fw fa-table"></i>
                     <span>점주회원 목록 조회</span></a>
+            </li>
+            
+			<li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_list">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>식당 조회</span></a>
             </li>
 			
             <!-- Divider -->

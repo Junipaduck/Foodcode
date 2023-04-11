@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.foodcode.mapper.AdminMapper">
+	
+	<select id="selectCustomerList" resultType="com.itwillbs.foodcode.vo.CustomerVO">
+		SELECT *
+			FROM customer;
+	</select>
+	
+	<select id="selectOwnerList" resultType="com.itwillbs.foodcode.vo.OwnerVO">
+		SELECT *
+			FROM owner;
+	</select>
+	
+	<delete id="delectCustomer">
+		DELETE FROM customer 
+			WHERE c_idx = #{customer_idx} AND c_passwd = #{customer_passwd};
+	</delete>
+	
+	<select id="selectStoreList" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		SELECT *
+			FROM store;
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
