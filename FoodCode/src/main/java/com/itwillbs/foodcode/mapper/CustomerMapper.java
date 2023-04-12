@@ -11,6 +11,6 @@ public interface CustomerMapper {
 	boolean isSuccessCustomer(CustomerVO vo);
 
 	// 회원 정보 조회
-	CustomerVO selectMemberInfo(String id);
+	CustomerVO selectCustomerInfo(String id);
 	
 }

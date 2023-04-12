@@ -28,11 +28,32 @@
 			WHERE owner_id = #{owner_id} AND owner_passwd = #{owner_passwd}
 	</select>
 	
-	<!-- 로그인한 아이디 owner 테이블에서 조회 -->
+<!-- 	로그인한 아이디 owner 테이블에서 조회 -->
 	<select id="selectOwnerInfo" resultType="com.itwillbs.foodcode.vo.OwnerVO">
 		SELECT *
 			FROM owner
 			WHERE owner_id = #{owner_id}
 	</select>
+	
+<!-- 	<select id="selectOwnerInfo" resultType="com.itwillbs.foodcode.vo.OwnerVO"> -->
+<!-- 	SELECT -->
+<!-- 	    'owner' AS table_name -->
+<!-- 	FROM -->
+<!-- 	    owner -->
+<!-- 	WHERE -->
+<!-- 	    owner_id = #{owner_id} -->
+<!-- 	UNION ALL -->
+<!-- 	SELECT -->
+<!-- 	    'customer' AS table_name -->
+<!-- 	FROM -->
+<!-- 	    customer -->
+<!-- 	WHERE -->
+<!-- 	    c_id = #{c_id}; -->
+<!-- 	</select> -->
+
+<!-- 	<select id="selectOwnerInfo" resultType="com.itwillbs.foodcode.vo.OwnerVO"> -->
+<!-- 		SELECT  -->
+<!-- 	</select> -->
+		
 	
 </mapper>

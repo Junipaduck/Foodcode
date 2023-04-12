@@ -4,6 +4,7 @@ import java.util.*;
 
 public class CustomerVO {
 	private String c_idx;
+	private String c_id;
 	private String c_passwd;
 	private String c_name;
 	private String c_email;
@@ -11,14 +12,14 @@ public class CustomerVO {
 	private String c_birth;
 	private Date c_join_date;
 	private String c_gender;
-	private String c_id;
 	
 	
 
-	public CustomerVO(String c_idx, String c_passwd, String c_name, String c_email, String c_phone, String c_birth,
-			Date c_join_date, String c_gender, String c_id) {
+	public CustomerVO(String c_idx, String c_id, String c_passwd, String c_name, String c_email, String c_phone, String c_birth,
+			Date c_join_date, String c_gender) {
 		super();
 		this.c_idx = c_idx;
+		this.c_id = c_id;
 		this.c_passwd = c_passwd;
 		this.c_name = c_name;
 		this.c_email = c_email;
@@ -26,7 +27,6 @@ public class CustomerVO {
 		this.c_birth = c_birth;
 		this.c_join_date = c_join_date;
 		this.c_gender = c_gender;
-		this.c_id = c_id;
 	}
 
 
@@ -160,10 +160,14 @@ public class CustomerVO {
 
 	@Override
 	public String toString() {
-		return "CustomerVO [c_idx=" + c_idx + ", c_passwd=" + c_passwd + ", c_name=" + c_name + ", c_email=" + c_email
-				+ ", c_phone=" + c_phone + ", c_birth=" + c_birth + ", c_join_date=" + c_join_date + ", c_gender="
-				+ c_gender + ", c_id=" + c_id + "]";
+		return "CustomerVO [c_idx=" + c_idx + ", c_id=" + c_id + ", c_passwd=" + c_passwd + ", c_name=" + c_name
+				+ ", c_email=" + c_email + ", c_phone=" + c_phone + ", c_birth=" + c_birth + ", c_join_date="
+				+ c_join_date + ", c_gender=" + c_gender + "]";
 	}
+
+
+	
+
 	
 
 

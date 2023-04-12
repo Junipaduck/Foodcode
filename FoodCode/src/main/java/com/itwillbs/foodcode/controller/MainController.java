@@ -1,5 +1,7 @@
 package com.itwillbs.foodcode.controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
@@ -64,20 +66,10 @@ public class MainController {
 	// 로그인 후 아이디 클릭시 일반회원인지 점주인지 판별하여 각각 마이페이지 이동
 	@GetMapping("/mypage.me")
 	public String mypage(HttpSession session, Model model) {
-		
-		String id = (String)session.getAttribute("sId");
-		CustomerVO customer = customerService.getMemberInfo(id);
-		OwnerVO owner = ownerService.getOwnerInfo(id);
-		if(id.equals(owner.getOwner_id())) {
-			model.addAttribute("owner", owner);
-			return "owner/owner_mypage";
-		} else if(id.equals(customer.getC_id())) {
-			model.addAttribute("customer", customer);
-			return "customer/customer_mypage";
-		} else {
-			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "fail_back";
-		}
+		return "customer/customer_mypage";
+//		String id = (String)session.getAttribute("sId");
+//		CustomerVO customer = customerService.getCustomerInfo(id);
+//		OwnerVO owner = ownerService.getOwnerInfo(id);
 	}
 	
 	// 로그아웃 
