@@ -77,45 +77,46 @@
             <form class="contact-form bg-white" action="customerJoinPro.me">
               <div class="form-group">
                 <label class="text-black">아이디</label>
-                <input type="text" class="form-control" id="c_id" aria-describedby="emailHelp" name="c_id">
+                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id">
                 <small id="emailHelp" class="form-text text-muted">4 ~ 8 자리 아이디를 입력해주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호</label>
-                <input type="password" class="form-control" id="c_passwd" name="c_passwd">
+                <input type="password" class="form-control" id="member_passwd" name="member_passwd">
                   <small id="emailHelp" class="form-text text-muted">8 ~ 16 자리 비밀번호를 입력해주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호확인</label>
-                <input type="password" class="form-control" id="c_passwd2" name="c_passwd2">
+                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2">
                 <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black">이름</label>
-                <input type="text" class="form-control" id="c_name" name="c_name" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_name" name="member_name" aria-describedby="emailHelp">
               </div>
               <div class="form-group">
                 <label class="text-black">생년 월일</label>
-                <input type="text" class="form-control" id="c_birth" name="c_birth" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_birth" name="member_birth" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted">yyyy.mm.dd 식으로 입력해주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black">전화 번호</label>
-                <input type="text" class="form-control" id="c_phone" name="c_phone" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted">'-'기호 생략하고 적어주세요</small>
               </div>
               <div class="form-group">
                 <label class="text-black">이메일</label>
-                <input type="email" class="form-control" id="c_email" name="c_email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
               </div>
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">
-				 <input type="radio" id="c_gender" value="남" name="c_gender"><label for="c_gender">남</label>
-				 <input type="radio" id="c_gender" value="여" name="c_gender"><label for="c_gender">여</label>
+				 <input type="radio" id="member_gender" value="남" name="member_gender"><label for="member_gender">남</label>
+				 <input type="radio" id="member_gender" value="여" name="member_gender"><label for="member_gender">여</label>
 				</div>
               </div>
               <button type="submit" class="btn btn-primary">가입</button>
+              <input type="hidden" id="member_idx" value="1" name="member_idx">
             </form>
           </div>
 
@@ -149,10 +150,83 @@
     </div>
   </div>
 
-	<!-- footer -->
-	<footer>
-		<jsp:include page="../inc/bottom.jsp"></jsp:include>
-	</footer>
+  <div class="site-footer">
+    <div class="inner first">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">About Tour</h3>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+            <div class="widget">
+              <ul class="list-unstyled social">
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                <li><a href="#"><span class="icon-apple"></span></a></li>
+                <li><a href="#"><span class="icon-google"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 pl-lg-5">
+            <div class="widget">
+              <h3 class="heading">Pages</h3>
+              <ul class="links list-unstyled">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+            <div class="widget">
+              <h3 class="heading">Resources</h3>
+              <ul class="links list-unstyled">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">Contact</h3>
+              <ul class="list-unstyled quick-info links">
+                <li class="email"><a href="#">mail@example.com</a></li>
+                <li class="phone"><a href="#">+1 222 212 3819</a></li>
+                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="inner dark">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>

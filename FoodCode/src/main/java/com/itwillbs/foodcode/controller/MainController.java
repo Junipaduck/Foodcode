@@ -46,18 +46,18 @@ public class MainController {
 	
 	// 로그인 버튼 클릭 시 
 	@PostMapping(value = "loginPro.me")
-	public String ownerLoginPro(CustomerVO vo, HttpSession session, Model model) {
+	public String ownerLoginPro(MemberVO member, HttpSession session, Model model) {
 		
-		System.out.println("아이디 : " + vo.getC_id() + ", 패스워드 : " + vo.getC_passwd());
+		System.out.println("아이디 : " + member.getMember_id() + ", 패스워드 : " + member.getMember_passwd());
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String passwd = customerService.getPasswd(vo);
-		if(encoder.matches(vo.getC_passwd(), passwd)) {
-			vo.setC_passwd(passwd);
-			boolean isSuccess = customerService.isSuccessCustomer(vo);
+		String passwd = customerService.getPasswd(member);
+		if(encoder.matches(member.getMember_passwd(), passwd)) {
+			member.setMember_passwd(passwd);
+			boolean isSuccess = customerService.isSuccessMember(member);
 			System.out.println(isSuccess);
 			if(isSuccess) {
 				//로그인 성공 시 세션 객체에 아이디 저장 
-				session.setAttribute("sId", vo.getC_id());
+				session.setAttribute("sId", member.getMember_id());
 				return "redirect:/main"; // 로그인 성공 시 -> main 페이지로 리다이렉트 이동 
 			} else {
 				model.addAttribute("msg","로그인 실패!");

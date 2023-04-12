@@ -3,23 +3,23 @@ package com.itwillbs.foodcode.mapper;
 import org.apache.ibatis.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
-import com.itwillbs.foodcode.vo.CustomerVO;
+import com.itwillbs.foodcode.vo.*;
 
 public interface CustomerMapper {
 
-	int insertCustomer(CustomerVO vo);
+	int insertMember(MemberVO member);
 
-	boolean isSuccessCustomer(CustomerVO vo);
+	boolean isSuccessMember(MemberVO member);
 	
-	CustomerVO selectCustomer(String sId);
+	MemberVO selectMember(String sId);
 
 
-	int deleteCustomer(String sId);
+	int deleteMember(String sId);
 
-	String getPasswd(CustomerVO vo);
+	String getPasswd(MemberVO member);
 
 	String getPassword(String sId);
 
-	int modifyCustomer(@Param("sId") String sId,@Param("customer") CustomerVO customer);
+	int modifyMember(@Param("sId") String sId,@Param("member") MemberVO customer,@Param("member_passwd2") String member_passwd2);
 
 }

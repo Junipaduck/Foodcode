@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- /*
 * Template Name: Tour
@@ -35,6 +36,13 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
 
   <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+  <script type="text/javascript">
+function DeleteMember() {
+	if(window.confirm("탈퇴하시겠습니까?")){
+	location.href="customerDelete.me";
+	}
+}
+  </script>
 </head>
 
 <body>
@@ -76,52 +84,59 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
-            <form class="contact-form bg-white">
+            <form class="contact-form bg-white" action="customerModifyPro.me">
               <div class="form-group">
                 <label class="text-black" for="email">아이디</label>
-                <input type="email" class="form-control" id="c_id" aria-describedby="emailHelp" name="c_id">
+                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" placeholder="${map.member.member_id}" readonly="readonly" name="member_id">
                 <small id="emailHelp" class="form-text text-muted">4 ~ 8 자리 아이디를 입력해주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="password">비밀번호</label>
-                <input type="password" class="form-control" id="c_passwd" name="c_passwd">
+                <input type="password" class="form-control" id="member_passwd" name="member_passwd">
                   <small id="emailHelp" class="form-text text-muted">8 ~ 16 자리 비밀번호를 입력해주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="password">비밀번호확인</label>
-                <input type="password" class="form-control" id="c_passwd2" name="c_passwd2">
+                <label class="text-black" for="password">변경할 비밀번호</label>
+                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2">
+                <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
+              </div>
+              <div class="form-group">
+                <label class="text-black" for="password">변경할 비밀번호확인</label>
+                <input type="password" class="form-control" id="member_passwd2_1" name="member_passwd2_1">
                 <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">이름</label>
-                <input type="email" class="form-control" id="c_name" aria-describedby="emailHelp" name="c_name">
+                <input type="text" class="form-control" id="member_name" aria-describedby="emailHelp" placeholder="${map.member.member_name}" readonly="readonly" name="member_name">
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">생년 월일</label>
-                <input type="email" class="form-control" id="c_birth" aria-describedby="emailHelp" name="c_birth">
+                <input type="text" class="form-control" id="member_birth" aria-describedby="emailHelp" placeholder="${map.member.member_birth}" readonly="readonly" name="member_birth">
                 <small id="emailHelp" class="form-text text-muted">yyyy.mm.dd 식으로 입력해주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">전화 번호</label>
-                <input type="email" class="form-control" id="c_phone" aria-describedby="emailHelp" name="c_phone">
+                <input type="text" class="form-control" id="member_phone" aria-describedby="emailHelp" value="${map.member.member_phone}" name="member_phone">
                 <small id="emailHelp" class="form-text text-muted">'-'기호 생략하고 적어주세요</small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">이메일</label>
-                <input type="email" class="form-control" id="c_email" aria-describedby="emailHelp" name="c_email">
+                <input type="email" class="form-control" id="member_email" aria-describedby="emailHelp" value="${map.member.member_email}" name="member_email">
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">성별</label>
                 <div class="select">
-				 <input type="radio" id="select" name="c_gender" name="c_gender"><label for="select">남</label>
-				 <input type="radio" id="select2" name="c_gender" name="c_gender"><label for="select2">여</label>
+				 <input type="radio" id="select" name="member_gender" <c:if test="${member.member_gender eq '남'}">checked</c:if> ><label for="select">남</label>
+				 <input type="radio" id="select2" name="member_gender" <c:if test="${member.member_gender eq '여'}">checked</c:if>><label for="select2">여</label>
 				</div>
               </div>
-<!--               <div class="form-group"> -->
-<!--                 <label class="text-black" for="message">내용</label> -->
-<!--                 <textarea name="" class="form-control" id="content" cols="30" rows="5"></textarea> -->
-<!--               </div> -->
-              <button type="submit" class="btn btn-primary" onclick="location.href='main'">정보수정</button>
+              <div class="form-group">
+                <label class="text-black" for="message">내용</label>
+                <textarea name="" class="form-control" id="member_content" cols="30" rows="5"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">수정</button>
+              <button type="button" class="btn btn-primary" onclick="DeleteMember();">회원 탈퇴</button>
+              <input type="hidden" id="member_idx" value="1" name="member_idx">
             </form>
           </div>
 
@@ -155,10 +170,83 @@
     </div>
   </div>
 
-	<!-- footer -->
-	<footer>
-		<jsp:include page="../inc/bottom.jsp"></jsp:include>
-	</footer>
+  <div class="site-footer">
+    <div class="inner first">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">About Tour</h3>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+            <div class="widget">
+              <ul class="list-unstyled social">
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                <li><a href="#"><span class="icon-apple"></span></a></li>
+                <li><a href="#"><span class="icon-google"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 pl-lg-5">
+            <div class="widget">
+              <h3 class="heading">Pages</h3>
+              <ul class="links list-unstyled">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+            <div class="widget">
+              <h3 class="heading">Resources</h3>
+              <ul class="links list-unstyled">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">Contact</h3>
+              <ul class="list-unstyled quick-info links">
+                <li class="email"><a href="#">mail@example.com</a></li>
+                <li class="phone"><a href="#">+1 222 212 3819</a></li>
+                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="inner dark">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>

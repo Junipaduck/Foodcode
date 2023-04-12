@@ -1,72 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.foodcode.mapper.CustomerMapper">
-	<insert id="insertCustomer">
-		<selectKey keyProperty="c_idx" resultType="int" order="BEFORE">
-			SELECT IFNULL(MAX(c_idx), 0) FROM customer
+	<insert id="insertMember">
+		<selectKey keyProperty="member_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(member_idx), 0) FROM member
 		</selectKey>
 		INSERT 
-		INTO customer
+		INTO member
 		VALUES(
-		#{c_idx}+1
-		,#{c_id}
-		,#{c_passwd}
-		,#{c_name}
-		,#{c_email}
-		,#{c_phone}
-		,#{c_birth}
+		#{member_idx}+1
+		,'c'
+		,#{member_name}
+		,#{member_id}
+		,#{member_passwd}
+		,#{member_phone}
+		,#{member_email}
+		,#{member_birth}
+		,#{member_gender}
 		,now()
-		,#{c_gender}
 		)
 	
 	</insert>
 	
-	<select id="isSuccessCustomer" parameterType="String" resultType="boolean">
+	<select id="isSuccessMember" parameterType="String" resultType="boolean">
 	SELECT IF(COUNT(*) = 1, 1, 0)
-	FROM customer
-	WHERE c_id = #{c_id} AND c_passwd = #{c_passwd}
+	FROM member
+	WHERE member_id = #{member_id} AND member_passwd = #{member_passwd}
 	</select>
 	
-	<select id="selectCustomer" resultType="com.itwillbs.foodcode.vo.CustomerVO">
-		SELECT c_idx
-			  ,c_id
-			  ,c_passwd
-			  ,c_name
-			  ,c_email
-			  ,c_phone
-			  ,c_birth
-			  ,c_join_date
-			  ,c_gender
-		FROM customer
-		WHERE c_id = #{sId}
+	<select id="selectMember" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT 
+		 member_idx
+		,member_type
+		,member_name
+		,member_id
+		,member_passwd
+		,member_phone
+		,member_email
+		,member_birth
+		,member_gender
+		,now()
+		FROM member
+		WHERE member_id = #{sId}
 	</select>
 	
-	<update id="modifyCustomer">
-		UPDATE customer
+	<update id="modifyMember">
+		UPDATE member
 		SET 
-		    c_email = #{c_email}
-		  , c_phone = #{c_phone}
-		  <if test="c_passwd2 neq ''">
-		  , c_passwd = #{c_passwd2}
+		    member_email = #{member_email}
+		  , member_phone = #{member_phone}
+		  <if test="member_passwd2 neq ''">
+		  , member_passwd = #{member_passwd2}
 		  </if>
-		WHERE c_id = #{sId}
+		WHERE member_id = #{sId}
 	
 	</update>
 	
-	<delete id="deleteCustomer">
+	<delete id="deleteMember">
 		DELETE 
-		FROM customer
-		WHERE c_id = #{sId}
+		FROM member
+		WHERE member_id = #{sId}
 	</delete>
 	
 	<select id="getPasswd">
-		SELECT c_passwd
-			FROM customer
-				WHERE c_id = #{c_id}
+		SELECT member_passwd
+			FROM member
+				WHERE member_id = #{member_id}
 	</select>
 	<select id="getPassword">
-	SELECT c_passwd
-			FROM customer
-				WHERE c_id = #{sId}
+	SELECT member_passwd
+			FROM member
+				WHERE member_id = #{sId}
 	</select>
 </mapper>

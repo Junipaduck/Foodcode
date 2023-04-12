@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import com.itwillbs.foodcode.mapper.CustomerMapper;
-import com.itwillbs.foodcode.vo.CustomerVO;
+import com.itwillbs.foodcode.vo.*;
 
 @Service
 public class CustomerService {
@@ -14,27 +14,27 @@ public class CustomerService {
 	private CustomerMapper mapper;
 	
 	
-	public int insertCustomer(CustomerVO vo) {
+	public int insertMember(MemberVO member) {
 		
-		return mapper.insertCustomer(vo);
+		return mapper.insertMember(member);
 	}
 
 
-	public boolean isSuccessCustomer(CustomerVO vo) {
-		return mapper.isSuccessCustomer(vo);
+	public boolean isSuccessMember(MemberVO member) {
+		return mapper.isSuccessMember(member);
 	}
 
 
-	public CustomerVO selectCustomer(String sId) {
-		return mapper.selectCustomer(sId);
+	public MemberVO selectMember(String sId) {
+		return mapper.selectMember(sId);
 	}
 
-	public int deleteCustomer(String sId) {
-		return mapper.deleteCustomer(sId);
+	public int deleteMember(String sId) {
+		return mapper.deleteMember(sId);
 	}
 
 
-	public String getPasswd(CustomerVO vo) {
+	public String getPasswd(MemberVO vo) {
 		return mapper.getPasswd(vo);
 	}
 
@@ -44,8 +44,8 @@ public class CustomerService {
 	}
 
 
-	public int modifyCustomer(String sId, CustomerVO customer) {
-		return mapper.modifyCustomer(sId,customer);
+	public int modifyMember(String sId, MemberVO member, String member_passwd2) {
+		return mapper.modifyMember(sId,member,member_passwd2);
 	}
 
 
