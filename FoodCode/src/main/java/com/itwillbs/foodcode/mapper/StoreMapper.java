@@ -22,4 +22,6 @@ public interface StoreMapper {
 	
 	List<StoreVO> selectStoreList6();
 
+	List<StoreVO> selectStoreInfo(StoreVO store);
+
 }

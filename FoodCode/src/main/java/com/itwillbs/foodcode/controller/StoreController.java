@@ -15,12 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.itwillbs.foodcode.service.CustomerService;
-import com.itwillbs.foodcode.service.MenuService;
-import com.itwillbs.foodcode.service.StoreService;
-import com.itwillbs.foodcode.vo.CustomerVO;
-import com.itwillbs.foodcode.vo.MenuVO;
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.service.*;
+import com.itwillbs.foodcode.vo.*;
 import com.mysql.cj.Session;
 
 @Controller
@@ -32,10 +28,25 @@ public class StoreController {
 	 @Autowired
 	 private MenuService menuService;
 	
-	 
+	 @Autowired
+	 private ReviewService reviewService;
 	
 	@RequestMapping(value = "store.so", method = {RequestMethod.GET, RequestMethod.POST})
-	public String store() {
+	public String store(StoreVO store, Model model, ReviewVO review) {
+		
+		// 20230412 양선정 - 가게 상세페이지 가게 정보 조회 
+		// 가게 상세페이지 클릭 시 바로 가게 정보 출력 가능 - 현재 하드코딩으로 store_idx = 1 인 경우만 출력 
+		
+		// List 객체에 StoreVO 저장 
+		List<StoreVO> storeList = storeService.selectStoreList(store);
+		List<ReviewVO> reviewList = reviewService.reviewList(review);
+		
+		// model 객체에 storeList 저장 
+		model.addAttribute("storeList", storeList);
+		
+		// 가게 상세페이지에 별점 출력을 위해 review 테이블 vo가 필요
+		model.addAttribute("reviewList", reviewList);
+		
 		return "store/store_information";
 	}
 	
