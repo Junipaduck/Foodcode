@@ -140,7 +140,7 @@ public class CustomerController {
         String sId = (String)session.getAttribute("sId");
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String passwd = customerService.getPassword(sId);
-        System.out.println(member_passwd2);
+        System.out.println(member);
         if(encoder.matches(member.getMember_passwd(), passwd)) { // 패스워드가 세션 아이디의 패스워드와 동일함
         	if(member_passwd2.equals(member_passwd2_1)) { // 변경할 비밀번호가 비밀번호 확인과 동일함
         	int modifyCnt = customerService.modifyMember(sId,member,member_passwd2);
