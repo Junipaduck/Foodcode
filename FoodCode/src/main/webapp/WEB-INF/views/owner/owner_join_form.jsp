@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
 
   <title>점주 회원가입</title>
 </head>
@@ -64,68 +65,57 @@
   
   <div class="untree_co-section">
     <div class="container my-5">
-
-      <div class="row justify-content-center">
+        <div class="row justify-content-center">
 
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title">JOIN</h2>
-            <form class="contact-form bg-white"  action="ownerJoinPro.me">
-              <div class="row">
-              	<div class="col-md-6">
-                  <div class="form-group">
-                    <label class="text-black" for="owner_id">아이디</label>
-                    <input type="text" class="form-control" id="owner_id" name="owner_id">
-                    <small id="emailHelp" class="form-text text-muted">4 ~ 8 자리 아이디를 입력해주세요.</small>
-                  </div>
-               	 </div>
+            <h2 class="section-title">Form</h2>
+            <form class="contact-form bg-white" action="ownerJoinPro.me">
+              <div class="form-group">
+                <label class="text-black">아이디</label>
+                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id">
+                <small id="emailHelp" class="form-text text-muted">4 ~ 8 자리 아이디를 입력해주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="owner_passwd">비밀번호</label>
-                <input type="password" class="form-control" id="owner_passwd" name="owner_passwd">
-                <small id="emailHelp" class="form-text text-muted">8 ~ 16 자리 비밀번호를 입력해주세요.</small>
+                <label class="text-black">비밀번호</label>
+                <input type="password" class="form-control" id="member_passwd" name="member_passwd">
+                  <small id="emailHelp" class="form-text text-muted">8 ~ 16 자리 비밀번호를 입력해주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="owner_passwd2">비밀번호 확인</label>
-                <input type="password" class="form-control" id="owner_passwd2" name="owner_passwd2">
+                <label class="text-black">비밀번호확인</label>
+                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2">
                 <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="owner_name">이름</label>
-                <input type="text" class="form-control" id="owner_name" name="owner_name">
+                <label class="text-black">이름</label>
+                <input type="text" class="form-control" id="member_name" name="member_name" aria-describedby="emailHelp">
               </div>
               <div class="form-group">
-                <label class="text-black" for="owner_phone">핸드폰 번호</label>
-                <input type="text" class="form-control" id="owner_phone" name="owner_phone">
+                <label class="text-black">생년 월일</label>
+                <input type="text" class="form-control" id="member_birth" name="member_birth" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">yyyy.mm.dd 식으로 입력해주세요.</small>
+              </div>
+              <div class="form-group">
+                <label class="text-black">전화 번호</label>
+                <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted">'-'기호 생략하고 적어주세요</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="owner_email">이메일</label>
-                <input type="email" class="form-control" id="owner_email" name="owner_email" aria-describedby="ownerEmailHelp">
-                <small id="ownerEmailHelp" class="form-text text-muted">회원가입시 입력된 이메일로 인증 메일을 발송합니다</small>
+                <label class="text-black">이메일</label>
+                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
               </div>
-<!--               <div class="form-group"> -->
-<!--                 <label class="text-black" for="select">Select</label> -->
-
-<!--                 <select name="" id="select" class="custom-select"> -->
-<!--                   <option value="">Untree.co</option> -->
-<!--                   <option value="">Offers high quality free template</option> -->
-<!--                 </select> -->
-
-<!--               </div> -->
-<!--               <div class="form-group"> -->
-<!--                 <label class="control control--checkbox"> -->
-<!--                   <span class="caption">Custom checkbox</span> -->
-<!--                   <input type="checkbox" checked="checked" /> -->
-<!--                   <div class="control__indicator"></div> -->
-<!--                 </label> -->
-<!--               </div> -->
-			  <br>
+              <div class="form-group">
+                <label class="text-black">성별</label>
+                <div class="select">
+				 <input type="radio" id="member_gender" value="남" name="member_gender"><label for="member_gender">남</label>
+				 <input type="radio" id="member_gender2" value="여" name="member_gender"><label for="member_gender2">여</label>
+				</div>
+              </div>
               <button type="submit" class="btn btn-primary">가입</button>
-              <button type="button" class="btn btn-primary" onclick="location.href='main'">돌아가기</button>
+              <input type="hidden" id="member_idx" value="1" name="member_idx">
             </form>
           </div>
-          
+
           <div class="custom-block" data-aos="fade-up">
             <h2 class="section-title">Social Icons</h2>
             <ul class="list-unstyled social-icons light">
@@ -136,16 +126,10 @@
               <li><a href="#"><span class="icon-play"></span></a></li>
             </ul>
           </div> <!-- END .custom-block -->
-
-
-
         </div>
       </div>
-
 <!--       <div class="row justify-content-center mt-5 section"> -->
-
 <!--       </div> -->
-
     </div>
   </div>
 

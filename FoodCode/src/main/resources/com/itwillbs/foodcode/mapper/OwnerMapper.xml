@@ -5,19 +5,22 @@
 	<!-- 점주 회원가입 -->
 	<insert id="insertOwner">
 	
-		<selectKey keyProperty="owner_idx" resultType="int" order="BEFORE">
-			SELECT IFNULL(MAX(owner_idx), 0) FROM owner 
+		<selectKey keyProperty="member_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(member_idx), 0) FROM member 
  		</selectKey>
  		
 		INSERT
-			INTO owner
+			INTO member
 			VALUES (
-				#{owner_idx} + 1
-				,#{owner_id}
-				,#{owner_passwd}
-				,#{owner_name}
-				,#{owner_phone}
-				,#{owner_email}
+				#{member_idx} + 1
+				,'o'
+				,#{member_name}
+				,#{member_id}
+				,#{member_passwd}
+				,#{member_phone}
+				,#{member_email}
+				,#{member_birth}
+				,#{member_gender}
 				,now()
 			)
 	</insert>

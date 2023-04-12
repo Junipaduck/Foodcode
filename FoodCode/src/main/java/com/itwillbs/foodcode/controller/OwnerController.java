@@ -1,11 +1,13 @@
 package com.itwillbs.foodcode.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.itwillbs.foodcode.service.OwnerService;
+import com.itwillbs.foodcode.vo.MemberVO;
 import com.itwillbs.foodcode.vo.OwnerVO;
 
 @Controller
@@ -15,21 +17,30 @@ public class OwnerController {
 	private OwnerService ownerService;
 	
 	// 점주 회원가입페이지로 이동
-	@GetMapping(value = "ownerJoin.me")
+	@GetMapping(value = "/ownerJoin.me")
 	public String ownerJoin() {
 		return "owner/owner_join_form";
 	}
 	
 	// 점주 회원가입
 	@GetMapping(value = "ownerJoinPro.me")
-	public String ownerJoinPro(OwnerVO vo, Model model) {
-		int insertCnt = ownerService.insertOwner(vo);
-		if(insertCnt > 0) {
-			return "redirect:/main";
+	public String ownerJoinPro(MemberVO member, Model model, @RequestParam String member_passwd2) {
+		if(member.getMember_passwd().equals(member_passwd2)) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String securePasswd = passwordEncoder.encode(member.getMember_passwd());
+			member.setMember_passwd(securePasswd);
+			int insertCnt = ownerService.insertOwner(member);
+			if(insertCnt > 0) {
+				return "redirect:/main";
+			} else {
+				model.addAttribute("msg", "회원가입 실패!");
+				return "fail_back";
+			}
 		} else {
-			model.addAttribute("msg", "회원가입 실패!");
+			model.addAttribute("msg", "비밀번호가 서로 다름!");
 			return "fail_back";
 		}
+		
 	}
 	
 //	// 점주 마이페이지로 이동
