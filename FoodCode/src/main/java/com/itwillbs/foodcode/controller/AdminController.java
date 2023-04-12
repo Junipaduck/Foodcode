@@ -26,7 +26,17 @@ public class AdminController {
 	 private AdminService adminService;
 	
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminMain() {
+	public String adminMain(Model model) {
+		
+		List<CustomerVO> customerList = adminService.getCustomerList();
+		model.addAttribute("customerList", customerList);
+		
+		List<OwnerVO> ownerList = adminService.getOwnerList();
+		model.addAttribute("ownerList", ownerList);
+		
+		List<StoreVO> storeList = adminService.getStoreList();
+		model.addAttribute("storeList", storeList);
+		
 		return "/admin/admin_main";
 	}
 	
@@ -44,7 +54,6 @@ public class AdminController {
 		System.out.println(session.getAttribute("sId"));
 		return "redirect:/adminMain";
 	}
-	
 	
 	@GetMapping(value = "adminLogout.me")
     public String logout(HttpSession session) {
@@ -87,7 +96,7 @@ public class AdminController {
 	}
 	
 // ================일반 회원 삭제======================	
-// 4월 11일 추가
+
 	
 	@GetMapping(value = "adminCustomer_delect")
 	public String customerDelect() {

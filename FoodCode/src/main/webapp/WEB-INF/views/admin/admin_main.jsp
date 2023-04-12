@@ -231,10 +231,23 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        공지사항 출력 공간
+                                      <table class="table table-bordered">
+										  	<tr>
+										  		<th>번호</th>
+										  		<th>아이디</th>
+										  		<th>이름</th>
+										  	</tr>
+										  <c:forEach var="customerList" items="${customerList }">
+										  	<tr>
+										  		<td>${customerList.c_idx }</td>
+										  		<td>${customerList.c_id }</td>
+										  		<td>${customerList.c_name }</td>
+										  	</tr>
+										  </c:forEach>
+									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="https://undraw.co/">공지사항 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="notice_list.no">공지사항 리스트 바로가기 &rarr;</a>
                                    </div>
                                 </div>
                             </div>
@@ -247,10 +260,25 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        식당 목록 출력 공간
+                                       <table class="table table-bordered">
+										  	<tr>
+										  		<th>식당 번호</th>
+										  		<th>식당 이름</th>
+										  		<th>식당 종류</th>
+										  		<th>식당 시간</th>
+										  	</tr>
+										  <c:forEach var="storeList" items="${storeList }" begin="0" end="4" step="1">
+										  	<tr>
+										  		<td>${storeList.store_idx }</td>
+										  		<td>${storeList.store_name }</td>
+										  		<td>${storeList.store_type }</td>
+										  		<td>${storeList.store_time }</td>
+										  	</tr>
+										  </c:forEach>
+									  </table>
                                     </div>
                                    <div align="right">
-                                    	<a target="_blank" href="https://undraw.co/">식당 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="adminStore_list">식당 리스트 바로가기 &rarr;</a>
                                    </div>
                                 </div>
                               </div>
@@ -265,14 +293,23 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        일반회원 목록 출력 공간
-                                        
-                                        
-                                        
-                                        
+                                        <table class="table table-bordered">
+										  	<tr>
+										  		<th>일반회원 번호</th>
+										  		<th>일반회원 아이디</th>
+										  		<th>일반회원 이름</th>
+										  	</tr>
+										  <c:forEach var="customerList" items="${customerList }">
+										  	<tr>
+										  		<td>${customerList.c_idx }</td>
+										  		<td>${customerList.c_id }</td>
+										  		<td>${customerList.c_name }</td>
+										  	</tr>
+										  </c:forEach>
+									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="https://undraw.co/">일반회원 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="adminCustomer_list">일반회원 리스트 바로가기 &rarr;</a>
                                    </div>
                                 </div>
                             </div>
@@ -285,14 +322,26 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                    	점주회원 목록 출력 공간
-                                    	
+                                    	<table class="table table-bordered">
+										  	<tr>
+										  		<th>점주회원 번호</th>
+										  		<th>점주회원 아이디</th>
+										  		<th>점주회원 이름</th>
+										  	</tr>
+										  <c:forEach var="ownerList" items="${ownerList }">
+										  	<tr>
+										  		<td>${ownerList.owner_idx }</td>
+										  		<td>${ownerList.owner_id }</td>
+										  		<td>${ownerList.owner_name }</td>
+										  	</tr>
+										  </c:forEach>
+									  </table>
                                     
 <!--                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" -->
 <%--                                             src="${pageContext.request.contextPath }/resources/img/undraw_posting_photo.svg" alt="..."> --%>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="https://undraw.co/">점주회원 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="adminOwner_list">점주회원 리스트 바로가기 &rarr;</a>
                                    </div>
                                 </div>
                               </div>
