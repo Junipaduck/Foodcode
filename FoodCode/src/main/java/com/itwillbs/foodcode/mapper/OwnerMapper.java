@@ -10,6 +10,4 @@ public interface OwnerMapper {
 	
 	boolean isSuccessOwner(OwnerVO vo);
 
-	OwnerVO selectOwnerInfo(String id);
-	
 }

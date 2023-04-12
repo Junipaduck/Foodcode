@@ -20,6 +20,8 @@ public class MainController {
 	private CustomerService customerService;
 	@Autowired
 	private OwnerService ownerService;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() {
@@ -75,11 +77,21 @@ public class MainController {
 	// 로그인 후 아이디 클릭시 일반회원인지 점주인지 판별하여 각각 마이페이지 이동
 	@GetMapping("/mypage.me")
 	public String mypage(HttpSession session, Model model) {
-		return "customer/customer_mypage";
-//		String id = (String)session.getAttribute("sId");
-//		CustomerVO customer = customerService.getCustomerInfo(id);
-//		OwnerVO owner = ownerService.getOwnerInfo(id);
-//		dd
+//		return "customer/customer_mypage";
+		String id = (String)session.getAttribute("sId");
+		if(id == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		MemberVO member = memberService.getMemberInfo(id);
+		model.addAttribute("member", member);
+		if(member.getMember_type().equals("c")) {
+			return "customer/customer_mypage";
+		} else {
+			return "owner/owner_mypage";
+		}
+		
+		
 	}
 	
 	// 로그아웃 
