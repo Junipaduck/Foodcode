@@ -70,6 +70,7 @@ public class MainController {
 //		String id = (String)session.getAttribute("sId");
 //		CustomerVO customer = customerService.getCustomerInfo(id);
 //		OwnerVO owner = ownerService.getOwnerInfo(id);
+//		dd
 	}
 	
 	// 로그아웃 
