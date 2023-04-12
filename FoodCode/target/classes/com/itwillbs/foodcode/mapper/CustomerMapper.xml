@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.foodcode.mapper.CustomerMapper">
 	<insert id="insertCustomer">
-<!-- 		<selectKey keyProperty="board_num" resultType="int" order="BEFORE"> -->
-<!-- 			SELECT IFNULL(MAX(c_idx), 0) FROM customer -->
-<!-- 		</selectKey> -->
+		<selectKey keyProperty="c_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(c_idx), 0) FROM customer
+		</selectKey>
 		INSERT 
 		INTO customer
 		VALUES(
-		7
+		#{c_idx}+1
+		,#{c_id}
 		,#{c_passwd}
 		,#{c_name}
 		,#{c_email}
@@ -16,103 +17,56 @@
 		,#{c_birth}
 		,now()
 		,#{c_gender}
-		,#{c_id}
 		)
 	
 	</insert>
 	
-	
-	
 	<select id="isSuccessCustomer" parameterType="String" resultType="boolean">
-	
-	<!-- 찬영씨가 적은 코드 -->
-<!-- 	SELECT IF(COUNT(*) = 1, 1, 0) -->
-<!-- 		FROM customer -->
-<!-- 			WHERE c_id = #{c_id} AND c_passwd = #{c_passwd} -->
-	
-	
-	<!-- 고객,점주 로그인 할 수 있게 4/9 배하나가 임시로 수정 -->
-	select IF(COUNT(*) = 1, 1, 0)
-		from (
-				(
-				select
-					c_id as id,
-					c_passwd as pw
-				from
-					customer
-				where
-					c_id = #{c_id}
-					and c_passwd = #{c_passwd})
-				union all
-				(
-				select
-					owner_id as id,
-					owner_passwd as pw
-				from
-					owner
-				where
-					owner_id = #{c_id}
-				and owner_passwd = #{c_passwd})) A		
+	SELECT IF(COUNT(*) = 1, 1, 0)
+	FROM customer
+	WHERE c_id = #{c_id} AND c_passwd = #{c_passwd}
 	</select>
 	
-	<!-- 로그인한 아이디 customer 테이블에서 조회 -->
-	<select id="selectCustomerInfo" resultType="com.itwillbs.foodcode.vo.CustomerVO">
-		SELECT *
+	<select id="selectCustomer" resultType="com.itwillbs.foodcode.vo.CustomerVO">
+		SELECT c_idx
+			  ,c_id
+			  ,c_passwd
+			  ,c_name
+			  ,c_email
+			  ,c_phone
+			  ,c_birth
+			  ,c_join_date
+			  ,c_gender
+		FROM customer
+		WHERE c_id = #{sId}
+	</select>
+	
+	<update id="modifyCustomer">
+		UPDATE customer
+		SET 
+		    c_email = #{c_email}
+		  , c_phone = #{c_phone}
+		  <if test="c_passwd2 neq ''">
+		  , c_passwd = #{c_passwd2}
+		  </if>
+		WHERE c_id = #{sId}
+	
+	</update>
+	
+	<delete id="deleteCustomer">
+		DELETE 
+		FROM customer
+		WHERE c_id = #{sId}
+	</delete>
+	
+	<select id="getPasswd">
+		SELECT c_passwd
 			FROM customer
-			WHERE c_id = #{c_id}
+				WHERE c_id = #{c_id}
 	</select>
-	
+	<select id="getPassword">
+	SELECT c_passwd
+			FROM customer
+				WHERE c_id = #{sId}
+	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

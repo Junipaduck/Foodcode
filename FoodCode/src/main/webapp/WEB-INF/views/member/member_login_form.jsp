@@ -84,6 +84,7 @@
                 <input type="text" class="form-control" id="c_passwd" name="c_passwd">
               </div>
               <button type="submit" class="btn btn-primary">로그인</button>
+              <input type="hidden" id="c_idx" value="1" name="c_idx">
               <div>
               <br>
               <br>

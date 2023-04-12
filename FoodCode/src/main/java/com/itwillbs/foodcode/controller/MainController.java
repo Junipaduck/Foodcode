@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
@@ -48,18 +49,26 @@ public class MainController {
 	public String ownerLoginPro(CustomerVO vo, HttpSession session, Model model) {
 		
 		System.out.println("아이디 : " + vo.getC_id() + ", 패스워드 : " + vo.getC_passwd());
-		
-		boolean isSuccess = customerService.isSuccessCustomer(vo);
-		System.out.println(isSuccess);
-		if(isSuccess) {
-			//로그인 성공 시 세션 객체에 아이디 저장 
-			session.setAttribute("sId", vo.getC_id());
-			return "redirect:/main"; // 로그인 성공 시 -> main 페이지로 리다이렉트 이동 
-			
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String passwd = customerService.getPasswd(vo);
+		if(encoder.matches(vo.getC_passwd(), passwd)) {
+			vo.setC_passwd(passwd);
+			boolean isSuccess = customerService.isSuccessCustomer(vo);
+			System.out.println(isSuccess);
+			if(isSuccess) {
+				//로그인 성공 시 세션 객체에 아이디 저장 
+				session.setAttribute("sId", vo.getC_id());
+				return "redirect:/main"; // 로그인 성공 시 -> main 페이지로 리다이렉트 이동 
+			} else {
+				model.addAttribute("msg","로그인 실패!");
+				return "customer/fail_back";
+			}	
 		} else {
 			model.addAttribute("msg","로그인 실패!");
-			return "fail_back";
+			return "customer/fail_back";
 		}
+		
+		
 		
 	}
 	
