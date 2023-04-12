@@ -112,7 +112,7 @@
                 <label class="text-black">성별</label>
                 <div class="select">
 				 <input type="radio" id="member_gender" value="남" name="member_gender"><label for="member_gender">남</label>
-				 <input type="radio" id="member_gender" value="여" name="member_gender"><label for="member_gender">여</label>
+				 <input type="radio" id="member_gender2" value="여" name="member_gender"><label for="member_gender2">여</label>
 				</div>
               </div>
               <button type="submit" class="btn btn-primary">가입</button>
