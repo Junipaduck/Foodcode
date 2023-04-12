@@ -75,16 +75,16 @@
               	<div class="col-md-6">
                   <div class="form-group">
                     <label class="text-black" for="ownerId">아이디</label>
-                    <input type="text" class="form-control" id="c_id" name="c_id">
+                    <input type="text" class="form-control" id="member_id" name="member_id">
                   </div>
                	 </div>
               </div>
               <div class="form-group">
                 <label class="text-black" for="ownerPasswd">비밀번호</label>
-                <input type="text" class="form-control" id="c_passwd" name="c_passwd">
+                <input type="text" class="form-control" id="member_passwd" name="member_passwd">
               </div>
               <button type="submit" class="btn btn-primary">로그인</button>
-              <input type="hidden" id="c_idx" value="1" name="c_idx">
+              <input type="hidden" id="member_idx" value="1" name="member_idx">
               <div>
               <br>
               <br>
