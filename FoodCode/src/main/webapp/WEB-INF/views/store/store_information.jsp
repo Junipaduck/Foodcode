@@ -113,16 +113,25 @@
        	</div>
         	<!--  가게 정보  -->
 	        <div class="col-lg-5 pl-lg-5 ml-auto">
-	          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">(가게이름 필수)아이티윌 햄버거</h2>
-	          <p style="font-family: 'Noto Sans KR', sans-serif;">(가게 소개글 필수) 안녕하세요. 맛있는 햄버거 가게 입니다. 짱 맛있어요. </p>
-	          <ul class="list-unstyled two-col clearfix" style="font-family: 'Noto Sans KR', sans-serif;">
-	            <li>(업태 구분 필수) 양식</li>
-	            <li>(전화번호 필수) 051-111-1111</li>
-	            <li>(영업시간 필수) 12:00 ~ 22:00 연중무휴</li>
-	            <li>(편의시설) 주차장 완비</li>
-	            <li>(가게위치 필수) 부산 부산진구 전포동</li>
-	            <li>별점 ★★★★★</li>
-	          </ul>
+	        	<!-- 가게 정보 select 후 반복문으로 출력. model 객체에 StoreVO 저장 
+	        	현재(0412) store_idx = 1 인 경우만 출력되도록 하드코딩 해놓은 상태
+	        	 -->
+	        	<%
+	        	
+	        	%>
+				<c:forEach items="${storeList }" var="StoreVO">
+		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_name }</h2>
+		          <p style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_content }</p>
+		          <ul class="list-unstyled two-col clearfix" style="font-family: 'Noto Sans KR', sans-serif;">
+		            <li>${StoreVO.store_type }</li>
+		            <li>${StoreVO.store_phone }</li>
+		            <li>${StoreVO.store_time }</li>
+		            <li>${StoreVO.store_etc }</li>
+		            <li>${StoreVO.store_address }</li>
+		            <!--  review 테이블의 1개의 컬럼만 조회하면 되므로 반목문 사용 x  -->
+		            <li>${reviewList[0].review_star }</li>
+		          </ul>
+				</c:forEach>
 	          <input type="button" class="btn btn-primary btn-block" value="예약하기" onclick="location.href='${pageContext.request.contextPath }/booking.bo'">
 	        </div>
       </div> <!--row  -->

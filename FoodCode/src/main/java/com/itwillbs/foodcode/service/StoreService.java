@@ -45,6 +45,10 @@ public class StoreService {
 	public List<StoreVO> getStoreList6() {
 		return mapper.selectStoreList6();
 	}
-	
+
+	public List<StoreVO> selectStoreList(StoreVO store) { // 가게 상세페이지 - 가게 정보 조회 
+		
+		return mapper.selectStoreInfo(store);
+	}
 
 }

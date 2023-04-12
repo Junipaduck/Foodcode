@@ -76,7 +76,12 @@
 	 	 </select>
 
 
-
+		<!-- 가게 상세페이지 조회용 -->
+		<select id="selectStoreInfo" resultType="com.itwillbs.foodcode.vo.StoreVO">
+			SELECT *
+				FROM store
+				WHERE store_idx = 1
+		</select>
 
 </mapper>
 
