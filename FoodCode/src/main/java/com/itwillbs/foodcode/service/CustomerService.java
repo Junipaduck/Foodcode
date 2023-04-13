@@ -44,8 +44,8 @@ public class CustomerService {
 	}
 
 
-	public int modifyMember(String sId, MemberVO member, String member_passwd2) {
-		return mapper.modifyMember(sId,member,member_passwd2);
+	public int modifyMember(String sId, MemberVO member, String modifyMember) {
+		return mapper.modifyMember(sId,member,modifyMember);
 	}
 
 

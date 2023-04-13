@@ -20,6 +20,6 @@ public interface CustomerMapper {
 
 	String getPassword(String sId);
 
-	int modifyMember(@Param("sId") String sId, @Param("member") MemberVO member , @Param("member_passwd2") String member_passwd2);
+	int modifyMember(@Param("sId") String sId, @Param("member") MemberVO member , @Param("modifyMember") String modifyMember);
 
 }

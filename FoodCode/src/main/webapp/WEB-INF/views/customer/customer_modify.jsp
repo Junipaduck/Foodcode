@@ -97,12 +97,12 @@ function DeleteMember() {
               </div>
               <div class="form-group">
                 <label class="text-black" for="password">변경할 비밀번호</label>
-                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2">
+                <input type="password" class="form-control" id="member_passwd2" name="modifyMember">
                 <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="password">변경할 비밀번호확인</label>
-                <input type="password" class="form-control" id="member_passwd2_1" name="member_passwd2_1">
+                <input type="password" class="form-control" id="member_passwd2_1" name="modifyMember2">
                 <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
               </div>
               <div class="form-group">
