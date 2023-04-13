@@ -2,19 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.foodcode.mapper.AdminMapper">
 	
-	<select id="selectCustomerList" resultType="com.itwillbs.foodcode.vo.CustomerVO">
+	<select id="selectMemberList" resultType="com.itwillbs.foodcode.vo.MemberVO">
 		SELECT *
-			FROM customer;
+			FROM member
+				WHERE member_type = 'c';
 	</select>
 	
-	<select id="selectOwnerList" resultType="com.itwillbs.foodcode.vo.OwnerVO">
+	<select id="selectOwnerList" resultType="com.itwillbs.foodcode.vo.MemberVO">
 		SELECT *
-			FROM owner;
+			FROM member
+				WHERE member_type = 'o';
 	</select>
 	
-	<delete id="delectCustomer">
-		DELETE FROM customer 
-			WHERE c_idx = #{customer_idx} AND c_passwd = #{customer_passwd};
+	<delete id="delectMember">
+		DELETE FROM member
+			WHERE member_idx = #{member_idx} AND member_id = #{member_id};
 	</delete>
 	
 	<select id="selectStoreList" resultType="com.itwillbs.foodcode.vo.StoreVO">

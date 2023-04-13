@@ -150,7 +150,7 @@
 			
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath }/adminCustomer_list">
+                <a class="nav-link" href="${pageContext.request.contextPath }/adminMember_list">
                     <i class="fas fa-fw fa-table"></i>
                     <span>일반회원 목록 조회</span></a>
             </li>

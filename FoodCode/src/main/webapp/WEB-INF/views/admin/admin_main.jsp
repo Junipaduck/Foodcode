@@ -237,11 +237,11 @@
 										  		<th>아이디</th>
 										  		<th>이름</th>
 										  	</tr>
-										  <c:forEach var="customerList" items="${customerList }">
+										  <c:forEach var="memberList" items="${memberList }">
 										  	<tr>
-										  		<td>${customerList.c_idx }</td>
-										  		<td>${customerList.c_id }</td>
-										  		<td>${customerList.c_name }</td>
+										  		<td>${memberList.member_idx }</td>
+										  		<td>${memberList.member_id }</td>
+										  		<td>${memberList.member_name }</td>
 										  	</tr>
 										  </c:forEach>
 									  </table>
@@ -299,11 +299,11 @@
 										  		<th>일반회원 아이디</th>
 										  		<th>일반회원 이름</th>
 										  	</tr>
-										  <c:forEach var="customerList" items="${customerList }">
+										  <c:forEach var="memberList" items="${memberList }">
 										  	<tr>
-										  		<td>${customerList.c_idx }</td>
-										  		<td>${customerList.c_id }</td>
-										  		<td>${customerList.c_name }</td>
+										  		<td>${memberList.member_idx }</td>
+										  		<td>${memberList.member_id }</td>
+										  		<td>${memberList.member_name }</td>
 										  	</tr>
 										  </c:forEach>
 									  </table>
@@ -330,9 +330,9 @@
 										  	</tr>
 										  <c:forEach var="ownerList" items="${ownerList }">
 										  	<tr>
-										  		<td>${ownerList.owner_idx }</td>
-										  		<td>${ownerList.owner_id }</td>
-										  		<td>${ownerList.owner_name }</td>
+										  		<td>${ownerList.member_idx }</td>
+										  		<td>${ownerList.member_id }</td>
+										  		<td>${ownerList.member_name }</td>
 										  	</tr>
 										  </c:forEach>
 									  </table>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.foodcode.service.AdminService;
 import com.itwillbs.foodcode.service.CustomerService;
-import com.itwillbs.foodcode.vo.CustomerVO;
-import com.itwillbs.foodcode.vo.OwnerVO;
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.vo.*;
 
 @Controller
 public class AdminController {
@@ -28,12 +27,12 @@ public class AdminController {
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminMain(Model model) {
 		
-		List<CustomerVO> customerList = adminService.getCustomerList();
-		model.addAttribute("customerList", customerList);
-		
+		List<MemberVO> memberList = adminService.getMemberList();
+		model.addAttribute("memberList", memberList);
+//		
 		List<OwnerVO> ownerList = adminService.getOwnerList();
 		model.addAttribute("ownerList", ownerList);
-		
+//		
 		List<StoreVO> storeList = adminService.getStoreList();
 		model.addAttribute("storeList", storeList);
 		
@@ -65,14 +64,14 @@ public class AdminController {
 	
 // ==============리스트===========================	
 	
-	@GetMapping(value = "adminCustomer_list")
+	@GetMapping(value = "adminMember_list")
 	public String customerList(Model model) {
 		
-		List<CustomerVO> customerList = adminService.getCustomerList();
+		List<MemberVO> memberList = adminService.getMemberList();
 		
-		model.addAttribute("customerList", customerList);
+		model.addAttribute("memberList", memberList);
 		
-		return "/admin/customer_list";
+		return "/admin/member_list";
 	}
 	
 	@GetMapping(value = "adminOwner_list")
@@ -98,24 +97,30 @@ public class AdminController {
 // ================일반 회원 삭제======================	
 
 	
-	@GetMapping(value = "adminCustomer_delect")
+	@GetMapping(value = "adminMember_delect")
 	public String customerDelect() {
 		
-		return "/admin/customer_delect";
+		return "/admin/member_delect";
 	}
 	
-	@PostMapping(value = "adminCustomerDeletePro")
-	public String customerDelectPro(@RequestParam String customer_idx, 
-			@RequestParam String customer_passwd ) {
+	@PostMapping(value = "adminMemberDeletePro")
+	public String customerDelectPro(@RequestParam String member_idx, 
+			@RequestParam String member_id, Model model, HttpSession session) {
+		String id = (String)session.getAttribute("sId");
+		if(!id.equals("admin")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		System.out.println(member_idx + member_id);
 		
-		System.out.println(customer_idx + customer_passwd);
-		
-		int isDeleteSuccess = adminService.CustomerDelect(customer_idx, customer_passwd);
+		int isDeleteSuccess = adminService.MemberDelect(member_idx, member_id);
 		
 		if(isDeleteSuccess>0) {
-			return "redirect:/adminCustomer_list";
+			return "redirect:/adminMember_list";
+		} else {
+			model.addAttribute("msg", "아이디를 다시 확인해주세요!");
+			return "admin/fail_back";
 		}
-		return "redirect:/adminCustomer_list";
 	}
 	
 	

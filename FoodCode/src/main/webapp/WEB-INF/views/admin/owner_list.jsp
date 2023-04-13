@@ -43,13 +43,13 @@
                                     <tbody>
                                        <c:forEach var="ownerList" items="${ownerList }">
                                     	<tr>
-                                            <td>${ownerList.owner_idx}</td>
-                                            <td>${ownerList.owner_id}</td>
-                                            <td>${ownerList.owner_passwd}</td>
-                                            <td>${ownerList.owner_name}</td>
-                                            <td>${ownerList.owner_phone}</td>
-                                            <td>${ownerList.owner_email}</td>
-                                            <td>${ownerList.owner_join_date}</td>
+                                            <td>${ownerList.member_idx}</td>
+                                            <td>${ownerList.member_id}</td>
+                                            <td>${ownerList.member_passwd}</td>
+                                            <td>${ownerList.member_name}</td>
+                                            <td>${ownerList.member_phone}</td>
+                                            <td>${ownerList.member_email}</td>
+                                            <td>${ownerList.member_join_date}</td>
                                         </tr>
                                     	</c:forEach>
                                     </tbody>
