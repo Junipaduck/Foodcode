@@ -116,9 +116,7 @@
 	        	<!-- 가게 정보 select 후 반복문으로 출력. model 객체에 StoreVO 저장 
 	        	현재(0412) store_idx = 1 인 경우만 출력되도록 하드코딩 해놓은 상태
 	        	 -->
-	        	<%
-	        	
-	        	%>
+
 				<c:forEach items="${storeList }" var="StoreVO">
 		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_name }</h2>
 		          <p style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_content }</p>
