@@ -143,7 +143,8 @@ public class CustomerController {
         System.out.println(member);
         if(encoder.matches(member.getMember_passwd(), passwd)) { // 패스워드가 세션 아이디의 패스워드와 동일함
         	if(modifyMember.equals(modifyMember2)) { // 변경할 비밀번호가 비밀번호 확인과 동일함
-        	int modifyCnt = customerService.modifyMember(sId,member,modifyMember);
+        		modifyMember = encoder.encode(modifyMember);
+        		int modifyCnt = customerService.modifyMember(sId,member,modifyMember);
 	        	if(modifyCnt > 0) { // 정보 수정이 되었을 때
 	        		return "redirect:/customerModify.me";
 	        	} else { // 정보 수정이 되지 않았을 때
