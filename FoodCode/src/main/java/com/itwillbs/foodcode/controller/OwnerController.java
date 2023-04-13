@@ -43,39 +43,33 @@ public class OwnerController {
 		
 	}
 	
-//	// 점주 마이페이지로 이동
-//	@RequestMapping(value = "owner", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String owner() {
-//		return "owner/owner_mypage_storeList";
-//	}
-	
 	// 점주 가게 리뷰페이지로 이동
-	@RequestMapping(value = "ownerReview.me", method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = "ownerReview.me")
 	public String ownerReview() {
 		return "owner/owner_mypage_review";
 	}
 	
 	// 점주 가게 예약페이지로 이동
-	@RequestMapping(value = "ownerReservation.me", method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = "ownerReservation.me")
 	public String ownerReservation() {
 		return "owner/owner_mypage_reservation";
 	}
 	
 	// 점주 정보 수정페이지로 이동
-	@RequestMapping(value = "ownerModify.me", method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = "ownerModify.me")
 	public String ownerModify() {
 		return "owner/owner_mypage_modify";
 	}
 	
 	// 점주 가게정보 수정페이지로 이동
-	@RequestMapping(value = "storeModify.me", method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = "storeModify.me")
 	public String storeModify() {
 		return "owner/owner_store_modify";
 	}
 	
 	// 점주 마이페이지에 있는 '새로운 식당 추가' 링크 클릭 시 식당 등록 페이지로 이동
-		@RequestMapping(value = "storeRegister.me", method = {RequestMethod.GET, RequestMethod.POST})
-		public String storeRegister() {
-			return "owner/owner_store_register";
-		}
+	@GetMapping(value = "storeRegister.me")
+	public String storeRegister() {
+		return "owner/owner_store_register";
+	}
 }
