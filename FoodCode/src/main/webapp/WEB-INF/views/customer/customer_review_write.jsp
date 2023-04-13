@@ -74,7 +74,7 @@
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
             <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
-            <form class="contact-form bg-white" action="reviewWritePro.me">
+            <form class="contact-form bg-white" action="reviewWritePro.me" method="post" enctype="multipart/form-data">
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="customer_id">아이디</label> -->
 <!--                 <input type="text" class="form-control" id="customer_id" name="customer_id" aria-describedby="emailHelp"> -->
@@ -106,8 +106,9 @@
                 <small id="emailHelp" class="form-text text-muted">1 ~ 5점 사이 별점을 선택하세요</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="review_file">리뷰 사진 등록</label>
-                <input type="file" name="review_file" id="review_file" >
+                <label class="text-black" for="file">리뷰 사진 등록</label>
+                <!-- MultipartFile 변수와 name 속성이 일치해야함. file -->
+                <input type="file" name="file" id="file" >
               </div>
               <button type="submit" class="btn btn-primary">작성</button>
             </form>

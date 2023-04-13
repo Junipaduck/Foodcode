@@ -18,6 +18,7 @@
 				,'ididid' -- customer_id
 				,1 -- pay_idx
 				,#{review_file} -- 리뷰 이미지 파일
+				,#{review_file_path}
 			)
 	</insert>
 	
