@@ -72,16 +72,16 @@
             <h2 class="section-title">LOGIN</h2>
             <form class="contact-form bg-white" action="loginPro.me" method="post">
               <div class="row">
-              	<div class="col-md-6">
+              	<div class="col-md-8">
                   <div class="form-group">
                     <label class="text-black" for="ownerId">아이디</label>
                     <input type="text" class="form-control" id="member_id" name="member_id">
                   </div>
-               	 </div>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="ownerPasswd">비밀번호</label>
-                <input type="text" class="form-control" id="member_passwd" name="member_passwd">
+              	  <div class="form-group">
+               	   <label class="text-black" for="ownerPasswd">비밀번호</label>
+                   <input type="text" class="form-control" id="member_passwd" name="member_passwd">
+              	  </div>
+              	</div>
               </div>
               <button type="submit" class="btn btn-primary">로그인</button>
               <input type="hidden" id="member_idx" value="1" name="member_idx">

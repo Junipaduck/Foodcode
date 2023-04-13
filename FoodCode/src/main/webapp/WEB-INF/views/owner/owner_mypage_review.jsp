@@ -24,6 +24,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
+  
+  
+  
   
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> <!-- 테이블 외부 css 파일 경로 -->
   
@@ -48,7 +52,7 @@
 
 <body>
 	<header>
-		<jsp:include page="../inc/top_mypage.jsp"></jsp:include>
+		<jsp:include page="../inc/top2.jsp"></jsp:include>
 	</header>
 
 	<div class="site-mobile-menu site-navbar-target">
@@ -67,8 +71,6 @@
 	    <div class="row align-items-center">
 	      <div class="col-lg-6 mx-auto text-center">
 	        <div class="intro-wrap">
-	          <h1 class="mb-0">리뷰페이지</h1>
-	          <p class="text-white">리뷰리뷰리뷰리뷰리뷰</p>
 	        </div>
 	      </div>
 	    </div>
@@ -76,7 +78,7 @@
 	</div>
 
   
-  
+  <jsp:include page="owner_left.jsp"></jsp:include>
 
   
 	<div>

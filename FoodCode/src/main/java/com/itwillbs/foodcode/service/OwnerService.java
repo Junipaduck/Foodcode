@@ -21,6 +21,18 @@ public class OwnerService {
 	public boolean isSuccessOwner(OwnerVO vo) {
 		return mapper.isSuccessOwner(vo);
 	}
+
+	public MemberVO selectMember(String id) {
+		return mapper.selectMember(id);
+	}
+
+	public String getPasswd(String id) {
+		return mapper.getPasswd(id);
+	}
+
+	public int modifyMember(String id, MemberVO member, String newPasswd) {
+		return mapper.modifyMember(id, member, newPasswd);
+	}
 	
 
 }

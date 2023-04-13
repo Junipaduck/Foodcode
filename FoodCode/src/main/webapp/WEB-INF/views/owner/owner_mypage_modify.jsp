@@ -26,11 +26,18 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
   <title>점주 회원정보 수정</title>
+  <script type="text/javascript">
+function DeleteMember() {
+	if(window.confirm("탈퇴하시겠습니까?")){
+	location.href="customerDelete.me";
+	}
+}
+  </script>
 </head>
 
 <body>
 	<header>
-		<jsp:include page="../inc/top_mypage.jsp"></jsp:include>
+		<jsp:include page="../inc/top2.jsp"></jsp:include>
 	</header>
 
   <div class="site-mobile-menu site-navbar-target">
@@ -52,7 +59,6 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">점주 회원정보 수정</h1>
             <p class="text-white"></p>
           </div>
         </div>
@@ -70,50 +76,70 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">My Page</h2>
-            <form class="contact-form bg-white">
-              <div class="row">
-              	<div class="col-md-6">
-                  <div class="form-group">
-                    <label class="text-black" for="ownerId">아이디</label>
-                    <input type="text" class="form-control" id="ownerId">
-                  </div>
-               	 </div>
+            <form class="contact-form bg-white" action="ownerModifyPro.me" method="post">
+              <div class="form-group">
+                <label class="text-black">아이디</label>
+                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id" placeholder="${map.member.member_id}" readonly="readonly" >
+                <small id="emailHelp" class="form-text text-muted">4 ~ 8 자리 아이디를 입력해주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="ownerPasswd">비밀번호</label>
-                <input type="text" class="form-control" id="ownerPasswd">
+                <label class="text-black">비밀번호</label>
+                <input type="password" class="form-control" id="member_passwd" name="member_passwd">
+                  <small id="emailHelp" class="form-text text-muted">기존의 비밀번호를 적어주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="ownerPasswd2">비밀번호 확인</label>
-                <input type="text" class="form-control" id="ownerPasswd2">
+                <label class="text-black" for="password">변경할 비밀번호</label>
+                <input type="password" class="form-control" id="newPasswd" name="newPasswd">
+                <small id="emailHelp" class="form-text text-muted">8 ~ 16 자리 비밀번호를 입력해주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="ownerName">이름</label>
-                <input type="text" class="form-control" id="ownerName">
+                <label class="text-black" for="password">변경할 비밀번호확인</label>
+                <input type="password" class="form-control" id="newPasswd2" name="newPasswd2">
+                <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="ownerPhone">핸드폰 번호</label>
-                <input type="text" class="form-control" id="ownerPhone">
+                <label class="text-black">이름</label>
+                <input type="text" class="form-control" id="member_name" name="member_name"  placeholder="${map.member.member_name}" readonly="readonly" aria-describedby="emailHelp">
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="text-black" for="ownerEmail">이메일</label>
-                    <input type="email" class="form-control" id="ownerEmail" aria-describedby="ownerEmailHelp"> @ <input type="email" class="form-control" id="ownerEmail2" aria-describedby="ownerEmailHelp">
-                    <select name="" id="select" class="custom-select">
-                      <option value="">Untree.co</option>
-                      <option value="">Offers high quality free template</option>
-                    </select>
-                  </div>
-                </div>
+              <div class="form-group">
+                <label class="text-black">생년 월일</label>
+                <input type="text" class="form-control" id="member_birth" name="member_birth" placeholder="${map.member.member_birth}" readonly="readonly" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">yyyy.mm.dd 식으로 입력해주세요.</small>
               </div>
-                <small id="ownerEmailHelp" class="form-text text-muted">회원가입시 입력된 이메일로 인증 메일을 발송합니다</small>
-                <br>
-                <br>
-              <button type="submit" class="btn btn-primary">수정하기</button>
-              <button type="button" class="btn btn-primary">탈퇴하기</button>
+              <div class="form-group">
+                <label class="text-black">전화 번호</label>
+                <input type="text" class="form-control" id="member_phone" name="member_phone" placeholder="${map.member.member_phone}" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">'-'기호 생략하고 적어주세요</small>
+              </div>
+              <div class="form-group">
+                <label class="text-black">이메일</label>
+                <input type="email" class="form-control" id="member_email" name="member_email" placeholder="${map.member.member_email}" aria-describedby="emailHelp">
+              </div>
+              <div class="form-group">
+                <label class="text-black" for="email">성별</label>
+                <div class="select">
+				 <input type="radio" id="select" name="member_gender" <c:if test="${member.member_gender eq '남'}"> checked</c:if>> <label for="select">남</label>
+				 <input type="radio" id="select2" name="member_gender" <c:if test="${member.member_gender eq '여'}"> checked</c:if>> <label for="select2">여</label>
+				</div>
+              </div>
+              <button type="submit" class="btn btn-primary">수정</button>
+              <button type="button" class="btn btn-primary" onclick="DeleteMember();">회원 탈퇴</button>
+              <input type="hidden" id="member_idx" value="1" name="member_idx">
             </form>
           </div>
+
+          <div class="custom-block" data-aos="fade-up">
+            <h2 class="section-title">Social Icons</h2>
+            <ul class="list-unstyled social-icons light">
+              <li><a href="#"><span class="icon-facebook"></span></a></li>
+              <li><a href="#"><span class="icon-twitter"></span></a></li>
+              <li><a href="#"><span class="icon-linkedin"></span></a></li>
+              <li><a href="#"><span class="icon-google"></span></a></li>
+              <li><a href="#"><span class="icon-play"></span></a></li>
+            </ul>
+          </div> <!-- END .custom-block -->
+        </div>
+      </div>
 
 
 
@@ -124,8 +150,6 @@
 
 <!--       </div> -->
 
-    </div>
-  </div>
 
   <div class="py-5 cta-section">
     <div class="container">

@@ -27,9 +27,44 @@
 	
 	<select id="isSuccessOwner" parameterType="String" resultType="boolean">
 		SELECT IF(COUNT(*) = 1, 1, 0)
-			FROM owner
-			WHERE owner_id = #{owner_id} AND owner_passwd = #{owner_passwd}
+			FROM member
+			WHERE member_id = #{member_id} AND member_passwd = #{member_passwd}
 	</select>
+	
+	<select id="selectMember" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT 
+		 member_idx
+		,member_type
+		,member_name
+		,member_id
+		,member_passwd
+		,member_phone
+		,member_email
+		,member_birth
+		,member_gender
+		,now()
+		FROM member
+		WHERE member_id = #{sId}
+	</select>
+	
+	<!-- session 패스워드와 회원 패스워드 일치하는지 조회 -->
+	<select id="getPasswd">
+	SELECT member_passwd
+			FROM member
+				WHERE member_id = #{sId}
+	</select>
+	
+	<!-- 점주 회원 정보 수정 -->
+	<update id="modifyMember">
+		UPDATE member
+		SET 
+		    member_email = #{member.member_email}
+		  , member_phone = #{member.member_phone}
+		  <if test='newPasswd != null and newPasswd != ""'>
+		  , member_passwd = #{newPasswd}
+		  </if>
+		WHERE member_id = #{sId}
+	</update>
 	
 		
 	

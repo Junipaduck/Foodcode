@@ -32,7 +32,7 @@
 
 <body>
 	<header>
-		<jsp:include page="../inc/top_mypage.jsp"></jsp:include>
+		<jsp:include page="../inc/top2.jsp"></jsp:include>
 	</header>
 
   <div class="site-mobile-menu site-navbar-target">
@@ -54,7 +54,6 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">식당 등록</h1>
           </div>
         </div>
       </div>

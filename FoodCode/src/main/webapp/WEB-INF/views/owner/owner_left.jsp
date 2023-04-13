@@ -10,8 +10,8 @@
 <body>
 	<div class="lnb-area addchat">
             <ul>
-                <li><a href="ownerModify.me" title="내정보">내정보 수정</a></li>
-                <li><a href="owner" title="내식당">내식당</a></li>
+                <li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>
+                <li><a href="ownerPage.me" title="내식당">내식당</a></li>
                 <li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>
 				<li>&nbsp;&nbsp;&nbsp; </li>
 				<li>&nbsp;&nbsp;&nbsp; </li>
