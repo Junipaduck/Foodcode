@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/map.css">
 
 	<title>아이티윌 2팀</title>
 </head>
@@ -92,8 +93,14 @@
 	</div>
 
 	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<!-- 지도 -->
-	<div id="map" style="width:800px;height:450px;margin: auto;"></div>
+<!-- 	<div id="map" style="width:800px;height:450px;margin: auto;"></div> -->
+	<div id="map" style="width:100%;height:350px;"></div>
 	<br>
 
 	<!-- 제공 서비스 소개 -->
@@ -319,7 +326,7 @@
 	        infowindow.open(map, marker);
 	    });
 	}
-</script>
+	</script>
 </body>
 
 </html>
