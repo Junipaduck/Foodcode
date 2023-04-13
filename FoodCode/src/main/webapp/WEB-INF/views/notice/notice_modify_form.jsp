@@ -71,7 +71,7 @@
  }
  
  .table-box2 {
-    background: #1A374D;
+    background: #ff9507;
     color: #fff;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -89,10 +89,10 @@
 
 /* 버튼 기본 css */
 .btn44{
-	background: #1A374D;
-  	border-color: #1A374D;
-  	border-color: #1f425c;
-	background: #1f425c;
+	background: #ff9507;
+  	border-color: #ff9507;
+  	border-color: #ff9507;
+	background: #ff9507;
 	padding-top: 12px; 
 	padding-bottom: 12px;
 	padding-left: 30px;

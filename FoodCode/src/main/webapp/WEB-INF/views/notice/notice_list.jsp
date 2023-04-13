@@ -38,7 +38,7 @@
 
 <style type="text/css">
 .table-box2 {
-	background: #1A374D;
+	background: #ff9507;
 	color: #fff;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
