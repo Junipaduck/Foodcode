@@ -23,9 +23,10 @@
 	 			,#{store_time}  
 	 			,#{store_license} 
 	 			,now()
-	 			,(SELECT owner_idx FROM owner where owner_id = #{owner_id}) <!-- IFNULL((SELECT MAX(store_idx) FROM owner)+1, 1) -->
-	 			,#{owner_id}
 	 			,#{store_etc}
+	 			,#{store_file}
+	 			,#{store_file_path}
+	 			,#{member_id} <!-- 로그인된 점주의 sId -->
 	 		)
 	 </insert>
 

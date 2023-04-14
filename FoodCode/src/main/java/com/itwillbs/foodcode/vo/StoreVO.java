@@ -1,5 +1,7 @@
 package com.itwillbs.foodcode.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class StoreVO {
 	private Integer store_idx;
 	private String store_name;
@@ -10,14 +12,19 @@ public class StoreVO {
 	private String store_time;
 	private String store_license;
 	private String store_date;
-	private	Integer owner_idx;
 	private String store_etc;
-	private String owner_id;
-
-
+	private String store_file;
+	private String store_file_path;
+	private String member_id;
+	
+	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
+	private MultipartFile file;
+	
+	public StoreVO() {}
+	
 	public StoreVO(Integer store_idx, String store_name, String store_phone, String store_address, String store_type,
-			String store_content, String store_time, String store_license, String store_date, Integer owner_idx,
-			String store_etc, String owner_id) {
+			String store_content, String store_time, String store_license, String store_date, String store_etc,
+			String store_file, String store_file_path, String member_id, MultipartFile file) {
 		super();
 		this.store_idx = store_idx;
 		this.store_name = store_name;
@@ -28,13 +35,13 @@ public class StoreVO {
 		this.store_time = store_time;
 		this.store_license = store_license;
 		this.store_date = store_date;
-		this.owner_idx = owner_idx;
 		this.store_etc = store_etc;
-		this.owner_id = owner_id;
+		this.store_file = store_file;
+		this.store_file_path = store_file_path;
+		this.member_id = member_id;
+		this.file = file;
 	}
 	
-	
-
 	public Integer getStore_idx() {
 		return store_idx;
 	}
@@ -89,35 +96,58 @@ public class StoreVO {
 	public void setStore_date(String store_date) {
 		this.store_date = store_date;
 	}
-	public Integer getOwner_idx() {
-		return owner_idx;
-	}
-	public void setOwner_idx(Integer owner_idx) {
-		this.owner_idx = owner_idx;
-	}
 	public String getStore_etc() {
 		return store_etc;
 	}
 	public void setStore_etc(String store_etc) {
 		this.store_etc = store_etc;
 	}
-	public String getOwner_id() {
-		return owner_id;
+	public String getStore_file() {
+		return store_file;
+	}
+	public void setStore_file(String store_file) {
+		this.store_file = store_file;
+	}
+	public String getStore_file_path() {
+		return store_file_path;
+	}
+	public void setStore_file_path(String store_file_path) {
+		this.store_file_path = store_file_path;
+	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	
+	
+	// 파일처리를 위한 MultipartFile
+	public MultipartFile getFile() {
+		return file;
 	}
 
-	public void setOwner_id(String owner_id) {
-		this.owner_id = owner_id;
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "StoreVO [store_idx=" + store_idx + ", store_name=" + store_name + ", store_phone=" + store_phone
 				+ ", store_address=" + store_address + ", store_type=" + store_type + ", store_content=" + store_content
 				+ ", store_time=" + store_time + ", store_license=" + store_license + ", store_date=" + store_date
-				+ ", owner_idx=" + owner_idx + ", store_etc=" + store_etc + ", owner_id=" + owner_id + "]";
+				+ ", store_etc=" + store_etc + ", store_file=" + store_file + ", store_file_path=" + store_file_path
+				+ ", member_id=" + member_id + ", file=" + file + "]";
 	}
+
+	
+	
+
+
+	
+	
+	
+
 	
 	
 	

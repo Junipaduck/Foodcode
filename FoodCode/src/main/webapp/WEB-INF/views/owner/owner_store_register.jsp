@@ -31,10 +31,11 @@
 </head>
 
 <body>
-	<header>
-		<jsp:include page="../inc/top2.jsp"></jsp:include>
-	</header>
-
+<!-- 	<header> -->
+<%-- 		<jsp:include page="../inc/top_mypage.jsp"></jsp:include> --%>
+<!-- 	</header> -->
+<!-- 파일 업로드 기능을 사용하려면 form 태그의 enctype 속성을 사용 (POST방식 필수) -->
+ <form class="contact-form bg-white" action="storeRegisterPro.so" name="storeRegisterPro" method="POST" enctype="multipart/form-data">
   <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
       <div class="site-mobile-menu-close">
@@ -54,6 +55,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
+            <h1 class="mb-0">식당 등록</h1>
           </div>
         </div>
       </div>
@@ -70,7 +72,6 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">STORE</h2>
-           <form class="contact-form bg-white" action="storeRegisterPro.so">
               <div class="row">
               	<div class="col-md-6">
                   <div class="form-group">
@@ -87,9 +88,9 @@
                   </div>
                	 </div>
               </div>
-              <div class="form-group">
-                <label class="text-black" for="storeImage">업체사진</label>
-                <input type="file" class="form-control" id="storeImage">
+               <div class="form-group">
+                <label class="text-black" for="file" >업체사진</label>
+                <input type="file" class="form-control" id="file" name="file" required="required">
               </div>
               <div class="form-group">
                 <label class="text-black" for="storeLicense" >사업자등록번호</label>
@@ -144,8 +145,8 @@
               </div>
               <button type="submit" class="btn btn-primary">등록하기</button>
 <!--               <button type="submit" class="btn btn-primary">돌아가기</button> -->
-            </form>
           </div>
+         
 
 
 
@@ -264,7 +265,7 @@
   
   <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
 
-
+</form>
 </body>
 
 </html>

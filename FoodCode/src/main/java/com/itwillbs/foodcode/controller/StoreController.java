@@ -1,7 +1,15 @@
 package com.itwillbs.foodcode.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.foodcode.service.*;
 import com.itwillbs.foodcode.vo.*;
@@ -50,31 +59,66 @@ public class StoreController {
 		return "store/store_information";
 	}
 	
-	// 메인페이지에서 [맛집추천]버튼 클릭 시 식당추천페이지로 포워딩 - 4/10 배하나수정 (중복매핑이라 이 주석은 삭제해도됩니다)
-//	@RequestMapping(value = "store_recommend.so", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String store_recommend() {
-//		return "store/store_recommend";
-//	}
 
-	
-	// 점주가 owner_store_register.jsp폼에서 새로운식당을 등록하는 Pro작업 - 4/9배하나수정
-	@GetMapping(value = "/storeRegisterPro.so")
-	public String storeRegisterPro(StoreVO store, Model model, HttpSession session, CustomerVO vo) {
-		System.out.println("storeRegisterPro");
-		System.out.println("테스트1123 : " + store);
-		System.out.println("로그인된 id값 : " + session.getAttribute("sId"));
-		
-		store.setOwner_id(session.getAttribute("sId").toString()); //=> 가게등록을 하려면 owner_id에 맞는 owner_idx가 필요해서 sId 가져옴.
-		int insertCnt = storeService.insertStore(store);
-		
-		  if(insertCnt > 0) {
-	            return "redirect:/store_recommend.so";
-	      } else {
-	            model.addAttribute("msg", "가게 등록 실패!");
-	            return "fail_back";
-	      }
-		  
-	}
+	// 점주가 owner_store_register.jsp폼에서 새로운식당을 등록(가게등록)하는 Pro작업 - 4/9배하나수정
+		// 가게등록 폼의 첨부파일 작업 추가 - 4/13 배하나수정
+		@PostMapping(value = "/storeRegisterPro.so")
+		public String storeRegisterPro(StoreVO store, Model model, HttpSession session) {
+			System.out.println("storeRegisterPro");
+			System.out.println("테스트1123 : " + store);
+			System.out.println("로그인된 id값 : " + session.getAttribute("sId"));
+//			System.out.println("업로드 파일명 : " + store.getStore_file().getOriginalFilename());
+			
+			
+			//---------- 파일 업로드 관련 작업 시작 -----------------------------------------------------------
+			String uploadDir = "/resources/upload"; //프로젝트상의 가상 업로드 경로
+			String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
+			System.out.println("실제 업로드 경로 : " + saveDir);
+			
+			try {
+				Date date = new Date(); //java.util.Date 클래스 사용하기
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+				store.setStore_file_path("/" + sdf.format(date));
+				
+				saveDir = saveDir + store.getStore_file_path(); //실제 업로드 경로와 서브 디렉토리 경로 결합하여 저장
+				
+				Path path = Paths.get(saveDir);
+				Files.createDirectories(path);
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			MultipartFile mFile = store.getFile(); //StoreVO 객체에 전달된 MultipartFile 단일파일 꺼내기
+			String originalFileName = mFile.getOriginalFilename();
+			
+			String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
+			System.out.println("UUID : " + uuid);
+			
+			store.setStore_file(uuid.substring(0, 8) + "_" + originalFileName);
+			System.out.println("실제 업로드 될 파일명 : " + store.getStore_file());
+			//---------- 파일 업로드 관련 작업 끝 ------------------------------------------------------------
+
+			//--------------- 가게 INSERT작업에 관한 코드 시작 ------------------------------------------------
+			store.setMember_id(session.getAttribute("sId").toString()); //=> store테이블의 member_id컬럼에 저장할 점주의 sId 가져오기
+			int insertCnt = storeService.insertStore(store);
+			
+			  if(insertCnt > 0) {
+				  // 가게등록작업 성공 시 임시 위치에 저장된 파일을 실제 폴더로 옮기는 작업
+				  try {
+						mFile.transferTo(new File(saveDir, store.getStore_file()));
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+		            return "redirect:/store_recommend.so";
+		      } else {
+		            model.addAttribute("msg", "가게 등록 실패!");
+		            return "fail_back";
+		      }
+			  
+		} //storeRegisterPro() 끝
 	
 	
 	// 가게등록한 정보를 storeList에 담아 맛집추천페이지에 뿌려줌 - 4/10 배하나수정 
