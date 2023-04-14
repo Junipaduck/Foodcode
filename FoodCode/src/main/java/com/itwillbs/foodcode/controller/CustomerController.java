@@ -38,7 +38,7 @@ public class CustomerController {
         if(member.getMember_passwd().equals(member_passwd2)) {
         	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         	String securePasswd = passwordEncoder.encode(member.getMember_passwd());
-//		System.out.println("암호문 : " + securePasswd);
+		System.out.println("암호문 : " + securePasswd);
         	member.setMember_passwd(securePasswd);
         	int insertCnt = customerService.insertMember(member);
         	
@@ -143,7 +143,9 @@ public class CustomerController {
         System.out.println(member);
         if(encoder.matches(member.getMember_passwd(), passwd)) { // 패스워드가 세션 아이디의 패스워드와 동일함
         	if(modifyMember.equals(modifyMember2)) { // 변경할 비밀번호가 비밀번호 확인과 동일함
+        		if(!modifyMember.equals("")) {
         		modifyMember = encoder.encode(modifyMember);
+        		}
         		int modifyCnt = customerService.modifyMember(sId,member,modifyMember);
 	        	if(modifyCnt > 0) { // 정보 수정이 되었을 때
 	        		return "redirect:/customerModify.me";
@@ -162,18 +164,32 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerDelete.me")
-    public String customerDelete(HttpSession session,Model model) {
-    	System.out.println("customerDelete.me");
-    	String sId = (String) session.getAttribute("sId");
-		if(sId == null) {
-			model.addAttribute("msg", "잘못된 접근입니다.");
-			return "customer/fail_back";
-		}
-    	int deleteCustomer = customerService.deleteMember(sId);
-    	session.invalidate();
+    public String customerDelete() {
+    	return "customer/customer_quit_form";
+    }
+    @PostMapping(value = "/customerDeletePro.me")
+    public String customerDeletePro(HttpSession session,Model model, @RequestParam String member_passwd) {
+    	String sId = (String)session.getAttribute("sId");
+    	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    	if(encoder.matches(member_passwd, customerService.getPassword(sId))) {
+    		
+    		int deleteCnt = customerService.deleteMember(sId);
+    		if(deleteCnt > 0) {
+    			session.invalidate();
+    			return "redirect:/";
+    		} else {
+    			model.addAttribute("msg", "회원 탈퇴 실패!");
+    			return "customer/fail_back";
+    		}
+    	} else {
+    		model.addAttribute("msg", "비밀 번호가 틀렸습니다!");
+    		return "customer/fail_back";
+    		
+    	}
     	
     	
-    	return "redirect:/";
+    	
+    	
     }
     
     @GetMapping(value = "/customerReviewModify.me")

@@ -49,7 +49,7 @@
 		SET 
 		    member_email = #{member.member_email}
 		  , member_phone = #{member.member_phone}
-		  <if test="modifyMember neq ''">
+		  <if test="!modifyMember.equals('') and modifyMember != null">
 		  , member_passwd = #{modifyMember}
 		  </if>
 		WHERE member_id = #{sId}

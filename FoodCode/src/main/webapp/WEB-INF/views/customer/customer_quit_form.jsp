@@ -37,15 +37,19 @@
 
   <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
   <script type="text/javascript">
-function DeleteMember() {
-	if(window.confirm("탈퇴하시겠습니까?")){
-	location.href="customerDelete.me";
+	function confirmQuit() {
+		return confirm("정말로 탈퇴하시겠습니까?");
 	}
-}
-  </script>
+</script>
 </head>
 
 <body>
+<c:if test="${empty sessionScope.sId }">
+		<script type="text/javascript">
+			alert("잘못된 접근입니다!");
+			location.href = "./";
+		</script>
+	</c:if>
 <header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
 </header>
@@ -84,60 +88,15 @@ function DeleteMember() {
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
-            <form class="contact-form bg-white" action="customerModifyPro.me">
-              <input type="hidden" id="member_idx" value="${map.member.member_idx }" name="member_idx">
-              <div class="form-group">
-                <label class="text-black" for="email">아이디</label>
-                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" placeholder="${map.member.member_id}" readonly="readonly" name="member_id">
-                <small id="emailHelp" class="form-text text-muted">4 ~ 8 자리 아이디를 입력해주세요.</small>
+            <form action="customerDeletePro.me" method="post" onsubmit="return confirmQuit()" class="contact-form bg-white">
+			 <div class="form-group">
+                <label class="text-black" for="email">패스워드</label>
+                <input type="password" class="form-control" id="member_passwd" aria-describedby="emailHelp" name="member_passwd">
+                <small id="emailHelp" class="form-text text-muted">탈퇴하시려면 비밀번호를 입력해주세요</small>
               </div>
-              <div class="form-group">
-                <label class="text-black" for="password">비밀번호</label>
-                <input type="password" class="form-control" id="member_passwd" name="member_passwd">
-                  <small id="emailHelp" class="form-text text-muted">8 ~ 16 자리 비밀번호를 입력해주세요.</small>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="password">변경할 비밀번호</label>
-                <input type="password" class="form-control" id="member_passwd2" name="modifyMember">
-                <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="password">변경할 비밀번호확인</label>
-                <input type="password" class="form-control" id="member_passwd2_1" name="modifyMember2">
-                <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="email">이름</label>
-                <input type="text" class="form-control" id="member_name" aria-describedby="emailHelp" placeholder="${map.member.member_name}" readonly="readonly" name="member_name">
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="email">생년 월일</label>
-                <input type="text" class="form-control" id="member_birth" aria-describedby="emailHelp" placeholder="${map.member.member_birth}" readonly="readonly" name="member_birth">
-                <small id="emailHelp" class="form-text text-muted">yyyy.mm.dd 식으로 입력해주세요.</small>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="email">전화 번호</label>
-                <input type="text" class="form-control" id="member_phone" aria-describedby="emailHelp" value="${map.member.member_phone}" name="member_phone">
-                <small id="emailHelp" class="form-text text-muted">'-'기호 생략하고 적어주세요</small>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="email">이메일</label>
-                <input type="email" class="form-control" id="member_email" aria-describedby="emailHelp" value="${map.member.member_email}" name="member_email">
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="email">성별</label>
-                <div class="select">
-				 <input type="radio" id="select" name="member_gender" <c:if test="${member.member_gender eq '남'}">checked</c:if> ><label for="select">남</label>
-				 <input type="radio" id="select2" name="member_gender" <c:if test="${member.member_gender eq '여'}">checked</c:if>><label for="select2">여</label>
-				</div>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="message">내용</label>
-                <textarea name="" class="form-control" id="member_content" cols="30" rows="5"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">수정</button>
-              <button type="button" class="btn btn-primary" onclick="location.href ='customerDelete.me'">회원 탈퇴</button>
-            </form>
+              <button type="submit" class="btn btn-primary">회원 탈퇴</button>
+              <button type="button" class="btn btn-primary" onclick="history.back()">돌아가기</button>
+		</form>
           </div>
 
           <div class="custom-block" data-aos="fade-up">
