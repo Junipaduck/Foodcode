@@ -18,5 +18,12 @@ public interface AdminMapper {
 	int delectMember(@Param("member_idx")String member_idx, @Param("member_id")String member_id);
 
 	MemberVO selectMemberInfo(String id);
+
+	List<ReviewVO> selectReviews();
+
+
+	int delectStore(@Param("store_license") String store_license);
+
+	List getStoreList2();
 	
 }
