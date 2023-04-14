@@ -138,7 +138,7 @@ var menuTextName = document.getElementById('menu_name').value;
 								<label for="selectAll"></label>
 							</span>
 						</th>
-						<th>메뉴 이름</th>
+						<th>메뉴 이름1</th>
 						<th>메뉴 종류</th>
 						<th>가격</th>
 						<th>메뉴 사진</th>
