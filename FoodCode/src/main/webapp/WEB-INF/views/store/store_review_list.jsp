@@ -79,13 +79,12 @@
 					${ReviewVO.review_star }
 	           </td>
 	           <td>2023/03/20</td>
-	           <td><input type="button" value="점주답글달기"></td>
+	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
 	           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
 	        </tr>
 		</c:forEach>
 	</tbody>
     </table>
-	</div>
 
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>

@@ -28,10 +28,27 @@ public class ReviewService {
 		return mapper.deleteReview(review_idx);
 	}
 
-	public List<ReviewVO> reviewList(ReviewVO vo) {
+	public List<ReviewVO> reviewList(ReviewVO review) {
 		
-		return mapper.selectReviewList(vo);
+		return mapper.selectReviewList(review);
 	}
+
+//	public List<ReviewVO> getReviewList(int starRow, int listLimit) {
+//		// TODO Auto-generated method stub
+//		return mapper.getReviewList(starRow, listLimit);
+//	}
+
+//	public List<ReviewVO> reviewList(PageVO page) throws Exception {
+//		
+//		page.makeRow();
+//		
+//		Long totalCount = mapper.getTotalCount(page);
+//		page.makeNum(totalCount);
+//		
+//		return mapper.selectReviewList(page);
+//	}
+
+	
 	
 }
 

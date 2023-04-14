@@ -13,6 +13,7 @@ import org.springframework.ui.*;
 import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
+import org.springframework.web.servlet.*;
 
 import com.itwillbs.foodcode.service.*;
 import com.itwillbs.foodcode.vo.*;
@@ -130,16 +131,41 @@ public class ReviewController {
     
     // [리뷰목록] 클릭 시 review_list.jsp 페이지로 이동 -> 리뷰 목록 조회 가능 
     @RequestMapping(value = "/reviewList.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewList(ReviewVO vo, Model model) {
+    public String reviewList(ReviewVO review, Model model, PageVO page, ModelAndView mv) {
+    	
+//    	int listLimit = 10; // 한 페이지에 표시할 게시물 목록 갯수
+//    	int pageListLimit = 10; // 한 페이지에 표시할 페이지 목록 갯수 
+//    	int starRow = (pageNum -1) * listLimit; // 조회 시작 게시물 번호 계산 
     	
     	// List 객체에 vo 담기 
-    	List<ReviewVO> reviewList = reviewService.reviewList(vo);
+//    	List<ReviewVO> reviewList = reviewService.reviewList(review);
+    	List<ReviewVO> reviewList = reviewService.reviewList(review);
+//    	mv.addObject("reviewList", reviewList);
+//    	mv.addObject("page", page);
+//    	mv.setViewName("store/store_review_list");
     	
     	model.addAttribute("reviewList", reviewList);
+//    	List<ReviewVO> reviewList = reviewService.getReviewList(starRow, listLimit);
+    	
+    	
     	
     	return "store/store_review_list";
+//    	return mv;
     }
     
+    // 점주 답글 작성 페이지로 이동 
+    @RequestMapping(value = "/ownerReplyForm.me", method = {RequestMethod.GET, RequestMethod.POST})
+    public String ownerReplyForm() {
+    	
+    	
+    	return "owner/owner_reply_form";
+    }
+    
+    // 점주 답글 작성 후 리뷰 게시판 리스트로 다시 이동 
+    @PostMapping(value = "/ownerReplyPro.me")
+    public String ownerReplyPro() {
+    	return "redirect:/reviewList.me";
+    }
     
 }
 

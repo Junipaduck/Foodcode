@@ -39,7 +39,8 @@
 }
 </style>
 
-  <title>아이티윌 2팀</title>
+  <title>마이페이지</title>
+  <!-- 마이페이지 클릭 시 제일 처음 보이는 화면 -->
   
 </head>
 
@@ -80,26 +81,22 @@
 			<form action="">
 			<span>
 				<img alt="이미지오류" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" style="height: 200px; width: 200px; margin: 100px;">
-				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='customerJoin.me'" style="margin: 100px">개인회원</button>
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='customerJoin.me'" style="margin: 100px">내 정보 수정</button>
 			</span>
 			</form>
 			<form action="ownerJoin.me">
 			<span>
 				<img alt="이미지오류" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" style="height: 200px; width: 200px; margin: 100px;">
-				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='ownerJoin.me'" style="margin: 100px">점주회원</button>
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='ownerJoin.me'" style="margin: 100px">예약관리</button>
+			</span>
+			</form>
+			<form action="ownerJoin.me">
+			<span>
+				<img alt="이미지오류" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" style="height: 200px; width: 200px; margin: 100px;">
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='ownerJoin.me'" style="margin: 100px">리뷰관리</button>
 			</span>
 			</form>
 	</div>
-
-
-
-  
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
 
 
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
@@ -120,3 +117,51 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
