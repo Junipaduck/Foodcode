@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="kr">
 <head>
@@ -108,12 +109,12 @@ function DeleteMember() {
               </div>
               <div class="form-group">
                 <label class="text-black">전화 번호</label>
-                <input type="text" class="form-control" id="member_phone" name="member_phone" placeholder="${map.member.member_phone}" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_phone" name="member_phone" value="${map.member.member_phone}" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted">'-'기호 생략하고 적어주세요</small>
               </div>
               <div class="form-group">
                 <label class="text-black">이메일</label>
-                <input type="email" class="form-control" id="member_email" name="member_email" placeholder="${map.member.member_email}" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="member_email" name="member_email" value="${map.member.member_email}" aria-describedby="emailHelp">
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">성별</label>
