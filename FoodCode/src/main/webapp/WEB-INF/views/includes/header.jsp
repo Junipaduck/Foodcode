@@ -166,6 +166,12 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>식당 조회</span></a>
             </li>
+            
+			<li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_management">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>식당 관리</span></a>
+            </li>
 			
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

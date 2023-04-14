@@ -94,6 +94,15 @@ public class AdminController {
 		return "/admin/store_list";
 	}
 	
+// 	=====================식당 관리 페이지 ==========================	
+	@GetMapping(value = "adminStore_management")
+	public String storeManagement() {
+		
+		
+		
+		return "/admin/store_list";
+	}
+	
 // ================일반 회원 삭제======================	
 
 	
