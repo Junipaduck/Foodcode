@@ -226,18 +226,18 @@
                		<div class="row">
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3" align="center">
-                                    <h6 class="m-0 font-weight-bold text-primary">공지사항</h6>
+                                <div class="card border-left-warning shadow h-100 py-2" align="center">
+                                    <h6 class="m-0 font-weight-bold text-primary">최근 신고 리스트</h6>
                                 </div>
-                                <div class="card-body">
+                                <div class="card border-left-warning shadow h-100 py-2">
                                     <div class="text-center">
                                       <table class="table table-bordered">
-										  	<tr>
+										  	<tr style="color: black;">
 										  		<th>번호</th>
 										  		<th>아이디</th>
 										  		<th>이름</th>
 										  	</tr>
-										  <c:forEach var="memberList" items="${memberList }">
+										  <c:forEach var="memberList" items="${memberList }" begin="0" end="4" step="1">
 										  	<tr>
 										  		<td>${memberList.member_idx }</td>
 										  		<td>${memberList.member_id }</td>
@@ -247,7 +247,7 @@
 									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="notice_list.no">공지사항 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="notice_list.no">신고 리스트 바로가기 </a> &rarr; &nbsp;
                                    </div>
                                 </div>
                             </div>
@@ -255,13 +255,13 @@
                             <!-- Approach -->
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3" align="center">
-                                    <h6 class="m-0 font-weight-bold text-primary">식당 목록</h6>
+                                <div class="card border-left-primary shadow h-100 py-2" align="center">
+                                    <h6 class="m-0 font-weight-bold text-primary">최근 식당 등록목록</h6>
                                 </div>
-                                <div class="card-body">
+                                <div class="card border-left-primary shadow h-100 py-2">
                                     <div class="text-center">
                                        <table class="table table-bordered">
-										  	<tr>
+										  	<tr style="color: black;">
 										  		<th>식당 번호</th>
 										  		<th>식당 이름</th>
 										  		<th>식당 종류</th>
@@ -278,7 +278,7 @@
 									  </table>
                                     </div>
                                    <div align="right">
-                                    	<a target="_blank" href="adminStore_list">식당 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="adminStore_list">식당 리스트 바로가기  </a> &rarr; &nbsp;
                                    </div>
                                 </div>
                               </div>
@@ -288,18 +288,18 @@
                         <div class="row">
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3" align="center">
-                                    <h6 class="m-0 font-weight-bold text-primary">일반회원 목록</h6>
+                                <div class="card border-left-success shadow h-100 py-2" align="center">
+                                    <h6 class="m-0 font-weight-bold text-primary">최근 일반회원 가입 목록</h6>
                                 </div>
-                                <div class="card-body">
+                                <div class="card border-left-success shadow h-100 py-2">
                                     <div class="text-center">
                                         <table class="table table-bordered">
-										  	<tr>
+										  	<tr style="color: black;">
 										  		<th>일반회원 번호</th>
 										  		<th>일반회원 아이디</th>
 										  		<th>일반회원 이름</th>
 										  	</tr>
-										  <c:forEach var="memberList" items="${memberList }">
+										  <c:forEach var="memberList" items="${memberList }" begin="0" end="4" step="1">
 										  	<tr>
 										  		<td>${memberList.member_idx }</td>
 										  		<td>${memberList.member_id }</td>
@@ -309,7 +309,7 @@
 									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="adminCustomer_list">일반회원 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="adminCustomer_list">일반회원 리스트 바로가기 </a> &rarr; &nbsp;
                                    </div>
                                 </div>
                             </div>
@@ -317,18 +317,18 @@
                             <!-- Approach -->
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3" align="center">
-                                    <h6 class="m-0 font-weight-bold text-primary">점주회원 목록</h6>
+                                <div class="card border-left-info shadow h-100 py-2" align="center">
+                                    <h6 class="m-0 font-weight-bold text-primary">최근 점주회원 가입 목록</h6>
                                 </div>
-                                <div class="card-body">
+                                <div class="card border-left-info shadow h-100 py-2">
                                     <div class="text-center">
                                     	<table class="table table-bordered">
-										  	<tr>
+										  	<tr style="color: black;">
 										  		<th>점주회원 번호</th>
 										  		<th>점주회원 아이디</th>
 										  		<th>점주회원 이름</th>
 										  	</tr>
-										  <c:forEach var="ownerList" items="${ownerList }">
+										  <c:forEach var="ownerList" items="${ownerList }" begin="0" end="4" step="1" >
 										  	<tr>
 										  		<td>${ownerList.member_idx }</td>
 										  		<td>${ownerList.member_id }</td>
@@ -341,7 +341,7 @@
 <%--                                             src="${pageContext.request.contextPath }/resources/img/undraw_posting_photo.svg" alt="..."> --%>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="adminOwner_list">점주회원 리스트 바로가기 &rarr;</a>
+                                    	<a target="_blank" href="adminOwner_list">점주회원 리스트 바로가기</a> &rarr; &nbsp;
                                    </div>
                                 </div>
                               </div>
