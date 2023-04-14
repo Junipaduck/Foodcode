@@ -59,10 +59,8 @@
 		UPDATE member
 		SET 
 		    member_email = #{member.member_email}
-		  , member_phone = #{member.member_phone}
-		  <if test='newPasswd != null and newPasswd != ""'>
-		  , member_passwd = #{newPasswd}
-		  </if>
+		  	,member_phone = #{member.member_phone}
+		  	,member_passwd = #{newPasswd}
 		WHERE member_id = #{sId}
 	</update>
 	

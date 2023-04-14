@@ -20,23 +20,34 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>식당 IDX</th>
+                                            <th>점주 ID</th>
                                             <th>식당명</th>
+                                            <th>사업자등록번호</th>
+                                            <th>가게평점</th>
+                                            <th>식당삭제</th>
                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>식당 IDX</th>
+                                            <th>점주 ID</th>
                                             <th>식당명</th>
-                                           
+                                            <th>사업자등록번호</th>
+                                            <th>가게평점</th>
+                                            <th>식당삭제</th>
+
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    	<c:forEach var="aList" items="${aList }">
                                     	<tr>
-                                    		<td>1</td>
-                                    		<td>1</td>
+                                            <td>${aList.member_id}</td>
+                                            <td>${aList.store_name}</td>
+                                            <td>${aList.store_license}</td>
+                                            <td>${aList.review_star}</td>
+                                            <td><button value="식당삭제" onclick="window.open('adminStore_managementD', width=300, height=300)"></td>
                                         </tr>
+                                    	</c:forEach>
                                     </tbody>
                                 </table>
                             </div>

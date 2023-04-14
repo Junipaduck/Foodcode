@@ -96,11 +96,31 @@ public class AdminController {
 	
 // 	=====================식당 관리 페이지 ==========================	
 	@GetMapping(value = "adminStore_management")
-	public String storeManagement() {
+	public String storeManagement(Model model) {
+		
+		List aList = adminService.getStoreList2();
+		model.addAttribute("aList", aList);
 		
 		
+		return "/admin/store_management";
+	}
+	
+	@GetMapping(value = "adminStore_managementDelete")
+	public String storeManagementDelete(Model model, @RequestParam String store_license) {
 		
-		return "/admin/store_list";
+		int managementDeleteCnt = adminService.managementDelete(store_license);
+		
+		
+		return "redirect:/adminStore_management";
+	}
+	
+	@GetMapping(value = "adminStore_managementD")
+	public String storeManagementD() {
+		
+//		int managementDeleteCnt = adminService.managementDelete();
+		
+		
+		return "admin/adminStore_managementDelete";
 	}
 	
 // ================일반 회원 삭제======================	

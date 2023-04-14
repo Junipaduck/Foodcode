@@ -68,6 +68,25 @@
 // 		});
 // 	});
 
+// json ajax 
+
+// function reviewList(){
+// 	$.ajax({
+// 		url: "reviewList.me",
+// 		type: "post",
+// 		data: JSON.stringify(obj),
+// 		dataType: "json",
+// 		contentType: "application/json",
+// 		success: function(data){
+// 			alert("성공");
+// 		},
+// 		error: function(errorThrown){
+// 			alert(errorThrown.statusText);a
+// 		}
+// 	});
+// }
+
+
 </script>  
 </head>
 
@@ -460,10 +479,51 @@
 	<!--  [리뷰목록] 클릭 시 리뷰 게시판으로 이동  -->
 	<input type="button" value="리뷰목록" onclick="location.href='reviewList.me'">
 	
+	
+	
 	<!-- 리뷰 게시판 영역 -->
 	<div id="reviewArea"></div>
+		<!--  리뷰 목록 조회  -->
+	    <table  class="rwd-table">
+        <tbody>
+        <tr>
+            <th>글번호</th>
+            <th>작성자</th>
+            <th>업체명</th>
+            <th>리뷰내용</th>
+            <th>리뷰사진</th>
+            <th>별점</th>
+            <th>작성일자</th>
+            <th></th>
+        </tr>
 
+		<c:forEach items="${reviewList }" var="ReviewVO">
+	        <tr class="KOTRA-fontsize-80">
+	          <td>${ReviewVO.review_idx }</td>
+	          <td>양선정</td>
+	           <td>아이티윌 햄버거</td>
+	           <td>${ReviewVO.review_content }</td>
+		        <td class="image_hover">
+	           		${ReviewVO.review_file }
+	           	</td>
+	           <td>
+					${ReviewVO.review_star }
+	           </td>
+	           <td>2023/03/20</td>
+	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
+	           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
+	        </tr>
+		</c:forEach>
+	</tbody>
+    </table>
 	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<h1>이건 예시임...</h1>
     <table  class="rwd-table" id="reviewTable">
         <tbody>
         <tr>
@@ -619,28 +679,6 @@
 	<footer>
 		<jsp:include page="../inc/bottom.jsp"></jsp:include>
 	</footer>
-
-
-
-<!--     <div class="inner dark"> -->
-<!--       <div class="container"> -->
-<!--         <div class="row text-center"> -->
-<!--           <div class="col-md-8 mb-3 mb-md-0 mx-auto"> -->
-<!--             <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> License information: https://untree.co/license/ -->
-<!--             </p> -->
-<!--           </div> -->
-          
-<!--         </div> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--   </div> -->
-  
-<!--   <div id="overlayer"></div> -->
-<!--   <div class="loader"> -->
-<!--     <div class="spinner-border" role="status"> -->
-<!--       <span class="sr-only">Loading...</span> -->
-<!--     </div> -->
-<!--   </div> -->
 
 
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>

@@ -45,6 +45,19 @@ public class AdminService {
 		return mapper.delectMember(member_idx, member_id);
 	}
 
+	public List<ReviewVO> getReviews() {
+		return mapper.selectReviews();
+	}
+
+
+	public int managementDelete(String store_license) {
+		return mapper.delectStore(store_license);
+	}
+
+	public List getStoreList2() {
+		return mapper.getStoreList2();
+	}
+
 
 	
 	

@@ -24,6 +24,25 @@
 			FROM store;
 	</select>
 	
+	<select id="selectReviews" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+		SELECT *
+			FROM review
+	</select>
+	
+	<select id="getStoreList2" resultType="map">
+	SELECT m.member_id, s.store_name, s.store_license, ROUND(AVG(re.review_star),1) AS review_star
+		FROM member m
+			JOIN store s ON m.member_id = s.member_id
+				LEFT JOIN review re ON s.store_idx = re.store_idx
+					GROUP BY s.store_name;
+	</select>
+	
+	<delete id="delectStore">
+	DELETE
+	 FROM store
+	 	WHERE store_license = #{store_license}
+	</delete>
+	
 	
 </mapper>
 

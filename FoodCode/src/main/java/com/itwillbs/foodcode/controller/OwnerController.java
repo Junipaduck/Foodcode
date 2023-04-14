@@ -86,18 +86,29 @@ public class OwnerController {
 			model.addAttribute("msg", "기존 비밀번호를 확인해주세요!");
 			return "fail_back";
 		}
-		if(newPasswd.equals(newPasswd2)) {	// 새 패스워드와 새 패스워드 확인이 동일할때
-			newPasswd = passwordEncoder.encode(newPasswd);
+		if(!newPasswd.equals("")) {		// 패스워드 변경 시 
+			if(newPasswd.equals(newPasswd2)) {	// 새 패스워드와 새 패스워드 확인이 동일할때
+				newPasswd = passwordEncoder.encode(newPasswd);
+				int modifyCnt = ownerService.modifyMember(id, member, newPasswd);
+					if(modifyCnt > 0) {	// 점주회원정보 수정 성공 
+						return "redirect:/ownerModify.me";	
+					} else {			// 점주회원정보 수정 실패
+						model.addAttribute("msg", "회원 정보 수정 실패!");
+						return "fail_back";
+					}
+			} else {	// 새 패스워드와 새 패스워드 확인이 동일하지 않을 때
+				model.addAttribute("msg", "변경할 비밀번호가 동일하지 않습니다!");
+				return "fail_back";
+			}
+		} else {	// 패스워드를 변경하지 않을 때
+			newPasswd = passwordEncoder.encode(member.getMember_passwd());
 			int modifyCnt = ownerService.modifyMember(id, member, newPasswd);
-				if(modifyCnt > 0) {	// 점주회원정보 수정 성공 
-					return "redirect:/ownerModify.me";	
-				} else {			// 점주회원정보 수정 실패
-					model.addAttribute("msg", "회원 정보 수정 실패!");
-					return "fail_back";
-				}
-		} else {
-			model.addAttribute("msg", "변경할 비밀번호가 동일하지 않습니다!");
-			return "fail_back";
+			if(modifyCnt > 0) {	// 점주회원정보 수정 성공 
+				return "redirect:/ownerModify.me";	
+			} else {			// 점주회원정보 수정 실패
+				model.addAttribute("msg", "회원 정보 수정 실패!");
+				return "fail_back";
+			}
 		}
 	}
 	

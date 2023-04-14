@@ -39,12 +39,15 @@
 	</delete>
 	
 	<select id="selectReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">
-		SELECT *
-			FROM review
-			ORDER BY 
-				review_re_ref
-			LIMIT 10	
+		   SELECT *
+            	FROM review
+           		ORDER BY 
+                	review_re_ref
+            	LIMIT 
+                10
 	</select>
+	
+	
 </mapper>
 
 
