@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.foodcode.mapper.NoticeMapper">
+
+
+		<!-- 공지사항 글등록작업을 위한 <insert> 태그 -->
+<!-- 		insert into notice values(1, '제목입니다', '공지사항내용', now(), '파일'); -->
+		<insert id="insertNotice">
+			<selectKey keyProperty="notice_idx" resultType="int" order="BEFORE">
+	 			SELECT IFNULL(MAX(notice_idx), 0) FROM notice
+	 		</selectKey>
+	 		
+			INSERT
+				INTO notice
+				VALUES (
+					#{notice_idx} + 1
+					,#{notice_title}
+					,#{notice_content}
+					,now()
+					,#{notice_file}
+					,'파일경로하드코딩'
+				)
+		
+		</insert>
+
+
+		<!-- 공지사항 수정을 위한 <update>태그 -->
+		<update id="updateNotice">
+			
+			UPDATE notice
+				SET
+				   notice_title = #{notice_title}
+				  ,notice_content = #{notice_content}
+				  ,notice_file = #{notice_file}
+				WHERE notice_idx = #{notice_idx} -- 여기 +1하고 셀렉트키 넣어야하나?
+					
+		</update>
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -227,7 +227,7 @@ border-top-right-radius: 15px;
 
 
 
-<!-- html 시작 --------------------------------------------------------------------------------- -->
+<!-- 중간body 시작 --------------------------------------------------------------------------------- -->
 	<div id="div-top"><h1 id="h1-1"></h1></div>
 	
 	<div class="table-box2">
@@ -235,81 +235,74 @@ border-top-right-radius: 15px;
         <th style="width:10%" id="table1">공지사항</th>
       </tr>
 	</div>
-  <div class="table-box">
-    <table class="table table--min" cellspacing="0" cellpadding="0">
-      <thead>
-      </thead>
-      <tbody>
-      <tr>
-        <td class="td-idx">12</td>
-        <td class="td-subject"><a href="notice_write_form.no">관리자전용 notice_write_form.jsp로 이동!</a></td>
-        <td class="td-date" >2024년 10월 25일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">11</td>
-        <td class="td-subject"><a href="notice_modify_form.no">관리자전용 notice_modify_form.jsp로 이동!</a></td>
-        <td class="td-date" >2023년 09월 02일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">10</td>
-        <td class="td-subject"><a href="admin_notice_list.no">관리자전용 admin_notice_list.jsp로 이동!</a></td>
-        <td class="td-date" >2023년 08월 02일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">9</td>
-        <td class="td-subject"><a href="admin_notice_view.no">관리자전용 admin_notice_view.jsp로 이동!</a></td>
-        <td class="td-date" >2023년 07월 02일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">8</td>
-        <td class="td-subject"><a href="notice_view.no">회원,비회원 전용 notice_view.jsp로 이동!</a></td>
-        <td class="td-date" >2023년 06월 04일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">7</td>
-        <td class="td-subject">임시주주총회 기준일 및 주주명부 폐쇄기간 설정 공고</td>
-        <td class="td-date" >2023년 06월 01일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">6</td>
-        <td class="td-subject">서비스 이용약관 변경안내</td>
-        <td class="td-date" >2023년 05월 07일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">5</td>
-        <td class="td-subject">결제 관련 주의사항</td>
-        <td class="td-date" >2023년 05월 01일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">4</td>
-        <td class="td-subject">임시주주총회 기준일 및 주주명부 폐쇄기간 설정 공고</td>
-        <td class="td-date">2023년 04월 03일</td>
-      </tr>
-      <tr>
-        <td class="td-idx">3</td>
-        <td class="td-subject">서비스 이용약관 변경안내</td>
-        <td class="td-date">2002년 02월 07일</td>
-      </tr>
-       <tr>
-      	 <td class="td-idx">2</td>
-        <td class="td-subject">개인정보 처리방침 변경안내 </td>
-        <td class="td-date">1987년 01월 19일</td>
-      </tr>
-       <tr>
-        <td class="td-idx">1 </td>
-        <td class="td-subject"><a href="notice_view.no">첫 공지사항입니다. (필독) </a></td>
-        <td class="td-date">1951년 05월 08일</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td><input type="button" class="btn44" value="등록하기" onclick="location.href=''"></td>
-        <td> </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+		  <div class="table-box">
+		    <table class="table table--min" cellspacing="0" cellpadding="0">
+		      <tbody>
+			      <tr>
+			        <td class="td-idx">12</td>
+			        <td class="td-subject"><a href="noticeWriteForm.no">관리자전용 notice_write_form.jsp로 이동!</a></td>
+			        <td class="td-date" >2024년 10월 25일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">11</td>
+			        <td class="td-subject"><a href="noticeModifyForm.no">관리자전용 notice_modify_form.jsp로 이동!</a></td>
+			        <td class="td-date" >2023년 09월 02일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">9</td>
+			        <td class="td-subject"><a href="adminNoticeView.no">관리자전용 admin_notice_view.jsp로 이동!</a></td>
+			        <td class="td-date" >2023년 07월 02일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">8</td>
+			        <td class="td-subject"><a href="noticeView.no">회원,비회원 전용 notice_view.jsp로 이동!</a></td>
+			        <td class="td-date" >2023년 06월 04일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">7</td>
+			        <td class="td-subject">임시주주총회 기준일 및 주주명부 폐쇄기간 설정 공고</td>
+			        <td class="td-date" >2023년 06월 01일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">6</td>
+			        <td class="td-subject">서비스 이용약관 변경안내</td>
+			        <td class="td-date" >2023년 05월 07일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">5</td>
+			        <td class="td-subject">결제 관련 주의사항</td>
+			        <td class="td-date" >2023년 05월 01일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">4</td>
+			        <td class="td-subject">임시주주총회 기준일 및 주주명부 폐쇄기간 설정 공고</td>
+			        <td class="td-date">2023년 04월 03일</td>
+			      </tr>
+			      <tr>
+			        <td class="td-idx">3</td>
+			        <td class="td-subject">서비스 이용약관 변경안내</td>
+			        <td class="td-date">2002년 02월 07일</td>
+			      </tr>
+			       <tr>
+			      	 <td class="td-idx">2</td>
+			        <td class="td-subject">개인정보 처리방침 변경안내 </td>
+			        <td class="td-date">1987년 01월 19일</td>
+			      </tr>
+			       <tr>
+			        <td class="td-idx">1 </td>
+			        <td class="td-subject"><a href="notice_view.no">첫 공지사항입니다. (필독) </a></td>
+			        <td class="td-date">1951년 05월 08일</td>
+			      </tr>
+			      <tr>
+			        <td> </td>
+			        <td><input type="button" class="btn44" value="등록하기" onclick="location.href='noticeWriteForm.no'"></td>
+			        <td> </td>
+			      </tr>
+		      </tbody>
+		    </table>
+		  </div>
   
- <!-- html 끝 --------------------------------------------------------------------------------->
+ <!-- 중간body 끝 --------------------------------------------------------------------------------->
  
  
  

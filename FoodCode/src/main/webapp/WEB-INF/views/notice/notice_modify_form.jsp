@@ -1,7 +1,6 @@
-<!-- 관리자로 로그인 되어있을때만 작성할 수 있는 공지사항 양식페이지입니다. -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,15 +12,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
-  <!-- 서머노트를 위해 추가해야할 부분 -->
-  <script src="${pageContext.request.contextPath}/resources/js/summernote-lite.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/lang/summernote-ko-KR.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-  <!--  -->
-  
-  
-  
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="../favicon.png">
@@ -43,48 +33,14 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
  
+ <!-- 부트스트랩 링크 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
  
  <!-- css 시작 ------------------------------------------------------------------------------------ -->
  <style type="text/css">
- .hr-1 {
- width: 1100px;
- }
  
- .summernote {
- height: 300px;
- }
- 
- .form-control {
- 	border: 2px solid #e9ecef;
-    font-size: 16px;
-    height: 40px;
-    width: 500px;
-    margin: auto;
- }
- 
-  .form-control2 {
- 	border: 2px solid #e9ecef;
-    font-size: 16px;
-    height: 40px;
-    width: 1110px;
-    margin: auto;
- }
- 
- .table-box2 {
-    background: #ff9507;
-    color: #fff;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    padding: 5px 20px;
-    border-top: 1px solid #ccc;
-    word-break: break-all;
-    width: 1110px;
-    margin: auto;
-}
-
-.div-1{
-	margin-top: 30px;
-	margin-bottom: 30px;
+.hanadiv{
+	margin-top: 40px;
 }
 
 /* 버튼 기본 css */
@@ -107,17 +63,24 @@
 	
 }
 
-.summernote{
-	height: 300px;
-}
-
 
  </style>
  <!-- css 끝 ------------------------------------------------------------------------------------ -->
  
 </head>
 <body>
-<header>
+<!-- 부트스트랩 링크 -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+	<!-- 관리자 외 접근금지 코드 -->
+	<c:if test="${sessionScope.sId ne 'admin'}">
+			<script type="text/javascript">
+				alert("관리자전용 입니다!");
+				location.href = "./";
+			</script>
+	</c:if>
+
+	<header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>	
   <div class="site-mobile-menu site-navbar-target">
@@ -155,39 +118,38 @@
   </div>
 
 
-<!-- html 시작 --------------------------------------------------------------------------------- -->
+<!-- 중간body 시작 --------------------------------------------------------------------------------- -->
 
-<div class="div-1">
+<!-- 공지사항 양식 시작 -->
+<div class="hanadiv">
+	 <div class="row justify-content-center">
+ 		<div class="col-lg-4">
+      	  	<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
+            	<h2 class="section-title">Notice ModifyForm</h2>
+            	<form action="noticeModifyPro.no" name="noticeWriteForm" method="post">
+            	<!-- notice_idx를 hidden으로 가져오기 -->
+            	<input type="hidden" id="notice_idx" value="${notice.notice_idx }" name="notice_idx">
+              <div class="form-group">
+              	 <label class="text-black" for="notice_title">제목</label>
+               	<input class="form-control" type="text" name="notice_title" value="${notice.notice_title }" aria-label="default input example">
+              </div>
+              <div class="form-group">
+                <label class="text-black" for="notice_file">파일첨부</label>
+                 <input class="form-control" name="notice_file" type="file" id="formFileMultiple" multiple> 원본 파일 : ${notice.notice_file }
+              </div>
+              <div class="form-group">
+                <label class="text-black" for="notice_content">내용</label>
+              	<textarea class="form-control" id="floatingTextarea2" name="notice_content" style="height: 500px">${notice.notice_content }</textarea>
+              </div>
+              	<input type="submit" class="btn44" id="submit" value="수정하기">
+            </form>
+          </div>
+     	</div>
+ 	</div>
+ </div>
+<!-- 공지사항 양식 끝 -->
 
-	<div class="table-box2">
-	    <tr>
-	      <th style="width:10%" id="table1">공지사항 수정</th>
-	    </tr>
-	</div>
-	
-	
-	<div class="container">
-	 	<div class="form-group">
-		<input type="text" class="form-control2" id="subject" placeholder="제목">
-	</div>
-	  <textarea class="summernote" name="editordata"></textarea> 
-	  <input type="button" class="btn44" value="수정하기" onclick="location.href=''">   
-	</div>
-	<script>
-	$('.summernote').summernote({
-		  height: 450,
-		  lang: "ko-KR",
-		});
-	
-	$(function() {
-		$('.note-editable').text("배하나 메모) 여기는 수정페이지라서 제목, 내용 DB를 select 해줘야함!");
-	});
-	</script>
-	
-</div>
-
-
-<!-- html 끝 --------------------------------------------------------------------------------->
+<!-- 중간body 끝 --------------------------------------------------------------------------------->
  
 	<!-- footer -->
 	<footer>

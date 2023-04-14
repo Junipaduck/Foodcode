@@ -41,8 +41,8 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <!-- css 시작 ----------------------------------------------------------------------------------------- -->
 <style type="text/css">
 
-.tab_cont {
-	margin-left: 100px;
+.page123 {
+	margin-bottom: 30px;
 }
 
 
@@ -57,28 +57,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
  
   
   
-<script src="=f2js/jquery-3.6.4.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 
-/* 아래 코드는 배하나가 탭 ajax 시도 후 실패한 코드 */
-// $(document).ready(function() {
-//   $(".webtong_tab_type04 li").click(function() {
-//     var idx = $(this).index();
-//     $(".webtong_tab_type04 li").removeClass("on");
-//     $(".webtong_tab_type04 li").eq(idx).addClass("on");
-//     $(".tab_cont > div").hide();
-//     $(".tab_cont > div").eq(idx).show();
-//   })
-  
-//   $('.tab_menu').find('a').on('click', function(){
-// 	  $('.tab_menu').find('.tab_cont').text('');
-	  
-// 	  $('.tab_menu').find('.tab_cont').eq(0).text($(this).text());
-//   })
-// });
-
-
-
+/* 탭 기능 제이쿼리 */
 $(document).ready(function() {
 	  $(".webtong_tab_type04 li").click(function() {
 	    var idx = $(this).index();
@@ -97,7 +79,7 @@ $(document).ready(function() {
 
 <!-- 중간body 시작 ----------------------------------------------------------------------------------------- -->
 
-　
+
 <section class="contents">
 	<div class="tab_menu">
 		<ul class="webtong_tab_type04">
@@ -139,6 +121,26 @@ $(document).ready(function() {
 			<!-- 가게설명 카드 끝 -->		
 			
 			
+			<!-- 페이징 코드시작 -->
+			<div class="page123">
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-center">
+				    <li class="page-item disabled">
+				      <a class="page-link">이전</a>
+				    </li>
+					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <li class="page-item"><a class="page-link" href="#">2</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item"><a class="page-link" href="#">4</a></li>
+					    <li class="page-item"><a class="page-link" href="#">5</a></li>
+					    <li class="page-item">
+					      <a class="page-link" href="#">다음</a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>
+			<!-- 페이징 코드 끝 -->
+		
 			
 			
 		</div>

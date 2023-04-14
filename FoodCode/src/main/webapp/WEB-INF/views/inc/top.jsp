@@ -10,7 +10,7 @@
 </script>
 <style type="text/css">
 .logo99 {
-	margin-top: -7px;
+	margin-top: -11px;
 }
 </style>
     
@@ -24,7 +24,20 @@
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<li><a href="store_recommend.so">맛집찾기</a></li>
-					<li><a href="notice_list.no">공지사항</a></li>
+					<!-- <li><a href="noticeList.no">공지사항</a></li> --> <!-- 수정전 코드 -->
+					
+					<!-- 4/15 배하나수정 - 아래 10줄은 sId가 관리자일때는 c:when태그속 주소로 매핑, 아니라면 c:otherwise태그로 매핑 -->
+					<li><a href="
+							<c:choose>
+								<c:when test="${sessionScope.sId eq 'admin' }">
+									adminNoticeList.no
+								</c:when>
+								<c:otherwise>
+									noticeList.no
+								</c:otherwise>
+							</c:choose>
+							">공지사항</a></li>
+							
 					<li><a href="service_view.no">이용안내</a></li>
 <!-- 					<li><a href="contact.html">Contact Us</a></li> -->
 					<li><a href="main">홈</a> </li>
