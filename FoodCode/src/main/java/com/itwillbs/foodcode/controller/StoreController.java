@@ -71,10 +71,10 @@ public class StoreController {
 			
 			
 			//---------- 파일 업로드 관련 작업 시작 -----------------------------------------------------------
-			String uploadDir = "/resources/upload"; //프로젝트상의 가상 업로드 경로
+			String uploadDir = "/resources/storeFileUpload"; //프로젝트상의 가상 업로드 경로
 			String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
 			System.out.println("실제 업로드 경로 : " + saveDir);
-			
+//			실제 업로드 경로(resources뒤에 띄어쓰기 되어있음) : C:\Users\HANABAE\workspace_sts\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\FoodCode\resources\ storeFileupload
 			try {
 				Date date = new Date(); //java.util.Date 클래스 사용하기
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");

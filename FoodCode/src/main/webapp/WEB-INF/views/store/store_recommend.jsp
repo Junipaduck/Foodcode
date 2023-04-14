@@ -120,7 +120,7 @@ $(document).ready(function() {
 								 <c:forEach var="store" items="${storeList }"> <!-- list를 뿌려주는 forEach문 시작 -->
 				                    <div class="col-lg-3 col-md-6">
 				                        <div class="card h-100">
-				                            <img class="card-img-top" src="https://images.pexels.com/photos/5773968/pexels-photo-5773968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file_path }/${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 				                            <div class="card-body p-4">
 				                                <div class="text-center">
 				                                    <h5 class="fw-bolder">${store.store_name }</h5> <!-- 가게명 -->
@@ -151,7 +151,7 @@ $(document).ready(function() {
 									 <c:forEach var="store2" items="${storeList2 }"> <!-- list를 뿌려주는 forEach문 시작 -->
 					                    <div class="col-lg-3 col-md-6">
 					                        <div class="card h-100">
-					                            <img class="card-img-top" src="https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+					                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store2.store_file_path }/${store2.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 					                            <div class="card-body p-4">
 					                                <div class="text-center">
 					                                    <h5 class="fw-bolder">${store2.store_name }</h5> <!-- 가게명 -->
@@ -180,7 +180,7 @@ $(document).ready(function() {
 								 <c:forEach var="store3" items="${storeList3 }"> <!-- list를 뿌려주는 forEach문 시작 -->
 				                    <div class="col-lg-3 col-md-6">
 				                        <div class="card h-100">
-				                            <img class="card-img-top" src="https://images.pexels.com/photos/955137/pexels-photo-955137.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store3.store_file_path }/${store3.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 				                            <div class="card-body p-4">
 				                                <div class="text-center">
 				                                    <h5 class="fw-bolder">${store3.store_name }</h5> <!-- 가게명 -->
@@ -208,7 +208,7 @@ $(document).ready(function() {
 								 <c:forEach var="store4" items="${storeList4 }"> <!-- list를 뿌려주는 forEach문 시작 -->
 				                    <div class="col-lg-3 col-md-6">
 				                        <div class="card h-100">
-				                            <img class="card-img-top" src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store4.store_file_path }/${store4.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 				                            <div class="card-body p-4">
 				                                <div class="text-center">
 				                                    <h5 class="fw-bolder">${store4.store_name }</h5> <!-- 가게명 -->
@@ -236,7 +236,7 @@ $(document).ready(function() {
 								 <c:forEach var="store5" items="${storeList5 }"> <!-- list를 뿌려주는 forEach문 시작 -->
 				                    <div class="col-lg-3 col-md-6">
 				                        <div class="card h-100">
-				                            <img class="card-img-top" src="https://images.pexels.com/photos/340996/pexels-photo-340996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store5.store_file_path }/${store5.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 				                            <div class="card-body p-4">
 				                                <div class="text-center">
 				                                    <h5 class="fw-bolder">${store5.store_name }</h5> <!-- 가게명 -->
@@ -262,7 +262,7 @@ $(document).ready(function() {
 								 <c:forEach var="store6" items="${storeList6 }"> <!-- list를 뿌려주는 forEach문 시작 -->
 				                    <div class="col-lg-3 col-md-6">
 				                        <div class="card h-100">
-				                            <img class="card-img-top" src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store6.store_file_path }/${store6.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 				                            <div class="card-body p-4">
 				                                <div class="text-center">
 				                                    <h5 class="fw-bolder">${store6.store_name }</h5> <!-- 가게명 -->

@@ -31,9 +31,9 @@
 </head>
 
 <body>
-<!-- 	<header> -->
-<%-- 		<jsp:include page="../inc/top_mypage.jsp"></jsp:include> --%>
-<!-- 	</header> -->
+	<header>
+		<jsp:include page="../inc/top2.jsp"></jsp:include>
+	</header>
 <!-- 파일 업로드 기능을 사용하려면 form 태그의 enctype 속성을 사용 (POST방식 필수) -->
  <form class="contact-form bg-white" action="storeRegisterPro.so" name="storeRegisterPro" method="POST" enctype="multipart/form-data">
   <div class="site-mobile-menu site-navbar-target">

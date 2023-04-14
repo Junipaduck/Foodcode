@@ -8,7 +8,11 @@
 		return result;
 	}
 </script>
- 
+<style type="text/css">
+.logo99 {
+	margin-top: -7px;
+}
+</style>
     
 
 
@@ -16,7 +20,7 @@
 		<div class="container">
 			<div class="site-navigation">
 				<!--  Tour 클릭시 홈으로 이동  -->
-				<a href="main" class="logo m-0"><img alt="" src="${pageContext.request.contextPath }/resources/images/foodcodelogo.png" width="140" height="50"><span class="text-primary"></span></a>
+				<a href="main" class="logo m-0"><img class="logo99" alt="" src="${pageContext.request.contextPath }/resources/images/foodcodelogo2.png" width="160" height="60"><span class="text-primary"></span></a>
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<li><a href="store_recommend.so">맛집찾기</a></li>
