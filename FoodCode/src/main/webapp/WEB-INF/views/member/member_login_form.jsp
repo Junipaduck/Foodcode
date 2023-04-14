@@ -79,7 +79,7 @@
                   </div>
               	  <div class="form-group">
                	   <label class="text-black" for="ownerPasswd">비밀번호</label>
-                   <input type="text" class="form-control" id="member_passwd" name="member_passwd">
+                   <input type="password" class="form-control" id="member_passwd" name="member_passwd">
               	  </div>
               	</div>
               </div>
