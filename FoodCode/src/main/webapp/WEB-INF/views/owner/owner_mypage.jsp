@@ -26,10 +26,8 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css">
+<%--   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css"> --%>
   <!-- 캘린더 css -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/owner_reservation_cal.css">
 	<style type="text/css">
 	.mb-0 { /*폰트수정*/
 		font-family: 'Noto Sans KR', sans-serif;
@@ -42,14 +40,15 @@
 	.btn btn-primary btn-block {
 		font-family: 'Noto Sans KR', sans-serif;
 	}
-	.image_hover {
-	
+	.icon {
+		margin-bottom: 10px;
+		float: left;
+		width: 48%;
+		display: inline-block;
+		vertical-align: text-top;
 	}
 	</style>
 
-  <script src="${pageContext.request.contextPath }/resources/js/owner_reservation_cal.js" type="text/javascript" defer></script>
-  <script src="${pageContext.request.contextPath }/resources/js/owner_reservation_cal2.js" type="text/javascript" defer></script>
-  <script src="${pageContext.request.contextPath }/resources/js/owner_reservation_cal3.js" type="text/javascript" defer></script>
   <title>점주가게목록</title>
 </head>
 <body>
@@ -102,11 +101,26 @@
           <h2 class="section-title mb-4" >${StoreVO.store_name }</h2>
 	          <p>${StoreVO.store_content }</p>
 		          <ul class="list-unstyled two-col clearfix">
-		            <li>${StoreVO.store_address }</li>
-		            <li>${StoreVO.store_phone }</li>
-		            <li>${StoreVO.store_time }</li>
-		            <li>${StoreVO.store_license }</li>
-		            <li>${StoreVO.store_etc }</li>
+			          <div class="icon">
+			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+			            &nbsp;&nbsp;&nbsp;${StoreVO.store_address }
+			          </div>
+			          <div class="icon">
+			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+			            &nbsp;&nbsp;&nbsp;${StoreVO.store_phone }
+			          </div>
+			          <div class="icon">
+			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+			            &nbsp;&nbsp;&nbsp;${StoreVO.store_time }
+			          </div>
+			          <div class="icon">
+			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+			            &nbsp;&nbsp;&nbsp;${StoreVO.store_license }
+			          </div>
+			          <div class="icon">
+			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+			            &nbsp;&nbsp;&nbsp;${StoreVO.store_etc }
+			          </div>
 		          </ul>
           </c:forEach>
           <hr>
@@ -120,57 +134,18 @@
 
 
   
-  
+ 
   <div class="row justify-content-center">
 	  <!-- 왼쪽 부분 -->
-        <div class="col-lg-4">
+        <div class="col-lg-3.5">
           <div class="custom-block" data-aos="fade-up">
             <h2 class="section-title">예약달력</h2>
             <div class="custom-accordion" id="accordion_1">
               <div class="accordion-item">
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion_1">
                   <div class="accordion-body">
-                  
                   <!-- 캘린더 시작 -->
-                  <div class="main">
-				    <div class="content-wrap">
-				      <div class="content-left">
-				        <div class="main-wrap">
-				          <div id="main-day" class="main-day"></div>
-				          <div id="main-date" class="main-date"></div>
-				        </div>
-				      </div>
-				      <div class="content-right">
-				        <table id="calendar" align="center">
-				          <thead>
-				            <tr class="btn-wrap clearfix">
-				              <td>
-				                <label id="prev">
-				                    &#60;
-				                </label>
-				              </td>
-				              <td align="center" id="current-year-month" colspan="5"></td>
-				              <td>
-				                <label id="next">
-				                    &#62;
-				                </label>
-				              </td>
-				            </tr>
-				            <tr>
-				                <td class = "sun" align="center">Sun</td>
-				                <td align="center">Mon</td>
-				                <td align="center">Tue</td>
-				                <td align="center">Wed</td>
-				                <td align="center">Thu</td>
-				                <td align="center">Fri</td>
-				                <td class= "sat" align="center">Sat</td>
-				              </tr>
-				          </thead>
-				          <tbody id="calendar-body" class="calendar-body"></tbody>
-				        </table>
-				      </div>
-				    </div>
-				  </div>
+                   <jsp:include page="owner_reservation_cal.jsp"></jsp:include>
                   <!-- 캘린더 끝 -->
                 </div>
               </div>
