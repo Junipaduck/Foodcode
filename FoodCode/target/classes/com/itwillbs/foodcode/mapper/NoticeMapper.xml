@@ -22,6 +22,27 @@
 				)
 		
 		</insert>
+		
+		
+		
+		<!-- 공지사항 리스트 출력을 위한 <select>태그 -->
+		<select id="selectNoticeList" resultType="com.itwillbs.foodcode.vo.NoticeVO">
+			SELECT *
+		 		FROM notice
+		 		ORDER BY notice_idx DESC;
+		</select>
+		
+		
+		
+		<!-- 공지사항 상세페이지에 출력을 위한 <select> 태그 -->
+		<select id="selectNotice" resultType="com.itwillbs.foodcode.vo.NoticeVO">
+			SELECT *
+					FROM notice
+					WHERE notice_idx = #{notice_idx};
+		
+		</select>
+		
+
 
 
 		<!-- 공지사항 수정을 위한 <update>태그 -->
@@ -35,7 +56,6 @@
 				WHERE notice_idx = #{notice_idx} -- 여기 +1하고 셀렉트키 넣어야하나?
 					
 		</update>
-
 
 
 

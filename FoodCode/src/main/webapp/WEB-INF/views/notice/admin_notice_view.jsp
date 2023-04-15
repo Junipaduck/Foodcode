@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,13 +145,16 @@ h2 {
 	<div class="board-wrap">
 	    <div class="board-view">
 	        <div class="board-header">
-	            <h2 class="h2-11">다이닝코드 개인정보 처리방침 변경안내</h2>
-	            <div class="date">2023년 04월 05일</div>
-	            <hr>
-	        </div>
-	        <div class="contents">
-	            <p>안녕하세요. 다이닝코드입니다.</p><p>개인정보 보호를 위해 아래와 같이 개인정보 처리방침이 2022년 10월 21일부로 일부 개정되었습니다.</p><p>이에 개정된 주요 내용을 안내 드리오니,</p><p>회원 여러분께서는 변경되는 내용을 확인하여 주시기를 당부드립니다.</p><p></p><p>1. 개정 주요 사유</p><p>&nbsp; - 개인정보 보호법 준수를 위해 개인정보 수집 · 이용 중인 항목을 누락없이 고지하고,</p><p>&nbsp; &nbsp; &nbsp;일반인이 이해할 수 있도록 쉽고 명확하게 처리방침을 개선하였습니다.</p><p></p><p>2. 개정 시행일자</p><p>&nbsp;- 새롭게 개정되는 개인정보 처리방침은 2022년 10월 28일부로 적용될 예정입니다.</p><p>&nbsp;- 이에 현재 적용 중인 개인정보 처리방침은 개정일을 기준으로 효력을 상실하고 새로운 개인정보 처리방침으로 대체됩니다.</p><p></p><p>3. 세부 개정 내용</p><p>&nbsp; ① 개인정보 수집 · 이용 동의 시 3가지 필수 항목을 간결하고 이해하기 쉽게 고지</p><p>&nbsp; &nbsp; &nbsp; - 개인정보 수집 · 이용 항목, 개인정보 수집 · 이용 목적, 보유기간으로 구분</p><p>&nbsp; ② 자동으로 수집하는 개인정보에 관한 사항 고지</p><p>&nbsp; &nbsp; &nbsp; - 서비스 이용 기록, 쿠키 등 자동 생성 정보에 대한 사항 고지</p><p>&nbsp; ③ 제3자로부터 제공받아 수집하는 개인정보 고지</p><p>&nbsp; &nbsp; &nbsp; - SNS 회원가입(페이스북)을 통해 수집하는 개인정보 항목 고지</p><p>&nbsp; ④ 개인정보 처리방침 공개 시 올바른 명칭 사용</p><p>&nbsp; &nbsp; &nbsp; - 개인정보 ‘취급’방침 → 개인정보 ‘처리’방침으로 변경</p>        </div>
+	        
+		            <h2 class="h2-11">${notice.notice_title }</h2> <!-- 공지사항 제목 -->
+		            <div class="date"><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></div> <!-- 공지사항 날짜 -->
+		            <hr>
+			        </div>
+			        <div class="contents"> 
+			        	${notice.notice_content } <!-- div태그 안에 공지사항 내용 -->
+			        </div>	
 	    		<br><hr>
+	    		
 	    </div>
 	   		<div class="hanabutton">
 				<button type="submit" class="btn btn-primary" onclick="history.back()">돌아가기</button>

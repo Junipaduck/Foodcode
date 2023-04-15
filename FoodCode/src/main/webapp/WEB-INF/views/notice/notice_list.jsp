@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -203,46 +204,15 @@ border-top-right-radius: 15px;
 		  	<div class="table-box">
 			    <table class="table table--min" cellspacing="0" cellpadding="0">
 				      <tbody>
-				      <tr>
-				        <td class="td-idx">8</td>
-				        <td class="td-subject"><a href="noticeView.no">회원,비회원 전용 notice_view.jsp로 이동!</a></td>
-				        <td class="td-date" >2023년 06월 04일</td>
-				      </tr>
-				      <tr>
-				        <td class="td-idx">7</td>
-				        <td class="td-subject">임시주주총회 기준일 및 주주명부 폐쇄기간 설정 공고</td>
-				        <td class="td-date" >2023년 06월 01일</td>
-				      </tr>
-				      <tr>
-				        <td class="td-idx">6</td>
-				        <td class="td-subject">서비스 이용약관 변경안내</td>
-				        <td class="td-date" >2023년 05월 07일</td>
-				      </tr>
-				      <tr>
-				        <td class="td-idx">5</td>
-				        <td class="td-subject">결제 관련 주의사항</td>
-				        <td class="td-date" >2023년 05월 01일</td>
-				      </tr>
-				      <tr>
-				        <td class="td-idx">4</td>
-				        <td class="td-subject">임시주주총회 기준일 및 주주명부 폐쇄기간 설정 공고</td>
-				        <td class="td-date">2023년 04월 03일</td>
-				      </tr>
-				      <tr>
-				        <td class="td-idx">3</td>
-				        <td class="td-subject">서비스 이용약관 변경안내</td>
-				        <td class="td-date">2002년 02월 07일</td>
-				      </tr>
-				       <tr>
-				      	 <td class="td-idx">2</td>
-				        <td class="td-subject">개인정보 처리방침 변경안내 </td>
-				        <td class="td-date">1987년 01월 19일</td>
-				      </tr>
-				       <tr>
-				        <td class="td-idx">1 </td>
-				        <td class="td-subject"><a href="noticeView.no">첫 공지사항입니다. (필독) </a></td>
-				        <td class="td-date">1951년 05월 08일</td>
-				      </tr>
+				       <!-- list를 뿌려주는 forEach문 시작 ==================================================================-->
+				      <c:forEach var="notice" items="${noticeList }"> 
+				      	  <tr>
+					        <td class="td-idx">${notice.notice_idx }</td>
+					        <!-- 아랫줄은 notice_idx에 해당하는 행 1개를 select 하기위해, 공지사항 제목을 클릭하면 notice_idx값이 들어가도록 하이퍼링크에 걸어놓은 것 -->
+			       			<td class="td-subject"><a href="noticeView?notice_idx=${notice.notice_idx}" ><c:out value="${notice.notice_title}" /></a></td>
+					        <td class="td-date" ><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></td> <!-- fmt jstl 시간형식작업 -->
+					      </tr>
+					  </c:forEach>
 				      <tr>
 				        <td> </td>
 				        <td> </td>

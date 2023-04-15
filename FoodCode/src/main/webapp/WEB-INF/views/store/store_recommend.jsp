@@ -79,7 +79,7 @@ $(document).ready(function() {
 
 <!-- 중간body 시작 ----------------------------------------------------------------------------------------- -->
 
-
+　<!-- 이 줄에 띄어쓰기 해놓았습니다. 삭제X -->
 <section class="contents">
 	<div class="tab_menu">
 		<ul class="webtong_tab_type04">

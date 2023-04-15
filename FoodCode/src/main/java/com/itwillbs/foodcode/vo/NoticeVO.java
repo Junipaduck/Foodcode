@@ -103,6 +103,13 @@ public class NoticeVO {
 				+ ", notice_file_path=" + notice_file_path + "]";
 	}
 
+
+
+
+
+
+	
+
 	
 	
 	
