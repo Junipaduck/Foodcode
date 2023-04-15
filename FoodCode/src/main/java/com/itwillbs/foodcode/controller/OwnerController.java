@@ -13,6 +13,7 @@ import org.springframework.web.servlet.*;
 
 import com.itwillbs.foodcode.service.OwnerService;
 import com.itwillbs.foodcode.vo.MemberVO;
+import com.itwillbs.foodcode.vo.StoreVO;
 
 @Controller
 public class OwnerController {
@@ -26,10 +27,19 @@ public class OwnerController {
 		return "owner/owner_join_form";
 	}
 	
-	// 점주 마이페이지에서 왼쪽 배너의 내 식당 클릭 시
+	// 좌측 배너에서 "내식당" 버튼 클릭시 마이페이지 이동 - 가게 정보 조회해와야함
+	// 후에 점주아이디-가게 연결되면 id값 가져가서 조회해오기
 	@GetMapping(value = "/ownerPage.me")
-	public String ownerPage() {
+	public String ownerPage(StoreVO store, Model model) {
+		List<StoreVO> storeInfo = ownerService.selectStore(store);
+		System.out.println(storeInfo);
+		model.addAttribute("storeInfo", storeInfo);
+		
 		return "owner/owner_mypage";
+//		Map<String, List<StoreVO>> myStore = new HashMap<String, List<StoreVO>>();
+//		myStore.put("stoerInfo", storeInfo);
+//		
+//		return new ModelAndView("owner/owner_mypage", "myStore", myStore);
 	}
 	
 	// 점주 회원가입

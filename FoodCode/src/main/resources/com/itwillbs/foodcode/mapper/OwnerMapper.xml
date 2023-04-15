@@ -33,16 +33,16 @@
 	
 	<select id="selectMember" resultType="com.itwillbs.foodcode.vo.MemberVO">
 		SELECT 
-		 member_idx
-		,member_type
-		,member_name
-		,member_id
-		,member_passwd
-		,member_phone
-		,member_email
-		,member_birth
-		,member_gender
-		,now()
+			 member_idx
+			,member_type
+			,member_name
+			,member_id
+			,member_passwd
+			,member_phone
+			,member_email
+			,member_birth
+			,member_gender
+			,now()
 		FROM member
 		WHERE member_id = #{sId}
 	</select>
@@ -64,6 +64,12 @@
 		WHERE member_id = #{sId}
 	</update>
 	
+	<!-- 점주 가게 정보 조회 -->
+	<select id="selectStore"  resultType="com.itwillbs.foodcode.vo.StoreVO">
+		SELECT *
+			FROM store
+			WHERE store_idx = 1;
+	</select>
 		
 	
 </mapper>

@@ -71,8 +71,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     background: #ff9507;
     border-color: #ff9507; }
     .btn.btn-primary:hover {
-      border-color: #1f425c;
-      background: #1f425c; }
+      border-color: #ff6e07;
+      background: #ff6e07; }
+/*     .btn.btn-primary:hover { */
+/*       border-color: #1f425c; */
+/*       background: #1f425c; } */
   .btn.btn-outline-white {
     border: 2px solid #ffffff; }
     .btn.btn-outline-white:hover {

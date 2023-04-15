@@ -1,11 +1,14 @@
 package com.itwillbs.foodcode.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.foodcode.mapper.OwnerMapper;
 import com.itwillbs.foodcode.vo.MemberVO;
 import com.itwillbs.foodcode.vo.OwnerVO;
+import com.itwillbs.foodcode.vo.StoreVO;
 
 @Service
 public class OwnerService {
@@ -32,6 +35,10 @@ public class OwnerService {
 
 	public int modifyMember(String id, MemberVO member, String newPasswd) {
 		return mapper.modifyMember(id, member, newPasswd);
+	}
+
+	public List<StoreVO> selectStore(StoreVO store) {
+		return mapper.selectStore(store);
 	}
 	
 
