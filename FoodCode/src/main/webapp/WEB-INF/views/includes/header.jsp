@@ -135,7 +135,7 @@
                         <div class="collapse-divider"></div>
                         
                         <h6 class="collapse-header">그 외 페이지</h6>
-                        <a class="collapse-item" href="404.html">공지사항</a>
+                        <a class="collapse-item" href="adminNoticeList.no">공지사항</a>
                         <a class="collapse-item" href="blank.html">신고내역</a>
                     </div>
                 </div>
@@ -151,25 +151,25 @@
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminMember_list">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>일반회원 목록 조회</span></a>
             </li>
 			
 			<li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminOwner_list">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>점주회원 목록 조회</span></a>
             </li>
             
 			<li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_list">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>식당 조회</span></a>
             </li>
             
 			<li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_management">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-calendar"></i>
                     <span>식당 관리</span></a>
             </li>
 			

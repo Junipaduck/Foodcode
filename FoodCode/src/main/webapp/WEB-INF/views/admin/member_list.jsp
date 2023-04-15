@@ -22,7 +22,7 @@
                                         <tr>
                                             <th>IDX</th>
                                             <th>ID</th>
-                                            <td>비밀번호</td>
+                                            <th>비밀번호</th>
                                             <th>이름</th>
                                             <th>성별</th>
                                             <th>이메일</th>
@@ -50,18 +50,16 @@
                                     	<c:forEach var="memberList" items="${memberList }">
                                     	<tr>
                                             <td>${memberList.member_idx}</td>
-                                            <td>
-                                            <a href=>${memberList.member_id}</a>
-                                            </td>
-                                            <td>${memberList.member_passwd}</td>
+                                            <td>${memberList.member_id}</td>
+                                            <td><div style="width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${memberList.member_passwd}</div></td>
                                             <td>${memberList.member_name}</td>
                                             <td>${memberList.member_gender}</td>
                                             <td>${memberList.member_email}</td>
                                             <td>${memberList.member_phone}</td>
                                             <td>${memberList.member_birth}</td>
                                             <td>${memberList.member_join_date}</td>
-                                            <td>
-                                            	<a href="adminMember_delect?member_idx=${memberList.member_idx }" class="btn btn-danger btn-circle btn-lg">
+                                            <td align="center">
+                                            	<a href="adminMember_delect?member_idx=${memberList.member_idx }&member_type=${memberList.member_type}" class="btn btn-danger btn-circle">
                                        			<i class="fas fa-trash"></i>
                                    				</a>
                                    			</td>

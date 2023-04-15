@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%-- <%@ page session="false" %> --%>
 
 <%@include file="/WEB-INF/views/includes/header.jsp" %>
@@ -17,217 +17,169 @@
                     </div>
                     <!-- Content Row -->
                     <div class="row">
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                    	<!-- 신고 수 탑 카드 시작 -->
+                        <div class="col-xl-2 col-md-4 mb-2">
+                            <div class="card border-left-warning shadow h-80 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                현재 식당 수</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> 5 </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-<!--                         Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                일반 회원 수</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">30</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                            점주 회원 수
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                신고 내역 수</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">15</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">60</div>
                                                 </div>
+                                                <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                        <div class="progress-bar bg-warning" role="progressbar"
+                                                            style="width: 60%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                          <i class="fas fa-comments fa-2x text-gray-600"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-					
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                         <!-- 신고 수 탑 카드 끝 -->
+                    
+                    
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-2 col-md-4 mb-2">
+                            <div class="card border-left-primary shadow h-80 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                신고 내역 수</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                현재 식당 수</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">7</div>
+                                                </div>
+                                                <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-primary" role="progressbar"
+                                                            style="width: 7%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        	<i class="fas fa-calendar fa-2x text-gray-600"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 일반 회원 수 탑 카드 시작 -->
+                        <div class="col-xl-2 col-md-4 mb-2">
+                            <div class="card border-left-success shadow h-80 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                일반 회원 수</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">30</div>
+                                                </div>
+                                                <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                            style="width: 30%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                           <i class="fas fa-user fa-2x text-gray-600"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						 <!-- 일반 회원 수 탑 카드 끝 -->
+
+                        <!-- 점주 회원 수 탑 카드 시작 -->
+                        <div class="col-xl-2 col-md-4 mb-2">
+                            <div class="card border-left-info shadow h-80 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            점주 회원 수</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">15</div>
+                                                </div>
+                                                <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 10%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                           <i class="fas fa-user fa-2x text-gray-600"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						<!-- 점주 회원 수 탑 카드 끝 -->
+                        
+                         <div class="col-xl-2 col-md-4 mb-3">
+                            <div class="card border-left-danger shadow h-80 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                공지사항</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">7</div>
+                                                </div>
+                                                <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-danger" role="progressbar"
+                                                            style="width: 7%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                        	<i class="fas fa-clipboard fa-2x text-gray-600"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
 					</div>
-                    <!-- Content Row -->
-<!--                     <div class="row"> -->
-<!--                         Area Chart -->
-<!--                         <div class="col-xl-8 col-lg-7"> -->
-<!--                             <div class="card shadow mb-4"> -->
-<!--                                 Card Header - Dropdown -->
-<!--                                 <div -->
-<!--                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> -->
-<!--                                     <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6> -->
-<!--                                     <div class="dropdown no-arrow"> -->
-<!--                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" -->
-<!--                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-<!--                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> -->
-<!--                                         </a> -->
-<!--                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" -->
-<!--                                             aria-labelledby="dropdownMenuLink"> -->
-<!--                                             <div class="dropdown-header">Dropdown Header:</div> -->
-<!--                                             <a class="dropdown-item" href="#">Action</a> -->
-<!--                                             <a class="dropdown-item" href="#">Another action</a> -->
-<!--                                             <div class="dropdown-divider"></div> -->
-<!--                                             <a class="dropdown-item" href="#">Something else here</a> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 Card Body -->
-<!--                                 <div class="card-body"> -->
-<!--                                     <div class="chart-area"> -->
-<%--                                         <canvas id="myAreaChart"></canvas> --%>
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-
-                        <!-- Pie Chart -->
-<!--                         <div class="col-xl-4 col-lg-5"> -->
-<!--                             <div class="card shadow mb-4"> -->
-<!--                                 Card Header - Dropdown -->
-<!--                                 <div -->
-<!--                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> -->
-<!--                                     <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6> -->
-<!--                                     <div class="dropdown no-arrow"> -->
-<!--                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" -->
-<!--                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-<!--                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> -->
-<!--                                         </a> -->
-<!--                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" -->
-<!--                                             aria-labelledby="dropdownMenuLink"> -->
-<!--                                             <div class="dropdown-header">Dropdown Header:</div> -->
-<!--                                             <a class="dropdown-item" href="#">Action</a> -->
-<!--                                             <a class="dropdown-item" href="#">Another action</a> -->
-<!--                                             <div class="dropdown-divider"></div> -->
-<!--                                             <a class="dropdown-item" href="#">Something else here</a> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 Card Body -->
-<!--                                 <div class="card-body"> -->
-<!--                                     <div class="chart-pie pt-4 pb-2"> -->
-<%--                                         <canvas id="myPieChart"></canvas> --%>
-<!--                                     </div> -->
-<!--                                     <div class="mt-4 text-center small"> -->
-<!--                                         <span class="mr-2"> -->
-<!--                                             <i class="fas fa-circle text-primary"></i> Direct -->
-<!--                                         </span> -->
-<!--                                         <span class="mr-2"> -->
-<!--                                             <i class="fas fa-circle text-success"></i> Social -->
-<!--                                         </span> -->
-<!--                                         <span class="mr-2"> -->
-<!--                                             <i class="fas fa-circle text-info"></i> Referral -->
-<!--                                         </span> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-
-                    <!-- Content Row -->
-<!--                     <div class="row"> -->
-
-<!--                         Content Column -->
-<!--                         <div class="col-lg-6 mb-4"> -->
-
-<!--                             Project Card Example -->
-<!--                             <div class="card shadow mb-4"> -->
-<!--                                 <div class="card-header py-3"> -->
-<!--                                     <h6 class="m-0 font-weight-bold text-primary">Projects</h6> -->
-<!--                                 </div> -->
-<!--                                 <div class="card-body"> -->
-<!--                                     <h4 class="small font-weight-bold">Server Migration <span -->
-<!--                                             class="float-right">20%</span></h4> -->
-<!--                                     <div class="progress mb-4"> -->
-<!--                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" -->
-<!--                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div> -->
-<!--                                     </div> -->
-<!--                                     <h4 class="small font-weight-bold">Sales Tracking <span -->
-<!--                                             class="float-right">40%</span></h4> -->
-<!--                                     <div class="progress mb-4"> -->
-<!--                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" -->
-<!--                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div> -->
-<!--                                     </div> -->
-<!--                                     <h4 class="small font-weight-bold">Customer Database <span -->
-<!--                                             class="float-right">60%</span></h4> -->
-<!--                                     <div class="progress mb-4"> -->
-<!--                                         <div class="progress-bar" role="progressbar" style="width: 60%" -->
-<!--                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div> -->
-<!--                                     </div> -->
-<!--                                     <h4 class="small font-weight-bold">Payout Details <span -->
-<!--                                             class="float-right">80%</span></h4> -->
-<!--                                     <div class="progress mb-4"> -->
-<!--                                         <div class="progress-bar bg-info" role="progressbar" style="width: 80%" -->
-<!--                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div> -->
-<!--                                     </div> -->
-<!--                                     <h4 class="small font-weight-bold">Account Setup <span -->
-<!--                                             class="float-right">Complete!</span></h4> -->
-<!--                                     <div class="progress"> -->
-<!--                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" -->
-<!--                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-
-                            <!-- Color System -->
+				<!-- 상단 최대값 카드 끝 -->
+					
+                  
+					 <!--메인 최근 리스트 각 뷰 시작 -->
                		<div class="row">
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card border-left-warning shadow h-100 py-2" align="center">
-                                    <h6 class="m-0 font-weight-bold text-primary">최근 신고 리스트</h6>
+                                    <h6 class="m-0 font-weight-bold text-warning">최근 신고 리스트</h6>
                                 </div>
                                 <div class="card border-left-warning shadow h-100 py-2">
                                     <div class="text-center">
@@ -247,12 +199,14 @@
 									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="notice_list.no">신고 리스트 바로가기 </a> &rarr; &nbsp;
+                                    	<a target="_blank" href="notice_list.no">신고 리스트 바로가기</a> &rarr; &nbsp;
                                    </div>
                                 </div>
                             </div>
                            </div>
-                            <!-- Approach -->
+ 							<!--신고 리스트 끝 -->
+
+                            <!-- 식당 리스트 시작 -->
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card border-left-primary shadow h-100 py-2" align="center">
@@ -278,18 +232,20 @@
 									  </table>
                                     </div>
                                    <div align="right">
-                                    	<a target="_blank" href="adminStore_list">식당 리스트 바로가기  </a> &rarr; &nbsp;
+                                    	<a target="_blank" href="adminStore_list">식당 리스트 바로가기</a> &rarr; &nbsp;
                                    </div>
                                 </div>
                               </div>
                            </div>
                         </div>
+                         <!-- 식당 리스트 끝 -->
                         
+                         <!-- 일반 회원 리스트 시작 -->
                         <div class="row">
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card border-left-success shadow h-100 py-2" align="center">
-                                    <h6 class="m-0 font-weight-bold text-primary">최근 일반회원 가입 목록</h6>
+                                    <h6 class="m-0 font-weight-bold text-success">최근 일반회원 가입 목록</h6>
                                 </div>
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="text-center">
@@ -309,16 +265,18 @@
 									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="adminCustomer_list">일반회원 리스트 바로가기 </a> &rarr; &nbsp;
+                                    	<a target="_blank" href="adminCustomer_list">일반회원 리스트 바로가기</a> &rarr; &nbsp;
                                    </div>
                                 </div>
                             </div>
                            </div>
-                            <!-- Approach -->
+                            <!-- 일반 회원 리스트 끝 -->
+                            
+                            <!-- 점주 회원 리스트 시작 -->
                           <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card border-left-info shadow h-100 py-2" align="center">
-                                    <h6 class="m-0 font-weight-bold text-primary">최근 점주회원 가입 목록</h6>
+                                    <h6 class="m-0 font-weight-bold text-info">최근 점주회원 가입 목록</h6>
                                 </div>
                                 <div class="card border-left-info shadow h-100 py-2">
                                     <div class="text-center">
@@ -336,7 +294,6 @@
 										  	</tr>
 										  </c:forEach>
 									  </table>
-                                    
 <!--                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" -->
 <%--                                             src="${pageContext.request.contextPath }/resources/img/undraw_posting_photo.svg" alt="..."> --%>
                                     </div>
@@ -347,10 +304,45 @@
                               </div>
                            </div>
                         </div>
-                 
-                 
-                  </div>
-                    
+                 		 <!-- 점주 회원 리스트 끝 -->
+                            
+                            
+                          <!-- 공지사항 리스트 시작 (카드 접이식) -->
+                          <div class="card shadow mb-4" align="center">
+                              <!-- Card Header - Accordion -->
+                              <div class="card border-left-danger shadow h-100 py-2" align="center">
+                              <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                                  role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                  <h6 class="m-0 font-weight-bold text-danger">최근 공지사항</h6>
+                              </a>
+                              <div class="collapse show" id="collapseCardExample">
+                                  <div class="card-body">
+                                     <table class="table table-bordered">
+										  	<tr style="color: black;" align="center">
+										  		<th>공지사항 번호</th>
+										  		<th>공지사항 제목</th>
+										  		<th>공지사항 내용</th>
+										  		<th>공지사항 작성일</th>
+										  	</tr>
+										  <c:forEach var="notice" items="${noticeList }" begin="0" end="4" step="1" >
+										  	<tr align="center">
+										  		<td>${notice.notice_idx }</td>
+										  		<td><div style="width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${notice.notice_title }</div></td>
+										  		<td><div style= "width:1000px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${notice.notice_content }</div></td>
+										  		<td><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></td>
+										  	</tr>
+										  </c:forEach>
+									  </table>
+                                  </div>
+                                   <div align="right">
+                                    	<a target="_blank" href="adminNoticeList.no">메인 공지사항 바로가기</a> &rarr; &nbsp;
+                                   </div>
+                              </div>
+                          	</div>
+                          </div>
+                         <!-- 공지사항 리스트 끝 (카드 접이식) -->    
+                     </div>
+                       	
                     
                 <!-- /.container-fluid -->
             <!-- End of Main Content -->
@@ -363,16 +355,3 @@
     <!-- Page level custom scripts -->
     <script src="${pageContext.request.contextPath }/resources/js/demo/chart-area-demo.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/demo/chart-pie-demo.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-

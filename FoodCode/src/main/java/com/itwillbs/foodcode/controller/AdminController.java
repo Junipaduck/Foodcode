@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.foodcode.service.AdminService;
 import com.itwillbs.foodcode.service.CustomerService;
+import com.itwillbs.foodcode.service.NoticeService;
 import com.itwillbs.foodcode.vo.*;
 
 @Controller
@@ -23,18 +24,27 @@ public class AdminController {
 	
 	 @Autowired
 	 private AdminService adminService;
+	 
+	 @Autowired
+	 private NoticeService noticeService;
+	 
 	
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminMain(Model model) {
+
+//		=====================메인 화면에서 띄울 리스트 객체============================
 		
 		List<MemberVO> memberList = adminService.getMemberList();
 		model.addAttribute("memberList", memberList);
-//		
+		
 		List<OwnerVO> ownerList = adminService.getOwnerList();
 		model.addAttribute("ownerList", ownerList);
-//		
+	
 		List<StoreVO> storeList = adminService.getStoreList();
 		model.addAttribute("storeList", storeList);
+		
+		List<NoticeVO> noticeList = noticeService.getNoticeList();
+		model.addAttribute("noticeList", noticeList);
 		
 		return "/admin/admin_main";
 	}
@@ -123,7 +133,7 @@ public class AdminController {
 		return "admin/adminStore_managementDelete";
 	}
 	
-// ================일반 회원 삭제======================	
+// ================(일반, 맴버) 회원 삭제======================	
 
 	
 	@GetMapping(value = "adminMember_delect")
@@ -134,24 +144,27 @@ public class AdminController {
 	
 	@PostMapping(value = "adminMemberDeletePro")
 	public String customerDelectPro(@RequestParam String member_idx, 
-			@RequestParam String member_id, Model model, HttpSession session) {
+			@RequestParam String member_id, @RequestParam String member_type, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("sId");
+		
 		if(!id.equals("admin")) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
 		System.out.println(member_idx + member_id);
-		
+		System.out.println("맴버타입 체크 !!!!!!!!!!!!!!!!" + member_type);
 		int isDeleteSuccess = adminService.MemberDelect(member_idx, member_id);
 		
-		if(isDeleteSuccess>0) {
+		if(isDeleteSuccess>0&&member_type.equals("c")) {
 			return "redirect:/adminMember_list";
+		} else if(isDeleteSuccess>0&&member_type.equals("o")) {
+			return "redirect:/adminOwner_list";
 		} else {
 			model.addAttribute("msg", "아이디를 다시 확인해주세요!");
 			return "admin/fail_back";
 		}
+		
 	}
-	
 	
 	
 }

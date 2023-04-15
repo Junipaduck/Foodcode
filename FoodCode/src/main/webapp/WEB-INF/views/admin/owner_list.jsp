@@ -27,6 +27,7 @@
                                             <th>점주 번호</th>
                                             <th>점주 이메일</th>
                                             <th>점주 가입일</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -38,6 +39,7 @@
                                             <th>점주 번호</th>
                                             <th>점주 이메일</th>
                                             <th>점주 가입일</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -45,11 +47,16 @@
                                     	<tr>
                                             <td>${ownerList.member_idx}</td>
                                             <td>${ownerList.member_id}</td>
-                                            <td>${ownerList.member_passwd}</td>
+                                            <td><div style="width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ownerList.member_passwd}</div></td>
                                             <td>${ownerList.member_name}</td>
                                             <td>${ownerList.member_phone}</td>
                                             <td>${ownerList.member_email}</td>
                                             <td>${ownerList.member_join_date}</td>
+                                             <td align="center">
+                                            	<a href="adminMember_delect?member_idx=${ownerList.member_idx }&member_type=${ownerList.member_type}" class="btn btn-danger btn-circle">
+                                       			<i class="fas fa-trash"></i>
+                                   				</a>
+                                   			</td>
                                         </tr>
                                     	</c:forEach>
                                     </tbody>
