@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.foodcode.mapper.BookingMapper">
+	<insert id="insertBooking">
+		<selectKey keyProperty="booking_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(booking_idx), 0) FROM booking
+		</selectKey>
+		INSERT 
+		INTO booking
+		VALUES(
+		#{booking_idx} + 1
+		,#{booking_date}
+		,#{booking_time}
+		,#{booking_num}
+		,#{booking_seat}
+		,#{booking_content}
+		,7
+<!-- 		,#{store_idx} -->
+		,#{member_id}
+		)
+	
+	</insert>
+</mapper>

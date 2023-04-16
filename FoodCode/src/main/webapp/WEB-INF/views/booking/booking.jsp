@@ -109,15 +109,17 @@
 	    <div class="row align-items-center">
 	      <div class="col-lg-6 mx-auto text-center">
 	        <div class="intro-wrap">
-	          <h1 class="mb-0">아이티윌 2팀</h1>
-	          <p class="text-white">맛있는 식당을 예약해보세요~</p>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 
-  
+  <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal"></h5>
+                    <h1 class="mb-5">가게 이름 받아오기</h1>
+                </div>
   
   <div class="untree_co-section">
     <div class="container">
@@ -129,16 +131,16 @@
        	</div>
         	<!--  가게 정보  -->
 	        <div class="col-lg-5 pl-lg-5 ml-auto">
-          <div class="heading-section ftco-animate mb-5">
-	          	<span class="subheading"> 가게명 받아오는구간 </span>
-	            <h2 class="mb-4">예약 테이블</h2>
-	          </div>
-            <form action="#">
+<!--           <div class="heading-section ftco-animate mb-5"> -->
+<!-- 	          	<span class="subheading"> 가게명 받아오는구간 </span> -->
+<!-- 	            <h2 class="mb-4">예약 테이블</h2> -->
+<!-- 	          </div> -->
+            <form action="reservation.bo" method="post">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">이름</label>
-                    <input type="text" class="form-control" placeholder="성함">
+                    <input type="text" class="form-control" placeholder="${map.member.member_name }" readonly="true">
                   </div>
                 </div>
 <!--                 <div class="col-md-6"> -->
@@ -150,13 +152,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">전화번호</label>
-                    <input type="text" class="form-control" placeholder="Phone">
+                    <input type="text" class="form-control" placeholder="${map.member.member_phone }" readonly="true">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">날짜</label>
-        				<input type="text" name="" value="" class="datepicker inp" placeholder="날짜를 선택 해주세요" readonly="true" /> 
+        				<input type="text" name="booking_date" id="booking_date" class="datepicker inp" placeholder="날짜를 선택 해주세요" readonly="true" /> 
+<!--         				<input type="text" name="booking_date" id="booking_date" />  -->
 						<!-- 캘린더 옵션 { -->
 						<script>
 					    $.datepicker.setDefaults({
@@ -191,22 +194,23 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">시간</label>
-                    <input type="text" name="" value="" class="timepicker inp" readonly="true"/> 
-				  <!-- 시간 옵션 { -->
-				  <script>
-				  $('.timepicker').timepicker({
-				    timeFormat: 'h:mm p',
-				    interval: 60,
-				    minTime: '10',
-				    maxTime: '8:00pm',
-				    defaultTime: '10',
-				    startTime: '10:00',
-				    dynamic: false,
-				    dropdown: true,
-				    scrollbar: true
-				   });
-				  </script>
-				  <!-- } -->
+                    <input type="text" name="booking_time" id="booking_time" class="timepicker inp" readonly="true"/> 
+<!--                     <input type="text" name="booking_time" id="booking_time"/>  -->
+					 <!-- 시간 옵션 { -->
+					  <script>
+					  $('.timepicker').timepicker({
+					    timeFormat: 'h:mm p',
+					    interval: 60,
+					    minTime: '10',
+					    maxTime: '8:00pm',
+					    defaultTime: '10',
+					    startTime: '10:00',
+					    dynamic: false,
+					    dropdown: true,
+					    scrollbar: true
+					   });
+					  </script>
+					  <!-- } -->
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -214,34 +218,39 @@
                     <label for="">인원</label>
                     <div class="select-wrap one-third">
                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control">
-                        <option value="">인원수</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4+</option>
+                      <select name="booking_num" id="booking_num" class="form-control">
+                        <option>인원수 선택</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4+</option>
                       </select>
                       </div>
                     </div>
                   </div>
                   
+                  
+                  
                   <div class="form-group">
                 <label class="text-black" for="seat"> 선호자리</label>
                 <div class="select">
-				 <input type="radio" id="select" name="b_seat" ><label for="select" checked="checked">상관없음</label>
-				 <input type="radio" id="select2" name="b_seat"><label for="select2">야외</label>
-				 <input type="radio" id="select3" name="b_seat"><label for="select3">실내</label>
-				 <input type="radio" id="select4" name="b_seat"><label for="select4">창가</label>
+				 <input type="radio" id="select1" name="booking_seat" value="상관없음" checked="checked" ><label for="select">상관없음</label>
+				 <input type="radio" id="select2" name="booking_seat" value="야외"><label for="select2">야외</label>
+				 <input type="radio" id="select3" name="booking_seat" value="실내"><label for="select3">실내</label>
+				 <input type="radio" id="select4" name="booking_seat" value="창가"><label for="select4">창가</label>
 				</div>
+				<div class="form-group">
+                <label class="text-black" for="etc">요청사항</label>
+                <textarea name="booking_content" class="form-control" id="booking_content" cols="30" rows="5"></textarea>
               </div>
-                  
-                </div>
-                </form>
+              </div>
+             </div>
                 <div class="col-md-12 mt-3">
                   <div class="form-group">
-                    <input type="submit" value="예약하기" class="btn btn-primary py-3 px-5" onclick="location.href='../index.jsp?'">
+                    <input type="submit" value="예약하기" class="btn btn-primary py-3 px-5">
                   </div>
                 </div>
+            </form>
       </div> <!--row  -->
     </div> <!-- container -->
   </div> <!-- untree_co-section -->

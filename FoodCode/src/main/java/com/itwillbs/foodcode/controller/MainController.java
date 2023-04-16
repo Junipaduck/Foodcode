@@ -41,10 +41,6 @@ public class MainController {
 //		return "store/store_information";
 //	}
 	
-	@RequestMapping(value = "booking.bo", method = {RequestMethod.GET, RequestMethod.POST})
-	public String booking() {
-		return "booking/booking";
-	}
 	
 	// 로그인 화면으로 이동
 	@RequestMapping(value = "login.me", method = {RequestMethod.GET, RequestMethod.POST})
