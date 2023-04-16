@@ -50,6 +50,8 @@ public class StoreController {
 		List<StoreVO> storeList = storeService.selectStoreList(store);
 		List<ReviewVO> reviewList = reviewService.reviewList(review);
 		
+		System.out.println("상세페이지의 리뷰리스트 : " + reviewList);
+		
 		// model 객체에 storeList 저장 
 		model.addAttribute("storeList", storeList);
 		
@@ -131,7 +133,7 @@ public class StoreController {
 		List<StoreVO> storeList4 = storeService.getStoreList4();
 		List<StoreVO> storeList5 = storeService.getStoreList5();
 		List<StoreVO> storeList6 = storeService.getStoreList6();
-//		System.out.println("스토어리스트 : " + storeList);
+		System.out.println("스토어리스트 : " + storeList);
 		model.addAttribute("storeList", storeList); //=> 한식
 		model.addAttribute("storeList2", storeList2); //=> 일식
 		model.addAttribute("storeList3", storeList3); //=> 중식

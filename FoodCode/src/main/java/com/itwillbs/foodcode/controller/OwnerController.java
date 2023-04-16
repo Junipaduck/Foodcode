@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 import com.itwillbs.foodcode.service.OwnerService;
+import com.itwillbs.foodcode.service.ReviewService;
 import com.itwillbs.foodcode.vo.MemberVO;
+import com.itwillbs.foodcode.vo.ReviewVO;
 import com.itwillbs.foodcode.vo.StoreVO;
 
 @Controller
 public class OwnerController {
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	@Autowired
 	private OwnerService ownerService;
@@ -65,7 +70,16 @@ public class OwnerController {
 	
 	// 점주 가게 리뷰페이지로 이동
 	@GetMapping(value = "/ownerReview.me")
-	public String ownerReview() {
+	public String ownerReview(ReviewVO review, Model model) {
+		System.out.println("4/16배하나테스트 : 리뷰리스트");
+    	
+    	List<ReviewVO> reviewList = reviewService.reviewList(review);
+    	
+    	System.out.println("리뷰리스트ㅋㅋㅋ : " + reviewList);
+    	
+    	model.addAttribute("reviewList", reviewList);
+    	
+		
 		return "owner/owner_mypage_review";
 	}
 	
