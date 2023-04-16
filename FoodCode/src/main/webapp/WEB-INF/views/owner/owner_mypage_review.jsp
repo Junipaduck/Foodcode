@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!doctype html>
-<html lang="kr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,6 +26,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
+  
   
   
   
@@ -77,12 +79,10 @@
 	  </div>
 	</div>
 
-  
-  <jsp:include page="owner_left.jsp"></jsp:include>
+	  <jsp:include page="owner_left.jsp"></jsp:include>
 
-  
-	<div>
-    <table  class="rwd-table">
+	<div align="center">
+     <table  class="rwd-table">
         <tbody>
         <tr>
             <th>글번호</th>
@@ -92,126 +92,29 @@
             <th>리뷰사진</th>
             <th>별점</th>
             <th>작성일자</th>
+            <th></th>
         </tr>
 
-        <tr class="KOTRA-fontsize-80">
-          <td>1</td>
-          <td>양선정</td>
-           <td>아이티윌 햄버거</td>
-           <td>와 너무 맛있어요!</td>
-	        <td>
-	           	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2017/05/07/08/56/pancakes-2291908__480.jpg" style="widows: 50px;height: 50px;">
-           	</td>
-           <td>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           </td>
-           <td>2023/03/20</td>
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>2</td>
-          <td>최보아</td>
-          <td>아이티윌 햄버거</td>
-          
-           <td>와 너무 맛있어요!</td>
-           <td>
-           		<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-           </td>
-           <td>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           </td>
-           <td>2023/03/20</td>
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>3</td>
-          <td>강지훈</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-			<td>
-				<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-			</td>
-            <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>4</td>
-          <td>위찬영</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-          <td>
-          	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-          </td>
-          <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>5</td>
-          <td>배하나</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-          <td>
-          	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-          </td>
-          <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>6</td>
-          <td>박윤</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-          <td>
-          	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-          </td>
-          <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-        </tr>
-        </tbody>
+		<c:forEach items="${reviewList }" var="ReviewVO">
+	        <tr class="KOTRA-fontsize-80">
+	          <td>${ReviewVO.review_idx }</td>
+	          <td>양선정</td>
+	           <td>아이티윌 햄버거</td>
+	           <td>${ReviewVO.review_content }</td>
+		        <td class="image_hover">
+	           		${ReviewVO.review_file }
+	           	</td>
+	           <td>
+					${ReviewVO.review_star }
+	           </td>
+	           <td>2023/03/20</td>
+	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
+	           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
+	        </tr>
+		</c:forEach>
+		</tbody>
     </table>
 	</div>
-  <div class="py-5 cta-section">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h2 class="mb-2 text-white">와 맛있겠다</h2>
-          <p class="mb-4 lead text-white text-white-opacity">지금 당장 예약하세요</p>
-          <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">예약하기</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <div class="site-footer">
     <div class="inner first">

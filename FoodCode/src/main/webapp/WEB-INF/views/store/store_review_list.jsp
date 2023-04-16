@@ -26,6 +26,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> <!-- 테이블 외부 css 파일 경로 -->
+<%--   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/dataTable.css"> <!-- 테이블 외부 css 파일 경로 -->
+
+ --%>
+ <link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +57,7 @@
 
 <body>
 
-    <table  class="rwd-table">
+    <table  class="rwd-table" id="dataTable" width="100%" cellspacing="0">
         <tbody>
         <tr>
             <th>글번호</th>
