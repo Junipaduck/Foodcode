@@ -118,7 +118,8 @@
   <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal"></h5>
-                    <h1 class="mb-5">가게 이름 받아오기</h1>
+                    <h1 class="mb-5">${map.storeList[0].store_name }</h1> <!-- 가게 리스트 불러오는거 하드코딩 돼 있어서 0번인듯 수정해야함 -->
+                    <input type="hidden" id="store_idx" name="store_idx" value="${map.storeList[0].store_idx }">
                 </div>
   
   <div class="untree_co-section">

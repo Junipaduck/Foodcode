@@ -14,8 +14,7 @@
 		,#{booking_num}
 		,#{booking_seat}
 		,#{booking_content}
-		,7
-<!-- 		,#{store_idx} -->
+		,#{store_idx}
 		,#{member_id}
 		)
 	

@@ -31,6 +31,9 @@ public class BookingController {
 	@Autowired
     private CustomerService customerService;
 	
+	@Autowired
+	private StoreService storeService;
+	
 	
 	//가게 상세 페이지에서 예약페이지로 넘어오는 매핑
 	@GetMapping(value = "/booking.bo")
@@ -38,24 +41,28 @@ public class BookingController {
 		String id = (String)session.getAttribute("sId");
 		MemberVO member = customerService.selectMember(id);
 		
-//		List<StoreVO> storeList = storeService.selectStoreList(store);
+		List<StoreVO> storeList = storeService.selectStoreList(store);
+		
+		Map<String, Object> map = new HashMap<>();
 		
 		System.out.println(member);
+		System.out.println(storeList);
 		
-		Map<String, MemberVO> map = new HashMap<String, MemberVO>();
-//		Map<String, Object> map = new HashMap<>();
 		map.put("member", member);
-//		map.put("storeList", storeList);
+		map.put("storeList", storeList);
+		
 
 		return new ModelAndView("booking/booking","map",map);
 	}
 	
 	// 예약하기 완료버튼 누른 매핑
 	@PostMapping(value = "reservation.bo")
-	 public String reservation(HttpSession session, Model model, BookingVO booking) {
+	 public String reservation(HttpSession session, Model model, StoreVO store, BookingVO booking) {
 		//세션아이디 가져와서 로그인한 아이디를 컬럼에 저장시켜줌
 		String id = (String)session.getAttribute("sId").toString();
 		booking.setMember_id(id);
+		
+		List<StoreVO> storeList = storeService.selectStoreList(store);
 		
 		int insertBooking = bookingService.insertBooking(booking); 
 		System.out.println(booking);
