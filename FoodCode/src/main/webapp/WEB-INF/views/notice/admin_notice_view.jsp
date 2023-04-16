@@ -158,7 +158,7 @@ h2 {
 	    </div>
 	   		<div class="hanabutton">
 				<button type="submit" class="btn btn-primary" onclick="history.back()">돌아가기</button>
-				<button type="submit" class="btn btn-primary" onclick="location.href ='noticeModify.no'">수정하기</button>
+				<button type="submit" class="btn btn-primary" onclick="location.href ='noticeModify.no?notice_idx=${notice.notice_idx}'">수정하기</button>
 	            <button type="button" class="btn btn-primary" onclick="location.href ='noticeDelete.no?notice_idx=${notice.notice_idx}'">삭제하기</button>
             </div>
 	</div>

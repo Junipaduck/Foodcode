@@ -126,9 +126,13 @@
  		<div class="col-lg-4">
       	  	<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             	<h2 class="section-title">Notice ModifyForm</h2>
-            	<form action="noticeModifyPro.no" name="noticeWriteForm" method="post">
+            <form action="noticeModifyPro.no" name="noticeWriteForm" method="post">
             	<!-- notice_idx를 hidden으로 가져오기 -->
-            	<input type="hidden" id="notice_idx" value="${notice.notice_idx }" name="notice_idx">
+<%--             	<input type="hidden" id="notice_idx" value="${notice.notice_idx }" name="notice_idx"> --%>
+				<!-- 입력받지 않은 파라미터 데이터(글번호, 페이지번호)는 "hidden" 속성으로 전달 -->
+				<input type="hidden" name="notice_idx" value="${param.notice_idx }">
+				<input type="hidden" name="pageNum" value="${param.pageNum }">
+				
               <div class="form-group">
               	 <label class="text-black" for="notice_title">제목</label>
                	<input class="form-control" type="text" name="notice_title" value="${notice.notice_title }" aria-label="default input example">

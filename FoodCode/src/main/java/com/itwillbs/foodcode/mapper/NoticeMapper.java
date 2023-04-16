@@ -19,6 +19,8 @@ public interface NoticeMapper {
 
 	int deleteNotice(@Param("notice_idx") int notice_idx);
 
+	NoticeVO selectNoticeBeforeModify(int notice_idx);
+
 	
 
 }

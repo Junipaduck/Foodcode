@@ -29,12 +29,18 @@ public class NoticeService {
 		return mapper.selectNotice(notice_idx);
 	}
 
+	// 공지사항 수정 작업
 	public int noticeModify(NoticeVO notice) {
 		return mapper.updateNotice(notice);
 	}
-
+	
+	// 공지사항 삭제 작업
 	public int deleteNotice(int notice_idx) {
 		return mapper.deleteNotice(notice_idx);
+	}
+
+	public NoticeVO selectNoticeBeforeModify(int notice_idx) {
+		return mapper.selectNoticeBeforeModify(notice_idx);
 	}
 
 

@@ -42,7 +42,16 @@
 		
 		</select>
 		
-
+		
+		<!-- 공지사항 수정페이지로 갔을 때 수정 전 파라미터값 보여지게 해주는 <select> 태그 -->
+		<select id="selectNoticeBeforeModify" resultType="com.itwillbs.foodcode.vo.NoticeVO">
+			SELECT
+				notice_title
+				,notice_content
+				,notice_file
+			FROM notice
+			WHERE notice_idx = #{notice_idx};
+		</select>
 
 
 		<!-- 공지사항 수정을 위한 <update>태그 -->
@@ -52,7 +61,7 @@
 				   notice_title = #{notice_title}
 				  ,notice_content = #{notice_content}
 				  ,notice_file = #{notice_file}
-				WHERE notice_idx = 1;
+				WHERE notice_idx = #{notice_idx};
 		</update>
 
 
@@ -63,6 +72,9 @@
 				WHERE notice_idx = #{notice_idx};
 		</delete>
 
+
+
+	
 
 
 

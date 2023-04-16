@@ -1,6 +1,10 @@
 package com.itwillbs.foodcode.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.itwillbs.foodcode.service.NoticeService;
 import com.itwillbs.foodcode.vo.NoticeVO;
@@ -90,9 +95,16 @@ public class NoticeController {
 	
 	
 	// 공지사항 notice_modify_form.jsp로 포워딩
+	// + 수정 전 파라미터가져와서 수정페이지에 select 하는 작업
 	@RequestMapping(value = "noticeModify.no", method = {RequestMethod.GET, RequestMethod.POST})
-	public String notice_modify_form() {
-		return "notice/notice_modify_form";
+	public ModelAndView notice_modify_form(Model model, @RequestParam int notice_idx) {
+		NoticeVO notice = service.selectNoticeBeforeModify(notice_idx);
+		model.addAttribute("notice", notice);
+		
+		Map<String, NoticeVO> map = new HashMap<String, NoticeVO>();
+		map.put("notice", notice);
+//		return "notice/notice_modify_form";
+		return new ModelAndView("notice/notice_modify_form", "map", map);
 	}
 		
 	// 공지사항 수정 작업
@@ -100,12 +112,14 @@ public class NoticeController {
 	public String noticeModifyPro(NoticeVO notice, Model model) {
 		System.out.println("공지사항 수정 -/noticeModifyPro.no");
 		
-		int modifyCount = service.noticeModify(notice);
 		model.addAttribute("notice", notice);
+		
+		int modifyCount = service.noticeModify(notice);
 
 		if(modifyCount > 0) {
-			return "redirect:/adminNoticeView.no";
-//			return "notice/admin_notice_view";
+			model.addAttribute("msg", "수정 완료!");
+			model.addAttribute("target", "adminNoticeList.no");
+			return "success";
 		} else {
 			model.addAttribute("msg", "수정 실패!");
 			return "fail_back";
