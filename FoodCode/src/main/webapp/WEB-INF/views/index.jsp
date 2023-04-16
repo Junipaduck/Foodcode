@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,68 +178,18 @@
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
-
-				<div class="item">
-					<a class="media-thumb" href="https://images.pexels.com/photos/3434523/pexels-photo-3434523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>어쩌구식당</h3>
-							<span class="location">양식</span>
-						</div>
-						<img src="https://images.pexels.com/photos/3434523/pexels-photo-3434523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="https://images.pexels.com/photos/2983099/pexels-photo-2983099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>어쩌구식당</h3>
-							<span class="location">양식</span>
-						</div>
-						<img src="https://images.pexels.com/photos/2983099/pexels-photo-2983099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="https://images.pexels.com/photos/3789885/pexels-photo-3789885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>어쩌구식당</h3>
-							<span class="location">양식</span>
-						</div>
-						<img src="https://images.pexels.com/photos/3789885/pexels-photo-3789885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-
-				<div class="item">
-					<a class="media-thumb" href="https://images.pexels.com/photos/916925/pexels-photo-916925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>어쩌구식당</h3>
-							<span class="location">디저트</span>
-						</div>
-						<img src="https://images.pexels.com/photos/916925/pexels-photo-916925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>어쩌구식당</h3>
-							<span class="location">디저트</span>
-						</div>
-						<img src="https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="https://images.pexels.com/photos/1586942/pexels-photo-1586942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>어쩌구식당</h3>
-							<span class="location">어쩌구</span>
-						</div>
-						<img src="https://images.pexels.com/photos/1586942/pexels-photo-1586942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
+					<div class="item">
+						<!-- 메인 화면 가게 추천을 위한 반복문 -->
+						<c:forEach items="${storeList }" var="StoreVO">
+							<a class="media-thumb" href="https://images.pexels.com/photos/3434523/pexels-photo-3434523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
+								<div class="media-text">
+									<h3>${StoreVO.store_name }</h3>
+									<span class="location">${StoreVO.store_type }</span>
+								</div>
+								<img src="https://images.pexels.com/photos/3434523/pexels-photo-3434523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
+							</a> 
+						</c:forEach>
+				</div>			
 			</div>
 
 		</div>

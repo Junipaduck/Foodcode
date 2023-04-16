@@ -68,7 +68,7 @@
 	<select id="selectStore"  resultType="com.itwillbs.foodcode.vo.StoreVO">
 		SELECT *
 			FROM store
-			WHERE store_idx = 1;
+			WHERE store_idx = 7;
 	</select>
 		
 	
