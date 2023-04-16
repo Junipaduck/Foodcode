@@ -29,10 +29,14 @@ public class NoticeService {
 		return mapper.selectNotice(notice_idx);
 	}
 
+	public int noticeModify(NoticeVO notice) {
+		return mapper.updateNotice(notice);
+	}
 
-	// 4/15 배하나 - 수정중
-//	public int noticeModify(NoticeVO notice) {
-//		return mapper.updateNotice(notice);
-//	}
+	public int deleteNotice(int notice_idx) {
+		return mapper.deleteNotice(notice_idx);
+	}
+
+
 
 }

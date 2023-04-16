@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,19 +48,6 @@ public class NoticeController {
 		return "notice/notice_write_form";
 	}
 	
-	// 공지사항 notice_modify_form.jsp로 포워딩
-	@RequestMapping(value = "noticeModifyForm.no", method = {RequestMethod.GET, RequestMethod.POST})
-	public String notice_modify_form() {
-		return "notice/notice_modify_form";
-	}
-	
-	// 공지사항 수정 작업 (0415 배하나 - 수정중)
-//	@GetMapping(value = "/noticeModifyPro.no")
-//	public String noticeModify(NoticeVO notice) {
-//		int modifyCount = service.noticeModify(notice);
-//		return "notice/admin_notice_list"; //=> 공지사항 수정완료 후 공지사항 리스트로 이동
-//	}
-	
 	
 	// 공지사항 admin_notice_list.jsp로 포워딩
 	// + 공지사항 리스트 SELECT 작업 
@@ -101,10 +89,45 @@ public class NoticeController {
 	}
 	
 	
+	// 공지사항 notice_modify_form.jsp로 포워딩
+	@RequestMapping(value = "noticeModify.no", method = {RequestMethod.GET, RequestMethod.POST})
+	public String notice_modify_form() {
+		return "notice/notice_modify_form";
+	}
+		
+	// 공지사항 수정 작업
+	@PostMapping(value = "/noticeModifyPro.no")
+	public String noticeModifyPro(NoticeVO notice, Model model) {
+		System.out.println("공지사항 수정 -/noticeModifyPro.no");
+		
+		int modifyCount = service.noticeModify(notice);
+		model.addAttribute("notice", notice);
 
+		if(modifyCount > 0) {
+			return "redirect:/adminNoticeView.no";
+//			return "notice/admin_notice_view";
+		} else {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+		
+	}
 	
-	
-	
+	// 공지사항 삭제 작업
+	@RequestMapping(value = "/noticeDelete.no", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeDelete(@RequestParam int notice_idx, Model model) {
+		System.out.println("공지사항 삭제 : noticeDelete.no");
+		int deleteCount = service.deleteNotice(notice_idx);
+		model.addAttribute("notice_idx", notice_idx);
+
+		if(deleteCount > 0) { 
+    		return "redirect:/adminNoticeList.no";
+    		// 삭제 했을때도 "삭제가 완료되었습니다." 모달창 띄우고싶다 - 0416배하나 메모
+    	} else {
+    		model.addAttribute("msg", "삭제 실패!");
+    		return "fail_back";
+    	}
+	}
 	
 	
 	

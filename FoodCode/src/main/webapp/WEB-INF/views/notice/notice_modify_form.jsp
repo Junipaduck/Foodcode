@@ -58,7 +58,7 @@
 	color: #fff;
 	font-size: 14px;
 	
-	margin-left: 495px;
+	margin-left: 420px;
     margin-top: 10px;
 	
 }
@@ -141,7 +141,7 @@
                 <label class="text-black" for="notice_content">내용</label>
               	<textarea class="form-control" id="floatingTextarea2" name="notice_content" style="height: 500px">${notice.notice_content }</textarea>
               </div>
-              	<input type="submit" class="btn44" id="submit" value="수정하기">
+              	<button type="submit" class="btn44">수정하기</button>
             </form>
           </div>
      	</div>

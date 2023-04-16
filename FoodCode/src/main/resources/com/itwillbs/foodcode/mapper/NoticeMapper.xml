@@ -47,18 +47,21 @@
 
 		<!-- 공지사항 수정을 위한 <update>태그 -->
 		<update id="updateNotice">
-			
 			UPDATE notice
 				SET
 				   notice_title = #{notice_title}
 				  ,notice_content = #{notice_content}
 				  ,notice_file = #{notice_file}
-				WHERE notice_idx = #{notice_idx} -- 여기 +1하고 셀렉트키 넣어야하나?
-					
+				WHERE notice_idx = 1;
 		</update>
 
 
-
+		<!-- 공지사항 삭제를 위한 <delete>태그 -->
+		<delete id="deleteNotice">
+			DELETE 
+				FROM notice
+				WHERE notice_idx = #{notice_idx};
+		</delete>
 
 
 
