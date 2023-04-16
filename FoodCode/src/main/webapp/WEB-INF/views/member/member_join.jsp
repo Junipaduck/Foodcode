@@ -81,19 +81,13 @@
 			<form action="">
 			<span>
 				<img alt="이미지오류" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" style="height: 200px; width: 200px; margin: 100px;">
-				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='customerJoin.me'" style="margin: 100px">내 정보 수정</button>
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='customerJoin.me'" style="margin: 100px">개인 회원 가입</button>
 			</span>
 			</form>
 			<form action="ownerJoin.me">
 			<span>
 				<img alt="이미지오류" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" style="height: 200px; width: 200px; margin: 100px;">
-				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='ownerJoin.me'" style="margin: 100px">예약관리</button>
-			</span>
-			</form>
-			<form action="ownerJoin.me">
-			<span>
-				<img alt="이미지오류" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" style="height: 200px; width: 200px; margin: 100px;">
-				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='ownerJoin.me'" style="margin: 100px">리뷰관리</button>
+				<button type="button" class="btn btn-primary btn-lg" onclick="location.href='ownerJoin.me'" style="margin: 100px">점주 회원 가입</button>
 			</span>
 			</form>
 	</div>
