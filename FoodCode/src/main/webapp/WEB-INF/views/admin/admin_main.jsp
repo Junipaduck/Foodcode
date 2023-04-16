@@ -27,13 +27,13 @@
                                                 신고 내역 수</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">60</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">${reportCount }</div>
                                                 </div>
                                                 <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-warning" role="progressbar"
-                                                            style="width: 60%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: ${reportCount }%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
@@ -59,13 +59,13 @@
                                                 현재 식당 수</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">7</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">${storeCount}</div>
                                                 </div>
                                                 <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-primary" role="progressbar"
-                                                            style="width: 7%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: ${storeCount}%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
@@ -89,13 +89,13 @@
                                                 일반 회원 수</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">30</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">${memberCount }</div>
                                                 </div>
                                                 <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-success" role="progressbar"
-                                                            style="width: 30%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: ${memberCount }%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
@@ -120,13 +120,13 @@
                                             점주 회원 수</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">15</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">${ownerCount }</div>
                                                 </div>
                                                 <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 10%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: ${ownerCount }%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
@@ -150,13 +150,13 @@
                                                 공지사항</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">7</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">${noticeCount}</div>
                                                 </div>
                                                 <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-danger" role="progressbar"
-                                                            style="width: 7%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: ${noticeCount}%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
@@ -265,7 +265,7 @@
 									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="adminCustomer_list">일반회원 리스트 바로가기</a> &rarr; &nbsp;
+                                    	<a target="_blank" href="adminMember_list">일반회원 리스트 바로가기</a> &rarr; &nbsp;
                                    </div>
                                 </div>
                             </div>

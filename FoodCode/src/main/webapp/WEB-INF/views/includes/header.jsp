@@ -52,10 +52,10 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminMain"> 
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon rotate">
+                    <i class='fas fa-kiss-wink-heart' style="font-size: 70px; color: #fff29e;"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3"><sup>관리자페이지</sup>FoodCode</div>
+                <div class="sidebar-brand-text mx-1"><sup>관리자페이지</sup>FoodCode</div>
              </a>
              </li>
 

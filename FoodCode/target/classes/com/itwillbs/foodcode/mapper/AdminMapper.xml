@@ -40,9 +40,31 @@
 	<delete id="delectStore">
 	DELETE
 	 FROM store
-	 	WHERE store_license = #{store_license}
+	 	WHERE store_license = #{store_license} AND member_id = #{owner_id}
 	</delete>
 	
+	
+	<select id="getMemberCount" resultType="String">
+		SELECT COUNT(*) FROM member
+			WHERE member_type = 'C';
+	</select>
+	
+	<select id="getOwnerCount" resultType="String">
+		SELECT COUNT(*) FROM member
+			WHERE member_type = 'O';
+	</select>
+	
+	<select id="getStoreCount" resultType="String">
+		SELECT COUNT(*) FROM store;
+	</select>
+	
+	<select id="getNoticeCount" resultType="String">
+		SELECT COUNT(*) FROM notice;
+	</select>
+	
+	<select id="getReportCount" resultType="String">
+		SELECT COUNT(*) FROM report;
+	</select>
 	
 </mapper>
 

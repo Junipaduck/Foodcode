@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" align ="center"
-                                 bgcolor="E9FBFF" style="color: black;">
+                                  style="color: black;">
                                     <thead>
                                         <tr>
                                             <th align="center" valign="middle">점주 ID</th>
@@ -47,9 +47,16 @@
                                             <td>${aList.store_name}</td>
                                             <td>${aList.store_license}</td>
                                             <td align="center">${aList.review_star}</td>
-                                            <td align="center">!!경고 메세지 들어감!!</td>
                                             <td align="center">
-                                            	<a href="adminMember_delect?member_idx=${memberList.member_idx }" class="btn btn-danger btn-circle btn-5x">
+                                            <a href="#" class="btn btn-warning btn-icon-split">
+		                                        <span class="icon text-white-50">
+		                                            <i class="fas fa-exclamation-triangle"></i>
+		                                        </span>
+		                                        <span class="text" msttexthash="359"_msthash="70">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
+		                                    </a>
+                                            </td>
+                                             <td align="center">
+                                            	<a href="adminStore_managementDelete?store_license=${aList.store_license }&owner_id=${aList.member_id}" class="btn btn-danger btn-circle btn-5x">
                                        			<i class="fas fa-trash"></i>
                                    				</a>
                                    			</td>

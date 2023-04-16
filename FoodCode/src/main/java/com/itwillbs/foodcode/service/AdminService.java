@@ -50,15 +50,41 @@ public class AdminService {
 	}
 
 
-	public int managementDelete(String store_license) {
-		return mapper.delectStore(store_license);
+	public int managementDelete(String store_license, String owner_id) {
+		return mapper.delectStore(store_license, owner_id);
 	}
 
 	public List getStoreList2() {
 		return mapper.getStoreList2();
 	}
+	
+//---------------카운트-------------
+	public String getMemberCount() {
+		
+		return mapper.getMemberCount();
+	}
+	
+	public String getOwnerCount() {
+		
+		return mapper.getOwnerCount();
+	}
+
+	public String getStoreCount() {
+		
+		
+		return mapper.getStoreCount();
+	}
+
+	public String getNoticeCount() {
+		
+		return mapper.getNoticeCount();
+	}
 
 
+	public String getReportCount() {
+		
+		return mapper.getReportCount();
+	}
 	
 	
 	

@@ -21,9 +21,19 @@ public interface AdminMapper {
 
 	List<ReviewVO> selectReviews();
 
-
-	int delectStore(@Param("store_license") String store_license);
+	int delectStore(@Param("store_license") String store_license, @Param("owner_id") String owner_id);
 
 	List getStoreList2();
+
+	String getMemberCount();
+	
+	String getOwnerCount();
+
+	String getStoreCount();
+
+	String getNoticeCount();
+
+	String getReportCount();
+	
 	
 }

@@ -1,6 +1,9 @@
 package com.itwillbs.foodcode.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.foodcode.service.AdminService;
-import com.itwillbs.foodcode.service.CustomerService;
 import com.itwillbs.foodcode.service.NoticeService;
 import com.itwillbs.foodcode.vo.*;
 
@@ -46,9 +49,26 @@ public class AdminController {
 		List<NoticeVO> noticeList = noticeService.getNoticeList();
 		model.addAttribute("noticeList", noticeList);
 		
+//		====================각 항목 카운트 값 가져오기
+		
+		String memberCount = adminService.getMemberCount();
+		model.addAttribute("memberCount", memberCount);
+		
+		String ownerCount = adminService.getOwnerCount();
+		model.addAttribute("ownerCount", ownerCount);
+		
+		String storeCount = adminService.getStoreCount();
+		model.addAttribute("storeCount", storeCount);
+		
+		String noticeCount = adminService.getNoticeCount();
+		model.addAttribute("noticeCount", noticeCount);
+		
+		String reportCount = adminService.getReportCount();
+		model.addAttribute("reportCount", reportCount);
+		
+		
 		return "/admin/admin_main";
 	}
-	
 	
 	@GetMapping(value = "adminLogin.me")
 	public String adminLogin() {
@@ -99,7 +119,10 @@ public class AdminController {
 		
 		List<StoreVO> storeList = adminService.getStoreList();
 		
+		
 		model.addAttribute("storeList", storeList);
+		
+		
 		
 		return "/admin/store_list";
 	}
@@ -111,26 +134,36 @@ public class AdminController {
 		List aList = adminService.getStoreList2();
 		model.addAttribute("aList", aList);
 		
-		
 		return "/admin/store_management";
 	}
 	
 	@GetMapping(value = "adminStore_managementDelete")
-	public String storeManagementDelete(Model model, @RequestParam String store_license) {
-		
-		int managementDeleteCnt = adminService.managementDelete(store_license);
+	public String storeManagementDelete() {
 		
 		
-		return "redirect:/adminStore_management";
+		return "/admin/store_delect";
 	}
 	
-	@GetMapping(value = "adminStore_managementD")
-	public String storeManagementD() {
+	@PostMapping(value = "adminStoreManagementDeletePro")
+	public String storeManagementD(@RequestParam String store_license,
+			@RequestParam String owner_id, Model model, HttpSession session) {
 		
-//		int managementDeleteCnt = adminService.managementDelete();
+		String id = (String)session.getAttribute("sId");
 		
+		if(!id.equals("admin")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
-		return "admin/adminStore_managementDelete";
+		int isDeleteSuccess = adminService.managementDelete(store_license, owner_id);
+		
+		if(isDeleteSuccess>0) {
+			return "redirect:/adminStore_management";
+		} else {
+			model.addAttribute("msg", "사업자 번호를 다시 확인해주세요!");
+			return "admin/fail_back";
+		}
+		
 	}
 	
 // ================(일반, 맴버) 회원 삭제======================	
