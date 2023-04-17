@@ -76,13 +76,21 @@
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 
-
-		<!-- 가게 상세페이지 조회용 -->
+		<!-- 가게 상세페이지 1개 조회용 -->
 		<select id="selectStoreInfo" resultType="com.itwillbs.foodcode.vo.StoreVO">
 			SELECT *
 				FROM store
-				WHERE store_idx = 7
+				WHERE store_idx = ${store_idx}
 		</select>
+
+
+		<!-- 가게 전체 조회 -->
+		<select id="selectStoreListAll" resultType="com.itwillbs.foodcode.vo.StoreVO">
+			SELECT *
+				FROM store
+		</select>
+
+		
 
 </mapper>
 

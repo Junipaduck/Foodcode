@@ -15,17 +15,17 @@ package com.itwillbs.foodcode.vo;
 
 public class BookingVO {
 
-	private Integer booking_idx;
+	private int booking_idx;
 	private String booking_date;
 	private String booking_time;
 	private String booking_num;
 	private String booking_seat;
 	private String booking_content;
-	private Integer store_idx;
+	private int store_idx;
 	private String member_id;
-	
-	public BookingVO(Integer booking_idx, String booking_date, String booking_time, String booking_num,
-			String booking_seat, String booking_content, Integer store_idx, String member_id) {
+
+	public BookingVO(int booking_idx, String booking_date, String booking_time, String booking_num, String booking_seat,
+			String booking_content, int store_idx, String member_id) {
 		super();
 		this.booking_idx = booking_idx;
 		this.booking_date = booking_date;
@@ -37,11 +37,11 @@ public class BookingVO {
 		this.member_id = member_id;
 	}
 
-	public Integer getBooking_idx() {
+	public int getBooking_idx() {
 		return booking_idx;
 	}
 
-	public void setBooking_idx(Integer booking_idx) {
+	public void setBooking_idx(int booking_idx) {
 		this.booking_idx = booking_idx;
 	}
 
@@ -85,11 +85,11 @@ public class BookingVO {
 		this.booking_content = booking_content;
 	}
 
-	public Integer getStore_idx() {
+	public int getStore_idx() {
 		return store_idx;
 	}
 
-	public void setStore_idx(Integer store_idx) {
+	public void setStore_idx(int store_idx) {
 		this.store_idx = store_idx;
 	}
 
@@ -108,7 +108,5 @@ public class BookingVO {
 				+ ", booking_content=" + booking_content + ", store_idx=" + store_idx + ", member_id=" + member_id
 				+ "]";
 	}
-	
-	
 	
 }

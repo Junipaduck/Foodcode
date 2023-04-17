@@ -2,6 +2,8 @@ package com.itwillbs.foodcode.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.itwillbs.foodcode.vo.StoreVO;
 
 public interface StoreMapper {
@@ -22,6 +24,8 @@ public interface StoreMapper {
 	
 	List<StoreVO> selectStoreList6();
 
-	List<StoreVO> selectStoreInfo(StoreVO store);
+	List<StoreVO> selectStoreListAll(StoreVO store);
+
+	List<StoreVO> selectStoreInfo(@Param("store") StoreVO store, @Param("store_idx") int store_idx);
 
 }

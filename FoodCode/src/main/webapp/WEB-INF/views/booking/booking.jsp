@@ -118,8 +118,8 @@
   <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal"></h5>
-                    <h1 class="mb-5">${map.storeList[0].store_name }</h1> <!-- 가게 리스트 불러오는거 하드코딩 돼 있어서 0번인듯 수정해야함 -->
-                    <input type="hidden" id="store_idx" name="store_idx" value="${map.storeList[0].store_idx }">
+<%--                     <h1 class="mb-5">${map.storeInfo.store_name }</h1> --%>
+                    <h1 class="mb-5">${map.storeInfo[0].store_name } </h1>
                 </div>
   
   <div class="untree_co-section">
@@ -141,6 +141,8 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">이름</label>
+                    <input type="hidden" name="store_idx" value="${map.storeInfo[0].store_idx }">
+                    <input type="hidden" name="booking_idx" value="1">
                     <input type="text" class="form-control" placeholder="${map.member.member_name }" readonly="true">
                   </div>
                 </div>
@@ -178,7 +180,7 @@
 					      dayNamesShort: ["일", "월", "화", "수", "목", "금", "토"],
 					      dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
 					      weekHeader: "주",
-					      dateFormat: "yy.m.d", // 날짜형태 예)yy년 m월 d일
+					      dateFormat: "yy-m-d", // 날짜형태 예)yy년 m월 d일
 					      firstDay: 0,
 					      isRTL: false,
 					      showMonthAfterYear: true,
@@ -200,10 +202,10 @@
 					 <!-- 시간 옵션 { -->
 					  <script>
 					  $('.timepicker').timepicker({
-					    timeFormat: 'h:mm p',
+					    timeFormat: 'HH:mm',
 					    interval: 60,
 					    minTime: '10',
-					    maxTime: '8:00pm',
+					    maxTime: '21:00',
 					    defaultTime: '10',
 					    startTime: '10:00',
 					    dynamic: false,

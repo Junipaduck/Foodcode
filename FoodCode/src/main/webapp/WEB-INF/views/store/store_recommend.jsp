@@ -110,7 +110,7 @@ $(document).ready(function() {
 				                                </div>
 				                            </div>
 				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
+				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="store.so?store_idx=${store.store_idx }">가게상세보기</a></div>
 				                            </div>
 				                        </div>
 				                    </div>

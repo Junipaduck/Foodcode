@@ -136,20 +136,20 @@
 	        	현재(0412) store_idx = 1 인 경우만 출력되도록 하드코딩 해놓은 상태
 	        	 -->
 
-				<c:forEach items="${storeList }" var="StoreVO">
-		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_name }</h2>
+				<c:forEach items="${storeInfo }" var="store">
+		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${store.store_name }</h2>
 		          <p style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_content }</p>
 		          <ul class="list-unstyled two-col clearfix" style="font-family: 'Noto Sans KR', sans-serif;">
-		            <li>${StoreVO.store_type }</li>
-		            <li>${StoreVO.store_phone }</li>
-		            <li>${StoreVO.store_time }</li>
-		            <li>${StoreVO.store_etc }</li>
-		            <li>${StoreVO.store_address }</li>
+		            <li>${store.store_type }</li>
+		            <li>${store.store_phone }</li>
+		            <li>${store.store_time }</li>
+		            <li>${store.store_etc }</li>
+		            <li>${store.store_address }</li>
 		            <!--  review 테이블의 1개의 컬럼만 조회하면 되므로 반목문 사용 x  -->
 		            <li>${reviewList[0].review_star }</li>
 		          </ul>
+	          <input type="button" class="btn btn-primary btn-block" value="예약하기" onclick="location.href='booking.bo?store_idx=${store.store_idx }'">
 				</c:forEach>
-	          <input type="button" class="btn btn-primary btn-block" value="예약하기" onclick="location.href='${pageContext.request.contextPath }/booking.bo'">
 	        </div>
       </div> <!--row  -->
     </div> <!-- container -->
@@ -473,7 +473,6 @@
                 </div>
             </div>
         </div>
- </div>
   
 	<div>
 	<!--  [리뷰목록] 클릭 시 리뷰 게시판으로 이동  -->
