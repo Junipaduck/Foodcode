@@ -17,7 +17,7 @@
 		,#{member_email}
 		,#{member_birth}
 		,#{member_gender}
-		,concat(YEAR(now()),"-",month(now()),"-",DAY(now()))
+		,now()
 		)
 	
 	</insert>
@@ -71,31 +71,5 @@
 	SELECT member_passwd
 			FROM member
 				WHERE member_id = #{sId}
-	</select>
-	
-	<select id="bookingList" resultType="map">
-		SELECT b.booking_idx
-		,s.store_name 
-		, b.booking_date
-		, b.booking_time
-		, b.booking_num
-		, b.booking_seat
-		, b.booking_content
-		, b.store_idx
-		, b.member_id 
-		FROM booking b JOIN store s 
-		ON b.store_idx = s.store_idx 
-		WHERE b.member_id = #{sId}
-		ORDER BY booking_idx DESC;
-	</select>
-	
-	<select id="selectMyReview">
-		SELECT r.review_idx
-		, s.store_name
-		, r.review_star
-		, r.review_date
-		, r.pay_idx
-		FROM review r JOIN store s ON s.store_idx = r.store_idx 
-		WHERE r.member_id = #{sId}
 	</select>
 </mapper>

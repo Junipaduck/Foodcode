@@ -1,7 +1,5 @@
 package com.itwillbs.foodcode.mapper;
 
-import java.util.*;
-
 import org.apache.ibatis.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +21,5 @@ public interface CustomerMapper {
 	String getPassword(String sId);
 
 	int modifyMember(@Param("sId") String sId, @Param("member") MemberVO member , @Param("modifyMember") String modifyMember);
-
-	List bookingList(String sId);
-
-	List selectMyReview(String sId);
 
 }
