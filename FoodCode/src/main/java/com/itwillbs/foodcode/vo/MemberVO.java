@@ -81,6 +81,11 @@ public class MemberVO {
 				+ ", member_email=" + member_email + ", member_birth=" + member_birth + ", member_gender="
 				+ member_gender + ", member_join_date=" + member_join_date + "]";
 	}
+
+	public MemberVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public MemberVO(int member_idx, String member_type, String member_name, String member_id, String member_passwd,
 			String member_phone, String member_email, String member_birth, String member_gender,
 			Date member_join_date) {

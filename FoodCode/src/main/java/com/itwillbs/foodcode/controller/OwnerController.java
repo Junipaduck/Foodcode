@@ -13,9 +13,7 @@ import org.springframework.web.servlet.*;
 
 import com.itwillbs.foodcode.service.OwnerService;
 import com.itwillbs.foodcode.service.ReviewService;
-import com.itwillbs.foodcode.vo.MemberVO;
-import com.itwillbs.foodcode.vo.ReviewVO;
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.vo.*;
 
 @Controller
 public class OwnerController {
@@ -35,16 +33,22 @@ public class OwnerController {
 	// 좌측 배너에서 "내식당" 버튼 클릭시 마이페이지 이동 - 가게 정보 조회해와야함
 	// 후에 점주아이디-가게 연결되면 id값 가져가서 조회해오기
 	@GetMapping(value = "/ownerPage.me")
-	public String ownerPage(StoreVO store, Model model) {
+	public String ownerPage(StoreVO store, BookingVO booking, Model model) {
 		List<StoreVO> storeInfo = ownerService.selectStore(store);
-		System.out.println(storeInfo);
+//		System.out.println(storeInfo);
 		model.addAttribute("storeInfo", storeInfo);
 		
+		List<BookingVO> storeBooking = ownerService.showBooking(booking);
+		System.out.println(storeBooking);
+		model.addAttribute("storeBooking", storeBooking);
+		
+//		Map<String, Object> mav = new HashMap<>();
+//		mav.put("stoerInfo", storeInfo);
+//		mav.put("storeBooking", storeBooking);
+		
 		return "owner/owner_mypage";
-//		Map<String, List<StoreVO>> myStore = new HashMap<String, List<StoreVO>>();
-//		myStore.put("stoerInfo", storeInfo);
-//		
-//		return new ModelAndView("owner/owner_mypage", "myStore", myStore);
+		
+//		return new ModelAndView("owner/owner_mypage", "mav", mav);
 	}
 	
 	// 점주 회원가입
@@ -149,4 +153,6 @@ public class OwnerController {
 	public String storeRegister() {
 		return "owner/owner_store_register";
 	}
+	
+	
 }

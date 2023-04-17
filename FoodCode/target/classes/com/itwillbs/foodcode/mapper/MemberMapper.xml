@@ -9,4 +9,9 @@
 			WHERE member_id = #{member_id}
 	</select>
 	
+	<select id="selectMemberList" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT * 
+			FROM member
+	</select>
+	
 </mapper>
