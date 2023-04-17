@@ -53,7 +53,7 @@
             <li class="nav-item">
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminMain"> 
                 <div class="sidebar-brand-icon rotate">
-                    <i class='fas fa-kiss-wink-heart' style="font-size: 70px; color: #fff29e;"></i>
+                    <i class='fas fa-kiss-wink-heart' style="font-size: 50px; color: #79DCFD;"></i>
                 </div>
                 <div class="sidebar-brand-text mx-1"><sup>관리자페이지</sup>FoodCode</div>
              </a>
@@ -165,6 +165,12 @@
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_list">
                     <i class="fas fa-fw fa-list"></i>
                     <span>식당 조회</span></a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_approve">
+                    <i class="fas fa-fw fa-calendar"></i>
+                    <span>식당 승인</span></a>
             </li>
             
 			<li class="nav-item">

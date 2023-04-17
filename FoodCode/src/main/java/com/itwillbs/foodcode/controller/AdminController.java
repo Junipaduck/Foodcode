@@ -166,6 +166,43 @@ public class AdminController {
 		
 	}
 	
+// 	=====================식당 승인 페이지 ==========================		
+	
+	@GetMapping(value = "adminStore_approve")
+	public String storeApprove(Model model) {
+		
+		List aList = adminService.getStoreList2();
+		model.addAttribute("aList", aList);
+		
+		return "/admin/store_approve";
+	}
+	
+	@GetMapping(value = "adminStoreManagementApprovePro")
+	public String storeApprovePro(@RequestParam String store_license, Model model, HttpSession session) {
+		
+		String id = (String)session.getAttribute("sId");
+		
+		if(!id.equals("admin")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		System.out.println("승인!!!!!!!!" + store_license);
+		
+		int isDeleteSuccess = adminService.StoreApprove(store_license);
+		
+		if(isDeleteSuccess>0) {
+			return "redirect:/adminStore_approve";
+		} else {
+			model.addAttribute("msg", "승인 실패 ! 다시 확인해주세요!");
+			return "admin/fail_back";
+		}
+		
+	}
+	
+	
+	
+	
 // ================(일반, 맴버) 회원 삭제======================	
 
 	

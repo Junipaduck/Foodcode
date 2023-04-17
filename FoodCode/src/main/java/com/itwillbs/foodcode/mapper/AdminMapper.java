@@ -34,6 +34,8 @@ public interface AdminMapper {
 	String getNoticeCount();
 
 	String getReportCount();
+
+	int updateStoreApprove(@Param("store_license") String store_license);
 	
 	
 }

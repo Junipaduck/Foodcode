@@ -66,6 +66,12 @@
 		SELECT COUNT(*) FROM report;
 	</select>
 	
+	<update id="updateStoreApprove">
+		UPDATE store 
+ 			SET auth_status = 'Y'
+ 				WHERE store_license = "${store_license}";
+	</update>
+	
 </mapper>
 
 

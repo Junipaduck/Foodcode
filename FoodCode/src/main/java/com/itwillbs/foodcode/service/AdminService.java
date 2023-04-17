@@ -85,6 +85,11 @@ public class AdminService {
 		
 		return mapper.getReportCount();
 	}
+
+	public int StoreApprove(String store_license) {
+		
+		return mapper.updateStoreApprove(store_license);
+	}
 	
 	
 	
