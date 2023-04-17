@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <!-- /*
 * Template Name: Tour
@@ -56,7 +57,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">리뷰관리</h1>
+            <h1 class="mb-0"> </h1>
           </div>
         </div>
       </div>
@@ -66,75 +67,38 @@
   <div align="center">
 	  		<table id="rwd-table">
 				<tr>
-					<th class="td_left">idx</th>
-					<th class="td_left">제목</th>
-					<th class="td_left">작성일</th>
-					<th class="td_left">조회수</th>
-				</tr>
+			  		<td>
+				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
+							<h2 class="section-title">리뷰관리</h2>
+					  	</div>
+			  		</td>
+		  		</tr>
+				<c:choose>
+				<c:when test="${not empty map.myReviewList }">
 				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me?review_idx=1'"></td>
+					<th class="td_left">리뷰번호</th>
+					<th class="td_left">가게명</th>
+					<th class="td_left">리뷰내용</th>
+					<th class="td_left">별점</th>
+					<th class="td_left">등록일</th>
+					<th class="td_left">리뷰이미지</th>
+					<th class="td_left">결제번호</th>
 				</tr>
+				<c:forEach items="${map.myReviewList }" var="myReview" end="2">
 				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
+					<td>${myReview.review_idx }</td>
+					<td>${myReview.review_content }</td>
+					<td>${myReview.review_star }</td>
+					<td>${myReview.review_date }</td>
+					<td><input type="button" value="수정" onclick=""></td>
+					<td><input type="button" value="삭제"></td>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>프로젝트 2팀</td>
-					<td>23.03.29</td>
-					<td>100</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
-					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td>
-				</tr>
+				</c:forEach>
+				</c:when>
+				<c:otherwise>
+				<tr><td align="center">조회 된 리뷰가 없어요.</td></tr>
+				</c:otherwise>
+				</c:choose>
 			</table>
   </div>
   

@@ -55,8 +55,8 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">개인 회원 가입</h1>
-            <p class="text-white">양식을 작성해주세요. </p>
+            <h1 class="mb-0"></h1>
+            <p class="text-white"> </p>
           </div>
         </div>
       </div>
