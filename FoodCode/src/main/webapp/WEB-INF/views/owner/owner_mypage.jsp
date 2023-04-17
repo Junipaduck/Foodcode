@@ -97,29 +97,29 @@
           </div>
         </div>
         <div class="col-lg-5 pl-lg-5 ml-auto">
-        <c:forEach items="${storeInfo }" var="StoreVO">
-          <h2 class="section-title mb-4" >${StoreVO.store_name }</h2>
-	          <p>${StoreVO.store_content }</p>
+        <c:forEach items="${storeInfo }" var="storeInfo">
+          <h2 class="section-title mb-4" >${storeInfo.store_name }</h2>
+	          <p>${storeInfo.store_content }</p>
 		          <ul class="list-unstyled two-col clearfix">
 			          <div class="icon">
 			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
-			            &nbsp;&nbsp;&nbsp;${StoreVO.store_address }
+			            &nbsp;&nbsp;&nbsp;${storeInfo.store_address }
 			          </div>
 			          <div class="icon">
 			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-			            &nbsp;&nbsp;&nbsp;${StoreVO.store_phone }
+			            &nbsp;&nbsp;&nbsp;${storeInfo.store_phone }
 			          </div>
 			          <div class="icon">
 			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-			            &nbsp;&nbsp;&nbsp;${StoreVO.store_time }
+			            &nbsp;&nbsp;&nbsp;${storeInfo.store_time }
 			          </div>
 			          <div class="icon">
 			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-			            &nbsp;&nbsp;&nbsp;${StoreVO.store_license }
+			            &nbsp;&nbsp;&nbsp;${storeInfo.store_license }
 			          </div>
 			          <div class="icon">
 			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-			            &nbsp;&nbsp;&nbsp;${StoreVO.store_etc }
+			            &nbsp;&nbsp;&nbsp;${storeInfo.store_etc }
 			          </div>
 		          </ul>
           </c:forEach>
@@ -167,64 +167,23 @@
 			      <th scope="col">예약자이름</th>
 			      <th scope="col">인원</th>
 			      <th scope="col">전화번호</th>
+			      <th scope="col">좌석</th>
 			      <th class="white-space-nowrap" scope="col">기타</th>
 			    </tr>
 			  </thead>
 			  <tbody>
+			  <c:forEach items="${storeBooking }" var="storeBooking">
 			    <tr>
-			      <th scope="row">1</th>
-			      <td>2023-04-07</td>
-			      <td>12:00</td>
+			      <th scope="row">${storeBooking.booking_idx }</th>
+			      <td>${storeBooking.booking_date }</td>
+			      <td>${storeBooking.booking_time }</td>
 			      <td>최보아</td>
-			      <td>2</td>
+			      <td>${storeBooking.booking_num }</td>
 			      <td>051-803-0909</td>
-			      <td class="white-space-nowrap">창가자리주세요</td>
+			      <td>${storeBooking.booking_seat }</td>
+			      <td class="white-space-nowrap">${storeBooking.booking_content }</td>
 			    </tr>
-			    <tr>
-			      <th scope="row">2</th>
-			      <td>2023-04-10</td>
-			      <td>15:00</td>
-			      <td>배하나</td>
-			      <td>2</td>
-			      <td>051-803-0909</td>
-			      <td class="white-space-nowrap">맛있게 해주세요</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">3</th>
-			      <td>2023-04-18</td>
-			      <td>10:00</td>
-			      <td>강지훈</td>
-			      <td>5</td>
-			      <td>051-803-0909</td>
-			      <td class="white-space-nowrap">-</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">4</th>
-			      <td>2023-04-28</td>
-			      <td>17:00</td>
-			      <td>양선정</td>
-			      <td>4</td>
-			      <td>051-803-0909</td>
-			      <td class="white-space-nowrap">-</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">5</th>
-			      <td>2023-05-01</td>
-			      <td>13:00</td>
-			      <td>위찬영</td>
-			      <td>2</td>
-			      <td>051-803-0909</td>
-			      <td class="white-space-nowrap">-</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">6</th>
-			      <td>2023-05-10</td>
-			      <td>17:00</td>
-			      <td>박윤</td>
-			      <td>2</td>
-			      <td>051-803-0909</td>
-			      <td class="white-space-nowrap">-</td>
-			    </tr>
+			    </c:forEach>
 			  </tbody>
 			</table>
             
@@ -259,76 +218,9 @@
     </div>
   </div>
 
-  <div class="site-footer">
-    <div class="inner first">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">About Tour</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
-            <div class="widget">
-              <ul class="list-unstyled social">
-                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                <li><a href="#"><span class="icon-instagram"></span></a></li>
-                <li><a href="#"><span class="icon-facebook"></span></a></li>
-                <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                <li><a href="#"><span class="icon-apple"></span></a></li>
-                <li><a href="#"><span class="icon-google"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2 pl-lg-5">
-            <div class="widget">
-              <h3 class="heading">Pages</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget">
-              <h3 class="heading">Resources</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">Contact</h3>
-              <ul class="list-unstyled quick-info links">
-                <li class="email"><a href="#">mail@example.com</a></li>
-                <li class="phone"><a href="#">+1 222 212 3819</a></li>
-                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="inner dark">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
+	<footer>
+		<jsp:include page="../inc/bottom.jsp"></jsp:include>
+	</footer>
 
   <div id="overlayer"></div>
   <div class="loader">

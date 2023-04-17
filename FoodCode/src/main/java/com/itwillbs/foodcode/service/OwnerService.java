@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.foodcode.mapper.OwnerMapper;
-import com.itwillbs.foodcode.vo.MemberVO;
-import com.itwillbs.foodcode.vo.OwnerVO;
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.vo.*;
 
 @Service
 public class OwnerService {
@@ -39,6 +37,10 @@ public class OwnerService {
 
 	public List<StoreVO> selectStore(StoreVO store) {
 		return mapper.selectStore(store);
+	}
+
+	public List<BookingVO> showBooking(BookingVO booking) {
+		return mapper.showBooking(booking);
 	}
 	
 
