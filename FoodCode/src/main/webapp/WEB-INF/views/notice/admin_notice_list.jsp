@@ -252,14 +252,9 @@ border-top-right-radius: 15px;
 			  
 			  <!-- 하드코딩한것 시작 (공지사항 작업 다 끝나면 지우기) -->
 			      <tr>
-			        <td class="td-idx">12</td>
-			        <td class="td-subject"><a href="noticeWriteForm.no">(하드코딩)관리자전용 notice_write_form.jsp로 이동!</a></td>
-			        <td class="td-date" >2024년 10월 25일</td>
-			      </tr>
-			      <tr>
-			        <td class="td-idx">11</td>
-			        <td class="td-subject"><a href="noticeModifyForm.no">(하드코딩)관리자전용 notice_modify_form.jsp로 이동!</a></td>
-			        <td class="td-date" >2023년 09월 02일</td>
+			        <td class="td-idx">0</td>
+			        <td class="td-subject"><a href="noticeModifyForm.no">(하드코딩)관리자전용 페이지 입니다.</a></td>
+			        <td class="td-date" >2000년 09월 02일</td>
 			      </tr>
 			   <!-- 하드코딩한것 끝 -->
 			   

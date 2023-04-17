@@ -2,6 +2,8 @@ package com.itwillbs.foodcode.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /*create table notice (
 		notice_idx int,
 		notice_title varchar(45),
@@ -20,6 +22,8 @@ public class NoticeVO {
 	private String notice_file;
 	private String notice_file_path;
 	
+	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
+	//private MultipartFile notice_file;
 	
 	public NoticeVO() {}
 

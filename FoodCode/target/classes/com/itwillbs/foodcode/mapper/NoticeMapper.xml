@@ -18,7 +18,7 @@
 					,#{notice_content}
 					,now()
 					,#{notice_file}
-					,'파일경로하드코딩'
+					,#{notice_file_path}
 				)
 		
 		</insert>
