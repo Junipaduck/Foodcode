@@ -75,7 +75,7 @@
 				<c:forEach items="${reviewList }" var = "review">
 					<tr>
 						<td>${review.review_idx }</td>
-						<td>양선정</td>
+						<td>${review.member_id }</td>
 						<td>${storeList[0].store_name }</td>
 						<td>${review.review_content }</td>
 						<td>${review.review_file }</td>

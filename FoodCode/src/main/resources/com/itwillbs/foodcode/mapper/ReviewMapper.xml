@@ -15,7 +15,7 @@
 				,1 -- review_re_lev
 				,1 -- review_re_seq
 				,1 -- store_idx
-				,'ididid' -- customer_id
+				,#{member_id} -- member_id
 				,1 -- pay_idx
 				,#{review_file} -- 리뷰 이미지 파일
 				,#{review_file_path}

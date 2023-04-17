@@ -1,5 +1,6 @@
 package com.itwillbs.foodcode.controller;
 
+import java.lang.reflect.*;
 import java.util.*;
 
 import javax.servlet.http.*;
@@ -27,6 +28,11 @@ public class CustomerController {
     
     @Autowired
     private StoreService storeService;
+    
+    @Autowired
+    private MemberService memberService;
+    
+
 
     @GetMapping(value = "/customerJoin.me")
     public String customerJoin() {
@@ -85,9 +91,14 @@ public class CustomerController {
         return "customer/customer_booking";
     }
 
+    // [방문후] 리뷰 작성 페이지 
     @GetMapping(value = "/customerAfter.me")
-    public String customerAfter(HttpSession session,Model model) {
+    public String customerAfter(HttpSession session,Model model, ReviewVO review) {
         System.out.println("customerAfter.me");
+        
+        
+        
+        
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");

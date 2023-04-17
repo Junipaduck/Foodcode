@@ -34,6 +34,8 @@ public class ReviewController {
     @PostMapping(value = "/reviewWritePro.me")
     public String reviewWritePro(ReviewVO vo, Model model, HttpSession session) {
     	
+    	//로그인 된 회원만 작성 가능하도록 session 아이디 받아오기 
+    	
     	// 파일 업로드 경로  
     	String uploadDir = "resources/upload"; // 프로젝트 상의 업로드 경로 
     	String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로 
@@ -67,6 +69,12 @@ public class ReviewController {
     	// 랜덤 uuid - 하이픈 앞 글자수가 8개 이므로 인덱스 범위가 0, 8 
     	vo.setReview_file(uuid.substring(0, 8) + "_" + originalFileName);
     	System.out.println("실제 업로드 될 파일명 : " + vo.getReview_file());
+    	
+    	// 리뷰 insert 코드 
+    	
+    	// 로그인 된 회원만 작성 가능하도록 세션 아이디 받아오기
+    	session.getAttribute("sId");
+    	vo.setMember_id(session.getAttribute("sId").toString()); // review 테이블 member_id
     	
     	int insertCount = reviewService.insertReview(vo); 
     	if(insertCount > 0) { // 리뷰 작성 성공 시 [방문후] 페이지로 리다이렉트 

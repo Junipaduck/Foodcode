@@ -83,6 +83,12 @@
 <!--                 <label class="text-black" for="email">업체명</label> -->
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
 <!--               </div> -->
+				
+              <div class="form-group">
+                <label class="text-black" for="review_content">작성자</label>
+                <br>
+                <input type="text" placeholder="${sessionScope.sId}" readonly="readonly">
+              </div>
               <div class="form-group">
                 <label class="text-black" for="review_content">내용</label>
                 <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5"></textarea>

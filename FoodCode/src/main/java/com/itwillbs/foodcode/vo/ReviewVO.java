@@ -12,6 +12,8 @@ public class ReviewVO {
 	private int review_re_ref;
 	private int review_re_lev;
 	private int review_re_seq;
+	private int store_idx;
+	private String member_id;
 	private String review_file;
 	private String review_file_path; // 파일 업로드 경로 
 	
@@ -23,7 +25,8 @@ public class ReviewVO {
 	}
 
 	public ReviewVO(int review_idx, String review_content, int review_star, Date review_date, int review_re_ref,
-			int review_re_lev, int review_re_seq, String review_file, String review_file_path, MultipartFile file) {
+			int review_re_lev, int review_re_seq, int store_idx, String member_id, String review_file,
+			String review_file_path, MultipartFile file) {
 		super();
 		this.review_idx = review_idx;
 		this.review_content = review_content;
@@ -32,6 +35,8 @@ public class ReviewVO {
 		this.review_re_ref = review_re_ref;
 		this.review_re_lev = review_re_lev;
 		this.review_re_seq = review_re_seq;
+		this.store_idx = store_idx;
+		this.member_id = member_id;
 		this.review_file = review_file;
 		this.review_file_path = review_file_path;
 		this.file = file;
@@ -93,6 +98,22 @@ public class ReviewVO {
 		this.review_re_seq = review_re_seq;
 	}
 
+	public int getStore_idx() {
+		return store_idx;
+	}
+
+	public void setStore_idx(int store_idx) {
+		this.store_idx = store_idx;
+	}
+
+	public String getMember_id() {
+		return member_id;
+	}
+
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+
 	public String getReview_file() {
 		return review_file;
 	}
@@ -121,9 +142,11 @@ public class ReviewVO {
 	public String toString() {
 		return "ReviewVO [review_idx=" + review_idx + ", review_content=" + review_content + ", review_star="
 				+ review_star + ", review_date=" + review_date + ", review_re_ref=" + review_re_ref + ", review_re_lev="
-				+ review_re_lev + ", review_re_seq=" + review_re_seq + ", review_file=" + review_file
-				+ ", review_file_path=" + review_file_path + ", file=" + file + "]";
+				+ review_re_lev + ", review_re_seq=" + review_re_seq + ", store_idx=" + store_idx + ", member_id="
+				+ member_id + ", review_file=" + review_file + ", review_file_path=" + review_file_path + ", file="
+				+ file + "]";
 	}
+	
 	
 	
 	
