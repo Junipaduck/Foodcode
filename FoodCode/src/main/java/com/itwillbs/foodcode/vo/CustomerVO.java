@@ -2,8 +2,6 @@ package com.itwillbs.foodcode.vo;
 
 import java.util.*;
 
-import org.springframework.format.annotation.*;
-
 public class CustomerVO {
 	private int c_idx;
 	private String c_id;
@@ -12,7 +10,6 @@ public class CustomerVO {
 	private String c_email;
 	private String c_phone;
 	private String c_birth;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date c_join_date;
 	private String c_gender;
 	public int getC_idx() {

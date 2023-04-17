@@ -1,7 +1,5 @@
 package com.itwillbs.foodcode.service;
 
-import java.util.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -48,16 +46,6 @@ public class CustomerService {
 
 	public int modifyMember(String sId, MemberVO member, String modifyMember) {
 		return mapper.modifyMember(sId,member,modifyMember);
-	}
-
-
-	public List bookingList(String sId) {
-		return mapper.bookingList(sId);
-	}
-
-
-	public List selectMyReview(String sId) {
-		return mapper.selectMyReview(sId);
 	}
 
 

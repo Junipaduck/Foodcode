@@ -56,7 +56,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0"></h1>
+            <h1 class="mb-0">방문 후</h1>
           </div>
         </div>
       </div>
@@ -64,15 +64,7 @@
   </div>
   <jsp:include page="customer_left.jsp"></jsp:include>
   <div align="center">
-		
 		<table id="rwd-table">
-			<tr>
-			  		<td>
-				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-							<h2 class="section-title">이용 내역</h2>
-					  	</div>
-			  		</td>
-		  		</tr>
 			<tr>
 				<th class="td_left">idx</th>
 				<th class="td_left">제목</th>
