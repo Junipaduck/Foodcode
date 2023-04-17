@@ -99,7 +99,7 @@
 				</c:forEach>
 				</c:when>
 				<c:otherwise>
-				<tr><td align="center">이용하신 내역이 없어요!.</td></tr>
+				<tr><td align="center">이용하신 내역이 없어요!</td></tr>
 				</c:otherwise>
 				</c:choose>
 		</table>

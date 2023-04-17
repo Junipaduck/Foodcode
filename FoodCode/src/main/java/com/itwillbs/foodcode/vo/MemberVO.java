@@ -12,7 +12,7 @@ public class MemberVO {
 	private String member_email;
 	private String member_birth;
 	private String member_gender;
-	private Date member_join_date;
+	private String member_join_date;
 	
 	public int getMember_idx() {
 		return member_idx;
@@ -68,10 +68,10 @@ public class MemberVO {
 	public void setMember_gender(String member_gender) {
 		this.member_gender = member_gender;
 	}
-	public Date getMember_join_date() {
+	public String getMember_join_date() {
 		return member_join_date;
 	}
-	public void setMember_join_date(Date member_join_date) {
+	public void setMember_join_date(String member_join_date) {
 		this.member_join_date = member_join_date;
 	}
 	@Override
@@ -83,12 +83,12 @@ public class MemberVO {
 	}
 
 	public MemberVO() {
-		// TODO Auto-generated constructor stub
+		
 	}
-	
 	public MemberVO(int member_idx, String member_type, String member_name, String member_id, String member_passwd,
 			String member_phone, String member_email, String member_birth, String member_gender,
-			Date member_join_date) {
+			String member_join_date) {
+		super();
 		this.member_idx = member_idx;
 		this.member_type = member_type;
 		this.member_name = member_name;
@@ -100,6 +100,7 @@ public class MemberVO {
 		this.member_gender = member_gender;
 		this.member_join_date = member_join_date;
 	}
+	
 	
 	
 	

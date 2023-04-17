@@ -39,7 +39,7 @@
 		,member_email
 		,member_birth
 		,member_gender
-		,now()
+		,member_join_date
 		FROM member
 		WHERE member_id = #{sId}
 	</select>
