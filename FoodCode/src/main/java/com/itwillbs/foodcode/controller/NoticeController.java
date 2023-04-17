@@ -1,5 +1,6 @@
 package com.itwillbs.foodcode.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -99,44 +100,55 @@ public class NoticeController {
 	
 	// 공지사항 글쓰기 Pro작업
 	@PostMapping(value = "/noticeWritePro.no")
-	public String noticeWrite(NoticeVO notice, HttpSession session) {
+	public String noticeWrite(NoticeVO notice, HttpSession session, Model model) {
 		System.out.println("noticeWritePro.no");
-		int insertCount = service.registNotice(notice);
-		System.out.println(notice);
+		
+	//	System.out.println(notice);
 		
 		// 파일 경로 작업 시작 -----------------------------
-//        String uploadDir = "/resources/noticeFileUpload"; //프로젝트상의 가상 업로드 경로(근데 깃커밋하면 다른팀원들한테 폴더가 생성이 안됨.. 서버pc필요)
-//        String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
-//        System.out.println("실제 업로드 경로 : " + saveDir);
-//
-//        try {
-//            Date date = new Date();
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//            notice.setNotice_file_path("/" + sdf.format(date));
-//
-//            saveDir = saveDir + notice.getNotice_file_path(); //실제 업로드 경로와 서브 디렉토리 경로 결합하여 저장
-//
-//            Path path = Paths.get(saveDir);
-//
-//            Files.createDirectories(path);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        MultipartFile mFile = notice.getNotice_file();
-//        String originalFileName = mFile.getOriginalFilename();
-//
-//        String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
-//
-//        notice.setNotice_file(uuid.substring(0, 8) + "" + originalFileName);
-//        System.out.println("실제 업로드 될 파일명 : " + notice.getNotice_file());
+        String uploadDir = "/resources/noticeFileUpload"; //프로젝트상의 가상 업로드 경로(근데 깃커밋하면 다른팀원들한테 폴더가 생성이 안됨.. 서버pc필요)
+        String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
+        System.out.println("실제 업로드 경로 : " + saveDir);
 
+        try {
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            notice.setNotice_file_path("/" + sdf.format(date));
 
+            saveDir = saveDir + notice.getNotice_file_path(); //실제 업로드 경로와 서브 디렉토리 경로 결합하여 저장
 
+            Path path = Paths.get(saveDir);
+
+            Files.createDirectories(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        MultipartFile mFile = notice.getFile();
+        String originalFileName = mFile.getOriginalFilename();
+
+        String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
+
+        notice.setNotice_file(uuid.substring(0, 8) + "_" + originalFileName);
+        System.out.println("실제 업로드 될 파일명 : " + notice.getNotice_file());
 
         // 파일 경로 작업 끝 -------------------------------
 		
-		return "redirect:/adminNoticeList.no"; //=> 글쓰기작업완료 후 공지사항 리스트로 이동
+        int insertCount = service.registNotice(notice);
+        
+        if(insertCount > 0) {
+        	try {
+				mFile.transferTo(new File(saveDir, notice.getNotice_file()));
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        	return "redirect:/adminNoticeList.no"; //=> 글쓰기작업완료 후 공지사항 리스트로 이동
+        } else {
+        	model.addAttribute("msg", "글 쓰기 실패!");
+        	return "fail_back";
+        }
 	
 	}
 	

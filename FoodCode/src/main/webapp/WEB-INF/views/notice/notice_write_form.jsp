@@ -130,14 +130,14 @@
  		<div class="col-lg-4">
       	  	<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             	<h2 class="section-title">Notice WriteForm</h2>
-            	<form action="noticeWritePro.no" name="noticeWriteForm" method="post">
+            	<form action="noticeWritePro.no" name="noticeWriteForm" method="POST" enctype="multipart/form-data">
               <div class="form-group">
               	 <label class="text-black" for="notice_title">제목</label>
                	<input class="form-control" type="text" name="notice_title" placeholder="제목을 입력하세요." aria-label="default input example">
               </div>
               <div class="form-group">
-                <label class="text-black" for="notice_file">파일첨부</label>
-                 <input class="form-control" name="notice_file" type="file" id="formFileMultiple" multiple>
+                <label class="text-black" for="file">파일첨부</label>
+                 <input type="file" class="form-control" name="file" id="file">
               </div>
               <div class="form-group">
                 <label class="text-black" for="notice_content">내용</label>

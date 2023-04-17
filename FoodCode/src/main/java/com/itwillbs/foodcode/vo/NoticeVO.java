@@ -23,13 +23,12 @@ public class NoticeVO {
 	private String notice_file_path;
 	
 	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
-	//private MultipartFile notice_file;
+	private MultipartFile file;
 	
 	public NoticeVO() {}
 
-
 	public NoticeVO(int notice_idx, String notice_title, String notice_content, Date notice_date, String notice_file,
-			String notice_file_path) {
+			String notice_file_path, MultipartFile file) {
 		super();
 		this.notice_idx = notice_idx;
 		this.notice_title = notice_title;
@@ -37,75 +36,74 @@ public class NoticeVO {
 		this.notice_date = notice_date;
 		this.notice_file = notice_file;
 		this.notice_file_path = notice_file_path;
+		this.file = file;
 	}
-
 
 	public int getNotice_idx() {
 		return notice_idx;
 	}
 
-
 	public void setNotice_idx(int notice_idx) {
 		this.notice_idx = notice_idx;
 	}
-
 
 	public String getNotice_title() {
 		return notice_title;
 	}
 
-
 	public void setNotice_title(String notice_title) {
 		this.notice_title = notice_title;
 	}
-
 
 	public String getNotice_content() {
 		return notice_content;
 	}
 
-
 	public void setNotice_content(String notice_content) {
 		this.notice_content = notice_content;
 	}
-
 
 	public Date getNotice_date() {
 		return notice_date;
 	}
 
-
 	public void setNotice_date(Date notice_date) {
 		this.notice_date = notice_date;
 	}
-
 
 	public String getNotice_file() {
 		return notice_file;
 	}
 
-
 	public void setNotice_file(String notice_file) {
 		this.notice_file = notice_file;
 	}
-
 
 	public String getNotice_file_path() {
 		return notice_file_path;
 	}
 
-
 	public void setNotice_file_path(String notice_file_path) {
 		this.notice_file_path = notice_file_path;
 	}
 
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 	@Override
 	public String toString() {
 		return "NoticeVO [notice_idx=" + notice_idx + ", notice_title=" + notice_title + ", notice_content="
 				+ notice_content + ", notice_date=" + notice_date + ", notice_file=" + notice_file
-				+ ", notice_file_path=" + notice_file_path + "]";
+				+ ", notice_file_path=" + notice_file_path + ", file=" + file + "]";
 	}
+
+
+	
 
 
 
