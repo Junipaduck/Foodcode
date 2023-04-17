@@ -12,7 +12,7 @@ import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
-import com.itwillbs.foodcode.service.CustomerService;
+import com.itwillbs.foodcode.service.*;
 //import com.itwillbs.foodcode.service.*;
 import com.itwillbs.foodcode.vo.*;
 
@@ -21,6 +21,12 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    
+    @Autowired
+    private ReviewService reviewService;
+    
+    @Autowired
+    private StoreService storeService;
 
     @GetMapping(value = "/customerJoin.me")
     public String customerJoin() {
@@ -103,8 +109,9 @@ public class CustomerController {
         return "customer/customer_last";
     }
 
+    // [리뷰관리] 버튼 클릭시 이동 
     @GetMapping(value = "/customerReview.me")
-    public String customerReview(HttpSession session,Model model) {
+    public String customerReview(HttpSession session, Model model, ReviewVO review, StoreVO store) {
         System.out.println("customerReview.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
@@ -112,6 +119,14 @@ public class CustomerController {
 			return "customer/fail_back";
 		}
 
+		
+		// 리뷰 목록 조회를 위한 코드 작성 
+		List<ReviewVO> reviewList = reviewService.reviewList(review);
+		List<StoreVO> storeList = storeService.selectStoreList(store);
+		
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("storeList", storeList);
+		
         return "customer/customer_review";
     }
 
