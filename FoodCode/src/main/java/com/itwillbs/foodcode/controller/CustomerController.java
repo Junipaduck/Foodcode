@@ -105,35 +105,40 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerAfter.me")
-    public String customerAfter(HttpSession session,Model model) {
+    public ModelAndView customerAfter(HttpSession session,Model model) {
         System.out.println("customerAfter.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
-			return "customer/fail_back";
-			
-//			List<> customerService.getAfterBooking();
-			
-			
-			
+			return new ModelAndView("customer/fail_back");
 		}
+		List bookingList = customerService.bookingList(sId);
+		model.addAttribute("booking", bookingList);
+		Map map = new HashMap();
+		map.put("bookingList",bookingList);
+		System.out.println(bookingList);
 		
 		
 
-        return "customer/customer_after";
+        return new ModelAndView("customer/customer_after","map",map);
     }
 
     @GetMapping(value = "/customerLast.me")
-    public String customerLast(HttpSession session,Model model) {
+    public ModelAndView customerLast(HttpSession session,Model model) {
         System.out.println("customerLast.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
-			return "customer/fail_back";
+			return new ModelAndView("customer/fail_back");
 		}
 		
+		List bookingList = customerService.bookingList(sId);
+		model.addAttribute("booking", bookingList);
+		Map map = new HashMap();
+		map.put("bookingList",bookingList);
+		System.out.println(bookingList);
 
-        return "customer/customer_last";
+        return new ModelAndView("customer/customer_last","map",map);
     }
 
     @GetMapping(value = "/customerReview.me")

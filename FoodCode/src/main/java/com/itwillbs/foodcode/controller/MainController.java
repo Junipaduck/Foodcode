@@ -102,7 +102,7 @@ public class MainController {
 		
 		
 		if(member.getMember_type().equals("c")) {
-			return "customer/customer_mypage";
+			return "redirect:/MemberInfo.me";
 		} else {
 			return "owner/owner_mypage";
 		}

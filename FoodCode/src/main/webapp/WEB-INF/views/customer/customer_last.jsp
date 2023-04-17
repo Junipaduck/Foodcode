@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <!-- /*
 * Template Name: Tour
@@ -71,76 +72,35 @@
 					  	</div>
 			  		</td>
 		  		</tr>
-			<tr>
-				<th class="td_left">idx</th>
-				<th class="td_left">제목</th>
-				<th class="td_left">작성일</th>
-				<th class="td_left">조회수</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
+			<c:choose>
+				<c:when test="${not empty map.bookingList }">
+				<tr>
+					<th class="td_left">예약번호</th>
+					<th class="td_left">가게명</th>
+					<th class="td_left">예약일</th>
+					<th class="td_left">예약시간</th>
+					<th class="td_left">인원 수</th>
+					<th class="td_left">선호 자리</th>
+					<th class="td_left">요청 사항</th>
+				</tr>
+				<c:forEach items="${map.bookingList }" var="booking">
+				<tr>
+					<td>${booking.booking_idx }</td>
+					<td>${booking.store_name }</td>
+					<td>${booking.booking_date }</td>
+					<td>${booking.booking_time }</td>
+					<td>${booking.booking_num }</td>
+					<td>${booking.booking_seat }</td>
+					<td>${booking.booking_content }</td>
+					<td><input type="button" value="수정" onclick=""></td>
+					<td><input type="button" value="삭제"></td>
+				</tr>
+				</c:forEach>
+				</c:when>
+				<c:otherwise>
+				<tr><td align="center">조회 된 예약이 없어요.</td></tr>
+				</c:otherwise>
+				</c:choose>
 		</table>
 	</div>  
 	
