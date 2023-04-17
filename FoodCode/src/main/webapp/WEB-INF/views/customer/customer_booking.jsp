@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <!-- /*
 * Template Name: Tour
@@ -56,74 +57,107 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">예약관리</h1>
+            <h1 class="mb-0"></h1>
           </div>
         </div>
       </div>
     </div>
   </div>
   <jsp:include page="customer_left.jsp"></jsp:include>
-  
-  <div>
-  <h3 align="center">방문전</h3>
+  <div class="untree_co-section">
   	<div align="center">
 		<table id="rwd-table">
 			<tr>
-				<th class="td_left">idx</th>
-				<th class="td_left">제목</th>
-				<th class="td_left">작성일</th>
-				<th class="td_left">조회수</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerReviewModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerReviewModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-			<th colspan="6"><div align="center"><button class="custom-btn btn-10" onclick="location.href = 'customerLast.me'">더보기</button></div></th>
-			</tr>
+		  		<td>
+			  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
+						<h2 class="section-title">예약 내역</h2>
+				  	</div>
+		  		</td>
+	  		</tr>
+			<c:choose>
+				<c:when test="${not empty map.bookingList }">
+				<tr>
+					<th class="td_left">예약번호</th>
+					<th class="td_left">가게명</th>
+					<th class="td_left">예약일</th>
+					<th class="td_left">예약시간</th>
+					<th class="td_left">인원 수</th>
+					<th class="td_left">선호 자리</th>
+					<th class="td_left">요청 사항</th>
+				</tr>
+				<c:forEach items="${map.bookingList }" var="booking" end="2">
+				<tr>
+					<td>${booking.booking_idx }</td>
+					<td>${booking.store_name }</td>
+					<td>${booking.booking_date }</td>
+					<td>${booking.booking_time }</td>
+					<td>${booking.booking_num }</td>
+					<td>${booking.booking_seat }</td>
+					<td>${booking.booking_content }</td>
+					<td><input type="button" value="수정" onclick=""></td>
+					<td><input type="button" value="삭제"></td>
+				</tr>
+				</c:forEach>
+				</c:when>
+				<c:otherwise>
+				<tr><td align="center">조회 된 예약이 없어요.</td></tr>
+				</c:otherwise>
+				</c:choose>
+			<c:choose>
+				<c:when test="${not empty map.bookingList }">
+					<tr>
+						<th colspan="9"><div align="center"><button class="custom-btn btn-10" onclick="location.href = 'customerLast.me'">더보기</button></div></th>
+					</tr>
+				</c:when>
+			</c:choose>
 		</table>
   </div>
-  <h3 align="center">방문후</h3>
   	<div align="center">
 		<table id="rwd-table">
 			<tr>
-				<th class="td_left">idx</th>
-				<th class="td_left">제목</th>
-				<th class="td_left">작성일</th>
-				<th class="td_left">조회수</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerReviewModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>프로젝트 2팀</td>
-				<td>23.03.29</td>
-				<td>100</td>
-				<td><input type="button" value="수정" onclick="location.href='customerReviewModify.me'"></td>
-				<td><input type="button" value="취소"></td>
-			</tr>
-			<tr>
-				<th colspan="6"><div align="center"><button class="custom-btn btn-10" onclick="location.href = 'customerAfter.me'">더보기</button></div></th>
-			</tr>
+			  		<td>
+				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
+							<h2 class="section-title">이용 내역</h2>
+					  	</div>
+			  		</td>
+		  		</tr>
+			<c:choose>
+				<c:when test="${not empty map.bookingList }">
+				<tr>
+					<th class="td_left">예약번호</th>
+					<th class="td_left">가게명</th>
+					<th class="td_left">예약일</th>
+					<th class="td_left">예약시간</th>
+					<th class="td_left">인원 수</th>
+					<th class="td_left">선호 자리</th>
+					<th class="td_left">요청 사항</th>
+				</tr>
+				<c:forEach items="${map.bookingList }" var="booking" end="2">
+				<tr>
+					<td>${booking.booking_idx }</td>
+					<td>${booking.store_name }</td>
+					<td>${booking.booking_date }</td>
+					<td>${booking.booking_time }</td>
+					<td>${booking.booking_num }</td>
+					<td>${booking.booking_seat }</td>
+					<td>${booking.booking_content }</td>
+					<td><input type="button" value="리뷰" onclick=""></td>
+				</tr>
+				</c:forEach>
+				</c:when>
+				<c:otherwise>
+				<tr><td align="center">기간이 지난 예약이 없어요.</td></tr>
+				</c:otherwise>
+				</c:choose>
+			<c:choose>
+				<c:when test="${not empty map.bookingList }">
+					<tr>
+						<th colspan="9"><div align="center"><button class="custom-btn btn-10" onclick="location.href = 'customerAfter.me'">더보기</button></div></th>
+					</tr>
+				</c:when>
+			</c:choose>
 		</table>
+	</div>
 	</div>
   
   <div class="py-5 cta-section">
