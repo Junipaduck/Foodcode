@@ -148,7 +148,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerReview.me")
-    public String customerReview(HttpSession session, Model model, ReviewVO review, StoreVO store, int review_idx) {
+    public String customerReview(HttpSession session, Model model, ReviewVO review, StoreVO store) {
         System.out.println("customerReview.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
@@ -169,7 +169,6 @@ public class CustomerController {
 		
 		// 0418 양선정 수정 코드 
 		// 마이페이지 리뷰 목록 조회 
-		review.setReview_idx(review_idx);
 		
 		List<ReviewVO> reviewList = reviewService.reviewList(review);
 		List<StoreVO> storeList = storeService.selectStoreList(store);
