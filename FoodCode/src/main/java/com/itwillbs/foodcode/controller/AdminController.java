@@ -92,7 +92,7 @@ public class AdminController {
     }
 	
 	
-// ==============리스트===========================	
+// ============== 각 항목 리스트===========================	
 	
 	@GetMapping(value = "adminMember_list")
 	public String customerList(Model model) {
@@ -119,9 +119,7 @@ public class AdminController {
 		
 		List<StoreVO> storeList = adminService.getStoreList();
 		
-		
 		model.addAttribute("storeList", storeList);
-		
 		
 		
 		return "/admin/store_list";
@@ -171,7 +169,7 @@ public class AdminController {
 	@GetMapping(value = "adminStore_approve")
 	public String storeApprove(Model model) {
 		
-		List aList = adminService.getStoreList2();
+		List aList = adminService.getNoApprove();
 		model.addAttribute("aList", aList);
 		
 		return "/admin/store_approve";
@@ -187,7 +185,6 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		System.out.println("승인!!!!!!!!" + store_license);
 		
 		int isDeleteSuccess = adminService.StoreApprove(store_license);
 		
@@ -199,8 +196,6 @@ public class AdminController {
 		}
 		
 	}
-	
-	
 	
 	
 // ================(일반, 맴버) 회원 삭제======================	

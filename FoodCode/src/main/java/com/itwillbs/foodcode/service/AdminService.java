@@ -57,6 +57,7 @@ public class AdminService {
 	public List getStoreList2() {
 		return mapper.getStoreList2();
 	}
+
 	
 //---------------카운트-------------
 	public String getMemberCount() {
@@ -86,6 +87,12 @@ public class AdminService {
 		return mapper.getReportCount();
 	}
 
+	
+	// =============식당 승인 리스트 조회 후 승인===============
+	public List getNoApprove() {
+		return mapper.getNoApprove();
+	}
+	
 	public int StoreApprove(String store_license) {
 		
 		return mapper.updateStoreApprove(store_license);

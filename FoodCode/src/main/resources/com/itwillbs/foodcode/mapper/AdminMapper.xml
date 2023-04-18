@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="getStoreList2" resultType="map">
-	SELECT m.member_id, s.store_name, s.store_license, ROUND(AVG(re.review_star),1) AS review_star
+	SELECT m.member_id, s.store_name, s.store_license, s.auth_status, ROUND(AVG(re.review_star),1) AS review_star
 		FROM member m
 			JOIN store s ON m.member_id = s.member_id
 				LEFT JOIN review re ON s.store_idx = re.store_idx
@@ -66,13 +66,24 @@
 		SELECT COUNT(*) FROM report;
 	</select>
 	
+	<select id="getNoApprove" resultType="map">
+		SELECT m.member_id, s.store_name, s.store_license, s.store_type , s.store_date, s.auth_status
+		FROM member m
+			JOIN store s ON m.member_id = s.member_id
+				WHERE s.auth_status = 'N'
+				ORDER BY s.store_date ASC;
+	</select>
+	
 	<update id="updateStoreApprove">
 		UPDATE store 
  			SET auth_status = 'Y'
  				WHERE store_license = "${store_license}";
 	</update>
 	
+	
+	
 </mapper>
+
 
 
 

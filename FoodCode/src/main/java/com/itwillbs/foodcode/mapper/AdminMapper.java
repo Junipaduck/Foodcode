@@ -24,6 +24,8 @@ public interface AdminMapper {
 	int delectStore(@Param("store_license") String store_license, @Param("owner_id") String owner_id);
 
 	List getStoreList2();
+	
+	List getNoApprove();
 
 	String getMemberCount();
 	
