@@ -31,7 +31,7 @@ public class ReviewController {
     }
 	
     // 리뷰 작성 
-    @PostMapping(value = "/reviewWritePro.me")
+    @RequestMapping(value = "/reviewWritePro.me", method = {RequestMethod.GET, RequestMethod.POST})
     public String reviewWritePro(ReviewVO vo, Model model, HttpSession session) {
     	
     	//로그인 된 회원만 작성 가능하도록 session 아이디 받아오기 

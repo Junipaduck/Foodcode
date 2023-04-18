@@ -65,7 +65,8 @@
   </div>
   <jsp:include page="customer_left.jsp"></jsp:include>
   <div align="center">
-		
+  		<!-- form 태그 추가  -->
+		<form action="customerReviewWrite.me">
 		<table id="rwd-table">
 			<tr>
 			  		<td>
@@ -95,6 +96,7 @@
 					<td>${booking.booking_seat }</td>
 					<td>${booking.booking_content }</td>
 					<!-- 리뷰작성 버튼 클릭시 리뷰 작성 양식으로 이동 -->
+					
 					<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me'"></td>
 				</tr>
 				</c:forEach>
@@ -104,6 +106,9 @@
 				</c:otherwise>
 				</c:choose>
 		</table>
+		<input type="hidden" name="store_idx" value="${booking.store_idx}" />
+<%--       	<input type="hidden" name="booking_idx" value="${booking.booking_idx}" /> --%>
+		</form>
   </div>
   
   <div class="py-5 cta-section">
