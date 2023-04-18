@@ -40,6 +40,10 @@
  <!-- css 시작 ------------------------------------------------------------------------------------ -->
  <style type="text/css">
  
+#file444 {
+ 	height: 38px;
+ }
+ 
 .hanadiv{
 	margin-top: 40px;
 }
@@ -137,7 +141,7 @@
               </div>
               <div class="form-group">
                 <label class="text-black" for="file">파일첨부</label>
-                 <input type="file" class="form-control" name="file" id="file">
+                 <input type="file" class="form-control" name="file" id="file444">
               </div>
               <div class="form-group">
                 <label class="text-black" for="notice_content">내용</label>

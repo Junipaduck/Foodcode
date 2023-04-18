@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <title>아이티윌2팀</title>
+  <title>공지사항수정(관리자전용)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -38,6 +38,10 @@
  
  <!-- css 시작 ------------------------------------------------------------------------------------ -->
  <style type="text/css">
+ 
+ #file444 {
+ 	height: 38px;
+ }
  
 .hanadiv{
 	margin-top: 40px;
@@ -139,7 +143,7 @@
               </div>
               <div class="form-group">
                 <label class="text-black" for="notice_file">파일첨부</label>
-                 <input class="form-control" name="notice_file" type="file" id="formFileMultiple" multiple> 원본 파일 : ${notice.notice_file }
+                 <input id="file444" class="form-control" name="notice_file" type="file" id="formFileMultiple" multiple> 원본 파일 : ${notice.notice_file }
               </div>
               <div class="form-group">
                 <label class="text-black" for="notice_content">내용</label>

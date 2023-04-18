@@ -67,9 +67,7 @@
     height: 50px;
 }
 
-#h1-1 {
-	font-family: 'Noto Sans KR', sans-serif;
-}
+
 
 #div-top2 {
 	margin: auto;

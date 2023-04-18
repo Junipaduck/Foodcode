@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이티윌2팀</title>
+<title>공지사항(관리자전용)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="../favicon.png">
@@ -34,6 +34,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@300&family=Gowun+Dodum&family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
  
+ 
  <!-- css 시작 ------------------------------------------------------------------------------------ -->
  <style type="text/css">
  .board-header h2 {
@@ -59,10 +60,6 @@ h2 {
 
 }
 
-
-.h2-11 {
-	font-family: 'Noto Sans KR', sans-serif;
-}
 
 /* 버튼 기본 css */
 .btn44{
@@ -150,7 +147,7 @@ h2 {
 		            <div class="date"><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></div> <!-- 공지사항 날짜 -->
 		            <hr>
 			        </div>
-			        <div class="contents"> 
+			        <div class="contents" style="white-space: pre-line;"> 
 			        	${notice.notice_content } <!-- div태그 안에 공지사항 내용 -->
 			        </div>	
 	    		<br><hr>

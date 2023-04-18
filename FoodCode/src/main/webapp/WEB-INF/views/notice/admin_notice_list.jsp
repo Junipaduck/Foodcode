@@ -28,7 +28,9 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
-
+<!-- 부트스트랩 css 링크 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
 
 
 
@@ -39,6 +41,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@300&family=Gowun+Dodum&family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
 <style type="text/css">
+.page-link {
+	color: #5b6064;
+}
+
 .table-box2 {
 	background: #ff9507;
 	color: #fff;
@@ -63,9 +69,7 @@
     height: 50px;
 }
 
-#h1-1 {
-	font-family: 'Noto Sans KR', sans-serif;
-}
+
 
 #div-top2 {
 	margin: auto;
@@ -101,6 +105,7 @@
 	font-size:x-small;
     width: 140px
 }
+
 
 .td-idx {
 	width: 60px;
@@ -265,6 +270,25 @@ border-top-right-radius: 15px;
 			      </tr>
 		      </tbody>
 		    </table>
+		       <!-- 페이징 코드시작 -->
+					<div class="page123">
+						<nav aria-label="Page navigation example">
+						  <ul class="pagination justify-content-center">
+						    <li class="page-item disabled">
+						      <a class="page-link">이전</a>
+						    </li>
+							    <li class="page-item"><a class="page-link" href="#">1</a></li>
+							    <li class="page-item"><a class="page-link" href="#">2</a></li>
+							    <li class="page-item"><a class="page-link" href="#">3</a></li>
+							    <li class="page-item"><a class="page-link" href="#">4</a></li>
+							    <li class="page-item"><a class="page-link" href="#">5</a></li>
+							    <li class="page-item">
+							      <a class="page-link" href="#">다음</a>
+						    </li>
+						  </ul>
+						</nav>
+					</div>
+					<!-- 페이징 코드 끝 -->
 		  </div>
   
  <!-- 중간body 끝 --------------------------------------------------------------------------------->
