@@ -169,8 +169,9 @@ public class CustomerController {
 		
 		// 0418 양선정 수정 코드 
 		// 마이페이지 리뷰 목록 조회 
-		
-		List<ReviewVO> reviewList = reviewService.reviewList(review);
+		review.setMember_id(session.getAttribute("sId").toString());
+//		List<ReviewVO> reviewList = reviewService.reviewList(review);
+		List<ReviewVO> reviewList = reviewService.customerReviewList(review);
 		List<StoreVO> storeList = storeService.selectStoreList(store);
 		
 		model.addAttribute("reviewList", reviewList);

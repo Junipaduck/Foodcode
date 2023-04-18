@@ -33,6 +33,11 @@ public class ReviewService {
 		return mapper.selectReviewList(review);
 	}
 
+	public List<ReviewVO> customerReviewList(ReviewVO review) {
+		
+		return mapper.customerReviewList(review);
+	}
+
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {
 //		// TODO Auto-generated method stub
 //		return mapper.getReviewList(starRow, listLimit);

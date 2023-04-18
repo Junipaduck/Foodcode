@@ -15,6 +15,8 @@ public interface ReviewMapper {
 
 	List<ReviewVO> selectReviewList(ReviewVO review);
 
+	List<ReviewVO> customerReviewList(ReviewVO review);
+
 //	List<ReviewVO> getReviewList(int starRow, int listLimit);
 
 //	List<ReviewVO> selectReviewList(PageVO page) throws Exception;

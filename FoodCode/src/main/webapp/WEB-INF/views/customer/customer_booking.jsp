@@ -141,7 +141,7 @@
 					<td>${booking.booking_num }</td>
 					<td>${booking.booking_seat }</td>
 					<td>${booking.booking_content }</td>
-					<td><input type="button" value="리뷰" onclick=""></td>
+					<td><input type="button" value="리뷰" onclick="location.href='customerReviewWrite.me'"></td>
 				</tr>
 				</c:forEach>
 				</c:when>

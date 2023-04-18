@@ -38,9 +38,21 @@
 			WHERE review_idx = #{review_idx}
 	</delete>
 	
+	<!-- 전체 리뷰 목록 조회용 -->
 	<select id="selectReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">
 		   SELECT *
             	FROM review
+           		ORDER BY 
+                	review_re_ref
+            	LIMIT 
+                10
+	</select>
+	
+	<!-- 특정 아이디 리뷰 목록 조회용 -->
+	<select id="customerReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+		   SELECT *
+            	FROM review
+            	WHERE member_id = #{member_id}
            		ORDER BY 
                 	review_re_ref
             	LIMIT 
