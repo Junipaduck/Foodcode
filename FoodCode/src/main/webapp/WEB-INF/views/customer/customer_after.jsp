@@ -94,8 +94,7 @@
 					<td>${booking.booking_num }</td>
 					<td>${booking.booking_seat }</td>
 					<td>${booking.booking_content }</td>
-					<!-- 리뷰 작성 버튼 클릭 시 리뷰 작성 form 으로 이동  -->
-					<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me'"></td>
+					<td><input type="button" value="리뷰" onclick=""></td>
 				</tr>
 				</c:forEach>
 				</c:when>
