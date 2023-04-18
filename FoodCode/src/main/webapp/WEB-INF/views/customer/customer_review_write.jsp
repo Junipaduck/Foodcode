@@ -70,8 +70,8 @@
             <h2 class="section-title">Form</h2>
             <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
             <form class="contact-form bg-white" action="reviewWritePro.me" method="post" enctype="multipart/form-data">
-<%--             		<input type="hidden" name="store_idx" value="${booking.store_idx}" /> --%>
-<%--        		      	<input type="hidden" name="booking_idx" value="${booking.booking_idx}" /> --%>
+            		<input type="hidden" name="store_idx" value="${booking.store_idx}" />
+       		      	<input type="hidden" name="booking_idx" value="${booking.booking_idx}" />
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="customer_id">아이디</label> -->
 <!--                 <input type="text" class="form-control" id="customer_id" name="customer_id" aria-describedby="emailHelp"> -->

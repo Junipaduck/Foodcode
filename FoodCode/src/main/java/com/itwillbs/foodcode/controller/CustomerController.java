@@ -95,7 +95,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerBooking.me")
-    public ModelAndView customerBooking(HttpSession session,Model model) {
+    public ModelAndView customerBooking(HttpSession session, Model model) {
         System.out.println("customerBooking.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
@@ -111,7 +111,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerAfter.me")
-    public ModelAndView customerAfter(HttpSession session,Model model) {
+    public ModelAndView customerAfter(HttpSession session, Model model) {
         System.out.println("customerAfter.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
@@ -130,7 +130,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerLast.me")
-    public ModelAndView customerLast(HttpSession session,Model model) {
+    public ModelAndView customerLast(HttpSession session, Model model) {
         System.out.println("customerLast.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {

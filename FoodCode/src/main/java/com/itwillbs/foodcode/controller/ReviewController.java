@@ -32,9 +32,10 @@ public class ReviewController {
 	
     // 리뷰 작성 
     @RequestMapping(value = "/reviewWritePro.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewWritePro(ReviewVO vo, Model model, HttpSession session) {
+    public String reviewWritePro(ReviewVO vo, Model model, HttpSession session, @RequestParam(defaultValue = "") int store_idx) {
     	
-    	//로그인 된 회원만 작성 가능하도록 session 아이디 받아오기 
+    	// store_idx 받아오기 
+    	vo.setStore_idx(store_idx);
     	
     	// 파일 업로드 경로  
     	String uploadDir = "resources/upload"; // 프로젝트 상의 업로드 경로 
@@ -78,6 +79,7 @@ public class ReviewController {
     	
     	int insertCount = reviewService.insertReview(vo); 
     	if(insertCount > 0) { // 리뷰 작성 성공 시 [방문후] 페이지로 리다이렉트 
+
     		
     		// 파일 업로드 코드 
     		/*
