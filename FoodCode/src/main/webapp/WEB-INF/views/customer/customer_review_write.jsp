@@ -116,7 +116,8 @@
                 <!-- MultipartFile 변수와 name 속성이 일치해야함. file -->
                 <input type="file" name="file" id="file" >
               </div>
-              <button type="submit" class="btn btn-primary">작성</button>
+              <!-- 리뷰 작성 제출 버튼 -->
+              <button type="submit" class="btn btn-primary" onclick="location.href='reviewWritePro.me'">작성</button>
             </form>
           </div>
 
