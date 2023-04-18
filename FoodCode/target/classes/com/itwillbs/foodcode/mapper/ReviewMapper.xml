@@ -35,7 +35,7 @@
 	<delete id="deleteReview">
 		DELETE 
 			FROM review
-			WHERE review_idx = 1
+			WHERE review_idx = #{review_idx}
 	</delete>
 	
 	<select id="selectReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">

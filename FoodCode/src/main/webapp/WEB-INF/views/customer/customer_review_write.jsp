@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
+
 <!doctype html>
 <head>
   <meta charset="utf-8">
@@ -116,7 +111,8 @@
                 <!-- MultipartFile 변수와 name 속성이 일치해야함. file -->
                 <input type="file" name="file" id="file" >
               </div>
-              <button type="submit" class="btn btn-primary">작성</button>
+              <!-- 작성 버튼 클릭시 리뷰 양식 제출 -->
+              <button type="submit" class="btn btn-primary" onclick="location.href='reviewWritePro.me'">작성</button>
             </form>
           </div>
 

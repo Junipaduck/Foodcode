@@ -81,7 +81,7 @@ public class MainController {
 	// 로그인 후 아이디 클릭시 일반회원인지 점주인지 판별하여 각각 마이페이지 이동
 	// 0415최보아 - 점주회원은 마이페이지 이동 시 가게 정보 가져가야함 - store_idx = 1로 하드코딩
 	@GetMapping("/mypage.me")
-	public String mypage(HttpSession session, Model model, StoreVO store, BookingVO booking) {
+	public String mypage(HttpSession session, Model model, StoreVO store) {
 //		return "customer/customer_mypage";
 		String id = (String)session.getAttribute("sId");
 		if(id == null) {
@@ -95,10 +95,12 @@ public class MainController {
 		List<StoreVO> storeInfo = ownerService.selectStore(store);
 		System.out.println(storeInfo);
 		model.addAttribute("storeInfo", storeInfo);
+		
+		// 마이페이지 접근 오류로 인해 잠시 주석 
 		// 점주회원 예약 정보 조회--------------------------------
-		List<BookingVO> storeBooking = ownerService.showBooking(booking);
-		System.out.println(storeBooking);
-		model.addAttribute("storeBooking", storeBooking);
+//		List<BookingVO> storeBooking = ownerService.showBooking(booking);
+//		System.out.println(storeBooking);
+//		model.addAttribute("storeBooking", storeBooking);
 		
 		
 		if(member.getMember_type().equals("c")) {

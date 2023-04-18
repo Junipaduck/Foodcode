@@ -73,32 +73,50 @@
 					  	</div>
 			  		</td>
 		  		</tr>
-				<c:choose>
-				<c:when test="${not empty map.myReviewList }">
+		  		<!-- 위찬영코드 -->
+<%-- 				<c:choose> --%>
+<%-- 				<c:when test="${not empty map.myReviewList }"> --%>
 				<tr>
 					<th class="td_left">리뷰번호</th>
-					<th class="td_left">가게명</th>
+					<th class="td_left">작성자</th>
+					<th class="td_left">업체명</th>
 					<th class="td_left">리뷰내용</th>
-					<th class="td_left">별점</th>
-					<th class="td_left">등록일</th>
 					<th class="td_left">리뷰이미지</th>
-					<th class="td_left">결제번호</th>
+					<th class="td_left">별점</th>
+					<th class="td_left">작성일자</th>
 				</tr>
-				<c:forEach items="${map.myReviewList }" var="myReview" end="2">
-				<tr>
-					<td>${myReview.review_idx }</td>
-					<td>${myReview.review_content }</td>
-					<td>${myReview.review_star }</td>
-					<td>${myReview.review_date }</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
-				</tr>
+<%-- 				<c:forEach items="${map.myReviewList }" var="myReview" end="2"> --%>
+<!-- 				<tr> -->
+<%-- 					<td>${myReview.review_idx }</td> --%>
+<%-- 					<td>${myReview.review_content }</td> --%>
+<%-- 					<td>${myReview.review_star }</td> --%>
+<%-- 					<td>${myReview.review_date }</td> --%>
+<!-- 					수정 버튼 클릭 시 리뷰 수정 양식으로 이동 -->
+<!-- 					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td> -->
+<!-- 					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td> -->
+<!-- 				</tr> -->
+<%-- 				</c:forEach> --%>
+<%-- 				</c:when> --%>
+<%-- 				<c:otherwise> --%>
+<!-- 				<tr><td align="center">조회 된 리뷰가 없어요.</td></tr> -->
+<%-- 				</c:otherwise> --%>
+<%-- 				</c:choose> --%>
+
+				<!-- 0418 양선정 코드 -->
+				<c:forEach items="${reviewList }" var="review">
+					<tr>
+						<td>${review.review_idx }</td>
+						<td>${review.member_id }</td>
+						<td>${storeList[0].store_name }</td>
+						<td>${review.review_content }</td>
+						<td>${review.review_file }</td>
+						<td>${review.review_star }</td>
+						<td>${review.review_date }</td>
+						<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+						<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me?review_idx=${review_idx}'"></td>
+					</tr>
+				
 				</c:forEach>
-				</c:when>
-				<c:otherwise>
-				<tr><td align="center">조회 된 리뷰가 없어요.</td></tr>
-				</c:otherwise>
-				</c:choose>
 			</table>
   </div>
   

@@ -12,7 +12,7 @@ import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
-import com.itwillbs.foodcode.service.CustomerService;
+import com.itwillbs.foodcode.service.*;
 //import com.itwillbs.foodcode.service.*;
 import com.itwillbs.foodcode.vo.*;
 
@@ -21,6 +21,12 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    
+    @Autowired
+    private ReviewService reviewService;
+    
+    @Autowired
+    private StoreService storeService;
 
     @GetMapping(value = "/customerJoin.me")
     public String customerJoin() {
@@ -142,23 +148,36 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerReview.me")
-    public ModelAndView customerReview(HttpSession session,Model model) {
+    public String customerReview(HttpSession session, Model model, ReviewVO review, StoreVO store, int review_idx) {
         System.out.println("customerReview.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
-			return new ModelAndView("customer/fail_back");
+			return "customer/fail_back";
 		}
 		
-		List myReviewList = customerService.selectMyReview(sId);
-		System.out.println(myReviewList);
-		model.addAttribute("myReviewList", myReviewList);
-		
-		Map map = new HashMap();
-		map.put("myReviewList", myReviewList);
-
-        return new ModelAndView("customer/customer_review","map",map);
+		// 위찬영 코드 
+//		List myReviewList = customerService.selectMyReview(sId);
+//		System.out.println(myReviewList);
+//		model.addAttribute("myReviewList", myReviewList);
+//		
+//		Map map = new HashMap();
+//		map.put("myReviewList", myReviewList);
+//
+//        return new ModelAndView("customer/customer_review","map",map);
 //        return new ModelAndView("customer/customer_review");
+		
+		// 0418 양선정 수정 코드 
+		// 마이페이지 리뷰 목록 조회 
+		review.setReview_idx(review_idx);
+		
+		List<ReviewVO> reviewList = reviewService.reviewList(review);
+		List<StoreVO> storeList = storeService.selectStoreList(store);
+		
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("storeList", storeList);
+		
+		return "customer/customer_review";
     }
 
     @GetMapping(value = "/customerModify.me")
