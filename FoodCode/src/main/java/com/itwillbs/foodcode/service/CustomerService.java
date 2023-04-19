@@ -61,4 +61,14 @@ public class CustomerService {
 	}
 
 
+	public List afterBookingList(String sId) {
+		return mapper.afterBookingList(sId);
+	}
+
+
+	public int customerBookingCancle(String booking_idx) {
+		return mapper.customerBookingCancle(booking_idx);
+	}
+
+
 }

@@ -127,13 +127,9 @@ function DeleteMember() {
               <div class="form-group">
                 <label class="text-black" for="email">성별</label>
                 <div class="select">
-				 <input type="radio" id="select" name="member_gender" <c:if test="${member.member_gender eq '남'}">checked</c:if> ><label for="select">남</label>
-				 <input type="radio" id="select2" name="member_gender" <c:if test="${member.member_gender eq '여'}">checked</c:if>><label for="select2">여</label>
+				 <input type="radio" id="select" name="member_gender"  <c:if test="${map.member.member_gender eq '남'}">checked</c:if> ><label for="select">남</label>
+				 <input type="radio" id="select2" name="member_gender"  <c:if test="${map.member.member_gender eq '여'}">checked</c:if>><label for="select2">여</label>
 				</div>
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="message">내용</label>
-                <textarea name="" class="form-control" id="member_content" cols="30" rows="5"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">수정</button>
               <button type="button" class="btn btn-primary" onclick="location.href ='customerDelete.me'">회원 탈퇴</button>

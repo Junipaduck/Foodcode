@@ -74,7 +74,7 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
-            <form class="contact-form bg-white" action="customerJoinPro.me">
+            <form class="contact-form bg-white" action="customerJoinPro.me" method="post">
               <div class="form-group">
                 <label class="text-black">아이디</label>
                 <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id">

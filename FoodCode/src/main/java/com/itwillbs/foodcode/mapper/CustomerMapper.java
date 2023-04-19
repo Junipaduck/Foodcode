@@ -28,4 +28,8 @@ public interface CustomerMapper {
 
 	List selectMyReview(String sId);
 
+	List afterBookingList(String sId);
+
+	int customerBookingCancle(String booking_idx);
+
 }

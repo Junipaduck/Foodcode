@@ -94,8 +94,7 @@
 					<td>${booking.booking_num }</td>
 					<td>${booking.booking_seat }</td>
 					<td>${booking.booking_content }</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="취소" onclick="location.href='customerBookingCancle.me?booking_idx=${booking.booking_idx}'"></td>
 				</tr>
 				</c:forEach>
 				</c:when>
@@ -122,7 +121,7 @@
 			  		</td>
 		  		</tr>
 			<c:choose>
-				<c:when test="${not empty map.bookingList }">
+				<c:when test="${not empty map.afterBookingList }">
 				<tr>
 					<th class="td_left">예약번호</th>
 					<th class="td_left">가게명</th>
@@ -132,16 +131,16 @@
 					<th class="td_left">선호 자리</th>
 					<th class="td_left">요청 사항</th>
 				</tr>
-				<c:forEach items="${map.bookingList }" var="booking" end="2">
+				<c:forEach items="${map.afterBookingList }" var="afterBooking" end="2">
 				<tr>
-					<td>${booking.booking_idx }</td>
-					<td>${booking.store_name }</td>
-					<td>${booking.booking_date }</td>
-					<td>${booking.booking_time }</td>
-					<td>${booking.booking_num }</td>
-					<td>${booking.booking_seat }</td>
-					<td>${booking.booking_content }</td>
-					<td><input type="button" value="리뷰" onclick="location.href='customerReviewWrite.me?store_idx=${booking.store_idx}'"></td>
+					<td>${afterBooking.booking_idx }</td>
+					<td>${afterBooking.store_name }</td>
+					<td>${afterBooking.booking_date }</td>
+					<td>${afterBooking.booking_time }</td>
+					<td>${afterBooking.booking_num }</td>
+					<td>${afterBooking.booking_seat }</td>
+					<td>${afterBooking.booking_content }</td>
+					<td><input type="button" value="리뷰" onclick="location.href='customerReviewWrite.me?booking_idx=${afterBooking.booking_idx }'"></td>
 				</tr>
 				</c:forEach>
 				</c:when>
@@ -150,7 +149,7 @@
 				</c:otherwise>
 				</c:choose>
 			<c:choose>
-				<c:when test="${not empty map.bookingList }">
+				<c:when test="${not empty map.afterBookingList }">
 					<tr>
 						<th colspan="9"><div align="center"><button class="custom-btn btn-10" onclick="location.href = 'customerAfter.me'">더보기</button></div></th>
 					</tr>
