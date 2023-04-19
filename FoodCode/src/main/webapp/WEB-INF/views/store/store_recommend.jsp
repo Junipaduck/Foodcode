@@ -110,7 +110,7 @@ $(document).ready(function() {
 				                                </div>
 				                            </div>
 				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="store.so?store_idx=${store.store_idx }">가게상세보기</a></div>
+				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="store.so?store_idx=${store.store_idx }&pageNum=${pageNum}">가게상세보기</a></div>
 				                            </div>
 				                        </div>
 				                    </div>
@@ -118,7 +118,41 @@ $(document).ready(function() {
 		       				</div>
 		        	   </div>
 		   	   	 </section>
-			<!-- 가게설명 카드 끝 -->		
+			<!-- 가게설명 카드 끝 -->	
+			
+			
+	<!-- 4/19 수업시간에 했던 페이징처리 시작 -->			
+	<section id="pageList">
+		<c:choose>
+			<c:when test="${pageNum > 1 }">
+				<input type="button" value="이전" onclick="location.href='store_recommend.so#한식?pageNum=${pageNum - 1}'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="이전">
+			</c:otherwise>
+		</c:choose>
+		
+		<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+			<c:choose>
+				<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
+					<b>${num }</b>
+				</c:when>
+				<c:otherwise>
+					<a href="store_recommend.so#한식?pageNum=${num }">${num }</a>
+				</c:otherwise>				
+			</c:choose>
+		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${pageNum < pageInfo.maxPage }">
+				<input type="button" value="다음" onclick="location.href='store_recommend.so#한식?pageNum=${pageNum + 1}'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="다음">
+			</c:otherwise>
+		</c:choose>
+	</section>
+<!-- 4/19 수업시간에 했던 페이징처리 시작 -->			
 			
 			
 			<!-- 페이징 코드시작 -->
@@ -171,6 +205,25 @@ $(document).ready(function() {
 			   	   	 </section>
 				<!-- 가게설명 카드 끝 -->		
 		
+		<!-- 페이징 코드시작 -->
+			<div class="page123">
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-center">
+				    <li class="page-item disabled">
+				      <a class="page-link">이전</a>
+				    </li>
+					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <li class="page-item"><a class="page-link" href="#">2</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item"><a class="page-link" href="#">4</a></li>
+					    <li class="page-item"><a class="page-link" href="#">5</a></li>
+					    <li class="page-item">
+					      <a class="page-link" href="#">다음</a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>
+		<!-- 페이징 코드 끝 -->
 				
 		</div> <!-- 일식 끝 -->
 		<div style="display: none;"> <!-- 중식 시작 -->

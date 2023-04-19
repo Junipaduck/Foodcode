@@ -22,8 +22,8 @@ public class StoreService {
 	}
 	
 	// 가게리스트 6개타입(한식,일식,중식 등...) 
-	public List<StoreVO> getStoreList() {
-		return mapper.selectStoreList();
+	public List<StoreVO> getStoreList(String searchType, String searchKeyword, int startRow, int listLimit) {
+		return mapper.selectStoreList(searchType, searchKeyword, startRow, listLimit);
 	}
 
 	public List<StoreVO> getStoreList2() {
@@ -55,6 +55,12 @@ public class StoreService {
 		
 		return mapper.selectStoreInfo(store, store_idx);
 	}
+
+	// 맛집리스트 페이징 카운트
+	public int getStoreListCount(String searchType, String searchKeyword) {
+		return mapper.selectStoreListCount(searchType, searchKeyword);
+	}
+
 
 	
 }
