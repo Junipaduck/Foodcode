@@ -51,7 +51,6 @@ public class StoreController {
 
 		List<StoreVO> storeInfo = storeService.selectStoreInfo(store, store_idx); 
 		
-		
 		List<ReviewVO> reviewList = reviewService.reviewList(review);
 		
 		

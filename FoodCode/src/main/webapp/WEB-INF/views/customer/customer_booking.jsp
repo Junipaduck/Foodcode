@@ -142,7 +142,7 @@
 					<td>${afterBooking.booking_seat }</td>
 					<td>${afterBooking.booking_content }</td>
 <%-- 					<td><input type="hidden" name="store_idx" value="${param.store_idx }"></td> --%>
-					<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${booking.store_idx}'"></td>
+					<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${afterBooking.store_idx}'"></td>
 				</tr>
 				</c:forEach>
 				</c:when>

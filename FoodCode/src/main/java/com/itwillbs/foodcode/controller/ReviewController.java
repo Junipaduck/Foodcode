@@ -145,26 +145,53 @@ public class ReviewController {
     
     // [리뷰목록] 클릭 시 review_list.jsp 페이지로 이동 -> 리뷰 목록 조회 가능 
     @RequestMapping(value = "/reviewList.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewList(ReviewVO review, Model model, PageVO page) {
+    public String reviewList(ReviewVO review, 
+    						 Model model,
+    						@RequestParam(defaultValue = "") String searchType,
+    						@RequestParam(defaultValue = "") String searchKeyword,
+    						@RequestParam(defaultValue = "1") int pageNum) {
     	System.out.println("/reviewList.me");
-//    	int listLimit = 10; // 한 페이지에 표시할 게시물 목록 갯수
-//    	int pageListLimit = 10; // 한 페이지에 표시할 페이지 목록 갯수 
-//    	int starRow = (pageNum -1) * listLimit; // 조회 시작 게시물 번호 계산 
     	
-    	// List 객체에 vo 담기 
+    	//페이징 처리 - 조회 목록 갯수 조절 시 사용하는 변수 
+    	int listLimit = 10;
+		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
+
+		
+		
+    	// List 객체에 vo 담기 - 0419 백업
 //    	List<ReviewVO> reviewList = reviewService.reviewList(review);
-    	List<ReviewVO> reviewList = reviewService.reviewList(review);
-//    	mv.addObject("reviewList", reviewList);
-//    	mv.addObject("page", page);
-//    	mv.setViewName("store/store_review_list");
-    	
-    	
-    	model.addAttribute("reviewList", reviewList);
-//    	List<ReviewVO> reviewList = reviewService.getReviewList(starRow, listLimit);
+//    	model.addAttribute("reviewList", reviewList);
+		
+		List<ReviewVO> reviewList = reviewService.getReviewList(searchType, searchKeyword, startRow, listLimit);
+		
+		// 1. 전체 게시물 수 조회 
+		int listCount = reviewService.getReviewListCount(searchType, searchKeyword);
+		
+		// 2. 한 페이지에서 표시할 페이지 목록 갯수 설정 
+		int pageListLimit = 10; // 페이지 목록 갯수를 10개로 제한
+
+		// 3. 전체 페이지 목록 수 계산 
+		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+
+		// 4. 시작 페이지 번호 계산
+		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+
+		// 5. 끝 페이지 번호 계산 
+		int endPage = startPage + pageListLimit - 1;
+
+		// 끝 페이지 번호가 최대 페이지 번호 보다 클 경우 끝 페이지 번호를 최대 페이지 번호로 교체
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		// 페이징 처리를 저장하는 PageInfo 객체 생성 
+		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
+		
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("pageInfo", pageInfo);
     	
     	
     	return "store/store_review_list";
-//    	return mv;
     }
     
    

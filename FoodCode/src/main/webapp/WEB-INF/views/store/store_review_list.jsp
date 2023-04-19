@@ -56,7 +56,16 @@
 </head>
 
 <body>
-
+	<form action="reviewList.me">
+		<!-- 검색창 -->
+		<select name="searchType">
+			<option value="content">내용</option>
+<!-- 			<option value="name">작성자</option> -->
+		</select>
+		<input type="text" name="searchKeyword" value="${param.searchKeyword }">
+		<input type="submit" value="검색">
+		<input type="button" value="글쓰기" onclick="location.href='reviewList.me'">
+	</form>
     <table  class="rwd-table" id="dataTable" width="100%" cellspacing="0">
         <tbody>
         <tr>
@@ -70,17 +79,17 @@
             <th></th>
         </tr>
 
-		<c:forEach items="${reviewList }" var="ReviewVO">
+		<c:forEach items="${reviewList }" var="review">
 	        <tr class="KOTRA-fontsize-80">
-	          <td>${ReviewVO.review_idx }</td>
-	          <td>양선정</td>
-	           <td>아이티윌 햄버거</td>
-	           <td>${ReviewVO.review_content }</td>
+	          <td>${review.review_idx }</td>
+	          <td>${review.review_idx }</td>
+	           <td>${review.store_idx }</td>
+	           <td>${review.review_content }</td>
 		        <td class="image_hover">
-	           		${ReviewVO.review_file }
+	           		${review.review_file }
 	           	</td>
 	           <td>
-					${ReviewVO.review_star }
+					${review.review_star }
 	           </td>
 	           <td>2023/03/20</td>
 	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
@@ -89,7 +98,48 @@
 		</c:forEach>
 	</tbody>
     </table>
-
+    
+	<section id="pageList">
+		<c:choose>
+			<c:when test="${empty param.pageNum }">
+				<c:set var="pageNum" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="pageNum" value="${param.pageNum }" />
+			</c:otherwise>
+		</c:choose>
+		
+		<c:choose>
+			<c:when test="${pageNum > 1 }">
+				<input type="button" value="이전" onclick="location.href='reviewList.me?pageNum=${pageNum - 1}'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="이전">
+			</c:otherwise>
+		</c:choose>
+		
+		<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+			<c:choose>
+				<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
+					<b>${num }</b>
+				</c:when>
+				<c:otherwise>
+					<a href="reviewList.me?pageNum=${num }">${num }</a>
+				</c:otherwise>				
+			</c:choose>
+		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${pageNum < pageInfo.maxPage }">
+				<input type="button" value="다음" onclick="location.href='reviewList.me?pageNum=${pageNum + 1}'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="다음">
+			</c:otherwise>
+		</c:choose>
+	</section>
+	
+	
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
