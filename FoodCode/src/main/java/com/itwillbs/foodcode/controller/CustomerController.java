@@ -91,6 +91,7 @@ public class CustomerController {
         return new ModelAndView("customer/customer_mypage","map",map);
     }
 
+    // 위찬영코드 
     @GetMapping(value = "/customerBooking.me")
     public ModelAndView customerBooking(HttpSession session,Model model) {
         System.out.println("customerBooking.me");
@@ -108,6 +109,24 @@ public class CustomerController {
 		
         return new ModelAndView("customer/customer_booking","map",map);
     }
+    
+//    @GetMapping(value = "/customerBooking.me")
+//    public String customerBooking(HttpSession session, Model model) {
+//    	System.out.println("customerBooking.me");
+//    	String sId = (String)session.getAttribute("sId");
+//    	if(sId == null) {
+//    		model.addAttribute("msg", "잘못된 접근입니다.");
+//    		return "customer/fail_back";
+//    	}
+//    	
+//    	List<Map<String, String>> bookingList = customerService.bookingList(sId);
+//    	Map map = new HashMap();
+//    	List bookingList = customerService.bookingList(sId);
+//    	model.addAttribute("booking", bookingList);
+//    	map.put("bookingList",bookingList);
+//    	
+//    	return "customer/customer_booking";
+//    }
 
     @GetMapping(value = "/customerAfter.me")
     public ModelAndView customerAfter(HttpSession session,Model model) {

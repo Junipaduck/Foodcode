@@ -32,10 +32,9 @@ public class ReviewController {
 	
     // 리뷰 작성 
     @RequestMapping(value = "/reviewWritePro.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewWritePro(ReviewVO vo, Model model, HttpSession session, @RequestParam(defaultValue = "") int store_idx) {
+    public String reviewWritePro(ReviewVO vo, Model model, HttpSession session) {
     	
-    	// store_idx 받아오기 
-    	vo.setStore_idx(store_idx);
+//    	 store_idx 받아오기 
     	
     	// 파일 업로드 경로  
     	String uploadDir = "resources/upload"; // 프로젝트 상의 업로드 경로 
