@@ -93,7 +93,7 @@ public class CustomerController {
 
     // 위찬영코드 
     @GetMapping(value = "/customerBooking.me")
-    public ModelAndView customerBooking(HttpSession session,Model model) {
+    public ModelAndView customerBooking(HttpSession session, Model model) {
         System.out.println("customerBooking.me");
         String sId = (String) session.getAttribute("sId"); // 세션아이디가 없을 경우 돌려보내기
 		if(sId == null) {
@@ -129,7 +129,7 @@ public class CustomerController {
 //    }
 
     @GetMapping(value = "/customerAfter.me")
-    public ModelAndView customerAfter(HttpSession session,Model model) {
+    public ModelAndView customerAfter(HttpSession session, Model model) {
         System.out.println("customerAfter.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) { // 세션 아이디가 없을 경우 돌려보내기

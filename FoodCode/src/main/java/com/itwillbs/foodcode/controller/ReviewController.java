@@ -26,15 +26,20 @@ public class ReviewController {
 	
     // 예약관리 -> 방문후 -> 리뷰 
     @GetMapping(value = "/customerReviewWrite.me")
-    public String customerReviewWrite() {
+    public String customerReviewWrite(@RequestParam int store_idx) {
+    	System.out.println("왔니----------------------------------------------------");
+    	System.out.println("선정이" + store_idx);
     	return "customer/customer_review_write";
     }
 	
     // 리뷰 작성 
     @RequestMapping(value = "/reviewWritePro.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewWritePro(ReviewVO vo, Model model, HttpSession session) {
+    public String reviewWritePro(ReviewVO vo, Model model, HttpSession session, @RequestParam int store_idx) {
     	
 //    	 store_idx 받아오기 
+    	System.out.println("선정이" + store_idx);
+    	
+    	
     	
     	// 파일 업로드 경로  
     	String uploadDir = "resources/upload"; // 프로젝트 상의 업로드 경로 
