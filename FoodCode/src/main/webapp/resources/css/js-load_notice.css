@@ -1,11 +1,15 @@
 @charset "UTF-8";
+
+/* 공지사항 더보기기능 css 입니다. */
+
 .js-load {
     display: none;
 }
 .js-load.active {
     display: block;
     width: 1750px;
-    margin-left: -600px
+    height: 70px;
+    margin-left: -595px
 }
 .is_comp.js-load:after {
     display: none;
@@ -18,16 +22,17 @@
     margin: 0 auto;
 }
 .lists {
-    margin-bottom: 4rem;
+/*     margin-bottom: 4rem; */
 }
 .lists__item {
-    padding: 20px;
-    background: #EEE;
+/*     padding: 20px; */
+/*     background: #EEE; */
 }
 .lists__item:nth-child(2n) {
-    background: #59b1eb;
+/*     background: #59b1eb; */
     color: #fff;
 }
 .btn-wrap {
     text-align: center;
+    margin-bottom: 30px;
 }

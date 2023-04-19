@@ -40,6 +40,42 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@300&family=Gowun+Dodum&family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
+<!-- 아래 1줄은 더보기버튼의 css 링크 -->
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/js-load_notice.css" media="screen" />
+
+
+<!-- 0414 배하나 - 아래 js 코드 2줄 넣기 -->
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+
+
+/* 공지사항 더보기버튼 ajax 코드 시작 */
+/* 주석있는 두 곳의 숫자 이외의 코드는 바꿀 필요 없음 */
+$(window).on('load', function () {
+    load('#js-load', '8'); //=> 처음에 전체묶은 div태그 8개씩 보여짐
+    $("#js-btn-wrap .button").on("click", function () {
+        load('#js-load', '3', '#js-btn-wrap'); //=> 더보기버튼 클릭할때마다 전체묶은 div태그 3개씩 보여짐
+    })
+});
+ 
+function load(id, cnt, btn) {
+    var noticeList = id + " .js-load:not(.active)";
+    var girls_length = $(noticeList).length;
+    var girls_total_cnt;
+    if (cnt < girls_length) {
+        girls_total_cnt = cnt;
+    } else {
+        girls_total_cnt = girls_length;
+        $('.button').hide()
+    }
+    $(noticeList + ":lt(" + girls_total_cnt + ")").addClass("active");
+}
+/* 공지사항 더보기버튼 ajax 코드 끝 */
+
+
+</script>
+
+
 <style type="text/css">
 .page-link {
 	color: #5b6064;
@@ -91,7 +127,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
   background:#ccc;
 }
 .table td, .table th {
-  padding:15px 20px;
+  padding:23px 20px;
   border-top:1px solid #ccc;
   word-break:break-all
 }
@@ -102,8 +138,8 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 }
 
 .td-date {
-	font-size:x-small;
-    width: 140px
+	font-size:small;
+    width: 160px
 }
 
 
@@ -178,6 +214,10 @@ border-top-right-radius: 15px;
 	
 }
 
+.a1234 {
+	color: #333333;
+}
+
 .div-55 {
 	margin: auto;
 }
@@ -190,6 +230,9 @@ border-top-right-radius: 15px;
 }
 </style>
 <!-- css끝 --------------------------------------------------------------------------------------->
+
+
+
 
 </head>
 <body>
@@ -237,59 +280,48 @@ border-top-right-radius: 15px;
 <!-- 중간body 시작 --------------------------------------------------------------------------------- -->
 	<div id="div-top"><h1 id="h1-1"></h1></div>
 	
-	<div class="table-box2">
-      <tr>
-        <th style="width:10%" id="table1">공지사항</th>
-      </tr>
-	</div>
-		  <div class="table-box">
-		    <table class="table table--min" cellspacing="0" cellpadding="0">
-		      <tbody>
-		      <!-- list를 뿌려주는 forEach문 시작 ==================================================================-->
-		      <c:forEach var="notice" items="${noticeList }"> 
-		      	  <tr>
-			        <td class="td-idx">${notice.notice_idx }</td>
-			        <!-- 아랫줄은 notice_idx에 해당하는 행 1개를 select 하기위해, 공지사항 제목을 클릭하면 notice_idx값이 들어가도록 하이퍼링크에 걸어놓은 것 -->
-			        <td class="td-subject"><a href="adminNoticeView?notice_idx=${notice.notice_idx}" ><c:out value="${notice.notice_title}" /></a></td>
-			        <td class="td-date" ><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></td> <!-- 시간 fmt작업(fmt jstl 코드 필요) -->
-			      </tr>
-			  </c:forEach>
+	
+	<!-- 공지사항 상단 주황색 부분 시작 -->
+		<div class="table-box2">
+      		<tr>
+       			 <th style="width:10%" id="table1">공지사항</th>
+     			 <input type="button" class="btn44" value="등록하기" onclick="location.href='noticeWriteForm.no'" >
+     		</tr>
+		</div>
+	<!-- 공지사항 상단 주황색 부분 끝 -->
 			  
-			  <!-- 하드코딩한것 시작 (공지사항 작업 다 끝나면 지우기) -->
-			      <tr>
-			        <td class="td-idx">0</td>
-			        <td class="td-subject"><a href="noticeModifyForm.no">(하드코딩)관리자전용 페이지 입니다.</a></td>
-			        <td class="td-date" >2000년 09월 02일</td>
-			      </tr>
-			   <!-- 하드코딩한것 끝 -->
-			   
-			      <tr>
-			        <td> </td>
-			        <td><input type="button" class="btn44" value="등록하기" onclick="location.href='noticeWriteForm.no'"></td>
-			        <td> </td>
-			      </tr>
-		      </tbody>
-		    </table>
-		       <!-- 페이징 코드시작 -->
-					<div class="page123">
-						<nav aria-label="Page navigation example">
-						  <ul class="pagination justify-content-center">
-						    <li class="page-item disabled">
-						      <a class="page-link">이전</a>
-						    </li>
-							    <li class="page-item"><a class="page-link" href="#">1</a></li>
-							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-							    <li class="page-item"><a class="page-link" href="#">4</a></li>
-							    <li class="page-item"><a class="page-link" href="#">5</a></li>
-							    <li class="page-item">
-							      <a class="page-link" href="#">다음</a>
-						    </li>
-						  </ul>
-						</nav>
-					</div>
-					<!-- 페이징 코드 끝 -->
-		  </div>
+
+			  
+    <!-- 공지사항 더보기 반복할 구간 시작 -->
+ 		<div id="contents">
+  			<div id="js-load" class="main">
+    			<ul class="lists">
+  			 		<!-- list 를 반복하는 forEach문 시작 -->
+		      		<c:forEach var="notice" items="${noticeList }"> 
+      					<li class="lists__item js-load">
+      						<div class="table-box">
+		   						<table class="table table--min" cellspacing="0" cellpadding="0">
+		    					   <tbody>
+			      	  				 	 <tr>
+									        <td class="td-idx">${notice.notice_idx }</td>
+									        <!-- 아랫줄은 notice_idx에 해당하는 행 1개를 select 하기위해, 공지사항 제목을 클릭하면 notice_idx값이 들어가도록 하이퍼링크에 걸어놓은 것 -->
+									        <td class="td-subject"><a href="adminNoticeView?notice_idx=${notice.notice_idx}" class="a1234"><c:out value="${notice.notice_title}" /></a></td>
+									        <td class="td-date" ><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></td> <!-- 시간 fmt작업(fmt jstl 코드 필요) -->
+				     					 </tr>
+		     					   </tbody>
+		   						 </table>
+							</div>
+						</li>
+			 		 </c:forEach>
+   				</ul>
+   			  		 <div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기<img src="${pageContext.request.contextPath }/resources/images/hana_img.svg" width="17"></a></div>
+   			  		 
+  			</div>
+		</div>
+	<!-- 공지사항 더보기 반복할 구간 끝 -->		  
+			  
+			  
+			  
   
  <!-- 중간body 끝 --------------------------------------------------------------------------------->
  
