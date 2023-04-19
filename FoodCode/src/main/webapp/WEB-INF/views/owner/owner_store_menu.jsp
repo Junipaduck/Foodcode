@@ -148,18 +148,18 @@ var menuTextName = document.getElementById('menu_name').value;
 				</thead>
 				<tbody id="table_body">
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-						<td></td>
-						<td></td>
-						<td></td>
- 						<td></td> <!-- 클릭시 이미지 크게 보이게 할 수 있는건 미정 일단 가져오기만 -->
-						<td></td>
-						<td>
+<!-- 						<td> -->
+<!-- 							<span class="custom-checkbox"> -->
+<!-- 								<input type="checkbox" id="checkbox1" name="options[]" value="1"> -->
+<!-- 								<label for="checkbox1"></label> -->
+<!-- 							</span> -->
+<!-- 						</td> -->
+<!-- 						<td></td> -->
+<!-- 						<td></td> -->
+<!-- 						<td></td> -->
+<!--  						<td></td> 클릭시 이미지 크게 보이게 할 수 있는건 미정 일단 가져오기만 -->
+<!-- 						<td></td> -->
+<!-- 						<td> -->
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="수정">&#xE254;</i></a>
 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="삭제">&#xE872;</i></a>
 						</td>

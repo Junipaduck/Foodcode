@@ -136,13 +136,13 @@
 <!-- 	          	<span class="subheading"> 가게명 받아오는구간 </span> -->
 <!-- 	            <h2 class="mb-4">예약 테이블</h2> -->
 <!-- 	          </div> -->
-            <form action="reservation.bo" method="post">
+            <form action="bookingCheck.bo" method="get">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">이름</label>
                     <input type="hidden" name="store_idx" value="${map.storeInfo[0].store_idx }">
-                    <input type="hidden" name="booking_idx" value="1">
+                    <input type="hidden" name="booking_idx" id="booking_idx" value="1">
                     <input type="text" class="form-control" placeholder="${map.member.member_name }" readonly="true">
                   </div>
                 </div>
