@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <!-- /*
 * Template Name: Tour
@@ -70,7 +71,7 @@
 			<tr>
 		  		<td>
 			  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-						<h2 class="section-title">예약 내역</h2>
+						<h2 class="section-title">예약 관리</h2>
 				  	</div>
 		  		</td>
 	  		</tr>
@@ -103,7 +104,7 @@
 				</c:otherwise>
 				</c:choose>
 			<c:choose>
-				<c:when test="${not empty map.bookingList }">
+				<c:when test="${fn:length(map.bookingList) > 3 }">
 					<tr>
 						<th colspan="9"><div align="center"><button class="custom-btn btn-10" onclick="location.href = 'customerLast.me'">더보기</button></div></th>
 					</tr>
@@ -145,12 +146,12 @@
 				</tr>
 				</c:forEach>
 				</c:when>
-				<c:otherwise>
-				<tr><td align="center">기간이 지난 예약이 없어요.</td></tr>
-				</c:otherwise>
+					<c:otherwise>
+						<tr><td align="center">기간이 지난 예약이 없어요.</td></tr>
+					</c:otherwise>
 				</c:choose>
 			<c:choose>
-				<c:when test="${not empty map.afterBookingList }">
+				<c:when test="${fn:length(map.afterBookingList) > 3 }">
 					<tr>
 						<th colspan="9"><div align="center"><button class="custom-btn btn-10" onclick="location.href = 'customerAfter.me'">더보기</button></div></th>
 					</tr>

@@ -89,7 +89,7 @@
 		  		<tr>
 			  		<td>
 				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-							<h2 class="section-title">예약관리</h2>
+							<h2 class="section-title">예약내역</h2>
 					  	</div>
 			  		</td>
 		  		</tr>
@@ -113,8 +113,6 @@
 					<td>${booking.booking_num }</td>
 					<td>${booking.booking_seat }</td>
 					<td>${booking.booking_content }</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
 				</tr>
 				</c:forEach>
 				</c:when>
@@ -129,7 +127,7 @@
 				<tr>
 			  		<td>
 				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-							<h2 class="section-title">리뷰관리</h2>
+							<h2 class="section-title">리뷰내역</h2>
 					  	</div>
 			  		</td>
 		  		</tr>
@@ -150,8 +148,6 @@
 					<td>${myReview.review_content }</td>
 					<td>${myReview.review_star }</td>
 					<td>${myReview.review_date }</td>
-					<td><input type="button" value="수정" onclick=""></td>
-					<td><input type="button" value="삭제"></td>
 				</tr>
 				</c:forEach>
 				</c:when>
