@@ -52,7 +52,7 @@
 		                                        <span class="icon text-white-50">
 		                                            <i class="fas fa-exclamation-triangle"></i>
 		                                        </span>
-		                                        <span class="text" msttexthash="359"_msthash="70">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
+		                                        <span class="text" msttexthash="359"_msthash="70" onclick="location.href = 'adminMail_store'">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
 		                                    </a>
                                             </td>
                                              <td align="center">

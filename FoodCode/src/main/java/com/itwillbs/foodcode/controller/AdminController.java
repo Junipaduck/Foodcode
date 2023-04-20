@@ -121,7 +121,6 @@ public class AdminController {
 		
 		model.addAttribute("storeList", storeList);
 		
-		
 		return "/admin/store_list";
 	}
 	
@@ -217,7 +216,6 @@ public class AdminController {
 			return "fail_back";
 		}
 		System.out.println(member_idx + member_id);
-		System.out.println("맴버타입 체크 !!!!!!!!!!!!!!!!" + member_type);
 		int isDeleteSuccess = adminService.MemberDelete(member_idx, member_id);
 		
 		if(isDeleteSuccess>0&&member_type.equals("c")) {
@@ -231,5 +229,19 @@ public class AdminController {
 		
 	}
 	
+	// ================메일 보내기======================	
+	@GetMapping(value = "adminMail_store")
+	public String Mail() {
+		
+		return "/admin/store_mail";
+	}
 	
+	//이메일 인증
+	@GetMapping("/mailCheck")
+	public String mailCheck(String email, Model model) {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+		
+		return "/admin/store_mail";
+	}
 }
