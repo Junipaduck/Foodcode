@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +103,10 @@ $(document).ready(function() {
 				                    <div class="col-lg-3 col-md-6">
 				                        <div class="card h-100">
 <%-- 				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file_path }/${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." /> --%>
-				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/_${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
+				                            <c:set var="length" value="${fn:length(store.store_file) }"/>
+											<c:set var="index" value="${fn:indexOf(store.store_file, '_') }"/>
+											<c:set var="fileName" value="${fn:substring(store.store_file, index + 1, length) }"/>
+				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 				                            <div class="card-body p-4">
 				                                <div class="text-center">
 				                                    <h5 class="fw-bolder">${store.store_name }</h5> <!-- 가게명 -->

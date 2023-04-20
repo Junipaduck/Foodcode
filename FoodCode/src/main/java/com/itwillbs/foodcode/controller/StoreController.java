@@ -106,7 +106,7 @@ public class StoreController {
 			String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
 			System.out.println("UUID : " + uuid);
 			
-			store.setStore_file(uuid.substring(0, 0) + "_" + originalFileName);
+			store.setStore_file(uuid.substring(0, 8) + "_" + originalFileName);
 			System.out.println("실제 업로드 될 파일명 : " + store.getStore_file());
 			//---------- 파일 업로드 관련 작업 끝 ------------------------------------------------------------
 
