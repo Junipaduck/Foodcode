@@ -43,7 +43,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store_recommend_style.css" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<title>예약 확인 페이지</title>
+<title>예약 완료 페이지</title>
 </head>
 <body>
 <!-- 주소로 값 받아오던것 현재 map 사용 -->
@@ -59,21 +59,14 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 	<jsp:include page="../inc/top2.jsp"></jsp:include>
 </header>
 
-<form action="reservation.bo" method="get">
-	<input type="hidden" name="store_idx" value="${map.storeInfo[0].store_idx }">
-    <input type="hidden" name="booking_idx" id="booking_idx" value="1">        <!-- 얘를 1말고 다른값 주면 제대로 안올라가고 오류창뜸 -->
-    <input type="hidden" name="booking_date" id="booking_date" value="${map.bookinginfo.get(0) }">
-    <input type="hidden" name="booking_time" id="booking_time" value="${map.bookinginfo.get(1) }">
-    <input type="hidden" name="booking_num" id="booking_num" value="${map.bookinginfo.get(2) }">
-    <input type="hidden" name="booking_seat" id="booking_seat" value="${map.bookinginfo.get(3) }">
-    <input type="hidden" name="booking_content" id="booking_content" value="${map.bookinginfo.get(4) }">
+<form action="store_recommend.so" method="get">
 <div class="container-xl">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2><b>예약 확인</b></h2>
+						<h2><b>예약 완료</b></h2>
 					</div>
 				</div>
 			</div>
@@ -95,20 +88,21 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 					<tr>
 						<td>
 						</td>
-						<td >${map.member.member_name }</td>
-						<td>${map.member.member_phone }</td>
-						<td>${map.bookinginfo.get(0) }</td>
-						<td>${map.bookinginfo.get(1) }</td>
-						<td>${map.bookinginfo.get(2) }</td>
-						<td>${map.bookinginfo.get(3) }</td>
-						<td>${map.bookinginfo.get(4) }</td>
+						<c:forEach var="bookingList" items="${bookingList }">
+                          <td>${bookingList.member_name}</td>
+                          <td>${bookingList.member_phone}</td>
+                          <td>${bookingList.booking_date}</td>
+                          <td>${bookingList.booking_time}</td>
+                          <td>${bookingList.booking_num}</td>
+                          <td>${bookingList.booking_seat}</td>
+                          <td>${bookingList.booking_content}</td>
+                        </c:forEach>
 					</tr>
 				</tbody>
 			</table>
 			<div class="col-md-12 mt-3">
                   <div class="form-group">
-       				<input type="button" value="다시 입력 할래요" class="btn btn-primary py-3 px-5" onclick="location.href(history.back())">
-					<input type="submit" value="결제 하기" class="btn btn-primary py-3 px-5">
+					<input type="submit" value="확인" class="btn btn-primary py-3 px-5">
                   </div>
             </div>
 		</div>

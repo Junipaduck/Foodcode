@@ -1,5 +1,6 @@
 package com.itwillbs.foodcode.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.foodcode.service.BookingService;
 import com.itwillbs.foodcode.service.CustomerService;
@@ -85,35 +87,44 @@ public class BookingController {
 	}
 	
 	
-	// 예약하기 완료버튼 누른 매핑
+	// 결제하기 전 예약 확인 페이지
 	@RequestMapping(value = "reservation.bo", method = {RequestMethod.GET, RequestMethod.POST})
-	 public String reservation(HttpSession session, Model model, StoreVO store, BookingVO booking, @RequestParam int store_idx) {
-		//세션아이디 가져와서 로그인한 아이디를 컬럼에 저장시켜줌
+	 public String reservation(HttpSession session, Model model, StoreVO store, BookingVO booking, @RequestParam int store_idx, RedirectAttributes re) {
 		
 		String id = (String)session.getAttribute("sId").toString();
 		booking.setMember_id(id);
 		booking.setStore_idx(store_idx);
 		
-		//버튼 눌렀을때 부킹에 넣을 데이터가 없음 이걸 넣어줄 방법?
-		
 		int insertBooking = bookingService.insertBooking(booking); 
-		System.out.println("booking 데이터 확인" + booking);
+		int bookingNum = booking.getBooking_idx();
+		int storeNum = booking.getStore_idx();
+		re.addAttribute("booking_idx", bookingNum);
+		re.addAttribute("store_idx", storeNum);
 		
-		
-		
-		if(id == null) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
-			return "fail_back";
-		} else {
+//		if(id == null) {
+//			model.addAttribute("msg", "로그인 후 이용해주세요");
+//			return "fail_back";
+//		} else {
 			if(insertBooking > 0) {
-				return "redirect:/customerBooking.me";
-			} else {
-				model.addAttribute("msg", "예약을 다시 확인해주세요");
-				return "fail_back";
+				System.out.println("예약번호 : " + bookingNum + "가게번호 : " + storeNum);
 			}
-		}
+			return "redirect:/bookingsuccess.bo";
+//			} else {
+//				model.addAttribute("msg", "예약을 다시 확인해주세요");
+//				return "fail_back";
+//			}
+//		}
 	}
 
-	
+	//결제 끝난 후 보여줄 페이지
+	@GetMapping(value = "bookingsuccess.bo")
+	public String bookingSuccess(HttpSession session, Model model, @RequestParam(value = "booking_idx", defaultValue = "defalutValue") int booking_idx, @RequestParam(value = "store_idx", defaultValue = "defalutValue") int store_idx) {
+		String id = (String)session.getAttribute("sId").toString();
+		
+		List bookingList = bookingService.bookingList(id, booking_idx);
+		model.addAttribute("bookingList", bookingList);
+		
+		return "booking/booking_success";
+	}
 	
 }

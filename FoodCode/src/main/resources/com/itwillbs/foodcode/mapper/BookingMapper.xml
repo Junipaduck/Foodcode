@@ -17,6 +17,19 @@
 		,#{store_idx}
 		,#{member_id}
 		)
-	
 	</insert>
+
+	<select id="bookingList" resultType="map">
+		SELECT m.member_name
+		, m.member_phone
+		, b.booking_date
+		, b.booking_time
+		, b.booking_num
+		, b.booking_seat
+		, b.booking_content
+		FROM booking b JOIN member m 
+		ON b.member_id = m.member_id
+		WHERE b.booking_idx = #{booking_idx};
+	</select>
+	
 </mapper>

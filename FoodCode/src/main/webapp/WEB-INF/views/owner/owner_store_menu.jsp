@@ -103,7 +103,7 @@ function remove_tr(This) {//행 삭제
 }
 
 //입력값 가져오기
-var menuTextName = document.getElementById('menu_name').value;
+// var menuTextName = document.getElementById('menu_name').value;
 
 </script>
 <title>가게 메뉴 등록 페이지</title>
@@ -157,12 +157,12 @@ var menuTextName = document.getElementById('menu_name').value;
 <!-- 						<td></td> -->
 <!-- 						<td></td> -->
 <!-- 						<td></td> -->
-<!--  						<td></td> 클릭시 이미지 크게 보이게 할 수 있는건 미정 일단 가져오기만 -->
+<!--  						<td></td>  -->
 <!-- 						<td></td> -->
 <!-- 						<td> -->
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="수정">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="삭제">&#xE872;</i></a>
-						</td>
+<!-- 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="수정">&#xE254;</i></a> -->
+<!-- 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="삭제">&#xE872;</i></a> -->
+<!-- 						</td> -->
 					</tr>
 				</tbody>
 			</table>
@@ -193,23 +193,23 @@ var menuTextName = document.getElementById('menu_name').value;
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>메뉴 이름</label>
-						<input type="text" class="form-control" name="menu_name" id="menu_name" required>
+						<input type="text" class="form-control" name="menu_name" id="menu_name">
 					</div>
 					<div class="form-group">
 						<label>메뉴 종류</label>
-						<input type="text" class="form-control" name="menu_type" id="menu_type" required>
+						<input type="text" class="form-control" name="menu_type" id="menu_type">
 					</div>
 					<div class="form-group">
 						<label>가격</label>
-						<input class="form-control" name="menu_price" id="menu_price" required>
+						<input class="form-control" name="menu_price" id="menu_price">
 					</div>
 					<div class="form-group">
 						<label>사진</label>
-						<input type="text" class="form-control" name="menu_image" id="menu_image" required>
+						<input type="text" class="form-control" name="menu_image" id="menu_image">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
-						<textarea class="form-control" name="menu_content" id="menu_content" required></textarea>
+						<textarea class="form-control" name="menu_content" id="menu_content"></textarea>
 					</div>					
 				</div>
 				<div class="modal-footer">
@@ -232,23 +232,23 @@ var menuTextName = document.getElementById('menu_name').value;
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>메뉴 이름</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label>메뉴 종류</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label>가격</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label>메뉴 사진</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
-						<textarea class="form-control" required></textarea>
+						<textarea class="form-control"></textarea>
 					</div>					
 				</div>
 				<div class="modal-footer">
