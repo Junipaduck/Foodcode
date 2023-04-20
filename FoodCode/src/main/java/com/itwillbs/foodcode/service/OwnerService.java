@@ -1,6 +1,8 @@
 package com.itwillbs.foodcode.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,12 +37,17 @@ public class OwnerService {
 		return mapper.modifyMember(id, member, newPasswd);
 	}
 
-	public List<StoreVO> selectStore(StoreVO store) {
-		return mapper.selectStore(store);
+	public List<StoreVO> selectStore(String id) {
+		return mapper.selectStore(id);
 	}
 
 	public List<BookingVO> showBooking(BookingVO booking) {
 		return mapper.showBooking(booking);
+	}
+	
+	// 점주의 가게 갯수 조회
+	public int countStore(String id) {
+		return mapper.countStore(id);
 	}
 	
 

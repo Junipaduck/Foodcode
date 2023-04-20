@@ -1,6 +1,8 @@
 package com.itwillbs.foodcode.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.*;
 
@@ -19,8 +21,10 @@ public interface OwnerMapper {
 
 	int modifyMember(@Param("sId") String sId, @Param("member") MemberVO member , @Param("newPasswd") String newPasswd);
 
-	List<StoreVO> selectStore(StoreVO store);
+	List<StoreVO> selectStore(String id);
 
 	List<BookingVO> showBooking(BookingVO booking);
+
+	int countStore(String id);
 
 }

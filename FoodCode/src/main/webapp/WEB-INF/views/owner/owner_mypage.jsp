@@ -26,28 +26,9 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
-<%--   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css"> --%>
-  <!-- 캘린더 css -->
-	<style type="text/css">
-	.mb-0 { /*폰트수정*/
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	
-	.text-white {
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	
-	.btn btn-primary btn-block {
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	.icon {
-		margin-bottom: 10px;
-		float: left;
-		width: 48%;
-		display: inline-block;
-		vertical-align: text-top;
-	}
-	</style>
+  
+  <!-- owner css -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css">
 
   <title>점주가게목록</title>
 </head>
@@ -97,39 +78,67 @@
           </div>
         </div>
         <div class="col-lg-5 pl-lg-5 ml-auto">
-        <c:forEach items="${storeInfo }" var="storeInfo">
-          <h2 class="section-title mb-4" >${storeInfo.store_name }</h2>
-	          <p>${storeInfo.store_content }</p>
-		          <ul class="list-unstyled two-col clearfix">
-			          <div class="icon">
-			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
-			            &nbsp;&nbsp;&nbsp;${storeInfo.store_address }
-			          </div>
-			          <div class="icon">
-			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-			            &nbsp;&nbsp;&nbsp;${storeInfo.store_phone }
-			          </div>
-			          <div class="icon">
-			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-			            &nbsp;&nbsp;&nbsp;${storeInfo.store_time }
-			          </div>
-			          <div class="icon">
-			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-			            &nbsp;&nbsp;&nbsp;${storeInfo.store_license }
-			          </div>
-			          <div class="icon">
-			            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-			            &nbsp;&nbsp;&nbsp;${storeInfo.store_etc }
-			          </div>
-		          </ul>
-          </c:forEach>
+<!--         <div class="dropdown text-sans-serif"> -->
+        <br>
+		  
+<!-- 		  <div class="card"> -->
+<!-- 		    <div class="card-header border-bottom" id="headingTwo"> -->
+<!-- 		      <h5 class="mb-0"><button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Collapsible Group Item #2</button></h5> -->
+<!-- 		    </div> -->
+<!-- 		    <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample"> -->
+<!-- 		      <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> -->
+<!-- 		    </div> -->
+<!-- 		  </div> -->
+
+
+
+
+
+        <div class="accordion" id="accordionExample">
+        	<div class="card">
+		        		<c:forEach items="${storeInfo }" var="storeInfo">
+		        		<div class="card-header border-bottom" id="headingOne">
+		        			<h5 class="mb-0"><button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">${storeInfo.store_name }</button></h5>
+		          		</div>
+		          			<div class="collapse show" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample">
+		          				<div class="card-body">
+		          					<h2 class="section-title mb-4" >${storeInfo.store_name }</h2>
+			          				<p>${storeInfo.store_content }</p>
+				          			<ul class="list-unstyled two-col clearfix">
+					          			<div class="icon">
+					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+					           				 &nbsp;&nbsp;&nbsp;${storeInfo.store_address }
+					          			</div>
+					          			<div class="icon">
+					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+					            			&nbsp;&nbsp;&nbsp;${storeInfo.store_phone }
+					          			</div>
+					          			<div class="icon">
+					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+					           				&nbsp;&nbsp;&nbsp;${storeInfo.store_time }
+					          			</div>
+					          			<div class="icon">
+					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+					           				&nbsp;&nbsp;&nbsp;${storeInfo.store_license }
+					          			</div>
+					          			<div class="icon">
+					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+					            			&nbsp;&nbsp;&nbsp;${storeInfo.store_etc }
+					          			</div>
+				          			</ul>
+		         				</div>
+		          			</div>
+		          		</c:forEach>
+          </div>
+	  </div>
+          
+          
           <hr>
           <button type="button" class="btn btn-primary" onclick="location.href='storeModify.me'">수정</button>
           <button type="button" class="btn btn-primary" onclick="location.href='storeRegister.me'">식당 추가</button>
         </div>
       </div>
     </div>
-  </div>
   
 
 

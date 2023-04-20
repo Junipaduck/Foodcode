@@ -33,14 +33,20 @@ public class OwnerController {
 	// 좌측 배너에서 "내식당" 버튼 클릭시 마이페이지 이동 - 가게 정보 조회해와야함
 	// 후에 점주아이디-가게 연결되면 id값 가져가서 조회해오기
 	@GetMapping(value = "/ownerPage.me")
-	public String ownerPage(StoreVO store, BookingVO booking, Model model) {
-		List<StoreVO> storeInfo = ownerService.selectStore(store);
+	public String ownerPage(StoreVO store, Model model, HttpSession session) {
+		String id = (String)session.getAttribute("sId");
+		
+		// 점주의 가게 갯수 조회
+		int count = ownerService.countStore(id);
+		model.addAttribute("count", count);
+		
+		List<StoreVO> storeInfo = ownerService.selectStore(id);
 //		System.out.println(storeInfo);
 		model.addAttribute("storeInfo", storeInfo);
 		
-		List<BookingVO> storeBooking = ownerService.showBooking(booking);
-		System.out.println(storeBooking);
-		model.addAttribute("storeBooking", storeBooking);
+//		List<BookingVO> storeBooking = ownerService.showBooking(booking);
+//		System.out.println(storeBooking);
+//		model.addAttribute("storeBooking", storeBooking);
 		
 //		Map<String, Object> mav = new HashMap<>();
 //		mav.put("stoerInfo", storeInfo);

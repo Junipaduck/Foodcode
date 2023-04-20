@@ -64,12 +64,18 @@
 		WHERE member_id = #{sId}
 	</update>
 	
+	<!-- 점주 가게 갯수 조회 -->
+	<select id="countStore">
+		SELECT count(*)
+			FROM store
+			WHERE member_id = #{sId}
+	</select>
+	
 	<!-- 점주 가게 정보 조회 -->
-	<!-- 가게 번호 하드코딩 -->
 	<select id="selectStore"  resultType="com.itwillbs.foodcode.vo.StoreVO">
 		SELECT *
 			FROM store
-			WHERE store_idx = 7;
+			WHERE member_id = #{sId};
 	</select>
 	
 	<!-- 점주 마이페이지에서 예약 목록 조회 -->
