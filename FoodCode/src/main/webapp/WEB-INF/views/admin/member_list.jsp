@@ -59,7 +59,7 @@
                                             <td>${memberList.member_birth}</td>
                                             <td>${memberList.member_join_date}</td>
                                             <td align="center">
-                                            	<a href="adminMember_delect?member_idx=${memberList.member_idx }&member_type=${memberList.member_type}" class="btn btn-danger btn-circle">
+                                            	<a href="adminMember_delete?member_idx=${memberList.member_idx }&member_type=${memberList.member_type}" class="btn btn-danger btn-circle">
                                        			<i class="fas fa-trash"></i>
                                    				</a>
                                    			</td>

@@ -53,7 +53,7 @@
                                             <td>${ownerList.member_email}</td>
                                             <td>${ownerList.member_join_date}</td>
                                              <td align="center">
-                                            	<a href="adminMember_delect?member_idx=${ownerList.member_idx }&member_type=${ownerList.member_type}" class="btn btn-danger btn-circle">
+                                            	<a href="adminMember_delete?member_idx=${ownerList.member_idx }&member_type=${ownerList.member_type}" class="btn btn-danger btn-circle">
                                        			<i class="fas fa-trash"></i>
                                    				</a>
                                    			</td>

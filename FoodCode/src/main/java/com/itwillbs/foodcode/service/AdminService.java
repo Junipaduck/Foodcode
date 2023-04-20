@@ -39,10 +39,10 @@ public class AdminService {
 	}
 	
 	//---------------일반 회원 삭제-------------
-	public int MemberDelect(String member_idx, String member_id) {
+	public int MemberDelete(String member_idx, String member_id) {
 		
 //		System.out.println("CustomerDelect 객체 안" + customer_idx+customer_passwd);
-		return mapper.delectMember(member_idx, member_id);
+		return mapper.deleteMember(member_idx, member_id);
 	}
 
 	public List<ReviewVO> getReviews() {
@@ -51,7 +51,7 @@ public class AdminService {
 
 
 	public int managementDelete(String store_license, String owner_id) {
-		return mapper.delectStore(store_license, owner_id);
+		return mapper.deleteStore(store_license, owner_id);
 	}
 
 	public List getStoreList2() {

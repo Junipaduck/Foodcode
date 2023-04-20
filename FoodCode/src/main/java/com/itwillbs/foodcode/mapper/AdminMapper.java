@@ -15,13 +15,13 @@ public interface AdminMapper {
 	
 	List<StoreVO> selectStoreList();
 	
-	int delectMember(@Param("member_idx")String member_idx, @Param("member_id")String member_id);
+	int deleteMember(@Param("member_idx")String member_idx, @Param("member_id")String member_id);
 
 	MemberVO selectMemberInfo(String id);
 
 	List<ReviewVO> selectReviews();
 
-	int delectStore(@Param("store_license") String store_license, @Param("owner_id") String owner_id);
+	int deleteStore(@Param("store_license") String store_license, @Param("owner_id") String owner_id);
 
 	List getStoreList2();
 	

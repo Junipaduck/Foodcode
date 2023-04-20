@@ -139,7 +139,7 @@ public class AdminController {
 	public String storeManagementDelete() {
 		
 		
-		return "/admin/store_delect";
+		return "/admin/store_delete";
 	}
 	
 	@PostMapping(value = "adminStoreManagementDeletePro")
@@ -201,10 +201,10 @@ public class AdminController {
 // ================(일반, 맴버) 회원 삭제======================	
 
 	
-	@GetMapping(value = "adminMember_delect")
+	@GetMapping(value = "adminMember_delete")
 	public String customerDelect() {
 		
-		return "/admin/member_delect";
+		return "/admin/member_delete";
 	}
 	
 	@PostMapping(value = "adminMemberDeletePro")
@@ -218,7 +218,7 @@ public class AdminController {
 		}
 		System.out.println(member_idx + member_id);
 		System.out.println("맴버타입 체크 !!!!!!!!!!!!!!!!" + member_type);
-		int isDeleteSuccess = adminService.MemberDelect(member_idx, member_id);
+		int isDeleteSuccess = adminService.MemberDelete(member_idx, member_id);
 		
 		if(isDeleteSuccess>0&&member_type.equals("c")) {
 			return "redirect:/adminMember_list";
