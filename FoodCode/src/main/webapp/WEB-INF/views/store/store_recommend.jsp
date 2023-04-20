@@ -102,7 +102,8 @@ $(document).ready(function() {
 								 <c:forEach var="store" items="${storeList }"> <!-- list를 뿌려주는 forEach문 시작 -->
 				                    <div class="col-lg-3 col-md-6">
 				                        <div class="card h-100">
-				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file_path }/${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
+<%-- 				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file_path }/${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." /> --%>
+				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/_${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
 				                            <div class="card-body p-4">
 				                                <div class="text-center">
 				                                    <h5 class="fw-bolder">${store.store_name }</h5> <!-- 가게명 -->
