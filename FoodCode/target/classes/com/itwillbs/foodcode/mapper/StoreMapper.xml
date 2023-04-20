@@ -27,6 +27,7 @@
 	 			,#{store_file}
 	 			,#{store_file_path}
 	 			,#{member_id} <!-- 로그인된 점주의 sId -->
+	 			,'N'
 	 		)
 	 </insert>
 
@@ -37,8 +38,24 @@
 		 <select id="selectStoreList" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '한식'
-		 		ORDER BY store_idx DESC;
+		 		WHERE
+		 			store_type = '한식'
+		 		ORDER BY
+		 			store_idx DESC
+		 		LIMIT
+					#{startRow}
+					,#{listLimit}
+			 		
+		 		
+<!-- 		 		<if test="!searchKeyword.equals('')"> -->
+<!-- 				WHERE  -->
+<!-- 				<choose> -->
+<!-- 					<when test="searchType.equals('content')"> -->
+<!-- 						store_name LIKE CONCAT('%', #{searchKeyword}, '%') -->
+<!-- 					</when> -->
+<!-- 				</choose> -->
+<!-- 				</if> -->
+		
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList2" resultType="com.itwillbs.foodcode.vo.StoreVO">
@@ -90,6 +107,23 @@
 				FROM store
 		</select>
 
+		
+		
+		<!-- 글 목록 총 갯수 조회 (페이징 카운트)-->
+		<select id="selectStoreListCount" resultType="int">
+			SELECT COUNT(*)
+				FROM store 
+				<if test="!searchKeyword.equals('')">
+					WHERE
+					<choose>
+						<when test="searchType.equals('content')">
+							store_name LIKE CONCAT('%', #{searchKeyword}, '%')
+						</when>
+					</choose>
+				</if>
+		</select>
+		
+		
 		
 
 </mapper>

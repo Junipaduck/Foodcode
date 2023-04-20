@@ -13,15 +13,21 @@ public interface ReviewMapper {
 
 	int deleteReview(@Param("review_idx") int review_idx);
 
-	List<ReviewVO> selectReviewList(ReviewVO review);
+//	List<ReviewVO> selectReviewList(ReviewVO review);
 
 	List<ReviewVO> customerReviewList(ReviewVO review);
 
-//	List<ReviewVO> getReviewList(int starRow, int listLimit);
+	// 글 목록 조회
+	List<ReviewVO> selectReviewList(@Param("searchType") String searchType, 
+									@Param("searchKeyword") String searchKeyword, 
+									@Param("startRow") int startRow, 
+									@Param("listLimit") int listLimit);
 
-//	List<ReviewVO> selectReviewList(PageVO page) throws Exception;
+	int selectReviewListCount(@Param("searchType") String searchType, 
+							  @Param("searchKeyword") String searchKeyword);
 
-//	Long getTotalCount(PageVO page);
+	List<ReviewVO> reviewList(ReviewVO review);
+
 
 }
 

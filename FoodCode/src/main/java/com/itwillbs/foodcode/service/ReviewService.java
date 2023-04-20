@@ -28,14 +28,31 @@ public class ReviewService {
 		return mapper.deleteReview(review_idx);
 	}
 
-	public List<ReviewVO> reviewList(ReviewVO review) {
-		
-		return mapper.selectReviewList(review);
-	}
+//	public List<ReviewVO> reviewList(ReviewVO review) {
+//		
+//		return mapper.selectReviewList(review);
+//	}
 
 	public List<ReviewVO> customerReviewList(ReviewVO review) {
 		
 		return mapper.customerReviewList(review);
+	}
+
+	//리뷰 게시판 페이징 - 게시물 목록 조회 
+	public List<ReviewVO> getReviewList(String searchType, String searchKeyword, int startRow, int listLimit) {
+
+		return mapper.selectReviewList(searchType, searchKeyword, startRow, listLimit);
+	}
+	
+	// 글 목록 총 갯수 조회 
+	public int getReviewListCount(String searchType, String searchKeyword) {
+		
+		return mapper.selectReviewListCount(searchType, searchKeyword);
+	}
+
+	// 상세 페이지 리뷰 조회
+	public List<ReviewVO> reviewList(ReviewVO review) {
+		return mapper.reviewList(review);
 	}
 
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {

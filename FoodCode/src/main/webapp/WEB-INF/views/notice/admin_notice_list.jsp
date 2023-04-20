@@ -52,7 +52,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 /* 공지사항 더보기버튼 ajax 코드 시작 */
 /* 주석있는 두 곳의 숫자 이외의 코드는 바꿀 필요 없음 */
 $(window).on('load', function () {
-    load('#js-load', '8'); //=> 처음에 전체묶은 div태그 8개씩 보여짐
+    load('#js-load', '6'); //=> 처음에 전체묶은 div태그 6개씩 보여짐
     $("#js-btn-wrap .button").on("click", function () {
         load('#js-load', '3', '#js-btn-wrap'); //=> 더보기버튼 클릭할때마다 전체묶은 div태그 3개씩 보여짐
     })
@@ -314,7 +314,7 @@ border-top-right-radius: 15px;
 						</li>
 			 		 </c:forEach>
    				</ul>
-   			  		 <div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기<img src="${pageContext.request.contextPath }/resources/images/hana_img.svg" width="17"></a></div>
+   			  		 <div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a></div>
    			  		 
   			</div>
 		</div>

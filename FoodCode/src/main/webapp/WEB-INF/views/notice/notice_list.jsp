@@ -38,7 +38,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@300&family=Gowun+Dodum&family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
+<!-- 아래 1줄은 더보기버튼의 css 링크 -->
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/js-load_notice.css" media="screen" />
+
+
+<!-- 0414 배하나 - 아래 js 코드 2줄 넣기 -->
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+
+
+/* 공지사항 더보기버튼 ajax 코드 시작 */
+/* 주석있는 두 곳의 숫자 이외의 코드는 바꿀 필요 없음 */
+$(window).on('load', function () {
+    load('#js-load', '6'); //=> 처음에 전체묶은 div태그 6개씩 보여짐
+    $("#js-btn-wrap .button").on("click", function () {
+        load('#js-load', '3', '#js-btn-wrap'); //=> 더보기버튼 클릭할때마다 전체묶은 div태그 3개씩 보여짐
+    })
+});
+ 
+function load(id, cnt, btn) {
+    var noticeList = id + " .js-load:not(.active)";
+    var girls_length = $(noticeList).length;
+    var girls_total_cnt;
+    if (cnt < girls_length) {
+        girls_total_cnt = cnt;
+    } else {
+        girls_total_cnt = girls_length;
+        $('.button').hide()
+    }
+    $(noticeList + ":lt(" + girls_total_cnt + ")").addClass("active");
+}
+/* 공지사항 더보기버튼 ajax 코드 끝 */
+
+
+</script>
+
+
+
 <style type="text/css">
+
 .hanadiv {
 	margin: auto;
 }
@@ -199,27 +237,33 @@ border-top-right-radius: 15px;
 	      </tr>
 		</div>
 		
-		  	<div class="table-box">
-			    <table class="table table--min" cellspacing="0" cellpadding="0">
-				      <tbody>
-				       <!-- list를 뿌려주는 forEach문 시작 ==================================================================-->
-				      <c:forEach var="notice" items="${noticeList }"> 
-				      	  <tr>
-					        <td class="td-idx">${notice.notice_idx }</td>
-					        <!-- 아랫줄은 notice_idx에 해당하는 행 1개를 select 하기위해, 공지사항 제목을 클릭하면 notice_idx값이 들어가도록 하이퍼링크에 걸어놓은 것 -->
-			       			<td class="td-subject"><a href="noticeView?notice_idx=${notice.notice_idx}" ><c:out value="${notice.notice_title}" /></a></td>
-					        <td class="td-date" ><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></td> <!-- fmt jstl 시간형식작업 -->
-					      </tr>
-					  </c:forEach>
-				      <tr>
-				        <td> </td>
-				        <td> </td>
-				        <td> </td>
-				      </tr>
-				      </tbody>
-			    </table>
-		  </div>
-</div>
+		  <!-- 공지사항 더보기 반복할 구간 시작 -->
+ 		<div id="contents">
+  			<div id="js-load" class="main">
+    			<ul class="lists">
+  			 		<!-- list 를 반복하는 forEach문 시작 -->
+		      		<c:forEach var="notice" items="${noticeList }"> 
+      					<li class="lists__item js-load">
+      						<div class="table-box">
+		   						<table class="table table--min" cellspacing="0" cellpadding="0">
+		    					   <tbody>
+			      	  				 	 <tr>
+									        <td class="td-idx">${notice.notice_idx }</td>
+									        <!-- 아랫줄은 notice_idx에 해당하는 행 1개를 select 하기위해, 공지사항 제목을 클릭하면 notice_idx값이 들어가도록 하이퍼링크에 걸어놓은 것 -->
+									        <td class="td-subject"><a href="noticeView?notice_idx=${notice.notice_idx}" class="a1234"><c:out value="${notice.notice_title}" /></a></td>
+									        <td class="td-date" ><fmt:formatDate value="${notice.notice_date }" pattern="yyyy년 MM월 dd일" /></td> <!-- 시간 fmt작업(fmt jstl 코드 필요) -->
+				     					 </tr>
+		     					   </tbody>
+		   						 </table>
+							</div>
+						</li>
+			 		 </c:forEach>
+   				</ul>
+   			  		 <div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a></div>
+   			  		 
+  			</div>
+		</div>
+	<!-- 공지사항 더보기 반복할 구간 끝 -->		  
 		
  <!-- 중간body 끝 --------------------------------------------------------------------------------->
  
