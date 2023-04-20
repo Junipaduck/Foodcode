@@ -62,12 +62,12 @@
 		WHERE member_id = #{sId}
 	</delete>
 	
-	<select id="getPasswd">
+	<select id="getPasswd" resultType="string">
 		SELECT member_passwd
 			FROM member
 				WHERE member_id = #{member_id}
 	</select>
-	<select id="getPassword">
+	<select id="getPassword" resultType="string">
 	SELECT member_passwd
 			FROM member
 				WHERE member_id = #{sId}
@@ -89,7 +89,7 @@
 		ORDER BY booking_idx DESC;
 	</select>
 	
-	<select id="selectMyReview">
+	<select id="selectMyReview" resultType="map">
 		SELECT r.review_idx
 		, s.store_name
 		, r.review_star
