@@ -79,7 +79,6 @@
 	  </div>
 	</div>
 
-	  <jsp:include page="owner_left.jsp"></jsp:include>
 
 	<div align="center">
      <table  class="rwd-table">
