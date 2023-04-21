@@ -126,56 +126,37 @@ public class StoreController {
 		} //storeRegisterPro() 끝
 	
 	
-	// 가게등록한 정보를 storeList에 담아 맛집추천페이지에 뿌려줌 - 4/10 배하나수정 
-	// + 맛집추천페이지 페이징처리 - 4/19 배하나수정
-	@GetMapping(value = "/store_recommend.so")
-	public String storeList(Model model, StoreVO store,
-							@RequestParam(defaultValue = "") String searchType,
-							@RequestParam(defaultValue = "") String searchKeyword,
-							@RequestParam(defaultValue = "1") int pageNum) {
-		System.out.println("store_recommend.so");
-		
-		//페이징 처리 - 조회 목록 갯수 조절 시 사용하는 변수 
-    	int listLimit = 8;
-		int startRow = (pageNum - 1) * listLimit;
-		
-		List<StoreVO> storeList = storeService.getStoreList(searchType, searchKeyword, startRow, listLimit);
-		List<StoreVO> storeList2 = storeService.getStoreList2();
-		List<StoreVO> storeList3 = storeService.getStoreList3();
-		List<StoreVO> storeList4 = storeService.getStoreList4();
-		List<StoreVO> storeList5 = storeService.getStoreList5();
-		List<StoreVO> storeList6 = storeService.getStoreList6();
-	//	System.out.println("스토어리스트 : " + storeList);
-		
-		
-		// 페이징 처리 코드 시작
-		int listCount = storeService.getStoreListCount(searchType, searchKeyword);
-		int pageListLimit = 10; 
-		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
-		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
-		int endPage = startPage + pageListLimit - 1;
-		if(endPage > maxPage) {
-			endPage = maxPage;
+		// 가게등록한 정보를 storeList에 담아 맛집추천페이지에 뿌려줌 - 4/10 배하나수정
+		// 가게 검색 기능 추가 
+		@GetMapping(value = "/store_recommend.so")
+		public String storeList(Model model, StoreVO store,
+								@RequestParam(defaultValue = "") String searchType,
+								@RequestParam(defaultValue = "") String searchKeyword,
+								@RequestParam(defaultValue = "1") int pageNum) {
+			System.out.println("store_recommend.so");
+			
+			List<StoreVO> storeList = storeService.getStoreList(searchType, searchKeyword);
+			List<StoreVO> storeList1 = storeService.getStoreList1();
+			List<StoreVO> storeList2 = storeService.getStoreList2();
+			List<StoreVO> storeList3 = storeService.getStoreList3();
+			List<StoreVO> storeList4 = storeService.getStoreList4();
+			List<StoreVO> storeList5 = storeService.getStoreList5();
+			List<StoreVO> storeList6 = storeService.getStoreList6();
+		//	System.out.println("스토어리스트 : " + storeList);
+			
+			model.addAttribute("storeList", storeList); // => 전체
+			model.addAttribute("storeList1", storeList1); //=> 한식
+			model.addAttribute("storeList2", storeList2); //=> 일식
+			model.addAttribute("storeList3", storeList3); //=> 중식
+			model.addAttribute("storeList4", storeList4); //=> 양식
+			model.addAttribute("storeList5", storeList5); //=> 요리주점
+			model.addAttribute("storeList6", storeList6); //=> 카페/디저트
+			
+			
+			
+			return "store/store_recommend";
+			
 		}
-		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
-		
-		model.addAttribute("pageInfo", pageInfo);
-		// 페이징 처리 코드 끝 
-		
-		
-		
-		model.addAttribute("storeList", storeList); //=> 한식
-		model.addAttribute("storeList2", storeList2); //=> 일식
-		model.addAttribute("storeList3", storeList3); //=> 중식
-		model.addAttribute("storeList4", storeList4); //=> 양식
-		model.addAttribute("storeList5", storeList5); //=> 요리주점
-		model.addAttribute("storeList6", storeList6); //=> 카페/디저트
-		
-		
-		
-		return "store/store_recommend";
-		
-	}
 	
 	
 

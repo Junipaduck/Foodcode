@@ -102,20 +102,42 @@ $(document).ready(function() {
 <!-- 중간body 시작 ----------------------------------------------------------------------------------------- -->
 
 　<!-- 이 줄에 띄어쓰기 해놓았습니다. 삭제X -->
+
+
+    <!-- 0421 배하나 검색기능 테스트용으로 추가한 부분 시작 -->
+		<section id="buttonArea">
+			<form action="store_recommend.so"> <!-- 검색 눌렀을 때 이동할 곳 -->
+				<!-- 검색타입목록, 검색창 추가 -->
+				<select name="searchType">
+					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
+					<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
+<%-- 					<option value="store_name_store_content" <c:if test="${param.searchKeyword eq 'store_name_store_content'}">selected</c:if>>가게명&가게소개글</option> --%>
+<%-- 					<option value="subject_content" <c:if test="${param.searchKeyword eq 'subject_content'}">selected</c:if>>지역</option> --%>
+				</select>
+				<input type="text" name="searchKeyword" value="${param.searchKeyword }"/>
+				<input type="submit" value="검색" />
+			</form>
+		</section>
+	<!-- 0421 배하나 검색기능 테스트용으로 추가한 부분 끝 -->
+    		
+			    
+			    
 <section class="contents">
 	<div class="tab_menu">
 		<ul class="webtong_tab_type04">
-			<li class="on"><a href="#한식">한식</a></li>
+			<li class="on"><a href="#전체">전체</a></li>
+			<li><a href="#한식1">한식</a></li>
 			<li><a href="#일식2">일식</a></li>
 			<li><a href="#중식3">중식</a></li>
 			<li><a href="#양식4">양식</a></li>
-<!-- 			<li><a href="#씨푸드">씨푸드</a></li> --> <!-- 배하나) 씨푸드 삭제함 -->
 			<li><a href="#요리주점5">요리주점</a></li>
 			<li><a href="#카페/디저트6">카페/디저트</a></li>
 		</ul>	
 	</div>
 	<div class="tabBox">
-    	<div class="on"> <!-- 한식 시작 (왼쪽에 + 누르면 코드 나옵니다) -->
+    	<div class="on"> <!-- 전체 시작 (왼쪽에 + 누르면 코드 나옵니다) -->
+    	
+    	
     		
     		<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
 			 <div class="outer-container77">
@@ -156,7 +178,50 @@ $(document).ready(function() {
 		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->
 			
 			
-		</div>
+		</div> <!-- 전체 끝 -->
+		
+		<div style="display: none;"> <!-- 한식 시작 -->
+		
+		<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+			 <div class="outer-container77">
+		       <div class="inner-container77">
+		         <div class="element77">
+		         
+						<!-- 가게설명 카드 시작 -->
+								<section class="py-5">
+							            <div class="container px-4 px-lg-5 mt-5">
+							                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+												 <c:forEach var="store1" items="${storeList1 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+								                    <div class="col-lg-6 col-md-6"> <!-- col-lg-6 의 숫자는 6일때 한줄에 카드2개가 보여지고, 3일때 카드4개가 보여짐!  -->
+								                        <div class="card h-100">
+								                        	<c:set var="length" value="${fn:length(store1.store_file) }"/>
+															<c:set var="index" value="${fn:indexOf(store1.store_file, '_') }"/>
+															<c:set var="fileName" value="${fn:substring(store1.store_file, index + 1, length) }"/>
+								                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store1.store_idx }'" alt="..." />
+								                            <div class="card-body p-4">
+								                                <div class="text-center">
+								                                    <h5 class="fw-bolder">${store1.store_name }</h5> <!-- 가게명 -->
+								                                   	${store1.store_content } <!-- 가게상세내용 -->
+								                                </div>
+								                            </div>
+								                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so?store_idx=${store1.store_idx }'">가게상세보기</a></div>
+								                            </div>
+								                        </div>
+								                    </div>
+												</c:forEach>  
+						       				</div>
+						        	   </div>
+						   	   	 </section>
+							<!-- 가게설명 카드 끝 -->
+									
+				</div>
+		      </div>
+		    </div>
+		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->
+				
+		</div> <!-- 한식 끝 -->
+		
 		<div style="display: none;"> <!-- 일식 시작 -->
 		
 		
