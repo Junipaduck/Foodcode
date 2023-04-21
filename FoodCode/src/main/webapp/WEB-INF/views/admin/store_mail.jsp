@@ -25,9 +25,41 @@ $(function() {
 				checkInput.attr('disabled',false);
 				code = data;
 				alert('인증번호가 전송되었습니다.')
-			}		
+			}	
 		}); // end ajax
 	}); // end send eamil
+	
+	// 인증번호 비교 
+	// blur -> focus가 벗어나는 경우 발생
+	$('.mail-check-input').keyup(function () {
+		const inputCode = $(this).val();
+		const $resultMsg = $('#mail-check-warn');
+		
+		if(inputCode === code){
+			$resultMsg.html('인증번호가 일치합니다.');
+			$resultMsg.css('color','green');
+			$('#mail-Check-Btn').attr('disabled',true);
+			$('#userEamil1').attr('readonly',true);
+			$('#userEamil2').attr('readonly',true);
+			$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+	        $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+	        
+	        $('#mail-check-warn').append(
+	                $(document.createElement('input')).prop({
+	                    type: 'button',
+	                    id: 'submit',
+	                    value: 'Submit',
+	                    className: 'btn'
+	                })
+	            );
+	        
+		}else{
+			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+			$resultMsg.css('color','red');
+		}
+	});
+	
+	
 });
 
 </script>
@@ -48,7 +80,7 @@ $(function() {
 		<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
 	</div>
 		<div class="mail-check-box">
-	<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
+	<input class="form-control mail-check-input" placeholder="인증번호 6자리 입력 !" disabled="disabled" maxlength="6">
 	</div>
 		<span id="mail-check-warn"></span>
 	</div>
