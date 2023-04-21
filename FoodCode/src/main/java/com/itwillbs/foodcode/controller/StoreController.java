@@ -14,6 +14,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -189,28 +190,50 @@ public class StoreController {
 	
 	//메뉴 등록 페이지(새창으로 띄움)
 	@RequestMapping(value = "store_menu.so", method = {RequestMethod.GET, RequestMethod.POST})
-	public String storeMenu() {
+	public String storeMenu(@RequestParam int store_idx,Model model) {
 		System.out.println("store_menu.so");
+		List menuList = menuService.getMenuList(store_idx);
+		model.addAttribute("menuList", menuList);
 		return "owner/owner_store_menu";
 	}
 	
-	
 	//메뉴 등록 페이지에서 메뉴를 등록하는 Pro 작업 - 여러번 반복해야 할 수 있기 때문에 창 닫으면 안됨
-	@ResponseBody
-	@GetMapping(value = "store_menuPro.so")
-	public String storeMenuPro(MenuVO menu, Model model) {
-		System.out.println("storeMenuPro.so");
-		String message = "";
-		int insertCnt = menuService.insertMenu(menu);
-		
-		if(insertCnt > 0) {
-			message = "<script>alert('메뉴 등록 성공');</script>";
+	// 찬영 추가 설명 창을 닫으면 안되는게 아니라 메뉴를 등록했을 때 같은 창에 머물러 있으면 되기 때문에 리다이렉트로 같은 창을 띄우면 됨
+	@RequestMapping(value = "store_menu_pro.so", method = {RequestMethod.GET, RequestMethod.POST})
+	public String storeMenuPro(@RequestParam int store_idx, MenuVO menu, Model model) {
+		System.out.println("store_menu_pro.so");
+		System.out.println("store_idx 값 : " + store_idx);
+		System.out.println(menu);
+		int menuCnt = menuService.insertMenu(store_idx,menu);
+		if(menuCnt > 0) {
+			return "redirect:/store_menu.so?store_idx=" + store_idx;
 		} else {
-			message = "<script>alert('메뉴 등록 실패');</script>";
+			model.addAttribute("msg", "메뉴 등록에 실패했습니다.");
+			return "customer/fail_back";
 		}
 		
-		return "message";
 	}
+	
+	@RequestMapping(value = "MenuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
+	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model) {
+		int modifyMenuCnt = menuService.modifyMenu(store_idx,menu);
+		if(modifyMenuCnt > 0) {
+			return "redirect:/store_menu.so?store_idx=" + store_idx;
+			
+		} else {
+			model.addAttribute("msg", "변경에 실패했습니다!");
+			return "customer/fail_back";
+		}
+		
+	}
+	
+	@RequestMapping(value = "menuDelete.so", method = {RequestMethod.GET,RequestMethod.POST})
+	public String menuDelete(@RequestParam int store_idxD, @RequestParam int menu_idxD) {
+		int deleteCnt = menuService.menuDelete(store_idxD,menu_idxD);
+		return "redirect:/store_menu.so?store_idx=" + store_idxD;
+	}
+	
+	
 	
 	
 	

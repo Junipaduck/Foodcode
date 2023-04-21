@@ -91,6 +91,24 @@ function clean_first_tr(firstTr) {//값 초기화
     });
 }
 
+var menu_idx ="";
+var store_idx ="";
+$(document).ready(function() {     
+    $('#editEmployeeModal').on('show.bs.modal', function(event) {          
+        menu_idx = $(event.relatedTarget).data('menu_idx');
+        store_idx = $(event.relatedTarget).data('store_idx');
+        $("#menu_idx").val(menu_idx);
+        $("#store_idx").val(store_idx);
+    });
+    
+    $('#deleteEmployeeModal').on('show.bs.modal', function(event) {          
+        menu_idx = $(event.relatedTarget).data('menu_idx');
+        store_idx = $(event.relatedTarget).data('store_idx');
+        $("#menu_idxD").val(menu_idx);
+        $("#store_idxD").val(store_idx);
+    });
+});
+
 // 행 삭제
 function remove_tr(This) {//행 삭제
     //*4)closet:현재 엘리멘트에서 가장 가까운 조상을 반환
@@ -103,7 +121,7 @@ function remove_tr(This) {//행 삭제
 }
 
 //입력값 가져오기
-var menuTextName = document.getElementById('menu_name').value;
+// var menuTextName = document.getElementById('menu_name').value;
 
 </script>
 <title>가게 메뉴 등록 페이지</title>
@@ -124,8 +142,7 @@ var menuTextName = document.getElementById('menu_name').value;
 						<h2><b>메뉴 등록</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>메뉴 추가하기</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>삭제하기</span></a>						
+						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" ><i class="material-icons">&#xE147;</i> <span>메뉴 추가하기</span></a>
 					</div>
 				</div>
 			</div>
@@ -147,7 +164,26 @@ var menuTextName = document.getElementById('menu_name').value;
 					</tr>
 				</thead>
 				<tbody id="table_body">
+				<c:forEach items="${menuList }" var="menu" >
 					<tr>
+						<th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+						</th>
+						<input type="hidden" value="${menu.menu_idx }" name="menu_idx">
+						<th>${menu.menu_name }</th>
+						<th>${menu.menu_type }</th>
+						<th>${menu.menu_price }</th>
+						<th>${menu.menu_image }</th>
+						<th>${menu.menu_content }</th>
+						<th><a href="#editEmployeeModal" class="btn btn-success" data-toggle="modal" data-menu_idx="${menu.menu_idx }" data-store_idx="${param.store_idx }"><i class="material-icons">&#xE147;</i> <span>수정</span></a></th>
+						<th><a href="#deleteEmployeeModal"  class="btn btn-danger" data-toggle="modal" data-menu_idx="${menu.menu_idx}" data-store_idx="${param.store_idx}"><i class="material-icons">&#xE15C;</i> <span>삭제</span></a></th>
+					</tr>
+					</c:forEach>
+					<input type="hidden" value="${param.store_idx }" name="store_idx">
+<!-- 					<tr> -->
 <!-- 						<td> -->
 <!-- 							<span class="custom-checkbox"> -->
 <!-- 								<input type="checkbox" id="checkbox1" name="options[]" value="1"> -->
@@ -160,10 +196,10 @@ var menuTextName = document.getElementById('menu_name').value;
 <!--  						<td></td> 클릭시 이미지 크게 보이게 할 수 있는건 미정 일단 가져오기만 -->
 <!-- 						<td></td> -->
 <!-- 						<td> -->
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="수정">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="삭제">&#xE872;</i></a>
-						</td>
-					</tr>
+<!-- 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="수정">&#xE254;</i></a> -->
+<!-- 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="삭제">&#xE872;</i></a> -->
+<!-- 						</td> -->
+<!-- 					</tr> -->
 				</tbody>
 			</table>
 <!-- 			<div class="clearfix"> 페이징 처리 후에 쓰게 된다면 주석 해제 -->
@@ -185,7 +221,7 @@ var menuTextName = document.getElementById('menu_name').value;
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form >
+			<form action="store_menu_pro.so">
 				<div class="modal-header">						
 					<h4 class="modal-title">추가하기</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -210,6 +246,9 @@ var menuTextName = document.getElementById('menu_name').value;
 					<div class="form-group">
 						<label>메뉴 설명</label>
 						<textarea class="form-control" name="menu_content" id="menu_content" required></textarea>
+					</div>
+					<div>
+					<input type="hidden" value="${param.store_idx }" name="store_idx"> 					
 					</div>					
 				</div>
 				<div class="modal-footer">
@@ -224,7 +263,7 @@ var menuTextName = document.getElementById('menu_name').value;
 <div id="editEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form action="MenuModify.so">
 				<div class="modal-header">						
 					<h4 class="modal-title">수정하기</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -232,24 +271,27 @@ var menuTextName = document.getElementById('menu_name').value;
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>메뉴 이름</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control" name="menu_name" id="menu_name" required>
 					</div>
 					<div class="form-group">
 						<label>메뉴 종류</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control" name="menu_type" id="menu_type" required>
 					</div>
 					<div class="form-group">
 						<label>가격</label>
-						<input type="text" class="form-control" required>
+						<input class="form-control" name="menu_price" id="menu_price" required>
 					</div>
 					<div class="form-group">
-						<label>메뉴 사진</label>
-						<input type="text" class="form-control" required>
+						<label>사진</label>
+						<input type="text" class="form-control" name="menu_image" id="menu_image" required>
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
-						<textarea class="form-control" required></textarea>
-					</div>					
+						<textarea class="form-control" name="menu_content" id="menu_content" required></textarea>
+					</div>
+					
+					<input type="hidden" name="store_idx" id="store_idx">
+					<input type="hidden" name="menu_idx" id="menu_idx">
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="취소">
@@ -263,7 +305,7 @@ var menuTextName = document.getElementById('menu_name').value;
 <div id="deleteEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form action="menuDelete.so">
 				<div class="modal-header">						
 					<h4 class="modal-title">메뉴 삭제</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -271,8 +313,11 @@ var menuTextName = document.getElementById('menu_name').value;
 				<div class="modal-body">					
 					<p>정말 이 메뉴를 삭제 하시겠어요?</p>
 					<p class="text-warning"><small>삭제된 메뉴는 복구되지 않습니다.</small></p>
+					<input type="hidden" name="store_idxD" id="store_idxD">
+					<input type="hidden" name="menu_idxD" id="menu_idxD">
 				</div>
 				<div class="modal-footer">
+					
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="취소">
 					<input type="submit" class="btn btn-danger" value="삭제" name="dtl_del">
 				</div>

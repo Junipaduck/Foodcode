@@ -1,5 +1,7 @@
 package com.itwillbs.foodcode.service;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,20 @@ public class MenuService {
 	@Autowired
 	private MenuMapper mapper;
 
-	public int insertMenu(MenuVO menu) {
-		return mapper.insertMenu(menu);
+	public int insertMenu(int store_idx, MenuVO menu) {
+		return mapper.insertMenu(menu,store_idx);
 	}
+
+	public List getMenuList(int store_idx) {
+		return mapper.getMenuList(store_idx);
+	}
+
+	public int modifyMenu(int store_idx, MenuVO menu) {
+		return mapper.modifyMenu(store_idx,menu);
+	}
+
+	public int menuDelete(int store_idxD, int menu_idxD) {
+		return mapper.deleteMenu(store_idxD,menu_idxD);
+	}
+
 }

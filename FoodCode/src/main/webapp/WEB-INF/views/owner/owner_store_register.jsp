@@ -139,10 +139,6 @@
                 <label class="text-black" for="storeEtc">기타</label>
                 <input type="text" class="form-control" name="store_etc" id="store_etc" placeholder="주차, 결제가능한 페이 종류, 화장실 유무 등 기타 안내사항을 입력해주세요.">
               </div>
-              <div class="form-group">
-                <label class="text-black" for="storeMenu">메뉴 등록</label>
-              <input type="button" class="btn btn-primary btn-block" value="메뉴를 등록해주세요" id="store_menu" onclick="window.open('store_menu.so', 'window_name', 'width=500, height=700, location=no, status=no, scrollbars=yes')">
-              </div>
               <button type="submit" class="btn btn-primary">등록하기</button>
 <!--               <button type="submit" class="btn btn-primary">돌아가기</button> -->
           </div>

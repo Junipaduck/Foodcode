@@ -2,18 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.foodcode.mapper.MenuMapper">
 
- <insert id="insertMenu">
+	 
+	 <select id="getMenuList" resultType="map">
+	 	SELECT m.menu_idx
+				, m.menu_name
+				, m.menu_type
+				, m.menu_price
+				, m.menu_image
+				, m.menu_content
+				, s.store_idx
+		FROM menu m JOIN store s ON s.store_idx = m.store_idx
+		WHERE s.store_idx = #{store_idx}
+	 </select>
+	 
+	 <insert id="insertMenu">
+	 	<selectKey keyProperty="menu_idx" resultType="int" order="BEFORE">
+	 		SELECT IFNULL(MAX(menu_idx),0) FROM menu WHERE store_idx = #{store_idx}
+	 	</selectKey>
 	 	INSERT
 	 		INTO menu
 	 		VALUES (
-	 			1
-	 			,#{menu_name} 
-	 			,#{menu_type} 
-	 			,#{menu_price} 
-	 			,#{menu_image} 
-	 			,#{menu_content} 
-	 			,1  
+	 			#{menu_idx} + 1
+	 			,#{menu.menu_name} 
+	 			,#{menu.menu_type} 
+	 			,#{menu.menu_price} 
+	 			,#{menu.menu_image} 
+	 			,#{menu.menu_content} 
+	 			,#{store_idx}
 	 		)
 	 </insert>
+	 
+	 <update id="modifyMenu">
+	 UPDATE menu SET menu_idx=1
+	 , menu_name= #{menu.menu_name}
+	 , menu_type=#{menu.menu_type}
+	 , menu_price=#{menu.menu_price}
+	 , menu_image=#{menu.menu_image}
+	 , menu_content=#{menu.menu_content}
+	 WHERE menu_idx = #{menu.menu_idx} AND
+	 store_idx = #{store_idx}
+	 </update>
+	 
+	 <delete id="deleteMenu">
+	 DELETE FROM menu WHERE store_idx = #{store_idxD} AND menu_idx = #{menu_idxD}
+	 </delete>
 
 </mapper>
