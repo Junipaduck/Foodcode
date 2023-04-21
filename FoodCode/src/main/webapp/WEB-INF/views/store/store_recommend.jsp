@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +45,28 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 	margin-bottom: 30px;
 }
 
+.element77, .outer-container77 {
+   width: 1500px;
+	height: 800px;
+	margin: 0 auto;
+ }
+
+ .outer-container77 {
+   position: relative;
+   overflow: hidden;
+/*   border: 5px solid purple; */
+ }
+
+ .inner-container77 {
+   position: absolute;
+   left: 0;
+   overflow-x: hidden;
+   overflow-y: scroll;
+ }
+
+ .inner-container77::-webkit-scrollbar77 {
+   display: none;
+ }
 
 </style>
 <!-- ----------------------------------------------------------------------------------------- -->
@@ -95,247 +117,258 @@ $(document).ready(function() {
 	<div class="tabBox">
     	<div class="on"> <!-- 한식 시작 (왼쪽에 + 누르면 코드 나옵니다) -->
     		
-			<!-- 가게설명 카드 시작 -->
-				<section class="py-5">
-			            <div class="container px-4 px-lg-5 mt-5">
-			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-								 <c:forEach var="store" items="${storeList }"> <!-- list를 뿌려주는 forEach문 시작 -->
-				                    <div class="col-lg-3 col-md-6">
-				                        <div class="card h-100">
-				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file_path }/${store.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
-				                            <div class="card-body p-4">
-				                                <div class="text-center">
-				                                    <h5 class="fw-bolder">${store.store_name }</h5> <!-- 가게명 -->
-				                                   	${store.store_content } <!-- 가게상세내용 -->
-				                                </div>
-				                            </div>
-				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="store.so?store_idx=${store.store_idx }&pageNum=${pageNum}">가게상세보기</a></div>
-				                            </div>
-				                        </div>
-				                    </div>
-								</c:forEach>  
-		       				</div>
-		        	   </div>
-		   	   	 </section>
-			<!-- 가게설명 카드 끝 -->	
+    		<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+			 <div class="outer-container77">
+		       <div class="inner-container77">
+		         <div class="element77">
+		         
+						<!-- 가게설명 카드 시작 -->
+							<section class="py-5">
+						            <div class="container px-4 px-lg-5 mt-5">
+						                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+											 <c:forEach var="store" items="${storeList }"> <!-- list를 뿌려주는 forEach문 시작 -->
+							                    <div class="col-lg-6 col-md-6">
+							                        <div class="card h-100">
+							                            <c:set var="length" value="${fn:length(store.store_file) }"/>
+														<c:set var="index" value="${fn:indexOf(store.store_file, '_') }"/>
+														<c:set var="fileName" value="${fn:substring(store.store_file, index + 1, length) }"/>
+							                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store.store_idx }'" alt="..." />
+							                            <div class="card-body p-4">
+							                                <div class="text-center">
+							                                    <h5 class="fw-bolder">${store.store_name }</h5> <!-- 가게명 -->
+							                                   	${store.store_content } <!-- 가게상세내용 -->
+							                                </div>
+							                            </div>
+							                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="store.so?store_idx=${store.store_idx }">가게상세보기</a></div>
+							                            </div>
+							                        </div>
+							                    </div>
+											</c:forEach>  
+					       				</div>
+					        	   </div>
+					   	   	 </section>
+						<!-- 가게설명 카드 끝 -->	
 			
-			
-	<!-- 4/19 수업시간에 했던 페이징처리 시작 -->			
-	<section id="pageList">
-		<c:choose>
-			<c:when test="${pageNum > 1 }">
-				<input type="button" value="이전" onclick="location.href='store_recommend.so#한식?pageNum=${pageNum - 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="이전">
-			</c:otherwise>
-		</c:choose>
-		
-		<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-			<c:choose>
-				<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
-					<b>${num }</b>
-				</c:when>
-				<c:otherwise>
-					<a href="store_recommend.so#한식?pageNum=${num }">${num }</a>
-				</c:otherwise>				
-			</c:choose>
-		</c:forEach>
-		
-		<c:choose>
-			<c:when test="${pageNum < pageInfo.maxPage }">
-				<input type="button" value="다음" onclick="location.href='store_recommend.so#한식?pageNum=${pageNum + 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="다음">
-			</c:otherwise>
-		</c:choose>
-	</section>
-<!-- 4/19 수업시간에 했던 페이징처리 시작 -->			
-			
-			
-			<!-- 페이징 코드시작 -->
-			<div class="page123">
-				<nav aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center">
-				    <li class="page-item disabled">
-				      <a class="page-link">이전</a>
-				    </li>
-					    <li class="page-item"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item"><a class="page-link" href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item"><a class="page-link" href="#">4</a></li>
-					    <li class="page-item"><a class="page-link" href="#">5</a></li>
-					    <li class="page-item">
-					      <a class="page-link" href="#">다음</a>
-				    </li>
-				  </ul>
-				</nav>
-			</div>
-			<!-- 페이징 코드 끝 -->
-		
+				</div>
+		      </div>
+		    </div>
+		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->
 			
 			
 		</div>
 		<div style="display: none;"> <!-- 일식 시작 -->
 		
-			<!-- 가게설명 카드 시작 -->
-					<section class="py-5">
-				            <div class="container px-4 px-lg-5 mt-5">
-				                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-									 <c:forEach var="store2" items="${storeList2 }"> <!-- list를 뿌려주는 forEach문 시작 -->
-					                    <div class="col-lg-3 col-md-6">
-					                        <div class="card h-100">
-					                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store2.store_file_path }/${store2.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
-					                            <div class="card-body p-4">
-					                                <div class="text-center">
-					                                    <h5 class="fw-bolder">${store2.store_name }</h5> <!-- 가게명 -->
-					                                   	${store2.store_content } <!-- 가게상세내용 -->
-					                                </div>
-					                            </div>
-					                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-					                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-					                            </div>
-					                        </div>
-					                    </div>
-									</c:forEach>  
-			       				</div>
-			        	   </div>
-			   	   	 </section>
-				<!-- 가게설명 카드 끝 -->		
 		
-		<!-- 페이징 코드시작 -->
-			<div class="page123">
-				<nav aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center">
-				    <li class="page-item disabled">
-				      <a class="page-link">이전</a>
-				    </li>
-					    <li class="page-item"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item"><a class="page-link" href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item"><a class="page-link" href="#">4</a></li>
-					    <li class="page-item"><a class="page-link" href="#">5</a></li>
-					    <li class="page-item">
-					      <a class="page-link" href="#">다음</a>
-				    </li>
-				  </ul>
-				</nav>
-			</div>
-		<!-- 페이징 코드 끝 -->
+		
+		<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+			 <div class="outer-container77">
+		       <div class="inner-container77">
+		         <div class="element77">
+		         
+						<!-- 가게설명 카드 시작 -->
+								<section class="py-5">
+							            <div class="container px-4 px-lg-5 mt-5">
+							                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+												 <c:forEach var="store2" items="${storeList2 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+								                    <div class="col-lg-6 col-md-6"> <!-- col-lg-6 의 숫자는 6일때 한줄에 카드2개가 보여지고, 3일때 카드4개가 보여짐!  -->
+								                        <div class="card h-100">
+								                        	<c:set var="length" value="${fn:length(store2.store_file) }"/>
+															<c:set var="index" value="${fn:indexOf(store2.store_file, '_') }"/>
+															<c:set var="fileName" value="${fn:substring(store2.store_file, index + 1, length) }"/>
+								                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store2.store_idx }'" alt="..." />
+								                            <div class="card-body p-4">
+								                                <div class="text-center">
+								                                    <h5 class="fw-bolder">${store2.store_name }</h5> <!-- 가게명 -->
+								                                   	${store2.store_content } <!-- 가게상세내용 -->
+								                                </div>
+								                            </div>
+								                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so?store_idx=${store2.store_idx }'">가게상세보기</a></div>
+								                            </div>
+								                        </div>
+								                    </div>
+												</c:forEach>  
+						       				</div>
+						        	   </div>
+						   	   	 </section>
+							<!-- 가게설명 카드 끝 -->
+									
+				</div>
+		      </div>
+		    </div>
+		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->
 				
 		</div> <!-- 일식 끝 -->
 		<div style="display: none;"> <!-- 중식 시작 -->
 			
-			 <!-- 가게설명 카드 시작 -->
-				<section class="py-5">
-			            <div class="container px-4 px-lg-5 mt-5">
-			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-								 <c:forEach var="store3" items="${storeList3 }"> <!-- list를 뿌려주는 forEach문 시작 -->
-				                    <div class="col-lg-3 col-md-6">
-				                        <div class="card h-100">
-				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store3.store_file_path }/${store3.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
-				                            <div class="card-body p-4">
-				                                <div class="text-center">
-				                                    <h5 class="fw-bolder">${store3.store_name }</h5> <!-- 가게명 -->
-				                                   	${store3.store_content } <!-- 가게상세내용 -->
-				                                </div>
-				                            </div>
-				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-				                            </div>
-				                        </div>
-				                    </div>
-								</c:forEach>  
-		       				</div>
-		        	   </div>
-		   	   	 </section>
-			<!-- 가게설명 카드 끝 -->		
+			<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+			 <div class="outer-container77">
+		       <div class="inner-container77">
+		         <div class="element77">
+		         
+					 <!-- 가게설명 카드 시작 -->
+						<section class="py-5">
+					            <div class="container px-4 px-lg-5 mt-5">
+					                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+										 <c:forEach var="store3" items="${storeList3 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+						                    <div class="col-lg-6 col-md-6">
+						                        <div class="card h-100">
+							                        <c:set var="length" value="${fn:length(store3.store_file) }"/>
+													<c:set var="index" value="${fn:indexOf(store3.store_file, '_') }"/>
+													<c:set var="fileName" value="${fn:substring(store3.store_file, index + 1, length) }"/>
+						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store3.store_idx }'" alt="..." />
+						                            <div class="card-body p-4">
+						                                <div class="text-center">
+						                                    <h5 class="fw-bolder">${store3.store_name }</h5> <!-- 가게명 -->
+						                                   	${store3.store_content } <!-- 가게상세내용 -->
+						                                </div>
+						                            </div>
+						                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+						                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so?store_idx=${store3.store_idx }'">가게상세보기</a></div>
+						                            </div>
+						                        </div>
+						                    </div>
+										</c:forEach>  
+				       				</div>
+				        	   </div>
+				   	   	 </section>
+					<!-- 가게설명 카드 끝 -->		
+			
+				</div>
+		      </div>
+		    </div>
+		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->
+			
 			
 		</div> <!-- 중식 끝 -->
 		<div style="display: none;"> <!-- 양식 시작 -->
 		
-			 <!-- 가게설명 카드 시작 -->
-				<section class="py-5">
-			            <div class="container px-4 px-lg-5 mt-5">
-			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-								 <c:forEach var="store4" items="${storeList4 }"> <!-- list를 뿌려주는 forEach문 시작 -->
-				                    <div class="col-lg-3 col-md-6">
-				                        <div class="card h-100">
-				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store4.store_file_path }/${store4.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
-				                            <div class="card-body p-4">
-				                                <div class="text-center">
-				                                    <h5 class="fw-bolder">${store4.store_name }</h5> <!-- 가게명 -->
-				                                   	${store4.store_content } <!-- 가게상세내용 -->
-				                                </div>
-				                            </div>
-				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-				                            </div>
-				                        </div>
-				                    </div>
-								</c:forEach>  
-		       				</div>
-		        	   </div>
-		   	   	 </section>
-			<!-- 가게설명 카드 끝 -->		
 		
-		</div>
+			<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+			 <div class="outer-container77">
+		       <div class="inner-container77">
+		         <div class="element77">
+		         
+					 <!-- 가게설명 카드 시작 -->
+						<section class="py-5">
+					            <div class="container px-4 px-lg-5 mt-5">
+					                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+										 <c:forEach var="store4" items="${storeList4 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+						                    <div class="col-lg-6 col-md-6">
+						                        <div class="card h-100">
+							                        <c:set var="length" value="${fn:length(store4.store_file) }"/>
+													<c:set var="index" value="${fn:indexOf(store4.store_file, '_') }"/>
+													<c:set var="fileName" value="${fn:substring(store4.store_file, index + 1, length) }"/>
+						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store4.store_idx }'" alt="..." />
+						                            <div class="card-body p-4">
+						                                <div class="text-center">
+						                                    <h5 class="fw-bolder">${store4.store_name }</h5> <!-- 가게명 -->
+						                                   	${store4.store_content } <!-- 가게상세내용 -->
+						                                </div>
+						                            </div>
+						                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+						                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so?store_idx=${store4.store_idx }'">가게상세보기</a></div>
+						                            </div>
+						                        </div>
+						                    </div>
+										</c:forEach>  
+				       				</div>
+				        	   </div>
+				   	   	 </section>
+					<!-- 가게설명 카드 끝 -->
+						
+				</div>
+		      </div>
+		    </div>
+		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->	
 		
+		</div> <!-- 양식 끝 -->
 		<div style="display: none;"> <!-- 요리주점 시작 -->
-			  <!-- 가게설명 카드 시작 -->
-				<section class="py-5">
-			            <div class="container px-4 px-lg-5 mt-5">
-			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-								 <c:forEach var="store5" items="${storeList5 }"> <!-- list를 뿌려주는 forEach문 시작 -->
-				                    <div class="col-lg-3 col-md-6">
-				                        <div class="card h-100">
-				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store5.store_file_path }/${store5.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
-				                            <div class="card-body p-4">
-				                                <div class="text-center">
-				                                    <h5 class="fw-bolder">${store5.store_name }</h5> <!-- 가게명 -->
-				                                   	${store5.store_content } <!-- 가게상세내용 -->
-				                                </div>
-				                            </div>
-				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-				                            </div>
-				                        </div>
-				                    </div>
-								</c:forEach>  
-		       				</div>
-		        	   </div>
-		   	   	 </section>
-			<!-- 가게설명 카드 끝 -->		
-		</div>
+		
+			<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+			 <div class="outer-container77">
+		       <div class="inner-container77">
+		         <div class="element77">
+		         
+					  <!-- 가게설명 카드 시작 -->
+						<section class="py-5">
+					            <div class="container px-4 px-lg-5 mt-5">
+					                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+										 <c:forEach var="store5" items="${storeList5 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+						                    <div class="col-lg-6 col-md-6">
+						                        <div class="card h-100">
+						                        	<c:set var="length" value="${fn:length(store5.store_file) }"/>
+													<c:set var="index" value="${fn:indexOf(store5.store_file, '_') }"/>
+													<c:set var="fileName" value="${fn:substring(store5.store_file, index + 1, length) }"/>
+						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store5.store_idx }'" alt="..." />
+						                            <div class="card-body p-4">
+						                                <div class="text-center">
+						                                    <h5 class="fw-bolder">${store5.store_name }</h5> <!-- 가게명 -->
+						                                   	${store5.store_content } <!-- 가게상세내용 -->
+						                                </div>
+						                            </div>
+						                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+						                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so?store_idx=${store5.store_idx }'">가게상세보기</a></div>
+						                            </div>
+						                        </div>
+						                    </div>
+										</c:forEach>  
+				       				</div>
+				        	   </div>
+				   	   	 </section>
+					<!-- 가게설명 카드 끝 -->
+					
+				</div>
+		      </div>
+		    </div>
+		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->			
+		   
+		</div> <!-- 요리주점 끝 -->
 		<div style="display: none;"> <!-- 카페/디저트 시작 -->
-			 <!-- 가게설명 카드 시작 -->
-				<section class="py-5">
-			            <div class="container px-4 px-lg-5 mt-5">
-			                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-								 <c:forEach var="store6" items="${storeList6 }"> <!-- list를 뿌려주는 forEach문 시작 -->
-				                    <div class="col-lg-3 col-md-6">
-				                        <div class="card h-100">
-				                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${store6.store_file_path }/${store6.store_file}" alt="..." onclick="location.href='store.so'" alt="..." />
-				                            <div class="card-body p-4">
-				                                <div class="text-center">
-				                                    <h5 class="fw-bolder">${store6.store_name }</h5> <!-- 가게명 -->
-				                                   	${store6.store_content } <!-- 가게상세내용 -->
-				                                </div>
-				                            </div>
-				                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-				                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so'">가게상세보기</a></div>
-				                            </div>
-				                        </div>
-				                    </div>
-								</c:forEach>  
-		       				</div>
-		        	   </div>
-		   	   	 </section>
-			<!-- 가게설명 카드 끝 -->		
-		</div>
+		
+			<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+			 <div class="outer-container77">
+		       <div class="inner-container77">
+		         <div class="element77">
+					 <!-- 가게설명 카드 시작 -->
+						<section class="py-5">
+					            <div class="container px-4 px-lg-5 mt-5">
+					                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+										 <c:forEach var="store6" items="${storeList6 }"> <!-- list를 뿌려주는 forEach문 시작 -->
+						                    <div class="col-lg-6 col-md-6">
+						                        <div class="card h-100">
+							                        <c:set var="length" value="${fn:length(store6.store_file) }"/>
+													<c:set var="index" value="${fn:indexOf(store6.store_file, '_') }"/>
+													<c:set var="fileName" value="${fn:substring(store6.store_file, index + 1, length) }"/>
+						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store6.store_idx }'" alt="..." />
+						                            <div class="card-body p-4">
+						                                <div class="text-center">
+						                                    <h5 class="fw-bolder">${store6.store_name }</h5> <!-- 가게명 -->
+						                                   	${store6.store_content } <!-- 가게상세내용 -->
+						                                </div>
+						                            </div>
+						                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+						                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="location.href='store.so?store_idx=${store6.store_idx }'">가게상세보기</a></div>
+						                            </div>
+						                        </div>
+						                    </div>
+										</c:forEach>  
+				       				</div>
+				        	   </div>
+				   	   	 </section>
+					<!-- 가게설명 카드 끝 -->
+						
+				</div>
+		      </div>
+		    </div>
+		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->		
+		   
+		</div> <!-- 카페/디저트 끝 -->
+		
+		
 	</div>
+</section>
 
 
 

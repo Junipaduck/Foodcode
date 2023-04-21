@@ -2,12 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
 
+<script src="js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 	function confirmLogout(){
 		let result = confirm("로그아웃하시겠습니까?");	
 		return result;
 	}
 </script>
+
+
+
 
 <!-- 폰트 링크 (아래 4줄) -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font_NotoSans.css">
@@ -58,7 +62,23 @@
 						<c:otherwise>
 							<!-- ㅇㅇ님 클릭시 마이페이지로 이동 -->
 <%-- 							<li><a href="customerMypage.me">${sessionScope.sId } 님</a></li>  --%>
-							<li><a href="mypage.me">${sessionScope.sId } 님</a></li> 
+							<li  ></li>
+								<!-- 점주 회원이면 드롭다운 -0421 최보아 수정 -->
+								<c:choose>
+									<c:when test="${sessionScope.sId eq 'owner1'}">
+										<li class="has-children"><a href="#">${sessionScope.sId } 님</a>
+											<ul class="dropdown">
+												<li><a href="mypage.me" title="내식당">내 식당</a></li>
+												<li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>
+								                <li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>
+											</ul>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="mypage.me">${sessionScope.sId } 님</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- 드롭다운 끝 -->
 							 <li><a href="logout.me" id="logout" onclick="return confirmLogout()">로그아웃</a></li>
 							<c:if test="${sessionScope.sId eq 'admin' }">
 								 <li><a href="adminMain">관리자 페이지</a></li>

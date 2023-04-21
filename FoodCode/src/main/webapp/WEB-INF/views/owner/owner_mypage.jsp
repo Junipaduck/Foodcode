@@ -5,6 +5,7 @@
 <html lang="kr">
 <head>
   <meta charset="utf-8">
+  <title>점주가게목록</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="favicon.png">
@@ -25,85 +26,43 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <!-- 왼쪽 목록 css  ...근데 이 css있으면 top2.jsp css가 문제생김 -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   
   <!-- owner css -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css">
 
-  <title>점주가게목록</title>
 </head>
 <body>
 	<header>
 		<jsp:include page="../inc/top2.jsp"></jsp:include>
 	</header>
 
-  <div class="site-mobile-menu site-navbar-target">
-    <div class="site-mobile-menu-header">
-      <div class="site-mobile-menu-close">
-        <span class="icofont-close js-menu-toggle"></span>
-      </div>
-    </div>
-    <div class="site-mobile-menu-body"></div>
-  </div>
-  
-
-  <nav class="site-nav">
-  
-  </nav>
-
-
-  <div class="hero hero-inner">
-<!--     <div class="container"> -->
-<!--       <div class="row align-items-center"> -->
-<!--         <div class="col-lg-6 mx-auto text-center"> -->
-<!--           <div class="intro-wrap"> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--   	</div> -->
-  </div>
-  
-<jsp:include page="owner_left.jsp"></jsp:include>
-
 <div class="untree_co-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="owl-single dots-absolute owl-carousel">
-            <img src="${pageContext.request.contextPath }/resources/images/slider-1.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
-            <img src="${pageContext.request.contextPath }/resources/images/slider-2.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
-            <img src="${pageContext.request.contextPath }/resources/images/slider-3.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
-            <img src="${pageContext.request.contextPath }/resources/images/slider-4.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
-            <img src="${pageContext.request.contextPath }/resources/images/slider-5.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
-          </div>
-        </div>
-        <div class="col-lg-5 pl-lg-5 ml-auto">
-<!--         <div class="dropdown text-sans-serif"> -->
-        <br>
-		  
-<!-- 		  <div class="card"> -->
-<!-- 		    <div class="card-header border-bottom" id="headingTwo"> -->
-<!-- 		      <h5 class="mb-0"><button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Collapsible Group Item #2</button></h5> -->
-<!-- 		    </div> -->
-<!-- 		    <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample"> -->
-<!-- 		      <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> -->
-<!-- 		    </div> -->
-<!-- 		  </div> -->
-
-
-
-
-
-        <div class="accordion" id="accordionExample">
-        	<div class="card">
-		        		<c:forEach items="${storeInfo }" var="storeInfo">
-		        		<div class="card-header border-bottom" id="headingOne">
-		        			<h5 class="mb-0"><button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">${storeInfo.store_name }</button></h5>
-		          		</div>
-		          			<div class="collapse show" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample">
-		          				<div class="card-body">
-		          					<h2 class="section-title mb-4" >${storeInfo.store_name }</h2>
-			          				<p>${storeInfo.store_content }</p>
+	<div class="container">
+		<div class="row">
+        	<div class="col-lg-12">
+				<div class="accordion" id="accordionExample">
+					<div class="card">
+						<c:forEach items="${storeInfo }" var="storeInfo">
+				       		<div class="card-header border-bottom" id="headingOne">
+				      			<h5 class="mb-0"><button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapse_${storeInfo.store_idx}" aria-expanded="true" aria-controls="collapse_${storeInfo.store_idx}">${storeInfo.store_name }</button></h5>
+				       		</div>
+				    		<div class="collapse" id="collapse_${storeInfo.store_idx}" aria-labelledby="heading_${storeInfo.store_idx}" data-parent="#accordionExample">
+							<!-- 0421 사진 css 안맞아서 잠시 주석 -->
+<!-- 				       		<div class="col-lg-5"> -->
+<!-- 								<div class="owl-single dots-absolute owl-carousel"> -->
+<%-- 									<img src="${pageContext.request.contextPath }/resources/images/slider-1.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
+<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-2.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
+<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-3.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
+<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-4.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
+<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-5.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
+<!-- 				          		</div> -->
+<!-- 				        	</div> -->
+				        		<div class="card-body">
+        							<div class="col-lg-5 pl-lg-7 ml-auto">
+				        			<h2 class="section-title mb-4" >${storeInfo.store_name }</h2>
+				         			<p>${storeInfo.store_content }</p>
 				          			<ul class="list-unstyled two-col clearfix">
 					          			<div class="icon">
 					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
@@ -130,23 +89,19 @@
 							              <input type="button" class="btn btn-primary btn-block" value="메뉴를 등록해주세요" id="store_menu" onclick="window.open('store_menu.so?store_idx=${storeInfo.store_idx}', 'window_name')">
 							              </div>
 				          			</ul>
-		         				</div>
-		          			</div>
-		          		</c:forEach>
-          </div>
-	  </div>
-          
-          
-          <hr>
-          <button type="button" class="btn btn-primary" onclick="location.href='storeModify.me'">수정</button>
-          <button type="button" class="btn btn-primary" onclick="location.href='storeRegister.me'">식당 추가</button>
-        </div>
-      </div>
-    </div>
-  
-
-
-  
+				          			</div>
+				       			</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+				<br>
+				<button type="button" class="btn btn-primary" onclick="location.href='storeModify.me'">수정</button>
+				<button type="button" class="btn btn-primary" onclick="location.href='storeRegister.me'">식당 추가</button>
+			</div>
+		</div>
+	</div>
+</div>
  
   <div class="row justify-content-center">
 	  <!-- 왼쪽 부분 -->
@@ -210,7 +165,6 @@
           
   <div class="untree_co-section">
     <div class="container my-5">
-
 
 <!--       <div class="row justify-content-center mt-5 section"> -->
 

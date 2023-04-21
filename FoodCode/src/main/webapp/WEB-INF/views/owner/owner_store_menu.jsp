@@ -193,13 +193,14 @@ function remove_tr(This) {//행 삭제
 <!-- 						<td></td> -->
 <!-- 						<td></td> -->
 <!-- 						<td></td> -->
-<!--  						<td></td> 클릭시 이미지 크게 보이게 할 수 있는건 미정 일단 가져오기만 -->
+<!--  						<td></td>  -->
 <!-- 						<td></td> -->
 <!-- 						<td> -->
 <!-- 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="수정">&#xE254;</i></a> -->
 <!-- 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="삭제">&#xE872;</i></a> -->
 <!-- 						</td> -->
 <!-- 					</tr> -->
+					</tr>
 				</tbody>
 			</table>
 <!-- 			<div class="clearfix"> 페이징 처리 후에 쓰게 된다면 주석 해제 -->
@@ -229,19 +230,19 @@ function remove_tr(This) {//행 삭제
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>메뉴 이름</label>
-						<input type="text" class="form-control" name="menu_name" id="menu_name" required>
+						<input type="text" class="form-control" name="menu_name" id="menu_name">
 					</div>
 					<div class="form-group">
 						<label>메뉴 종류</label>
-						<input type="text" class="form-control" name="menu_type" id="menu_type" required>
+						<input type="text" class="form-control" name="menu_type" id="menu_type">
 					</div>
 					<div class="form-group">
 						<label>가격</label>
-						<input class="form-control" name="menu_price" id="menu_price" required>
+						<input class="form-control" name="menu_price" id="menu_price">
 					</div>
 					<div class="form-group">
 						<label>사진</label>
-						<input type="text" class="form-control" name="menu_image" id="menu_image" required>
+						<input type="text" class="form-control" name="menu_image" id="menu_image">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
@@ -249,6 +250,7 @@ function remove_tr(This) {//행 삭제
 					</div>
 					<div>
 					<input type="hidden" value="${param.store_idx }" name="store_idx"> 					
+						<textarea class="form-control" name="menu_content" id="menu_content"></textarea>
 					</div>					
 				</div>
 				<div class="modal-footer">
@@ -272,18 +274,23 @@ function remove_tr(This) {//행 삭제
 					<div class="form-group">
 						<label>메뉴 이름</label>
 						<input type="text" class="form-control" name="menu_name" id="menu_name" required>
+						<input type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label>메뉴 종류</label>
 						<input type="text" class="form-control" name="menu_type" id="menu_type" required>
+						<input type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label>가격</label>
 						<input class="form-control" name="menu_price" id="menu_price" required>
+						<input type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label>사진</label>
 						<input type="text" class="form-control" name="menu_image" id="menu_image" required>
+						<label>메뉴 사진</label>
+						<input type="text" class="form-control">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
@@ -292,6 +299,8 @@ function remove_tr(This) {//행 삭제
 					
 					<input type="hidden" name="store_idx" id="store_idx">
 					<input type="hidden" name="menu_idx" id="menu_idx">
+						<textarea class="form-control"></textarea>
+					</div>					
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="취소">

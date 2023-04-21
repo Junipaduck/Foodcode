@@ -1,5 +1,7 @@
 package com.itwillbs.foodcode.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class BookingService {
 	
 	public int insertBooking(BookingVO booking) {
 		return mapper.insertBooking(booking);
+	}
+
+	public List bookingList(String id, int booking_idx) {
+		return mapper.bookingList(id, booking_idx);
 	}
 	
 }

@@ -92,9 +92,9 @@ public class MainController {
 		model.addAttribute("member", member);
 		
 		// 점주회원 가게 정보 조회--------------------------------
-//		List<StoreVO> storeInfo = ownerService.selectStore(id);
+		List<StoreVO> storeInfo = ownerService.selectStore(id);
 //		System.out.println(storeInfo);
-//		model.addAttribute("storeInfo", storeInfo);
+		model.addAttribute("storeInfo", storeInfo);
 		
 		// 마이페이지 접근 오류로 인해 잠시 주석 
 		// 점주회원 예약 정보 조회--------------------------------
