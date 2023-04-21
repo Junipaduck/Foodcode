@@ -24,6 +24,9 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@Autowired
+	private StoreService storeService;
+	
     // 예약관리 -> 방문후 -> 리뷰 
     @GetMapping(value = "/customerReviewWrite.me")
     public String customerReviewWrite(@RequestParam int store_idx) {
@@ -147,6 +150,7 @@ public class ReviewController {
     @RequestMapping(value = "/reviewList.me", method = {RequestMethod.GET, RequestMethod.POST})
     public String reviewList(ReviewVO review, 
     						 Model model,
+    						 StoreVO store,
     						@RequestParam(defaultValue = "") String searchType,
     						@RequestParam(defaultValue = "") String searchKeyword,
     						@RequestParam(defaultValue = "1") int pageNum) {
@@ -164,6 +168,9 @@ public class ReviewController {
 		
 		List<ReviewVO> reviewList = reviewService.getReviewList(searchType, searchKeyword, startRow, listLimit);
 		
+		// 리뷰 페이지에 업체명 출력을 위한 코드 0420
+		List<StoreVO> storeInfo = storeService.getStoreInfo(store);
+
 		// 1. 전체 게시물 수 조회 
 		int listCount = reviewService.getReviewListCount(searchType, searchKeyword);
 		
@@ -189,6 +196,7 @@ public class ReviewController {
 		
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("storeInfo", storeInfo);
     	
     	
     	return "store/store_review_list";

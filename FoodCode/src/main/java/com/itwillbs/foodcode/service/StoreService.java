@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.foodcode.mapper.OwnerMapper;
 import com.itwillbs.foodcode.mapper.StoreMapper;
-import com.itwillbs.foodcode.vo.OwnerVO;
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.vo.*;
 
 @Service
 public class StoreService {
@@ -59,6 +58,17 @@ public class StoreService {
 	// 맛집리스트 페이징 카운트
 	public int getStoreListCount(String searchType, String searchKeyword) {
 		return mapper.selectStoreListCount(searchType, searchKeyword);
+	}
+
+	// 가게 상세페이지 리뷰 게시판 업체명 출력을 위한 코드 
+	public List<StoreVO> getStoreInfo(StoreVO store) {
+		
+		return mapper.getStoreInfo(store);
+	}
+
+	public List<ReviewVO> getStoreReviewList(ReviewVO review) {
+		
+		return mapper.selectStoreReviewList(review);
 	}
 
 

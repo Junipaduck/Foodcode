@@ -123,7 +123,27 @@
 				</if>
 		</select>
 		
+		<select id="getStoreInfo" resultType="com.itwillbs.foodcode.vo.StoreVO">
+			SELECT *
+				FROM store
+		</select>
 		
+		<select id="selectStoreReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+			SELECT
+				r.review_idx
+				, r.member_id
+				, s.store_name
+				, r.review_content
+				, r.review_file
+				, r.review_star
+				, r.review_date 
+				FROM 
+					review r JOIN store s 
+				ON 
+					r.store_idx = s.store_idx
+				WHERE 
+					s.store_idx = #{store_idx}
+		</select>
 		
 
 </mapper>

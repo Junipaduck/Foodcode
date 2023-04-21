@@ -477,6 +477,7 @@
 	<div>
 	<!--  [리뷰목록] 클릭 시 리뷰 게시판으로 이동  -->
 	<input type="button" value="리뷰목록" onclick="location.href='reviewList.me'">
+    <input type="hidden" name="store_idx" value="${param.store_idx}" />
 	
 	
 	
@@ -496,19 +497,20 @@
             <th></th>
         </tr>
 
-		<c:forEach items="${reviewList }" var="ReviewVO">
+		<c:forEach items="${storeReviewList }" var="review">
 	        <tr class="KOTRA-fontsize-80">
-	          <td>${ReviewVO.review_idx }</td>
-	          <td>양선정</td>
-	           <td>아이티윌 햄버거</td>
-	           <td>${ReviewVO.review_content }</td>
+	          <td>${review.review_idx }</td>
+	          <td>${review.member_id }</td>
+	          <!-- 업체명 출력 -->
+	           <td>${storeInfo[0].store_name }</td> 
+	           <td>${review.review_content }</td>
 		        <td class="image_hover">
-	           		${ReviewVO.review_file }
+	           		${review.review_file }
 	           	</td>
 	           <td>
-					${ReviewVO.review_star }
+					${review.review_star }
 	           </td>
-	           <td>2023/03/20</td>
+	           <td>${review.review_date }</td>
 	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
 	           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
 	        </tr>

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.vo.*;
 
 public interface StoreMapper {
 	
@@ -33,5 +33,9 @@ public interface StoreMapper {
 
 	int selectStoreListCount(@Param("searchType") String searchType, 
 							  @Param("searchKeyword") String searchKeyword);
+
+	List<StoreVO> getStoreInfo(StoreVO store);
+
+	List<ReviewVO> selectStoreReviewList(ReviewVO review);
 
 }

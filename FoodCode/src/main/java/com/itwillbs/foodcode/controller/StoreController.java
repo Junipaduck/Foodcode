@@ -43,7 +43,10 @@ public class StoreController {
 	 private ReviewService reviewService;
 	
 	@RequestMapping(value = "store.so", method = {RequestMethod.GET, RequestMethod.POST})
-	public String store(StoreVO store, Model model, ReviewVO review, int store_idx) {
+	public String store(StoreVO store, 
+						Model model, 
+						ReviewVO review, 
+						@RequestParam int store_idx) {
 		
 		// 20230412 양선정 - 가게 상세페이지 가게 정보 조회 
 		// 가게 상세페이지 클릭 시 바로 가게 정보 출력 가능 - 현재 하드코딩으로 store_idx = 1 인 경우만 출력 
@@ -52,21 +55,11 @@ public class StoreController {
 //		List<StoreVO> storeList = storeService.selectStoreList(store); - 전체 페이지 출력문
 
 		List<StoreVO> storeInfo = storeService.selectStoreInfo(store, store_idx); 
-		
-		List<ReviewVO> reviewList = reviewService.reviewList(review);
-		
-		
-		
-		System.out.println("상세페이지의 리뷰리스트 : " + reviewList);
-		
-		// model 객체에 storeList 저장 
-//		model.addAttribute("storeList", storeList); 
-		
 		// 가게 1개 조회
 		model.addAttribute("storeInfo", storeInfo);
 		
-		// 가게 상세페이지에 별점 출력을 위해 review 테이블 vo가 필요
-		model.addAttribute("reviewList", reviewList);
+		List<ReviewVO> storeReviewList = storeService.getStoreReviewList(review);
+		model.addAttribute("storeReviewList", storeReviewList);
 		
 		return "store/store_information";
 	}
@@ -214,12 +207,12 @@ public class StoreController {
 		
 	}
 	
-	@RequestMapping(value = "menuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "MenuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
 	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model) {
-		System.out.println("수정 : " + menu);
 		int modifyMenuCnt = menuService.modifyMenu(store_idx,menu);
 		if(modifyMenuCnt > 0) {
 			return "redirect:/store_menu.so?store_idx=" + store_idx;
+			
 		} else {
 			model.addAttribute("msg", "변경에 실패했습니다!");
 			return "customer/fail_back";
