@@ -214,12 +214,12 @@ public class StoreController {
 		
 	}
 	
-	@RequestMapping(value = "MenuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "menuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
 	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model) {
+		System.out.println("수정 : " + menu);
 		int modifyMenuCnt = menuService.modifyMenu(store_idx,menu);
 		if(modifyMenuCnt > 0) {
 			return "redirect:/store_menu.so?store_idx=" + store_idx;
-			
 		} else {
 			model.addAttribute("msg", "변경에 실패했습니다!");
 			return "customer/fail_back";

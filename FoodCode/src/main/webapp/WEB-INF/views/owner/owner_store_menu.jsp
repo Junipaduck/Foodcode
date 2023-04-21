@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js">
 
 <!-- 테이블 관련 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -93,11 +94,26 @@ function clean_first_tr(firstTr) {//값 초기화
 
 var menu_idx ="";
 var store_idx ="";
+var menu_name="";
+var menu_type="";
+var menu_price="";
+var menu_image="";
+var menu_content="";
 $(document).ready(function() {     
     $('#editEmployeeModal').on('show.bs.modal', function(event) {          
         menu_idx = $(event.relatedTarget).data('menu_idx');
+        menu_name = $(event.relatedTarget).data('menu_name');
+        menu_type = $(event.relatedTarget).data('menu_type');
+        menu_price = $(event.relatedTarget).data('menu_price');
+        menu_image = $(event.relatedTarget).data('menu_image');
+        menu_content = $(event.relatedTarget).data('menu_content');
         store_idx = $(event.relatedTarget).data('store_idx');
-        $("#menu_idx").val(menu_idx);
+        $("#menu_idxM").val(menu_idx);
+        $("#menu_nameM").val(menu_name);
+        $("#menu_typeM").val(menu_type);
+        $("#menu_priceM").val(menu_price);
+        $("#menu_imageM").val(menu_image);
+        $("#menu_contentM").val(menu_content);
         $("#store_idx").val(store_idx);
     });
     
@@ -178,7 +194,7 @@ function remove_tr(This) {//행 삭제
 						<th>${menu.menu_price }</th>
 						<th>${menu.menu_image }</th>
 						<th>${menu.menu_content }</th>
-						<th><a href="#editEmployeeModal" class="btn btn-success" data-toggle="modal" data-menu_idx="${menu.menu_idx }" data-store_idx="${param.store_idx }"><i class="material-icons">&#xE147;</i> <span>수정</span></a></th>
+						<th><a href="#editEmployeeModal" class="btn btn-success" data-toggle="modal" data-menu_idx="${menu.menu_idx }" data-store_idx="${param.store_idx }" data-menu_name="${menu.menu_name }" data-menu_type="${menu.menu_type }" data-menu_price="${menu.menu_price }" data-menu_image="${menu.menu_image }" data-menu_content="${menu.menu_content }"><i class="material-icons">&#xE147;</i> <span>수정</span></a></th>
 						<th><a href="#deleteEmployeeModal"  class="btn btn-danger" data-toggle="modal" data-menu_idx="${menu.menu_idx}" data-store_idx="${param.store_idx}"><i class="material-icons">&#xE15C;</i> <span>삭제</span></a></th>
 					</tr>
 					</c:forEach>
@@ -248,10 +264,7 @@ function remove_tr(This) {//행 삭제
 						<label>메뉴 설명</label>
 						<textarea class="form-control" name="menu_content" id="menu_content" required></textarea>
 					</div>
-					<div>
 					<input type="hidden" value="${param.store_idx }" name="store_idx"> 					
-						<textarea class="form-control" name="menu_content" id="menu_content"></textarea>
-					</div>					
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="취소">
@@ -265,7 +278,7 @@ function remove_tr(This) {//행 삭제
 <div id="editEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action="MenuModify.so">
+			<form action="menuModify.so">
 				<div class="modal-header">						
 					<h4 class="modal-title">수정하기</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -273,33 +286,27 @@ function remove_tr(This) {//행 삭제
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>메뉴 이름</label>
-						<input type="text" class="form-control" name="menu_name" id="menu_name" required>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="menu_name" id="menu_nameM" required>
 					</div>
 					<div class="form-group">
 						<label>메뉴 종류</label>
-						<input type="text" class="form-control" name="menu_type" id="menu_type" required>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="menu_type" id="menu_typeM" required>
 					</div>
 					<div class="form-group">
 						<label>가격</label>
-						<input class="form-control" name="menu_price" id="menu_price" required>
-						<input type="text" class="form-control">
+						<input class="form-control" name="menu_price" id="menu_priceM" required>
 					</div>
 					<div class="form-group">
-						<label>사진</label>
-						<input type="text" class="form-control" name="menu_image" id="menu_image" required>
 						<label>메뉴 사진</label>
-						<input type="text" class="form-control">
+						<input type="text" name="menu_image" id="menu_imageM" class="form-control">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
-						<textarea class="form-control" name="menu_content" id="menu_content" required></textarea>
+						<textarea class="form-control" name="menu_content" id="menu_contentM" required></textarea>
 					</div>
-					
+					<div>
 					<input type="hidden" name="store_idx" id="store_idx">
-					<input type="hidden" name="menu_idx" id="menu_idx">
-						<textarea class="form-control"></textarea>
+					<input type="hidden" name="menu_idx" id="menu_idxM">
 					</div>					
 				</div>
 				<div class="modal-footer">
