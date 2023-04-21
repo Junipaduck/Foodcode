@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/star.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> <!-- 테이블 외부 css 파일 경로 -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -97,7 +98,28 @@
 		           		${review.review_file }
 		           	</td>
 		           <td>
-						${review.review_star }
+		           		<c:if test="${not empty review.review_star }">
+		           			<c:choose>
+		           				<c:when test="${review.review_star == 1 }">
+        						☆
+		           				</c:when>
+		           				<c:when test="${review.review_star == 2 }">
+        						☆☆
+		           				</c:when>
+		           				<c:when test="${review.review_star == 3 }">
+        						☆☆☆
+		           				</c:when>
+		           				<c:when test="${review.review_star == 4 }">
+        						☆☆☆☆
+		           				</c:when>
+		           				<c:when test="${review.review_star == 5 }">
+        						☆☆☆☆☆
+		           				</c:when>
+		           				<c:otherwise>
+		           				No Rating
+		           				</c:otherwise>
+		           			</c:choose>
+		           		</c:if>
 		           </td>
 		           <td>${review.review_date }</td>
 		           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
