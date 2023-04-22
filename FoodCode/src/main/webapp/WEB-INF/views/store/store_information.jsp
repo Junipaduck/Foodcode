@@ -49,43 +49,6 @@
 
   <title>아이티윌 2팀</title>
 <script type="text/javascript">
-// 	$(function () {
-// 		$("#btnReview").on("click", function() {
-// 			let sendData = $("#reviewTable").serialize();
-			
-// 			$.ajax({
-// 				type = "post",
-// 				url: "reviewList.me",
-// 				data: sendData,
-// 				dataType: "html",
-// 				success: function(response){
-// 					$("#reviewArea").html(response);
-// 				},
-// 				error: function(xhr, testStatus, errorThrown){
-// 					$("#reviewArea").html("xhr = " + xhr + "<br>testStatus = " + textStatus + "<br>errorThrown = " + errorThrown);
-// 				}
-// 			});
-// 		});
-// 	});
-
-// json ajax 
-
-// function reviewList(){
-// 	$.ajax({
-// 		url: "reviewList.me",
-// 		type: "post",
-// 		data: JSON.stringify(obj),
-// 		dataType: "json",
-// 		contentType: "application/json",
-// 		success: function(data){
-// 			alert("성공");
-// 		},
-// 		error: function(errorThrown){
-// 			alert(errorThrown.statusText);a
-// 		}
-// 	});
-// }
-
 
 </script>  
 </head>
@@ -511,8 +474,14 @@
 					${review.review_star }
 	           </td>
 	           <td>${review.review_date }</td>
-	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
-	           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
+	           <td>
+	           		<c:if test="${sessionScope.sId == 'owner1' }">
+		           		<input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'">
+	           		</c:if>
+	           		<c:if test="${sessionScope.sId == 'hana' }">
+		           		<input type="button" value="리뷰신고하기" onclick="location.href='ownerReplyForm.me'">
+	           		</c:if>
+	           </td>
 	        </tr>
 		</c:forEach>
 	</tbody>
@@ -524,145 +493,7 @@
 	<br>
 	<br>
 	
-	<h1>이건 예시임...</h1>
-    <table  class="rwd-table" id="reviewTable">
-        <tbody>
-        <tr>
-            <th>글번호</th>
-            <th>작성자</th>
-            <th>업체명</th>
-            <th>리뷰내용</th>
-            <th>리뷰사진</th>
-            <th>별점</th>
-            <th>작성일자</th>
-            <th></th>
-        </tr>
 
-        <tr class="KOTRA-fontsize-80">
-          <td>1</td>
-          <td>양선정</td>
-           <td>아이티윌 햄버거</td>
-           <td>와 너무 맛있어요!</td>
-	        <td class="image_hover">
-	           	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2017/05/07/08/56/pancakes-2291908__480.jpg" style="widows: 50px;height: 50px;">
-           	</td>
-           <td>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           </td>
-           <td>2023/03/20</td>
-           <td><input type="button" value="점주답글달기"></td>
-           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>2</td>
-          <td>최보아</td>
-          <td>아이티윌 햄버거</td>
-          
-           <td>와 너무 맛있어요!</td>
-           <td>
-           		<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-           </td>
-           <td>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           	<span style="font-size:2em">&#11088;</span>
-           </td>
-           <td>2023/03/20</td>
-           <td><input type="button" value="점주답글달기"></td>
-           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>3</td>
-          <td>강지훈</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-			<td>
-				<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-			</td>
-            <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-           <td><input type="button" value="점주답글달기"></td>
-           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>4</td>
-          <td>위찬영</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-          <td>
-          	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-          </td>
-          <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-           <td><input type="button" value="점주답글달기"></td>
-           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>5</td>
-          <td>배하나</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-          <td>
-          	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-          </td>
-          <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-           <td><input type="button" value="점주답글달기"></td>
-           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
-        </tr>
-        <tr class="KOTRA-fontsize-80">
-          <td>6</td>
-          <td>박윤</td>
-          <td>아이티윌 햄버거</td>
-            <td>와 너무 맛있어요!</td>
-          <td>
-          	<img alt="이미지가안뜨네요" src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg" style="widows: 50px;height: 50px;">
-          </td>
-          <td>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            	<span style="font-size:2em">&#11088;</span>
-            </td>
-            <td>2023/03/20</td>
-           <td><input type="button" value="점주답글달기"></td>
-           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
-        </tr>
-        </tbody>
-    </table>
-	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	
   <div class="py-5 cta-section">
     <div class="container">
@@ -700,6 +531,7 @@
   <!--  지도 API 코드 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a91ec8056a635e82b3a39377778273a1"></script>
 	<script>
+
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(35.15842107120856, 129.06190268934887), // 지도의 중심좌표

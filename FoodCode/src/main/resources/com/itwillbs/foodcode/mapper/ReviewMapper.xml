@@ -29,7 +29,7 @@
 			,review_star = #{review_star}
 			,review_file = #{review_file}
 			WHERE
-			review_idx = 2 -- 하드코딩
+			review_idx = #{review_idx}
 	</update>
 	
 	<delete id="deleteReview">
@@ -105,6 +105,44 @@
                	review_re_ref
            	LIMIT 
             10
+	</select>
+	
+	<select id="selectMemberList" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT *
+			FROM member
+	</select>
+	
+	<select id="selectOwnerReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+		SELECT 
+			r.review_idx
+			, s.store_name 
+			, r.review_content 
+			, r.review_file 
+			, r.review_star 
+			, r.review_date
+			, s.store_idx
+			, r.review_re_ref
+			, r.review_re_lev
+			, r.review_re_seq
+			, r.pay_idx
+			, r.review_file_path 
+			, s.member_id
+			FROM review r JOIN store s
+			ON r.store_idx = s.store_idx
+			<if test="!searchKeyword.equals('')">
+				WHERE 
+				<choose>
+					<when test="searchType.equals('content')">
+						review_content LIKE CONCAT('%', #{searchKeyword}, '%')
+					</when>
+				</choose>
+			</if>
+			ORDER BY
+				review_re_ref DESC
+				, review_re_seq ASC
+			LIMIT
+				#{startRow}
+				,#{listLimit}
 	</select>
 </mapper>
 

@@ -112,7 +112,7 @@
 						<td>${review.review_file }</td>
 						<td>${review.review_star }</td>
 						<td>${review.review_date }</td>
-						<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+						<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me?review_idx=${review.review_idx}'"></td>
 						<!-- 리뷰 삭제시 서블릿 주소로 review_idx를 전달해야 한다. -->
 						<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me?review_idx=${review.review_idx}'"></td>
 					</tr>

@@ -55,6 +55,18 @@ public class ReviewService {
 		return mapper.reviewList(review);
 	}
 
+	public List<MemberVO> getMemberList(MemberVO member) {
+
+		return mapper.selectMemberList(member);
+	}
+
+	public List<ReviewVO> getOwnerReivewList(String searchType, String searchKeyword, int listLimit, int startRow) {
+
+		return mapper.selectOwnerReviewList(searchKeyword, searchKeyword, listLimit, startRow);
+	}
+
+	
+	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {
 //		// TODO Auto-generated method stub
 //		return mapper.getReviewList(starRow, listLimit);

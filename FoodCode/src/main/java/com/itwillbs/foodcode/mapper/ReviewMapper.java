@@ -28,6 +28,13 @@ public interface ReviewMapper {
 
 	List<ReviewVO> reviewList(ReviewVO review);
 
+	List<MemberVO> selectMemberList(MemberVO member);
+
+	List<ReviewVO> selectOwnerReviewList(@Param("searchType") String searchType, 
+										@Param("searchKeyword") String searchKeyword, 
+										@Param("startRow") int startRow, 
+										@Param("listLimit") int listLimit);
+
 
 }
 

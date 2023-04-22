@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
+import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
-import com.itwillbs.foodcode.service.OwnerService;
-import com.itwillbs.foodcode.service.ReviewService;
+import com.itwillbs.foodcode.service.*;
 import com.itwillbs.foodcode.vo.*;
 
 @Controller
@@ -23,6 +23,9 @@ public class OwnerController {
 	
 	@Autowired
 	private OwnerService ownerService;
+	
+	@Autowired
+	private StoreService storeService;
 	
 	// 점주 회원가입페이지로 이동
 	@GetMapping(value = "/ownerJoin.me")
@@ -80,12 +83,25 @@ public class OwnerController {
 	
 	// 점주 가게 리뷰페이지로 이동
 	@GetMapping(value = "/ownerReview.me")
-	public String ownerReview(ReviewVO review, Model model) {
-		System.out.println("4/16배하나테스트 : 리뷰리스트");
+	public String ownerReview(ReviewVO review, 
+							  Model model,
+							 @RequestParam(defaultValue = "") String searchType,
+    						 @RequestParam(defaultValue = "") String searchKeyword,
+    						 @RequestParam(defaultValue = "1") int pageNum,
+    						 HttpSession session
+    						 ) {
     	
-    	List<ReviewVO> reviewList = reviewService.reviewList(review);
+//    	List<ReviewVO> reviewList = reviewService.reviewList(review);
     	
-    	System.out.println("리뷰리스트ㅋㅋㅋ : " + reviewList);
+	   	//페이징 처리 - 조회 목록 갯수 조절 시 사용하는 변수 
+    	int listLimit = 10;
+		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
+		
+    	// 0422 리뷰 리스트 조회 수정 
+		MemberVO member = new MemberVO();
+		String id = (String)session.getAttribute("sId");
+		member.setMember_id(id);
+    	List<ReviewVO> reviewList = reviewService.getOwnerReivewList(searchType, searchKeyword, listLimit, startRow);
     	
     	model.addAttribute("reviewList", reviewList);
     	

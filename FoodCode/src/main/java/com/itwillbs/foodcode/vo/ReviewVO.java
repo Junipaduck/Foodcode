@@ -17,6 +17,7 @@ public class ReviewVO {
 	private String review_file;
 	private String review_file_path; // 파일 업로드 경로 
 	private String store_name; // 임시추가
+	private String member_type; // 점주회원 개인회원 구분을 위해 추가 
 	
 	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
 	private MultipartFile file;
@@ -27,7 +28,7 @@ public class ReviewVO {
 
 	public ReviewVO(int review_idx, String review_content, int review_star, Date review_date, int review_re_ref,
 			int review_re_lev, int review_re_seq, int store_idx, String member_id, String review_file,
-			String review_file_path, String store_name, MultipartFile file) {
+			String review_file_path, String store_name, String member_type, MultipartFile file) {
 		super();
 		this.review_idx = review_idx;
 		this.review_content = review_content;
@@ -41,6 +42,7 @@ public class ReviewVO {
 		this.review_file = review_file;
 		this.review_file_path = review_file_path;
 		this.store_name = store_name;
+		this.member_type = member_type;
 		this.file = file;
 	}
 
@@ -140,6 +142,14 @@ public class ReviewVO {
 		this.store_name = store_name;
 	}
 
+	public String getMember_type() {
+		return member_type;
+	}
+
+	public void setMember_type(String member_type) {
+		this.member_type = member_type;
+	}
+
 	public MultipartFile getFile() {
 		return file;
 	}
@@ -154,9 +164,8 @@ public class ReviewVO {
 				+ review_star + ", review_date=" + review_date + ", review_re_ref=" + review_re_ref + ", review_re_lev="
 				+ review_re_lev + ", review_re_seq=" + review_re_seq + ", store_idx=" + store_idx + ", member_id="
 				+ member_id + ", review_file=" + review_file + ", review_file_path=" + review_file_path
-				+ ", store_name=" + store_name + ", file=" + file + "]";
+				+ ", store_name=" + store_name + ", member_type=" + member_type + ", file=" + file + "]";
 	}
-	
 	
 	
 	

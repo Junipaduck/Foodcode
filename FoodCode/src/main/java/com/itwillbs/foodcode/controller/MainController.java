@@ -83,6 +83,7 @@ public class MainController {
 	@GetMapping("/mypage.me")
 	public String mypage(HttpSession session, Model model, StoreVO store) {
 //		return "customer/customer_mypage";
+		
 		String id = (String)session.getAttribute("sId");
 		if(id == null) {
 			model.addAttribute("msg", "잘못된 접근입니다!");

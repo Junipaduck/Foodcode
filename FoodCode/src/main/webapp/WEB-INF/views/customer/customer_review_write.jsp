@@ -70,7 +70,6 @@
             <h2 class="section-title">Form</h2>
             <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
             <form class="contact-form bg-white" action="reviewWritePro.me" method="post" enctype="multipart/form-data">
-<%--            		<%=request.getParameter("store_idx") %> --%>
 					<!-- 히든 속성으로 store_idx 가져오기??????  -->
             		<input type="hidden" name="store_idx" value="${param.store_idx}" />
 <!--               <div class="form-group"> -->

@@ -71,11 +71,17 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
-            <form class="contact-form bg-white" action="reviewModifyPro.me">
+            <form class="contact-form bg-white" action="reviewModifyPro.me" method="post" enctype="multipart/form-data">
+             <input type="hidden" name="review_idx" value="${param.review_idx}" />
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="email">아이디</label> -->
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
 <!--               </div> -->
+              <div class="form-group">
+                <label class="text-black" for="review_content">작성자</label>
+                <br>
+                <input type="text" placeholder="${sessionScope.sId}" readonly="readonly">
+              </div>
               <div class="form-group">
                 <label class="text-black" for="review_content">내용</label>
                 <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5"></textarea>
@@ -100,7 +106,7 @@
               </div>
                <div class="form-group">
                 <label class="text-black" for="review_file">리뷰 사진 수정</label>
-                <input type="file" name="review_file" id="review_file" >
+                <input type="file" name="file" id="file" >
               </div>
               <button type="submit" class="btn btn-primary">수정</button>
             </form>
