@@ -98,28 +98,30 @@
 		           		${review.review_file }
 		           	</td>
 		           <td>
+		           		<div class="review_star">
 		           		<c:if test="${not empty review.review_star }">
 		           			<c:choose>
 		           				<c:when test="${review.review_star == 1 }">
-        						☆
+				  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
 		           				</c:when>
 		           				<c:when test="${review.review_star == 2 }">
-        						☆☆
+				  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
 		           				</c:when>
 		           				<c:when test="${review.review_star == 3 }">
-        						☆☆☆
+				  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
 		           				</c:when>
 		           				<c:when test="${review.review_star == 4 }">
-        						☆☆☆☆
+				  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
 		           				</c:when>
 		           				<c:when test="${review.review_star == 5 }">
-        						☆☆☆☆☆
+				  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
 		           				</c:when>
 		           				<c:otherwise>
 		           				No Rating
 		           				</c:otherwise>
 		           			</c:choose>
 		           		</c:if>
+		           		</div>
 		           </td>
 		           <td>${review.review_date }</td>
 		           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>

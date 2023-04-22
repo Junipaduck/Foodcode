@@ -7,7 +7,7 @@
 
 .rwd-table tr:first-child {
 /*     background: #5B86EF; */
-    background: #1A374D;
+    background: #ff9508;
     color: #fff;
 }
 
@@ -58,7 +58,7 @@
 
 .rwd-table tr {
 /*     border-color: #5B86EF; */
-    border-color: #1A374D;
+    border-color: #ff9508;
 }
 
 .rwd-table th,

@@ -30,7 +30,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 <%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/map.css"> --%>
-	
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
@@ -66,20 +66,24 @@
 
 						<div class="row">
 							<div class="col-12">
-								<form class="form">
-								
-									<div class="row align-items-center">
-										<div class="col-lg-8">
-											<span style="font-family: 'Noto Sans KR', sans-serif;">누르면 가게 상세페이지로 이동합니다~ 사진 클릭해도 이동해요</span>
-										    <form class="d-flex" role="search">
-										      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-										      <button class="btn btn-outline-success" type="submit">Search</button>
-										    </form>
-										</div>
-										
+								<form class="form" action="store_recommend.so">
+									<div class="row mb-2">
 										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-										<!-- 원래 type submit 이었는데 테스트용으로 바꿈  -->
-											<input type="button" class="btn btn-primary btn-block" value="맛집추천" onclick="location.href='store_recommend.so'">
+											<select name="searchType" id="" class="form-control custom-select">
+												<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
+												<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
+											</select>
+										</div>
+
+									</div>
+									<br>    
+									<div class="row align-items-center">
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+											<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }">
+											<br>
+											<button class="btn btn-outline-success" type="submit">Search</button>
+										</div>
+										<div class="col-lg-8">
 										</div>
 									</div>
 								</form>
