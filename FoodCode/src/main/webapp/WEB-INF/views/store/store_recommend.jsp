@@ -139,16 +139,17 @@ $(document).ready(function() {
     	
     	
     		
-    		<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
-			 <div class="outer-container77">
-		       <div class="inner-container77">
-		         <div class="element77">
-		         
-						<!-- 가게설명 카드 시작 -->
-							<section class="py-5">
-						            <div class="container px-4 px-lg-5 mt-5">
-						                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-											 <c:forEach var="store" items="${storeList }"> <!-- list를 뿌려주는 forEach문 시작 -->
+   		<!-- 스크롤 코드 시작 (아래 div태그 3줄) -->	
+		 <div class="outer-container77">
+	       <div class="inner-container77">
+	         <div class="element77">
+	         
+					<!-- 가게설명 카드 시작 -->
+						<section class="py-5">
+					            <div class="container px-4 px-lg-5 mt-5">
+					                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+										 <c:forEach var="store" items="${storeList }"> <!-- list를 뿌려주는 forEach문 시작 -->
+										 	<c:if test="${store.auth_status eq 'Y'}"> <!-- 관리자가 Y로 승인해주는 가게만 출력됨 -->
 							                    <div class="col-lg-6 col-md-6">
 							                        <div class="card h-100">
 							                            <c:set var="length" value="${fn:length(store.store_file) }"/>
@@ -166,16 +167,17 @@ $(document).ready(function() {
 							                            </div>
 							                        </div>
 							                    </div>
-											</c:forEach>  
-					       				</div>
-					        	   </div>
-					   	   	 </section>
-						<!-- 가게설명 카드 끝 -->	
-			
-				</div>
-		      </div>
-		    </div>
-		   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->
+						                    </c:if>
+										</c:forEach>  
+				       				</div>
+				        	   </div>
+				   	   	 </section>
+					<!-- 가게설명 카드 끝 -->	
+		
+			</div>
+	      </div>
+	    </div>
+	   <!-- 스크롤 코드 끝(윗 div태그 3줄) -->
 			
 			
 		</div> <!-- 전체 끝 -->

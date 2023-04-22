@@ -17,7 +17,8 @@
 	 			#{store_idx} + 1
 	 			,#{store_name} 
 	 			,#{store_phone} 
-	 			,#{store_address}  
+<!-- 	 			,#{store_address}   -->
+				,CONCAT(#{store_address1}, ' ', #{store_address2}) <!-- 도로명주소 + 상세주소 결합 -->
 	 			,#{store_type}
 	 			,#{store_content}
 	 			,#{store_time}  
@@ -53,6 +54,7 @@
 <!-- 						</when> -->
 		 			</choose>
 		 		</if>
+		 		
 		 		ORDER BY
 		 			store_idx DESC
 	 	 </select>
@@ -60,42 +62,42 @@
 	 	 <select id="selectStoreList1" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '한식'
+		 		WHERE store_type = '한식' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList2" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '일식'
+		 		WHERE store_type = '일식' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList3" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '중식'
+		 		WHERE store_type = '중식' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList4" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '양식'
+		 		WHERE store_type = '양식' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList5" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '요리주점'
+		 		WHERE store_type = '요리주점' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	
 		<select id="selectStoreList6" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '카페/디저트'
+		 		WHERE store_type = '카페/디저트' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 
