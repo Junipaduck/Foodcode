@@ -111,8 +111,14 @@
 
 		<!-- 가게 전체 조회 -->
 		<select id="selectStoreListAll" resultType="com.itwillbs.foodcode.vo.StoreVO">
-			SELECT *
-				FROM store
+			SELECT 
+				s.store_name, AVG(r.review_star)
+				FROM store s JOIN review r
+				ON s.store_idx = r.store_idx
+				GROUP BY s.store_name
+				HAVING 
+				AVG(r.review_star) > (SELECT AVG(review_star) FROM review)
+				ORDER BY avg(r.review_star) DESC
 		</select>
 
 		

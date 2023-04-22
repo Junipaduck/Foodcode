@@ -184,11 +184,11 @@
 			<div class="owl-carousel owl-3-slider">
 					<div class="item">
 						<!-- 메인 화면 가게 추천을 위한 반복문 -->
-						<c:forEach items="${storeList }" var="StoreVO">
+						<c:forEach items="${storeList }" var="store">
 							<a class="media-thumb" href="https://images.pexels.com/photos/3434523/pexels-photo-3434523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" data-fancybox="gallery">
 								<div class="media-text">
-									<h3>${StoreVO.store_name }</h3>
-									<span class="location">${StoreVO.store_type }</span>
+									<h3>${store.store_name }</h3>
+									<span class="location">${store.store_type }</span>
 								</div>
 								<img src="https://images.pexels.com/photos/3434523/pexels-photo-3434523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
 							</a> 
