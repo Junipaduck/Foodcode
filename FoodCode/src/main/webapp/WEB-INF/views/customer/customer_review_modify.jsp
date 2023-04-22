@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,8 +31,36 @@
   <!-- 별점 기능 css -->
   <link href="${pageContext.request.contextPath }/resources/css/star.css" rel="stylesheet"/>
   <title>리뷰 수정 페이지</title>
+<script type="text/javascript">
+function deleteFile() {
+//		let board_num = ${board.board_num};
+//		let board_file = "${board.board_file}";
+//		alert(board_num + ", " + board_file); // 59, 2dd12f61_Hello.java
+	// -------------------------------------------------------------
+	// 파일 삭제를 AJAX 로 처리하기
+	// BoardDeleteFile.bo 서블릿 요청(파라미터 : 글번호, 파일명, 업로드경로)
+	$.ajax({
+		type: "POST",
+		url: "ReviewDeleteFile.bo",
+		data: {
+			"review_idx" : ${review.board_num},
+			"review_file" : "${review.file}",
+			"board_file_path" : "${review.board_file_path}"
+		},
+		success: function(result) {
+			// 삭제 성공/실패 여부 판별(result 값 "true"/"false" 판별 => 주의! 문자열이다!)
+			if(result == "true") {
+				// 삭제 성공 시 파일명 표시 위치의 기존 항목을 제거하고
+				// 파일 업로드를 수행할 수 있도록 "파일 선택" 버튼 표시
+				$("#fileBtnArea").html("<input type='file' name='file'/>")
+			} else {
+				alert("일시적인 오류로 파일 삭제에 실패했습니다!");
+			}
+		}
+	});
+}
+</script>
 </head>
-
 <body>
 <header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
@@ -84,7 +109,7 @@
               </div>
               <div class="form-group">
                 <label class="text-black" for="review_content">내용</label>
-                <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5"></textarea>
+                <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5">${vo.review_content }</textarea>
               </div>
               <!-- 별점 선택 코드  -->
               <div class="form-group">
@@ -104,9 +129,24 @@
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
                 <small id="emailHelp" class="form-text text-muted">1 ~ 5점 사이 별점을 선택하세요</small>
               </div>
-               <div class="form-group">
+               <div class="form-group" >
                 <label class="text-black" for="review_file">리뷰 사진 수정</label>
-                <input type="file" name="file" id="file" >
+                </div>
+                <div class="form-group" id="fileBtnArea">
+                	<c:choose>
+                		<c:when test="${empty vo.review_file }">
+                			<input type="file" name="file">
+                		</c:when>
+                		<c:otherwise>
+            				<c:set var="length" value="${fn:length(vo.review_file) }" />
+							<c:set var="index" value="${fn:indexOf(vo.review_file, '_') }" />
+							<c:set var="fileName" value="${fn:substring(vo.review_file, index + 1, length) }" />
+							<a href="${pageContext.request.contextPath }/resources/upload/${vo.review_file_path}/${vo.review_file}" download="${fileName }">${fileName }</a>
+							<%-- 삭제버튼 클릭 시 deleteFile() 함수 호출(파라미터로 글번호, 파일명 전달) --%>
+							<input type="button" value="삭제" onclick="deleteFile()">
+                		</c:otherwise>
+                	</c:choose>
+                <input type="file" name="file" id="file" value="${vo.review_file }">
               </div>
               <button type="submit" class="btn btn-primary">수정</button>
             </form>

@@ -35,8 +35,10 @@ public interface ReviewMapper {
 										@Param("startRow") int startRow, 
 										@Param("listLimit") int listLimit);
 
+	int deleteReiviewFile(int review_idx);
 
 }
+
 
 
 

@@ -144,6 +144,16 @@
 				#{startRow}
 				,#{listLimit}
 	</select>
+	
+	<!-- 리뷰 수정 시 파일 삭제 -->
+	<delete id="deleteReiviewFile">
+		UPDATE review
+			SET
+				review_file = ''
+				, review_file_path = ''
+			WHERE
+				review_idx = #{review_idx}
+	</delete>
 </mapper>
 
 

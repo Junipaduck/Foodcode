@@ -175,6 +175,51 @@ public class ReviewController {
     	}
     }
     
+    @ResponseBody
+    @PostMapping(value = "/ReviewDeleteFile.bo")
+	public void deleteFile(
+			@RequestParam int review_idx, 
+			@RequestParam String review_file,
+			@RequestParam String review_file_path,
+			HttpServletResponse response,
+			HttpSession session) {
+//		System.out.println(board_num + ", " + board_file);
+		
+		try {
+			// 응답데이터 출력을 위한 response 객체의 인코딩 타입 설정
+			response.setCharacterEncoding("UTF-8");
+			
+			// Service - removeBoardFile() 메서드 호출하여 파일 삭제 요청
+			// => 파라미터 : 글번호   리턴타입 : int(deleteCount)
+			int deleteCount = reviewService.removeReviewFile(review_idx);
+			
+			// DB 파일 삭제 성공 시 실제 파일을 서버에서 삭제
+			if(deleteCount > 0) {
+				String uploadDir = "/resources/upload"; // 프로젝트 상의 업로드 경로
+				String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
+				// 실제 업로드 경로에 서브 디렉토리명 결합
+				saveDir += review_file_path;
+				
+				// Paths.get() 메서드를 호출하여 파일 경로 관리 객체(Path) 생성
+				// => 업로드 디렉토리와 파일명 결합하여 전달
+				Path path = Paths.get(saveDir + "/" + review_file);
+				// Files 클래스의 deleteIfExists() 메서드를 호출하여 파일 존재 시 삭제
+				// => 파라미터 : 경로
+				Files.deleteIfExists(path);
+				
+				// response 객체의 getWriter() 메서드를 호출하여 PrintWriter 객체를 얻어온 후
+				// 다시 print() 또는 println() 메서드를 호출하여 응답데이터 출력
+				response.getWriter().print("true");
+			} else {
+				response.getWriter().print("false");
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+    
     // 리뷰 삭제 
     // url 주소에 파라미터 넘기는 거 까먹지 말기 !!! 
     @RequestMapping(value = "/reviewDelete.me", method = {RequestMethod.GET, RequestMethod.POST})
@@ -258,16 +303,31 @@ public class ReviewController {
     
     // 점주 답글 작성 페이지로 이동 
     @RequestMapping(value = "/ownerReplyForm.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String ownerReplyForm() {
+    public String ownerReplyForm(HttpSession session, Model model) {
+    	String id = (String)session.getAttribute("sId");
     	
+		if(id == null) {
+			model.addAttribute("msg", "로그인 필수!");
+			model.addAttribute("target", "login.me");
+			return "success";
+		} else {
+			return "owner/owner_reply_form";
+		}
     	
-    	return "owner/owner_reply_form";
     }
     
     // 점주 답글 작성 후 리뷰 게시판 리스트로 다시 이동 
     @PostMapping(value = "/ownerReplyPro.me")
-    public String ownerReplyPro() {
-    	return "redirect:/reviewList.me";
+    public String ownerReplyPro(ReviewVO vo, Model model) {
+    	
+    	int insertCount = reviewService.insertReview(vo);
+    	if(insertCount > 0) {
+    		return "redirect:/reviewList.me";
+    	} else {
+    		model.addAttribute("msg", "답글 수정 실패!");
+    		return "fail_back";
+    	}
+    	
     }
     
 }
