@@ -47,9 +47,10 @@ public class OwnerController {
 //		System.out.println(storeInfo);
 		model.addAttribute("storeInfo", storeInfo);
 		
-//		List<BookingVO> storeBooking = ownerService.showBooking(booking);
-//		System.out.println(storeBooking);
-//		model.addAttribute("storeBooking", storeBooking);
+		List<BookingVO> storeBooking = ownerService.showBooking(id);
+//		ArrayList<HashMap<String, String>> storeBooking = ownerService.showBooking(id);
+		System.out.println(storeBooking);
+		model.addAttribute("storeBooking", storeBooking);
 		
 //		Map<String, Object> mav = new HashMap<>();
 //		mav.put("stoerInfo", storeInfo);

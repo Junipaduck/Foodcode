@@ -99,9 +99,9 @@ public class MainController {
 		
 		// 마이페이지 접근 오류로 인해 잠시 주석 
 		// 점주회원 예약 정보 조회--------------------------------
-//		List<BookingVO> storeBooking = ownerService.showBooking(booking);
-//		System.out.println(storeBooking);
-//		model.addAttribute("storeBooking", storeBooking);
+		List<BookingVO> storeBooking = ownerService.showBooking(id);
+		System.out.println(storeBooking);
+		model.addAttribute("storeBooking", storeBooking);
 		
 		
 		if(member.getMember_type().equals("c")) {
