@@ -20,7 +20,12 @@ public class ReportController {
 	 
 	 // 가게상세페이지에서 신고아이콘 클릭하면 가게신고페이지인 report/storeReport.jsp 페이지로 포워딩
 	 @RequestMapping(value = "storeReport.re", method = {RequestMethod.GET, RequestMethod.POST})
-	 public String storeReport() {
+	 public String storeReport(HttpSession session, Model model) {
+		 if(session.getAttribute("sId") == null) {
+				model.addAttribute("msg", "로그인 후 이용해주세요.");
+				model.addAttribute("target", "login.me");
+				return "success";
+			}
 		 return "report/storeReport";
 	 }
 	 
