@@ -56,6 +56,11 @@ public class OwnerService {
 	public int countStore(String id) {
 		return mapper.countStore(id);
 	}
+	
+	// 점주의 가게 정보 수정
+	public StoreVO getStore(int store_idx) {
+		return mapper.getStore(store_idx);
+	}
 
 	
 

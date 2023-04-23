@@ -165,7 +165,19 @@ public class OwnerController {
 	
 	// 점주 가게정보 수정페이지로 이동
 	@GetMapping(value = "/storeModify.me")
-	public String storeModify() {
+	public String storeModify(@RequestParam int store_idx, HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		if(id == null) {
+			model.addAttribute("msg", "잘못된 접근입니다");
+			return "fail_back";
+		}
+		
+		StoreVO store = ownerService.getStore(store_idx);
+		model.addAttribute("store", store);
+		
+//		Map<String, StoreVO> map = new HashMap<String, StoreVO>();
+//		map.put("store", store);
+		
 		return "owner/owner_store_modify";
 	}
 	

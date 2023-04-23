@@ -128,7 +128,7 @@
                 }
             }
             
-            cnt = 0;	// 다음 달 주말 색상 위해 cnt값 초기화
+            cnt = 0;	// 다음 달 위해 cnt값 초기화
         }
 
         // 날짜 선택
@@ -247,13 +247,13 @@
 							              </div>
 				          			</ul>
 				          			</div>
+									<br>
+									<button type="button" class="btn btn-primary" onclick="location.href='storeModify.me?store_idx=${storeInfo.store_idx}'">수정</button>
 				       			</div>
 							</div>
 						</c:forEach>
 					</div>
 				</div>
-				<br>
-				<button type="button" class="btn btn-primary" onclick="location.href='storeModify.me'">수정</button>
 				<button type="button" class="btn btn-primary" onclick="location.href='storeRegister.me'">식당 추가</button>
 			</div>
 		</div>

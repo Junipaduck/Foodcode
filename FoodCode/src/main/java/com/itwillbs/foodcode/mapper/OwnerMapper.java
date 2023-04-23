@@ -27,5 +27,7 @@ public interface OwnerMapper {
 	List<BookingVO> showBooking(String id);
 
 	int countStore(String id);
+	
+	StoreVO getStore(int store_idx);
 
 }

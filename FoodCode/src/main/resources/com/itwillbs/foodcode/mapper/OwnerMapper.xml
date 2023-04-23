@@ -97,6 +97,13 @@
 			WHERE 
 				s.member_id = #{sId};
 	</select>
+	
+	<!-- 점주 가게 수정위해 정보 조회 -->
+	<select id="getStore"  resultType="com.itwillbs.foodcode.vo.StoreVO">
+		SELECT *
+			FROM store
+			WHERE store_idx = #{store_idx}
+	</select>
 		
 	
 </mapper>
