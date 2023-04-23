@@ -115,6 +115,7 @@
 				s.store_name, AVG(r.review_star)
 				FROM store s JOIN review r
 				ON s.store_idx = r.store_idx
+				WHERE r.review_star > 4
 				GROUP BY s.store_name
 				HAVING 
 				AVG(r.review_star) > (SELECT AVG(review_star) FROM review)

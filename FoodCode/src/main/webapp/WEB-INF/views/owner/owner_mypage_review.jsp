@@ -105,7 +105,7 @@
 	           		${review.review_file }
 	           	</td>
 	           <td>
-					$review.review_star }
+					${review.review_star }
 	           </td>
 	           <td>${review.review_date }</td>
 	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>

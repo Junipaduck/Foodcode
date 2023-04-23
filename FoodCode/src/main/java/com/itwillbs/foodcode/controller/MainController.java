@@ -29,6 +29,7 @@ public class MainController {
 	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index(StoreVO store, Model model) {
 		
+		
 		// 메인 페이지에서 맛집 추천을 위한 store 조회 코드 
 		List<StoreVO> storeList = storeService.selectStoreList(store);
 		model.addAttribute("storeList", storeList);

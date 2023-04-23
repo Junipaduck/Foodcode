@@ -30,12 +30,13 @@ public interface ReviewMapper {
 
 	List<MemberVO> selectMemberList(MemberVO member);
 
-	List<ReviewVO> selectOwnerReviewList(@Param("searchType") String searchType, 
-										@Param("searchKeyword") String searchKeyword, 
+	List<ReviewVO> selectOwnerReviewList(
 										@Param("startRow") int startRow, 
 										@Param("listLimit") int listLimit);
 
 	int deleteReiviewFile(int review_idx);
+
+	int selectOwnerReviewListCount();
 
 }
 

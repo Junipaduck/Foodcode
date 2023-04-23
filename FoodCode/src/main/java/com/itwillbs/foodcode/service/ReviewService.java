@@ -60,15 +60,20 @@ public class ReviewService {
 		return mapper.selectMemberList(member);
 	}
 
-	public List<ReviewVO> getOwnerReivewList(String searchType, String searchKeyword, int listLimit, int startRow) {
+	public List<ReviewVO> getOwnerReivewList(int listLimit, int startRow) {
 
-		return mapper.selectOwnerReviewList(searchKeyword, searchKeyword, listLimit, startRow);
+		return mapper.selectOwnerReviewList(listLimit, startRow);
 	}
 
 	// 리뷰 수정 시 파일 삭제
 	public int removeReviewFile(int review_idx) {
 		
 		return mapper.deleteReiviewFile(review_idx);
+	}
+
+	public int getOwnerReviewListCount() {
+		
+		return mapper.selectOwnerReviewListCount();
 	}
 
 	
