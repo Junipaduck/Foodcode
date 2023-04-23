@@ -188,15 +188,24 @@ color: #fff;
 		      </tr>
 		       <tr>
 		       	<td>
-		       	   <input type="radio" id="report_content4" value="개인정보 유출 위험" name="report_content"><label for="report_content4">　개인정보 유출 위험</label>
+		       	   <input type="radio" id="report_content4" value="가게 취지에 맞지 않는 내용" name="report_content"><label for="report_content4">　가게 취지에 맞지 않는 내용</label>
+		       	</td>
+		      </tr>
+		       <tr>
+		       	<td>
+		       	   <input type="radio" id="report_content5" value="저작권 도용 의심(사진 등)" name="report_content"><label for="report_content5">　저작권 도용 의심(사진 등)</label>
+		       	</td>
+		      </tr>
+		       <tr>
+		       	<td>
+		       	   <input type="radio" id="report_content6" value="개인정보 유출 위험" name="report_content"><label for="report_content6">　개인정보 유출 위험</label>
 		       	</td>
 		      </tr>
 		       <tr>
 		        <td>
-		           <input type="radio" id="report_content5" value="기타 (신고사유를 증명할 파일을 첨부해주세요.)" name="report_content"><label for="report_content5">　기타 (신고사유를 증명할 파일을 첨부해주세요.)</label>
-		<!--         	<textarea name="" class="form-control" id="message" cols="30" rows="5" placeholder="신고사유를 직접 작성해주세요."></textarea><br> -->
-		            <br>
-		            <input type="file" name="file">
+<!-- 		           <input type="radio" id="report_content5" value="기타" name="report_content"><label for="report_content5">　기타 (신고사유를 증명할 파일을 첨부해주세요.)</label> -->
+<!-- 		        	<textarea name="" class="form-control" id="message" name="report_content" cols="30" rows="5" placeholder="신고사유를 직접 작성해주세요."></textarea><br> -->
+<!-- 		            <input type="file" name="file"> -->
 		        	<button type="submit" class="btn btn-primary" style="background-color: #ff9507;">신고하기</button> <!-- 클릭 시 "신고접수가 완료되었습니다." 알림창 띄우고 홈으로 이동 -->
 		        </td>
 		      </tr>
