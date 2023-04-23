@@ -43,7 +43,6 @@ public class ReviewController {
     public String reviewWritePro(ReviewVO vo, Model model, HttpSession session, @RequestParam int store_idx) {
     	
 //    	 store_idx 받아오기 
-    	System.out.println("선정이" + store_idx);
     	
     	
     	

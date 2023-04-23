@@ -100,7 +100,7 @@
 	        	 -->
 
 				<c:forEach items="${storeInfo }" var="store">
-		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${store.store_name }  <img src="${pageContext.request.contextPath }/resources/images/report.png" width="30" onclick="location.href='storeReport.re?store_idx=${store.store_idx}'"></h2>
+		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${store.store_name }</h2>
 		          <p style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_content }</p>
 		          <ul class="list-unstyled two-col clearfix" style="font-family: 'Noto Sans KR', sans-serif;">
 		            <li>${store.store_type }</li>
@@ -471,7 +471,30 @@
 	           		${review.review_file }
 	           	</td>
 	           <td>
-					${review.review_star }
+        		   <div class="review_star">
+		           		<c:if test="${not empty review.review_star }">
+		           			<c:choose>
+		           				<c:when test="${review.review_star == 1 }">
+				  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 2 }">
+				  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 3 }">
+				  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 4 }">
+				  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 5 }">
+				  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:otherwise>
+		           				No Rating
+		           				</c:otherwise>
+		           			</c:choose>
+		           		</c:if>
+	           		</div>
 	           </td>
 	           <td>${review.review_date }</td>
 	           <td>
@@ -553,6 +576,8 @@
 	
 	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 	// marker.setMap(null);    
+
+
 	</script>
 
 </body>

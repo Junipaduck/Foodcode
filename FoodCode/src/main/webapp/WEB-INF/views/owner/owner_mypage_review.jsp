@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
   
   
@@ -79,7 +80,7 @@
 	  </div>
 	</div>
 
-
+	&nbsp; &nbsp; &nbsp;
 	<div align="center">
      <table  class="rwd-table">
         <tbody>
@@ -114,6 +115,51 @@
 		</tbody>
     </table>
 	</div>
+	
+	&nbsp; &nbsp; &nbsp;
+	<!-- 페이징 -->
+    <section id="pageList">
+    <div class="w3-container">
+    	<div class="w3-center">
+			<div class="w3-bar w3-border">
+				<c:choose>
+					<c:when test="${empty param.pageNum }">
+						<c:set var="pageNum" value="1" />
+					</c:when>
+					<c:otherwise>
+						<c:set var="pageNum" value="${param.pageNum }" />
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${pageNum > 1 }">
+					  	<a href="ownerReview.me?pageNum=${pageNum - 1}" class="w3-bar-item w3-button">이전</a>
+					</c:when>
+					<c:otherwise>
+						<a href="#" class="w3-bar-item w3-button">이전</a>
+					</c:otherwise>
+				</c:choose>
+				<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+					<c:choose>
+						<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
+			  				<b><a href="#" class="w3-bar-item w3-button">${num }</a></b>
+						</c:when>
+						<c:otherwise>
+						    <a href="ownerReview.me?pageNum=${num }" class="w3-bar-item w3-button">${num }</a>
+						</c:otherwise>				
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${pageNum < pageInfo.maxPage }">
+						<a href="ownerReview.me?pageNum=${pageNum + 1}" class="w3-bar-item w3-button">다음</a>
+					</c:when>
+					<c:otherwise>
+			  			<a href="#" class="w3-bar-item w3-button">다음</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+    </div>
+    </section>
 
   	<footer>
 		<jsp:include page="../inc/bottom.jsp"></jsp:include>
