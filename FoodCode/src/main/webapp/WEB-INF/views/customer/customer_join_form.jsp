@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!-- /*
 * Template Name: Tour
 * Template Author: Untree.co
@@ -30,11 +31,63 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
-
+  <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
   <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+  
 </head>
 
 <body>
+
+<script type="text/javascript">
+
+$(function() {
+	$('#mail-Check-Btn').click(function() {
+		const eamil = $('#member_email').val(); // 이메일 주소값 얻어오기!
+		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+		const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+																
+		$.ajax({
+			type : 'get',
+			url : "mailCheck?email="+eamil, // GET방식
+			success : function (data) {
+				console.log("데이타 : " +  data);
+				checkInput.attr('disabled',false);
+				code = data;
+				alert('인증번호가 전송되었습니다.')
+			}	
+		}); // end ajax
+	}); // end send eamil
+	
+	// 인증번호 비교 
+	$('#member_emailcheck').keyup(function () {
+		const inputCode = $(this).val();
+		const $resultMsg = $('#mail-check-warn');
+		
+		if(inputCode === code){
+			$resultMsg.html('인증번호가 일치합니다.');
+			$resultMsg.css('color','green');
+			$('#mail-Check-Btn').attr('disabled',true);
+			$('#member_email').attr('readonly',true);
+			$('#member_emailcheck').attr('readonly',true);
+	        
+// 	        $('#mail-check-warn').append(
+// 	                $(document.createElement('input')).prop({
+// 	                    type: 'button',
+// 	                    id: 'submit',
+// 	                    value: '확인',
+// 	                    className: 'btn'
+// 	                })
+// 	            ); 서브밋 버튼 생성 
+	        
+		}else{
+			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+			$resultMsg.css('color','red');
+		}
+	});
+});
+
+</script>
+
 <header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
 </header>
@@ -107,7 +160,15 @@
               <div class="form-group">
                 <label class="text-black">이메일</label>
                 <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
+                <input type="button" value="인증하기" id="mail-Check-Btn">
               </div>
+              <div class="form-group">
+                <label class="text-black">이메일 인증번호</label>
+                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
+              </div>
+              <div class="form-group">
+				<span id="mail-check-warn"></span>
+			  </div>
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">

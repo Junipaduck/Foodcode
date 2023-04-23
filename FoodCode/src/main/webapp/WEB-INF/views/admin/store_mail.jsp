@@ -58,8 +58,6 @@ $(function() {
 			$resultMsg.css('color','red');
 		}
 	});
-	
-	
 });
 
 </script>
