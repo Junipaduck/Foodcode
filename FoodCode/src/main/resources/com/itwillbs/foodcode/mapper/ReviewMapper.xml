@@ -145,19 +145,10 @@
 			FROM review r JOIN store s
 			ON r.store_idx = s.store_idx
 			WHERE store_name 
-				IN (
-					SELECT
-						store_name 
-						FROM store
-						WHERE member_id = 'owner1'
-				)
-				
+				IN (SELECT store_name FROM store WHERE member_id = #{id})
 			ORDER BY
 				review_re_ref DESC
 				, review_re_seq ASC
-			LIMIT
-				#{startRow}
-				,#{listLimit}
 	</select>
 	
 

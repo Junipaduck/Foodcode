@@ -30,9 +30,7 @@ public interface ReviewMapper {
 
 	List<MemberVO> selectMemberList(MemberVO member);
 
-	List<ReviewVO> selectOwnerReviewList(
-										@Param("startRow") int startRow, 
-										@Param("listLimit") int listLimit);
+	List<ReviewVO> selectOwnerReviewList(String id);
 
 	int deleteReiviewFile(int review_idx);
 

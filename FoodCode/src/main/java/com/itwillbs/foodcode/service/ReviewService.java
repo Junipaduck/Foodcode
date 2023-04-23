@@ -60,9 +60,9 @@ public class ReviewService {
 		return mapper.selectMemberList(member);
 	}
 
-	public List<ReviewVO> getOwnerReivewList(int listLimit, int startRow) {
+	public List<ReviewVO> getOwnerReivewList(String id) {
 
-		return mapper.selectOwnerReviewList(listLimit, startRow);
+		return mapper.selectOwnerReviewList(id);
 	}
 
 	// 리뷰 수정 시 파일 삭제

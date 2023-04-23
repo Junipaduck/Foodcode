@@ -86,16 +86,9 @@ public class OwnerController {
 	@GetMapping(value = "/ownerReview.me")
 	public String ownerReview(ReviewVO review, 
 							  Model model,
-    						 @RequestParam(defaultValue = "1") int pageNum,
     						 HttpSession session
     						 ) {
     	
-//    	List<ReviewVO> reviewList = reviewService.reviewList(review);
-		
-    	
-	   	//페이징 처리 - 조회 목록 갯수 조절 시 사용하는 변수 
-    	int listLimit = 10;
-		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
 		
 		// 0422 리뷰 리스트 조회 수정 
 		String id = (String)session.getAttribute("sId");
@@ -103,32 +96,12 @@ public class OwnerController {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("sId", id);
 		
-    	List<ReviewVO> reviewList = reviewService.getOwnerReivewList(listLimit, startRow);
+    	List<ReviewVO> reviewList = reviewService.getOwnerReivewList(id);
     	
-    	// 1. 전체 게시물 수 조회 
-    	int listCount = reviewService.getOwnerReviewListCount();
-    	
-    	// 2. 한 페이지에 표시할 페이지 목록 갯수 설정
-    	int pageListLimit = 5;
-    	
-		// 3. 전체 페이지 목록 수 계산 
-		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
 
-		// 4. 시작 페이지 번호 계산
-		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
-
-		// 5. 끝 페이지 번호 계산 
-		int endPage = startPage + pageListLimit - 1;
-
-		// 끝 페이지 번호가 최대 페이지 번호 보다 클 경우 끝 페이지 번호를 최대 페이지 번호로 교체
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
 		
 		// 페이징 처리를 저장하는 PageInfo 객체 생성 
-		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
 		model.addAttribute("reviewList", reviewList);
-		model.addAttribute("pageInfo", pageInfo);
     	
     	System.out.println("선정 테스트 : " + map.get("sId"));
 		
