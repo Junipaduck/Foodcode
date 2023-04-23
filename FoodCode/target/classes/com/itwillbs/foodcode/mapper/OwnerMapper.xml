@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.foodcode.mapper.OwnerMapper">
+
+	<!-- 점주 회원가입 -->
+	<insert id="insertOwner">
+	
+		<selectKey keyProperty="member_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(member_idx), 0) FROM member 
+ 		</selectKey>
+ 		
+		INSERT
+			INTO member
+			VALUES (
+				#{member_idx} + 1
+				,'o'
+				,#{member_name}
+				,#{member_id}
+				,#{member_passwd}
+				,#{member_phone}
+				,#{member_email}
+				,#{member_birth}
+				,#{member_gender}
+				,now()
+			)
+	</insert>
+	
+	<select id="isSuccessOwner" parameterType="String" resultType="boolean">
+		SELECT IF(COUNT(*) = 1, 1, 0)
+			FROM member
+			WHERE member_id = #{member_id} AND member_passwd = #{member_passwd}
+	</select>
+	
+	<select id="selectMember" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT 
+			 member_idx
+			,member_type
+			,member_name
+			,member_id
+			,member_passwd
+			,member_phone
+			,member_email
+			,member_birth
+			,member_gender
+			,now()
+		FROM member
+		WHERE member_id = #{sId}
+	</select>
+	
+	<!-- session 패스워드와 회원 패스워드 일치하는지 조회 -->
+	<select id="getPasswd">
+	SELECT member_passwd
+			FROM member
+				WHERE member_id = #{sId}
+	</select>
+	
+	<!-- 점주 회원 정보 수정 -->
+	<update id="modifyMember">
+		UPDATE member
+		SET 
+		    member_email = #{member.member_email}
+		  	,member_phone = #{member.member_phone}
+		  	,member_passwd = #{newPasswd}
+		WHERE member_id = #{sId}
+	</update>
+	
+	<!-- 점주 가게 갯수 조회 -->
+	<select id="countStore">
+		SELECT count(*)
+			FROM store
+			WHERE member_id = #{sId}
+	</select>
+	
+	<!-- 점주 가게 정보 조회 -->
+	<select id="selectStore"  resultType="com.itwillbs.foodcode.vo.StoreVO">
+		SELECT *
+			FROM store
+			WHERE member_id = #{sId};
+	</select>
+	
+	<!-- 점주 마이페이지에서 예약 목록 조회 -->
+	<select id="showBooking" resultType="com.itwillbs.foodcode.vo.BookingVO">
+		SELECT 
+			b.booking_idx
+			,b.booking_date
+			,b.booking_time
+			,b.booking_num
+			,b.booking_seat
+			,b.booking_content
+			,b.store_idx
+			,s.store_name
+			,s.member_id
+			FROM 
+				booking b JOIN store s
+			ON
+				b.store_idx = s.store_idx
+			WHERE 
+				s.member_id = #{sId};
+	</select>
+		
+	
+</mapper>
