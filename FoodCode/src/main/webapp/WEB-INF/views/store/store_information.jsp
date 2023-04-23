@@ -100,7 +100,7 @@
 	        	 -->
 
 				<c:forEach items="${storeInfo }" var="store">
-		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${store.store_name }</h2>
+		          <h2 class="section-title mb-4" style="font-family: 'Noto Sans KR', sans-serif;">${store.store_name }  <img src="${pageContext.request.contextPath }/resources/images/report.png" width="30" onclick="location.href='storeReport.re?store_idx=${store.store_idx}'"></h2>
 		          <p style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_content }</p>
 		          <ul class="list-unstyled two-col clearfix" style="font-family: 'Noto Sans KR', sans-serif;">
 		            <li>${store.store_type }</li>
