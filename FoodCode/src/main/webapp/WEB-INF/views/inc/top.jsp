@@ -5,7 +5,7 @@
 <script src="js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 	function confirmLogout(){
-		let result = confirm("로그아웃하시겠습니까?");	
+		let result = confirm("로그아웃 하시겠습니까?");	
 		return result;
 	}
 </script>
