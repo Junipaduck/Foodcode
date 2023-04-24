@@ -98,12 +98,43 @@
 				s.member_id = #{sId};
 	</select>
 	
-	<!-- 점주 가게 수정위해 정보 조회 -->
+	<!-- 점주 가게 정보 수정 - 가게 조회 -->
 	<select id="getStore"  resultType="com.itwillbs.foodcode.vo.StoreVO">
 		SELECT *
 			FROM store
 			WHERE store_idx = #{store_idx}
 	</select>
+	
+	<!-- 점주 가게 정보 수정 - 업체사진 삭제 -->
+	<update id="deleteStoreFile">
+		UPDATE store
+			SET
+				store_file = ''
+				,store_file_path = ''
+			WHERE
+				store_idx = #{store_idx}
+	</update>
+	
+	<!-- 점주 가게 정보 수정 -->
+	<update id="modifyStore">
+		UPDATE store
+			SET 
+				store_name = #{store_name}
+				,store_phone = #{store_phone}
+				,store_address = CONCAT(#{store_address1}, ' ', #{store_address2})
+				,store_type = #{store_type}
+				,store_content = #{store_content}
+				,store_time = #{store_time}
+				,store_license = #{store_license}
+				,store_etc = #{store_etc}
+				<if test="store_file != null and !store_file.equals('')">
+					,store_file = #{store_file}
+					,store_file_path = #{store_file_path}
+				</if>
+			WHERE
+				store_idx = #{store_idx}
+				
+	</update>
 		
 	
 </mapper>

@@ -30,4 +30,8 @@ public interface OwnerMapper {
 	
 	StoreVO getStore(int store_idx);
 
+	int deleteStoreFile(int store_index);
+
+	int modifyStore(StoreVO store);
+
 }

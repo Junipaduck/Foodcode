@@ -1,5 +1,7 @@
 package com.itwillbs.foodcode.controller;
 
+import java.io.*;
+import java.nio.file.*;
 import java.util.*;
 
 import javax.servlet.http.*;
@@ -28,14 +30,14 @@ public class OwnerController {
 	private StoreService storeService;
 	
 	// 점주 회원가입페이지로 이동
-	@GetMapping(value = "/ownerJoin.me")
+	@GetMapping("/ownerJoin.me")
 	public String ownerJoin() {
 		return "owner/owner_join_form";
 	}
 	
 	// 좌측 배너에서 "내식당" 버튼 클릭시 마이페이지 이동 - 가게 정보 조회해와야함
 	// 후에 점주아이디-가게 연결되면 id값 가져가서 조회해오기
-	@GetMapping(value = "/ownerPage.me")
+	@GetMapping("/ownerPage.me")
 	public String ownerPage(StoreVO store, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("sId");
 		
@@ -62,7 +64,7 @@ public class OwnerController {
 	}
 	
 	// 점주 회원가입
-	@GetMapping(value = "/ownerJoinPro.me")
+	@GetMapping("/ownerJoinPro.me")
 	public String ownerJoinPro(MemberVO member, Model model, @RequestParam String member_passwd2) {
 		if(member.getMember_passwd().equals(member_passwd2)) {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -83,7 +85,7 @@ public class OwnerController {
 	}
 	
 	// 점주 가게 리뷰페이지로 이동
-	@GetMapping(value = "/ownerReview.me")
+	@GetMapping("/ownerReview.me")
 	public String ownerReview(ReviewVO review, 
 							  Model model,
     						 HttpSession session
@@ -109,7 +111,7 @@ public class OwnerController {
 	}
 	
 	// 점주 회원 정보 수정 페이지로 이동
-	@GetMapping(value = "/ownerModify.me")
+	@GetMapping("/ownerModify.me")
 	public ModelAndView ownerModify(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("sId");
 //		if(id == null) {
@@ -126,7 +128,7 @@ public class OwnerController {
 	}
 	
 	// 점주 회원 정보 수정
-	@PostMapping(value = "/ownerModifyPro.me")
+	@PostMapping("/ownerModifyPro.me")
 	public String ownerModifyPro(MemberVO member, @RequestParam String newPasswd, @RequestParam String newPasswd2, HttpSession session, Model model) {
 		String id = (String)session.getAttribute("sId");
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -164,7 +166,7 @@ public class OwnerController {
 	
 	
 	// 점주 가게정보 수정페이지로 이동
-	@GetMapping(value = "/storeModify.me")
+	@GetMapping("/storeModify.me")
 	public String storeModify(@RequestParam int store_idx, HttpSession session, Model model) {
 		String id = (String)session.getAttribute("sId");
 		if(id == null) {
@@ -181,8 +183,47 @@ public class OwnerController {
 		return "owner/owner_store_modify";
 	}
 	
+	@PostMapping("/StoreDeleteFile.bo")
+	public void storeDeleteFile(@RequestParam int store_index, 
+			@RequestParam String store_file, 
+			@RequestParam String store_file_path, 
+			HttpServletResponse response,
+			HttpSession session) {
+		try {
+			response.setCharacterEncoding("UTF-8");
+
+			int deleteCount = ownerService.removeStoreFile(store_index);
+			if(deleteCount > 0) {
+				String uploadDir = "/resources/storeFileUpload";		// 프로젝트상의 업로드 경로
+				String saveDir = session.getServletContext().getRealPath(uploadDir);	// 실제 업로드 경로
+				// 실제 업로드 경로 + 서브 디렉토리명
+				saveDir += store_file_path;
+				Path path = Paths.get(saveDir + "/" + store_file);
+				Files.deleteIfExists(path);
+				response.getWriter().print("true");
+			} else {
+				
+				response.getWriter().print("false");
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@PostMapping("/ownerStoreModifyPro.me")
+	public String storeModifyPro(StoreVO store, Model model) {
+		int modifyStoreCnt = ownerService.modifyStore(store);
+		if(modifyStoreCnt > 0) {
+			return "redirect:/ownerPage.me";
+		} else {			
+			model.addAttribute("msg", "가게 정보 수정 실패!");
+			return "fail_back";
+		}
+	}
+	
 	// 점주 마이페이지에 있는 '새로운 식당 추가' 링크 클릭 시 식당 등록 페이지로 이동
-	@GetMapping(value = "/storeRegister.me")
+	@GetMapping("/storeRegister.me")
 	public String storeRegister() {
 		return "owner/owner_store_register";
 	}

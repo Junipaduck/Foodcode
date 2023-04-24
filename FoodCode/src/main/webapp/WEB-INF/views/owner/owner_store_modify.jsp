@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!doctype html>
 <html lang="kr">
 <head>
@@ -26,6 +28,27 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
   <title>식당 정보수정</title>
+  
+<script type="text/javascript">
+	function deleteFile() {
+		$.ajax({
+			type: "POST",
+			url: "StoreDeleteFile.bo",
+			data: {
+				"store_idx" : ${store.store_idx},
+				"store_file" : "${store.store_file}",
+				"store_file_path" : "${store.store_file_path}"
+			},
+			success: function(result) {
+				if(result == "true") {
+					$("#fileBtnArea").html("<input type='file' name='file'/>");
+				} else {
+					alert("일시적인 오류로 파일 삭제에 실패했습니다!");
+				}
+			}
+		});
+	}
+</script>
 </head>
 
 <body>
@@ -91,7 +114,21 @@
                </div>
                <div class="form-group">
                 <label class="text-black" for="file" >업체사진</label>
-                <input type="file" class="form-control" id="file" name="file" required="required">
+                <div id="fileBtnArea">
+                	<c:choose>
+                		<c:when test="${empty store.store_file }">
+	                		<input type="file" class="form-control" id="file" name="file" required="required">
+	                	</c:when>
+                		<c:otherwise>
+	                		<c:set var="length" value="${fn:length(store.store_file) }" />
+							<c:set var="index" value="${fn:indexOf(store.store_file, '_') }" />
+							<c:set var="fileName" value="${fn:substring(store.store_file, index + 1, length) }" />
+							<a href="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file_path}/${store.store_file}" download="${fileName }">${fileName }</a>
+							<%-- 삭제버튼 클릭 시 deleteFile() 함수 호출(파라미터로 글번호, 파일명 전달) --%>
+							<input type="button" value="삭제" onclick="deleteFile()">
+                		</c:otherwise>
+                	</c:choose>
+                </div>
                 <small id="small3" class="form-text text-muted">메인화면에 보여지는 사진입니다.</small>
               </div>
               <div class="form-group">
@@ -106,6 +143,9 @@
               </div>
               <div class="form-group">
                 <label class="text-black" for="storeAddress">매장 주소</label>
+<%--                 <c:set var="length" value="${fn:length(store.store_address) }" /> --%>
+<%-- 				<c:set var="index" value="${fn:indexOf(store.store_address, '_') }" /> --%>
+<%-- 				<c:set var="addressName" value="${fn:substring(store.store_address, index + 1, length) }" /> --%>
                 <input type="text" class="form-control" name="store_address1" id="store_address1" required="required" placeholder="주소검색">
                 <input type="text" class="form-control" name="store_address2" id="store_address2" placeholder="상세주소입력">
               	<small id="small6" class="form-text text-muted">영업중인 사업장의 실제 주소를 정확히 입력해주세요.</small>
