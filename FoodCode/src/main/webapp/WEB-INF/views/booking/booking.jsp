@@ -83,7 +83,7 @@
 
 </style>
 
-  <title>아이티윌 2팀</title>
+  <title>${map.storeInfo[0].store_name }</title>
   
 </head>
 
@@ -142,7 +142,7 @@
                   <div class="form-group">
                     <label for="">이름</label>
                     <input type="hidden" name="store_idx" value="${map.storeInfo[0].store_idx }">
-                    <input type="hidden" name="booking_idx" id="booking_idx" value="1">
+<!--                     <input type="hidden" name="booking_idx" id="booking_idx" value="1"> -->
                     <input type="text" class="form-control" placeholder="${map.member.member_name }" readonly="true">
                   </div>
                 </div>
@@ -608,7 +608,7 @@
 	</footer>
 
 
-  <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
+<%--   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script> --%>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>

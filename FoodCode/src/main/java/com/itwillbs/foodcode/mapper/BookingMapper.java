@@ -10,6 +10,6 @@ public interface BookingMapper {
 
 	int insertBooking(BookingVO booking);
 
-	List bookingList(@Param("id") String id, @Param("booking_idx") int booking_idx);
+	List bookingList(@Param("id") String id, @Param("merchant_uid") String merchant_uid);
 	
 }

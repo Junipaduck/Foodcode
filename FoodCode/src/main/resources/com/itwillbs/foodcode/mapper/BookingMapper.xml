@@ -8,7 +8,7 @@
 		INSERT 
 		INTO booking
 		VALUES(
-		#{booking_idx} + 1
+		null
 		,#{booking_date}
 		,#{booking_time}
 		,#{booking_num}
@@ -16,6 +16,7 @@
 		,#{booking_content}
 		,#{store_idx}
 		,#{member_id}
+		,#{merchant_uid}
 		)
 	</insert>
 
@@ -29,7 +30,7 @@
 		, b.booking_content
 		FROM booking b JOIN member m 
 		ON b.member_id = m.member_id
-		WHERE b.booking_idx = #{booking_idx};
+		WHERE b.merchant_uid = #{merchant_uid};
 	</select>
 	
 </mapper>

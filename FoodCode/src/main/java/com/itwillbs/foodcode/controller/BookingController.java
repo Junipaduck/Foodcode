@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.itwillbs.foodcode.service.BookingService;
 import com.itwillbs.foodcode.service.CustomerService;
@@ -60,14 +61,16 @@ public class BookingController {
 	
 	//예약하기 누르면 확인페이지
 	@GetMapping(value = "bookingCheck.bo")
-	public ModelAndView bookingCheck
+	public String bookingCheck
 	(HttpSession session, Model model, StoreVO store, int store_idx, String booking_date, String booking_time, String booking_num, String booking_seat, String booking_content) {
 		String id = (String)session.getAttribute("sId");
 		MemberVO member = customerService.selectMember(id);
 		
-//		System.out.println(booking_date.getClass().getName());   // string 타입 오류나서 date의 데이터 타입 확인
+		System.out.println("타임 타입 체크 " + booking_time.getClass().getName());   // string 타입 오류나서 date의 데이터 타입 확인
 		
 		List<StoreVO> storeInfo = storeService.selectStoreInfo(store, store_idx);
+		
+		System.out.println("가게정보 출력 : " + storeInfo);
 		
 		List<String> bookinginfo = new ArrayList<>();
 		bookinginfo.add(booking_date);
@@ -77,51 +80,65 @@ public class BookingController {
 		bookinginfo.add(booking_content);
 				
 		
-		Map<String, Object> map = new HashMap<>();
-		map.put("member", member);
-		map.put("storeInfo", storeInfo);
-		map.put("bookinginfo", bookinginfo);
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("member", member);
+//		map.put("storeInfo", storeInfo);
+//		map.put("bookinginfo", bookinginfo);
 		
+		model.addAttribute("member", member);
+		model.addAttribute("storeInfo", storeInfo);
+		model.addAttribute("bookinginfo", bookinginfo);
 		
-		return new ModelAndView("booking/booking_check","map",map);
+		return "booking/booking_check";
 	}
 	
 	
 	// 결제하기 전 예약 확인 페이지
-	@RequestMapping(value = "reservation.bo", method = {RequestMethod.GET, RequestMethod.POST})
-	 public String reservation(HttpSession session, Model model, StoreVO store, BookingVO booking, @RequestParam int store_idx, RedirectAttributes re) {
+//	@RequestMapping(value = "reservation.bo", method = {RequestMethod.GET, RequestMethod.POST})
+//	 public String reservation(HttpSession session, Model model, StoreVO store, BookingVO booking, @RequestParam int store_idx, @RequestParam String merchant_uid ,RedirectAttributes re) {
 		
-		String id = (String)session.getAttribute("sId").toString();
-		booking.setMember_id(id);
-		booking.setStore_idx(store_idx);
+//		String id = (String)session.getAttribute("sId").toString();
+//		booking.setMember_id(id);
+//		booking.setStore_idx(store_idx);
+//		booking.setMerchant_uid(merchant_uid);
 		
-		int insertBooking = bookingService.insertBooking(booking); 
-		int bookingNum = booking.getBooking_idx();
-		int storeNum = booking.getStore_idx();
-		re.addAttribute("booking_idx", bookingNum);
-		re.addAttribute("store_idx", storeNum);
+//		int insertBooking = bookingService.insertBooking(booking); 
+//		int bookingNum = booking.getBooking_idx();
+//		re.addAttribute("booking_idx", bookingNum);
+//		int storeNum = booking.getStore_idx();
+//		re.addAttribute("store_idx", store_idx);
+//		re.addAttribute("merchant_uid", merchant_uid);
 		
 //		if(id == null) {
 //			model.addAttribute("msg", "로그인 후 이용해주세요");
 //			return "fail_back";
 //		} else {
-			if(insertBooking > 0) {
-				System.out.println("예약번호 : " + bookingNum + "가게번호 : " + storeNum);
-			}
-			return "redirect:/bookingsuccess.bo";
+//			if(insertBooking > 0) {
+//				System.out.println("결제 번호 " + merchant_uid);
+//			}
+//			return "redirect:/bookingsuccess.bo";
 //			} else {
 //				model.addAttribute("msg", "예약을 다시 확인해주세요");
 //				return "fail_back";
 //			}
 //		}
-	}
+//	}
 
 	//결제 끝난 후 보여줄 페이지
-	@GetMapping(value = "bookingsuccess.bo")
-	public String bookingSuccess(HttpSession session, Model model, @RequestParam(value = "booking_idx", defaultValue = "defalutValue") int booking_idx, @RequestParam(value = "store_idx", defaultValue = "defalutValue") int store_idx) {
+	@PostMapping(value = "bookingsuccess.bo")
+//	public String bookingSuccess(HttpSession session, Model model, @RequestParam(value = "booking_idx", defaultValue = "defalutValue") int booking_idx, @RequestParam(value = "store_idx", defaultValue = "defalutValue") int store_idx) {
+//	public String bookingSuccess(HttpSession session, Model model, String merchant_uid, int store_idx, String booking_date, String booking_time, String booking_num, String booking_seat, String booking_content, BookingVO booking) {
+		public String bookingSuccess(HttpSession session, Model model, BookingVO booking, String merchant_uid) {
 		String id = (String)session.getAttribute("sId").toString();
 		
-		List bookingList = bookingService.bookingList(id, booking_idx);
+		booking.setMember_id(id);
+		int insertBooking = bookingService.insertBooking(booking); 
+//		booking.setStore_idx(store_idx);
+//		booking.setMerchant_uid(merchant_uid);
+		
+		System.out.println("값 확인하기 " + booking);
+		
+		List bookingList = bookingService.bookingList(id,merchant_uid);
 		model.addAttribute("bookingList", bookingList);
 		
 		return "booking/booking_success";

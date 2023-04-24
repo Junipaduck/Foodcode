@@ -10,7 +10,8 @@ package com.itwillbs.foodcode.vo;
 	booking_seat varchar(10),      선호자리
 	booking_content varchar(200),  요청사항
 	store_idx int,                 예약할 가게 번호
-	member_id varchar(45));        예약할 고객 아이디
+	member_id varchar(45)		   예약할 고객 아이디
+	merchant_uid varchar(30));     결제 고유 아이디
  */
 
 public class BookingVO {
@@ -23,9 +24,10 @@ public class BookingVO {
 	private String booking_content;
 	private int store_idx;
 	private String member_id;
-
+	private String merchant_uid;
+	
 	public BookingVO(int booking_idx, String booking_date, String booking_time, String booking_num, String booking_seat,
-			String booking_content, int store_idx, String member_id) {
+			String booking_content, int store_idx, String member_id, String merchant_uid) {
 		super();
 		this.booking_idx = booking_idx;
 		this.booking_date = booking_date;
@@ -35,6 +37,7 @@ public class BookingVO {
 		this.booking_content = booking_content;
 		this.store_idx = store_idx;
 		this.member_id = member_id;
+		this.merchant_uid = merchant_uid;
 	}
 
 	public int getBooking_idx() {
@@ -101,12 +104,20 @@ public class BookingVO {
 		this.member_id = member_id;
 	}
 
+	public String getMerchant_uid() {
+		return merchant_uid;
+	}
+
+	public void setMerchant_uid(String merchant_uid) {
+		this.merchant_uid = merchant_uid;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingVO [booking_idx=" + booking_idx + ", booking_date=" + booking_date + ", booking_time="
 				+ booking_time + ", booking_num=" + booking_num + ", booking_seat=" + booking_seat
 				+ ", booking_content=" + booking_content + ", store_idx=" + store_idx + ", member_id=" + member_id
-				+ "]";
-	}
-	
+				+ ", merchant_uid=" + merchant_uid + "]";
+	} 
+
 }

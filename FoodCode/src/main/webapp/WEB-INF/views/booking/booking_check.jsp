@@ -43,30 +43,34 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store_recommend_style.css" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+<!-- 결제 api 부분 -->
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+
+
+
 <title>예약 확인 페이지</title>
 </head>
 <body>
-<!-- 주소로 값 받아오던것 현재 map 사용 -->
-<!-- <script type="text/javascript"> -->
-<!-- 	let query = window.location.search;         // http://localhost:8080/notice?id=1&name=하나 -->
-<!-- 	let param = new URLSearchParams(query); -->
-	
-<!-- 	document.getElementById('booking_idx').value = "" -->
-<!-- </script> -->
 
 
 <header>
 	<jsp:include page="../inc/top2.jsp"></jsp:include>
 </header>
 
-<form action="reservation.bo" method="get">
-	<input type="hidden" name="store_idx" value="${map.storeInfo[0].store_idx }">
-    <input type="hidden" name="booking_idx" id="booking_idx" value="1">        <!-- 얘를 1말고 다른값 주면 제대로 안올라가고 오류창뜸 -->
-    <input type="hidden" name="booking_date" id="booking_date" value="${map.bookinginfo.get(0) }">
-    <input type="hidden" name="booking_time" id="booking_time" value="${map.bookinginfo.get(1) }">
-    <input type="hidden" name="booking_num" id="booking_num" value="${map.bookinginfo.get(2) }">
-    <input type="hidden" name="booking_seat" id="booking_seat" value="${map.bookinginfo.get(3) }">
-    <input type="hidden" name="booking_content" id="booking_content" value="${map.bookinginfo.get(4) }">
+ 
+
+<form id="reservForm" method="post" action="bookingsuccess.bo">
+	<input type="hidden" name="store_idx" value="${storeInfo[0].store_idx }">
+	<input type="hidden" name="booking_idx" id="booking_date" value="1">
+    <input type="hidden" name="booking_date" id="booking_date" value="${bookinginfo.get(0) }">
+    <input type="hidden" name="booking_time" id="booking_time" value="${bookinginfo.get(1) }">
+    <input type="hidden" name="booking_num" id="booking_num" value="${bookinginfo.get(2) }">
+    <input type="hidden" name="booking_seat" id="booking_seat" value="${bookinginfo.get(3) }">
+    <input type="hidden" name="booking_content" id="booking_content" value="${bookinginfo.get(4) }">
 <div class="container-xl">
 	<div class="table-responsive">
 		<div class="table-wrapper">
@@ -95,26 +99,51 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 					<tr>
 						<td>
 						</td>
-						<td >${map.member.member_name }</td>
-						<td>${map.member.member_phone }</td>
-						<td>${map.bookinginfo.get(0) }</td>
-						<td>${map.bookinginfo.get(1) }</td>
-						<td>${map.bookinginfo.get(2) }</td>
-						<td>${map.bookinginfo.get(3) }</td>
-						<td>${map.bookinginfo.get(4) }</td>
+						<td>${member.member_name }</td>
+						<td>${member.member_phone }</td>
+						<td>${bookinginfo.get(0) }</td>
+						<td>${bookinginfo.get(1) }</td>
+						<td>${bookinginfo.get(2) }</td>
+						<td>${bookinginfo.get(3) }</td>
+						<td>${bookinginfo.get(4) }</td>
 					</tr>
 				</tbody>
 			</table>
-			<div class="col-md-12 mt-3">
-                  <div class="form-group">
-       				<input type="button" value="다시 입력 할래요" class="btn btn-primary py-3 px-5" onclick="location.href(history.back())">
-					<input type="submit" value="결제 하기" class="btn btn-primary py-3 px-5">
-                  </div>
-            </div>
 		</div>
-	</div>        
+	</div>
 </div>
 </form>
+
+<!-- <button onclick="requestPay()">결제하기</button> -->
+<button id="payMent">결제하기</button>
+
+<script type="text/javascript">
+	
+	document.getElementById("payMent").addEventListener('click',requestPay);
+
+	var IMP = window.IMP; 
+	IMP.init("imp25354857"); 
+	
+	function requestPay() {
+			IMP.request_pay({
+		        pg : 'kakaopay.TC0ONETIME',
+		        pay_method : 'card',
+		        merchant_uid:  'merchant' + new Date().getTime(), 
+		        name : '${storeInfo[0].store_name }',
+		        amount : ${bookinginfo.get(2) } * 5000,
+		        buyer_email : '${member.member_email }',
+		        buyer_name : '${member.member_name }',
+		        buyer_tel : '${member.member_phone }',
+			},	function (rsp) { // callback
+				if(rsp.success){
+					 alert("결제가 완료되었습니다.");
+						$("#reservForm").append('<input type="hidden" id="merchant_uid" name="merchant_uid" value="' + rsp.merchant_uid + '">');
+						$("#reservForm").append('<input type="hidden" id="pay_price" name="pay_price" value="' + rsp.paid_amount + '">');
+						$("#reservForm").submit();
+				}
+		    });
+	}		    
+</script>
 
 <footer>
 	<jsp:include page="../inc/bottom.jsp"></jsp:include>

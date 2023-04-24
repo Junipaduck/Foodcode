@@ -18,8 +18,8 @@ public class BookingService {
 		return mapper.insertBooking(booking);
 	}
 
-	public List bookingList(String id, int booking_idx) {
-		return mapper.bookingList(id, booking_idx);
+	public List bookingList(String id, String merchant_uid) {
+		return mapper.bookingList(id, merchant_uid);
 	}
 	
 }
