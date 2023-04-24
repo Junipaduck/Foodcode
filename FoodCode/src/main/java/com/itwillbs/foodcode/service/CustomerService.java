@@ -71,4 +71,9 @@ public class CustomerService {
 	}
 
 
+	public boolean isDupilcateMember(String member_id) {
+		return mapper.isDuplicateMember(member_id);
+	}
+
+
 }
