@@ -9,17 +9,16 @@
 <script type="text/javascript">
 
 
-	function Mail(member_email) {
+	function Mail(member_email, store_name) {
 		const eamil = member_email; // 이메일 주소값 얻어오기!
-		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-		const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+		const storeName = store_name;
+		console.log('완성된 이메일 : ' + eamil + '받는 사람 :' + storeName); // 이메일 오는지 확인
 																
 		$.ajax({
 			type : 'get',
-			url : "mailCheck?email="+eamil, // GET방식
+			url : "mailCheck?email="+eamil+"&storeName="+storeName, // GET방식
 			success : function (data) {
 				console.log("데이타 : " +  data);
-				checkInput.attr('disabled',false);
 				code = data;
 				alert('경고 메세지가 전송되었습니다.')
 			}	
@@ -38,7 +37,6 @@
 			window.open(url, name, option);
 				
 	}
-	
 	
 </script>
                 <div class="container-fluid">
@@ -92,7 +90,7 @@
 		                                        <span class="icon text-white-50">
 		                                            <i class="fas fa-exclamation-triangle"></i>
 		                                        </span>
-		                                        <span class="text" msttexthash="359"_msthash="70" onclick="Mail('${aList.member_email}')">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
+		                                        <span class="text" msttexthash="359"_msthash="70" onclick="Mail('${aList.member_email}', '${aList.store_name}' )">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
 		                                    </a>
                                             </td>
                                              <td align="center">

@@ -231,19 +231,16 @@ public class AdminController {
 	}
 	
 	// ================메일 보내기======================	
-	@GetMapping(value = "adminMail_store")
-	public String Mail() {
-		
-		return "/admin/store_mail";
-	}
-	
-	//이메일 인증
+
 	@GetMapping("/mailCheck")
 	@ResponseBody
-	public String mailCheck(String email) {
+	public String mailCheck(String email, String storeName) {
 		System.out.println("이메일 인증 요청이 들어옴!");
-		System.out.println("이메일 인증 이메일 : " + email);
+		System.out.println("이메일 인증 이메일 : " + email + "받는 사람:" + storeName);
 		
-		return mailService.joinEmail(email);
+		if(storeName==null || storeName.equals("")) {
+		return mailService.joinEmail(email); //회원가입시 랜덤 코드 발송 메일
+		}
+		return mailService.storeEmail(email, storeName); //식당 경고 메세지 발송 메일
 	}
 }

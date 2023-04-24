@@ -26,7 +26,7 @@ public class MailSendService {
 		}
 		
 		
-				//이메일 보낼 양식! 
+				//인증 이메일 보낼 양식! 
 		public String joinEmail(String email) {
 			makeRandomNumber();
 			String setFrom = "dkeka0411@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
@@ -41,6 +41,23 @@ public class MailSendService {
 			mailSend(setFrom, toMail, title, content);
 			return Integer.toString(authNumber);
 		}
+		
+		//이메일 보낼 양식! 
+				public String storeEmail(String email, String storeName) {
+					String setFrom = "dkeka0411@gmail.com"; 
+					String toMail = email;
+					String title = "식당 경고 메세지 입니다."; // 이메일 제목 
+					String content = 
+							"안녕하십니까 ! FoodCode 관리자입니다." + 	//html 형식으로 작성 ! 
+			                "<br><br>" + 
+						    "해당 식당 " + storeName + "은 경고입니다." + 
+						    "<br>" + 
+						    "식당 청결 및 서비스에 신경 써 주시길 바랍니다."; //이메일 내용 삽입
+					mailSend(setFrom, toMail, title, content);
+					return Integer.toString(authNumber);
+				}
+		
+		
 		
 		//이메일 전송 메소드
 		public void mailSend(String setFrom, String toMail, String title, String content) { 
