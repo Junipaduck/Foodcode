@@ -21,7 +21,7 @@ public class StoreVO {
 	private String store_file_path;
 	private String member_id;
 	private String auth_status;
-	private int review_star_avg; //리뷰별점평균
+	private String review_star; //리뷰별점평균
 	
 	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
 	private MultipartFile file;
@@ -33,7 +33,7 @@ public class StoreVO {
 	public StoreVO(int store_idx, String store_name, String store_phone, String store_address, String store_address1,
 			String store_address2, String store_type, String store_content, String store_time, String store_license,
 			String store_date, String store_etc, String store_file, String store_file_path, String member_id,
-			String auth_status, int review_star_avg, MultipartFile file) {
+			String auth_status, String review_star, MultipartFile file) {
 		super();
 		this.store_idx = store_idx;
 		this.store_name = store_name;
@@ -51,7 +51,7 @@ public class StoreVO {
 		this.store_file_path = store_file_path;
 		this.member_id = member_id;
 		this.auth_status = auth_status;
-		this.review_star_avg = review_star_avg;
+		this.review_star = review_star;
 		this.file = file;
 	}
 
@@ -183,12 +183,12 @@ public class StoreVO {
 		this.auth_status = auth_status;
 	}
 
-	public int getReview_star_avg() {
-		return review_star_avg;
+	public String getReview_star() {
+		return review_star;
 	}
 
-	public void setReview_star_avg(int review_star_avg) {
-		this.review_star_avg = review_star_avg;
+	public void setReview_star(String review_star) {
+		this.review_star = review_star;
 	}
 
 	public MultipartFile getFile() {
@@ -206,10 +206,10 @@ public class StoreVO {
 				+ store_address2 + ", store_type=" + store_type + ", store_content=" + store_content + ", store_time="
 				+ store_time + ", store_license=" + store_license + ", store_date=" + store_date + ", store_etc="
 				+ store_etc + ", store_file=" + store_file + ", store_file_path=" + store_file_path + ", member_id="
-				+ member_id + ", auth_status=" + auth_status + ", review_star_avg=" + review_star_avg + ", file=" + file
-				+ "]";
+				+ member_id + ", auth_status=" + auth_status + ", review_star=" + review_star + ", file=" + file + "]";
 	}
 
+	
 	
 	
 	

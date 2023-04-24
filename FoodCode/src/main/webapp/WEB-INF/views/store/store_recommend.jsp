@@ -160,7 +160,8 @@ $(document).ready(function() {
 							                                <div class="text-center">
 							                                    <h5 class="fw-bolder">
 							                                    ${store.store_name } 
-							                                    <img src="${pageContext.request.contextPath }/resources/images/pinkStar.png" width="20">4.5(하드코딩)</h5> <!-- 가게명 -->
+													            		<img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${store.review_star}</span>
+							                                    </h5> <!-- 가게명 -->
 							                                   	${store.store_content } <!-- 가게상세내용 -->
 							                                </div>
 							                            </div>
@@ -204,7 +205,9 @@ $(document).ready(function() {
 								                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store1.store_idx }'" alt="..." />
 								                            <div class="card-body p-4">
 								                                <div class="text-center">
-								                                    <h5 class="fw-bolder">${store1.store_name }</h5> <!-- 가게명 -->
+								                                    <h5 class="fw-bolder">${store1.store_name }
+								                                    	<img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${store1.review_star}</span>
+								                                    </h5> <!-- 가게명 -->
 								                                   	${store1.store_content } <!-- 가게상세내용 -->
 								                                </div>
 								                            </div>

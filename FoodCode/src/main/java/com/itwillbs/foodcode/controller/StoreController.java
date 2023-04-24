@@ -161,7 +161,7 @@ public class StoreController {
 			model.addAttribute("storeList5", storeList5); //=> 요리주점
 			model.addAttribute("storeList6", storeList6); //=> 카페/디저트
 			
-			
+			System.out.println("0424 17:00 테스트 별점평균 : " + store.getReview_star());
 			
 			return "store/store_recommend";
 			
