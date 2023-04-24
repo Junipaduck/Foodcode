@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -192,7 +193,7 @@ function remove_tr(This) {//행 삭제
 						<th>${menu.menu_name }</th>
 						<th>${menu.menu_type }</th>
 						<th>${menu.menu_price }</th>
-						<th>${menu.menu_image }</th>
+						<th><img src="resources/menuImage${menu.menu_image_path }/${menu.menu_image}"></th>
 						<th>${menu.menu_content }</th>
 						<th><a href="#editEmployeeModal" class="btn btn-success" data-toggle="modal" data-menu_idx="${menu.menu_idx }" data-store_idx="${param.store_idx }" data-menu_name="${menu.menu_name }" data-menu_type="${menu.menu_type }" data-menu_price="${menu.menu_price }" data-menu_image="${menu.menu_image }" data-menu_content="${menu.menu_content }"><i class="material-icons">&#xE147;</i> <span>수정</span></a></th>
 						<th><a href="#deleteEmployeeModal"  class="btn btn-danger" data-toggle="modal" data-menu_idx="${menu.menu_idx}" data-store_idx="${param.store_idx}"><i class="material-icons">&#xE15C;</i> <span>삭제</span></a></th>
@@ -238,7 +239,7 @@ function remove_tr(This) {//행 삭제
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action="store_menu_pro.so">
+			<form action="store_menu_pro.so" method="post" enctype="multipart/form-data">
 				<div class="modal-header">						
 					<h4 class="modal-title">추가하기</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -258,7 +259,7 @@ function remove_tr(This) {//행 삭제
 					</div>
 					<div class="form-group">
 						<label>사진</label>
-						<input type="text" class="form-control" name="menu_image" id="menu_image">
+						<input type="file" class="form-control" name="file" id="file">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
@@ -278,7 +279,7 @@ function remove_tr(This) {//행 삭제
 <div id="editEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action="menuModify.so">
+			<form action="menuModify.so" method="post" enctype="multipart/form-data">
 				<div class="modal-header">						
 					<h4 class="modal-title">수정하기</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -298,7 +299,7 @@ function remove_tr(This) {//행 삭제
 					</div>
 					<div class="form-group">
 						<label>메뉴 사진</label>
-						<input type="text" name="menu_image" id="menu_imageM" class="form-control">
+						<input type="file" name="file" id="file" class="form-control">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
@@ -321,7 +322,7 @@ function remove_tr(This) {//행 삭제
 <div id="deleteEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action="menuDelete.so">
+			<form action="menuDelete.so" method="post" enctype="multipart/form-data">
 				<div class="modal-header">						
 					<h4 class="modal-title">메뉴 삭제</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

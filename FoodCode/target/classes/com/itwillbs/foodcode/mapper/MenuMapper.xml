@@ -10,6 +10,7 @@
 				, m.menu_price
 				, m.menu_image
 				, m.menu_content
+				, m.menu_image_path
 				, s.store_idx
 		FROM menu m JOIN store s ON s.store_idx = m.store_idx
 		WHERE s.store_idx = #{store_idx}
@@ -29,6 +30,7 @@
 	 			,#{menu.menu_image} 
 	 			,#{menu.menu_content} 
 	 			,#{store_idx}
+	 			,#{menu.menu_image_path}
 	 		)
 	 </insert>
 	 
@@ -37,8 +39,13 @@
 	 , menu_name= #{menu.menu_name}
 	 , menu_type=#{menu.menu_type}
 	 , menu_price=#{menu.menu_price}
+	 <if test="menu_image != null and !menu_image.equals('')">
 	 , menu_image=#{menu.menu_image}
+	 </if>
 	 , menu_content=#{menu.menu_content}
+	 <if test="menu_image != null and !menu_image.equals('')">
+	 , menu_image_path = #{menu.menu_image_path}
+	 </if>
 	 WHERE menu_idx = #{menu.menu_idx} AND
 	 store_idx = #{store_idx}
 	 </update>
