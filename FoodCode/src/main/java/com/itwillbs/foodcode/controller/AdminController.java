@@ -71,7 +71,6 @@ public class AdminController {
 		String reportCount = adminService.getReportCount();
 		model.addAttribute("reportCount", reportCount);
 		
-		
 		return "/admin/admin_main";
 	}
 	
@@ -95,7 +94,6 @@ public class AdminController {
 
         return "redirect:/adminMain";
     }
-	
 	
 // ============== 각 항목 리스트===========================	
 	
@@ -165,7 +163,6 @@ public class AdminController {
 			model.addAttribute("msg", "사업자 번호를 다시 확인해주세요!");
 			return "admin/fail_back";
 		}
-		
 	}
 	
 // 	=====================식당 승인 페이지 ==========================		
@@ -197,9 +194,7 @@ public class AdminController {
 			model.addAttribute("msg", "승인 실패 ! 다시 확인해주세요!");
 			return "admin/fail_back";
 		}
-		
 	}
-	
 	
 // ================(일반, 맴버) 회원 삭제======================	
 
@@ -210,7 +205,7 @@ public class AdminController {
 		return "/admin/member_delete";
 	}
 	
-	@PostMapping(value = "adminMemberDeletePro")
+	@RequestMapping(value = "adminMemberDeletePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String customerDelectPro(@RequestParam String member_idx, 
 			@RequestParam String member_id, @RequestParam String member_type, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("sId");
@@ -232,8 +227,6 @@ public class AdminController {
 		}
 		
 	}
-	
-	
 	
 	// ================메일 보내기======================	
 	@GetMapping(value = "adminMail_store")
