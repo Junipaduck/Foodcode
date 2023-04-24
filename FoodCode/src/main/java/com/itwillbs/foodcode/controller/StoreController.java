@@ -219,7 +219,6 @@ public class StoreController {
 		
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(value = "menuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
 	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model, HttpSession session,@RequestParam MultipartFile file ) {
 		System.out.println("수정 : " + menu);
@@ -252,11 +251,13 @@ public class StoreController {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
+	        
+	        return "redirect:/store_menu.so";
+	}
+	
 		
-=======
 	@RequestMapping(value = "MenuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
 	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model) {
->>>>>>> branch 'main' of https://github.com/Junipaduck/Foodcode.git
 		int modifyMenuCnt = menuService.modifyMenu(store_idx,menu);
 		if(modifyMenuCnt > 0) {
 			return "redirect:/store_menu.so?store_idx=" + store_idx;
