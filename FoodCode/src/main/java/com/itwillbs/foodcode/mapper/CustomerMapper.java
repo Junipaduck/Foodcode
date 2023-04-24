@@ -32,4 +32,6 @@ public interface CustomerMapper {
 
 	int customerBookingCancle(String booking_idx);
 
+	boolean isDuplicateMember(String member_id);
+
 }

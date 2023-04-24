@@ -295,5 +295,16 @@ public class CustomerController {
     	}
     }
     
+    @ResponseBody
+    @GetMapping(value = "MemberCheckDupIdPro.me")
+    public boolean MemberCheckDupIdPro(@RequestParam String member_id) {
+    	System.out.println("MemberCheckDupIdPro");
+    	System.out.println(member_id);
+    	boolean isDupilcateMember = customerService.isDupilcateMember(member_id);
+    	System.out.println(isDupilcateMember);
+    	return isDupilcateMember;
+    	
+    }
+    
 
 }
