@@ -25,7 +25,11 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/star.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> <!-- 테이블 외부 css 파일 경로 -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  
 <%--   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/dataTable.css"> <!-- 테이블 외부 css 파일 경로 -->
 
  --%>
@@ -56,6 +60,9 @@
 </head>
 
 <body>
+
+	
+
 	<form action="reviewList.me">
 		<!-- 검색창 -->
 		<select name="searchType">
@@ -66,6 +73,8 @@
 		<input type="submit" value="검색">
 		<input type="button" value="글쓰기" onclick="location.href='reviewList.me'">
 	</form>
+	
+	&nbsp; &nbsp; &nbsp; 
     <table  class="rwd-table" id="dataTable" width="100%" cellspacing="0">
         <tbody>
         <tr>
@@ -80,65 +89,92 @@
         </tr>
 
 		<c:forEach items="${reviewList }" var="review">
-	        <tr class="KOTRA-fontsize-80">
-	          <td>${review.review_idx }</td>
-	          <td>${review.review_idx }</td>
-	           <td>${review.store_idx }</td>
-	           <td>${review.review_content }</td>
-		        <td class="image_hover">
-	           		${review.review_file }
-	           	</td>
-	           <td>
-					${review.review_star }
-	           </td>
-	           <td>2023/03/20</td>
-	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
-	           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
-	        </tr>
+		        <tr class="KOTRA-fontsize-80">
+		          <td>${review.review_idx }</td>
+		          <td>${review.member_id }</td>
+		           <td>${review.store_name }</td>
+		           <td>${review.review_content }</td>
+			        <td class="image_hover">
+		           		${review.review_file }
+		           	</td>
+		           <td>
+		           		<div class="review_star">
+		           		<c:if test="${not empty review.review_star }">
+		           			<c:choose>
+		           				<c:when test="${review.review_star == 1 }">
+				  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 2 }">
+				  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 3 }">
+				  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 4 }">
+				  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:when test="${review.review_star == 5 }">
+				  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+		           				</c:when>
+		           				<c:otherwise>
+		           				No Rating
+		           				</c:otherwise>
+		           			</c:choose>
+		           		</c:if>
+		           		</div>
+		           </td>
+		           <td>${review.review_date }</td>
+		           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
+		           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
+		        </tr>
 		</c:forEach>
 	</tbody>
     </table>
+    &nbsp; &nbsp; &nbsp;
+    <!-- 20230421 페이징 css 수정 -->
+    <section id="pageList">
+    <div class="w3-container">
+    	<div class="w3-center">
+			<div class="w3-bar w3-border">
+				<c:choose>
+					<c:when test="${empty param.pageNum }">
+						<c:set var="pageNum" value="1" />
+					</c:when>
+					<c:otherwise>
+						<c:set var="pageNum" value="${param.pageNum }" />
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${pageNum > 1 }">
+					  	<a href="reviewList.me?pageNum=${pageNum - 1}" class="w3-bar-item w3-button">이전</a>
+					</c:when>
+					<c:otherwise>
+						<a href="#" class="w3-bar-item w3-button">이전</a>
+					</c:otherwise>
+				</c:choose>
+				<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+					<c:choose>
+						<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
+			  				<b><a href="#" class="w3-bar-item w3-button">${num }</a></b>
+						</c:when>
+						<c:otherwise>
+						    <a href="reviewList.me?pageNum=${num }" class="w3-bar-item w3-button">${num }</a>
+						</c:otherwise>				
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${pageNum < pageInfo.maxPage }">
+						<a href="reviewList.me?pageNum=${pageNum + 1}" class="w3-bar-item w3-button">다음</a>
+					</c:when>
+					<c:otherwise>
+			  			<a href="#" class="w3-bar-item w3-button">다음</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+    </div>
+    </section>
     
-	<section id="pageList">
-		<c:choose>
-			<c:when test="${empty param.pageNum }">
-				<c:set var="pageNum" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="pageNum" value="${param.pageNum }" />
-			</c:otherwise>
-		</c:choose>
-		
-		<c:choose>
-			<c:when test="${pageNum > 1 }">
-				<input type="button" value="이전" onclick="location.href='reviewList.me?pageNum=${pageNum - 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="이전">
-			</c:otherwise>
-		</c:choose>
-		
-		<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-			<c:choose>
-				<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
-					<b>${num }</b>
-				</c:when>
-				<c:otherwise>
-					<a href="reviewList.me?pageNum=${num }">${num }</a>
-				</c:otherwise>				
-			</c:choose>
-		</c:forEach>
-		
-		<c:choose>
-			<c:when test="${pageNum < pageInfo.maxPage }">
-				<input type="button" value="다음" onclick="location.href='reviewList.me?pageNum=${pageNum + 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="다음">
-			</c:otherwise>
-		</c:choose>
-	</section>
-	
 	
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>
@@ -154,6 +190,9 @@
   <script src="${pageContext.request.contextPath }/resources/js/typed.js"></script>
   
   <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  
 
 </body>
 

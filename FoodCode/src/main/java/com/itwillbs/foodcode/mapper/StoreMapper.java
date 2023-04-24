@@ -4,18 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.vo.*;
 
 public interface StoreMapper {
 	
 	// 가게등록
 	int insertStore(StoreVO store);
 	
-	// 가게리스트 6개타입(한식,일식,중식 등...) 
+	// 가게리스트 전체타입(한식,일식,중식 등...) 
 	List<StoreVO> selectStoreList(@Param("searchType") String searchType, 
-									@Param("searchKeyword") String searchKeyword, 
-									@Param("startRow") int startRow, 
-									@Param("listLimit") int listLimit);
+										@Param("searchKeyword") String searchKeyword);
+	
+	List<StoreVO> selectStoreList1();
 
 	List<StoreVO> selectStoreList2();
 
@@ -33,5 +33,9 @@ public interface StoreMapper {
 
 	int selectStoreListCount(@Param("searchType") String searchType, 
 							  @Param("searchKeyword") String searchKeyword);
+
+	List<StoreVO> getStoreInfo(StoreVO store);
+
+	List<ReviewVO> selectStoreReviewList(ReviewVO review);
 
 }

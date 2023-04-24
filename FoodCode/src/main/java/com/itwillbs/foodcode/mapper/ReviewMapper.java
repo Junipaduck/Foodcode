@@ -28,8 +28,16 @@ public interface ReviewMapper {
 
 	List<ReviewVO> reviewList(ReviewVO review);
 
+	List<MemberVO> selectMemberList(MemberVO member);
+
+	List<ReviewVO> selectOwnerReviewList(String id);
+
+	int deleteReiviewFile(int review_idx);
+
+	int selectOwnerReviewListCount();
 
 }
+
 
 
 

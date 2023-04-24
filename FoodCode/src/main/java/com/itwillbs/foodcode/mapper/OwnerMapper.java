@@ -1,5 +1,6 @@
 package com.itwillbs.foodcode.mapper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,10 @@ public interface OwnerMapper {
 
 	List<StoreVO> selectStore(String id);
 
-	List<BookingVO> showBooking(BookingVO booking);
+	List<BookingVO> showBooking(String id);
 
 	int countStore(String id);
+	
+	StoreVO getStore(int store_idx);
 
 }

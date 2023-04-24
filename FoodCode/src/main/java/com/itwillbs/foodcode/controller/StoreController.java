@@ -43,7 +43,10 @@ public class StoreController {
 	 private ReviewService reviewService;
 	
 	@RequestMapping(value = "store.so", method = {RequestMethod.GET, RequestMethod.POST})
-	public String store(StoreVO store, Model model, ReviewVO review, int store_idx) {
+	public String store(StoreVO store, 
+						Model model, 
+						ReviewVO review, 
+						@RequestParam int store_idx) {
 		
 		// 20230412 양선정 - 가게 상세페이지 가게 정보 조회 
 		// 가게 상세페이지 클릭 시 바로 가게 정보 출력 가능 - 현재 하드코딩으로 store_idx = 1 인 경우만 출력 
@@ -52,21 +55,11 @@ public class StoreController {
 //		List<StoreVO> storeList = storeService.selectStoreList(store); - 전체 페이지 출력문
 
 		List<StoreVO> storeInfo = storeService.selectStoreInfo(store, store_idx); 
-		
-		List<ReviewVO> reviewList = reviewService.reviewList(review);
-		
-		
-		
-		System.out.println("상세페이지의 리뷰리스트 : " + reviewList);
-		
-		// model 객체에 storeList 저장 
-//		model.addAttribute("storeList", storeList); 
-		
 		// 가게 1개 조회
 		model.addAttribute("storeInfo", storeInfo);
 		
-		// 가게 상세페이지에 별점 출력을 위해 review 테이블 vo가 필요
-		model.addAttribute("reviewList", reviewList);
+		List<ReviewVO> storeReviewList = storeService.getStoreReviewList(review);
+		model.addAttribute("storeReviewList", storeReviewList);
 		
 		return "store/store_information";
 	}
@@ -133,56 +126,37 @@ public class StoreController {
 		} //storeRegisterPro() 끝
 	
 	
-	// 가게등록한 정보를 storeList에 담아 맛집추천페이지에 뿌려줌 - 4/10 배하나수정 
-	// + 맛집추천페이지 페이징처리 - 4/19 배하나수정
-	@GetMapping(value = "/store_recommend.so")
-	public String storeList(Model model, StoreVO store,
-							@RequestParam(defaultValue = "") String searchType,
-							@RequestParam(defaultValue = "") String searchKeyword,
-							@RequestParam(defaultValue = "1") int pageNum) {
-		System.out.println("store_recommend.so");
-		
-		//페이징 처리 - 조회 목록 갯수 조절 시 사용하는 변수 
-    	int listLimit = 8;
-		int startRow = (pageNum - 1) * listLimit;
-		
-		List<StoreVO> storeList = storeService.getStoreList(searchType, searchKeyword, startRow, listLimit);
-		List<StoreVO> storeList2 = storeService.getStoreList2();
-		List<StoreVO> storeList3 = storeService.getStoreList3();
-		List<StoreVO> storeList4 = storeService.getStoreList4();
-		List<StoreVO> storeList5 = storeService.getStoreList5();
-		List<StoreVO> storeList6 = storeService.getStoreList6();
-	//	System.out.println("스토어리스트 : " + storeList);
-		
-		
-		// 페이징 처리 코드 시작
-		int listCount = storeService.getStoreListCount(searchType, searchKeyword);
-		int pageListLimit = 10; 
-		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
-		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
-		int endPage = startPage + pageListLimit - 1;
-		if(endPage > maxPage) {
-			endPage = maxPage;
+		// 가게등록한 정보를 storeList에 담아 맛집추천페이지에 뿌려줌 - 4/10 배하나수정
+		// 가게 검색 기능 추가 
+		@GetMapping(value = "/store_recommend.so")
+		public String storeList(Model model, StoreVO store,
+								@RequestParam(defaultValue = "") String searchType,
+								@RequestParam(defaultValue = "") String searchKeyword,
+								@RequestParam(defaultValue = "1") int pageNum) {
+			System.out.println("store_recommend.so");
+			
+			List<StoreVO> storeList = storeService.getStoreList(searchType, searchKeyword);
+			List<StoreVO> storeList1 = storeService.getStoreList1();
+			List<StoreVO> storeList2 = storeService.getStoreList2();
+			List<StoreVO> storeList3 = storeService.getStoreList3();
+			List<StoreVO> storeList4 = storeService.getStoreList4();
+			List<StoreVO> storeList5 = storeService.getStoreList5();
+			List<StoreVO> storeList6 = storeService.getStoreList6();
+		//	System.out.println("스토어리스트 : " + storeList);
+			
+			model.addAttribute("storeList", storeList); // => 전체
+			model.addAttribute("storeList1", storeList1); //=> 한식
+			model.addAttribute("storeList2", storeList2); //=> 일식
+			model.addAttribute("storeList3", storeList3); //=> 중식
+			model.addAttribute("storeList4", storeList4); //=> 양식
+			model.addAttribute("storeList5", storeList5); //=> 요리주점
+			model.addAttribute("storeList6", storeList6); //=> 카페/디저트
+			
+			
+			
+			return "store/store_recommend";
+			
 		}
-		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
-		
-		model.addAttribute("pageInfo", pageInfo);
-		// 페이징 처리 코드 끝 
-		
-		
-		
-		model.addAttribute("storeList", storeList); //=> 한식
-		model.addAttribute("storeList2", storeList2); //=> 일식
-		model.addAttribute("storeList3", storeList3); //=> 중식
-		model.addAttribute("storeList4", storeList4); //=> 양식
-		model.addAttribute("storeList5", storeList5); //=> 요리주점
-		model.addAttribute("storeList6", storeList6); //=> 카페/디저트
-		
-		
-		
-		return "store/store_recommend";
-		
-	}
 	
 	
 
@@ -245,6 +219,7 @@ public class StoreController {
 		
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "menuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
 	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model, HttpSession session,@RequestParam MultipartFile file ) {
 		System.out.println("수정 : " + menu);
@@ -278,9 +253,14 @@ public class StoreController {
 	            e.printStackTrace();
 	        }
 		
+=======
+	@RequestMapping(value = "MenuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
+	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model) {
+>>>>>>> branch 'main' of https://github.com/Junipaduck/Foodcode.git
 		int modifyMenuCnt = menuService.modifyMenu(store_idx,menu);
 		if(modifyMenuCnt > 0) {
 			return "redirect:/store_menu.so?store_idx=" + store_idx;
+			
 		} else {
 			model.addAttribute("msg", "변경에 실패했습니다!");
 			return "customer/fail_back";

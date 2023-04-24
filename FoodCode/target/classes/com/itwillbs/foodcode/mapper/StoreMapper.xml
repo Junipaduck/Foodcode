@@ -17,7 +17,8 @@
 	 			#{store_idx} + 1
 	 			,#{store_name} 
 	 			,#{store_phone} 
-	 			,#{store_address}  
+<!-- 	 			,#{store_address}   -->
+				,CONCAT(#{store_address1}, ' ', #{store_address2}) <!-- 도로명주소 + 상세주소 결합 -->
 	 			,#{store_type}
 	 			,#{store_content}
 	 			,#{store_time}  
@@ -34,62 +35,69 @@
 
 
 
-	 <!-- 게시물 목록 조회 <select> 태그 -->
+	  <!-- 게시물 목록 조회 <select> 태그 -->
 		 <select id="selectStoreList" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE
-		 			store_type = '한식'
+		 		<if test="!searchKeyword.equals('')"> <!-- 서치키워드가 널스트링이 아닐 때 -->
+			 		WHERE
+		 			<choose>
+			 			<when test="searchType.equals('store_name')">
+							store_name LIKE '%${searchKeyword}%' <!-- 테이블명, LIKE 절에 사용할때는 ${} 사용, 실제 데이터를 전달할때는 #{}사용 -->
+						</when>
+						<when test="searchType.equals('store_content')">
+							store_content LIKE '%${searchKeyword}%'
+						</when>
+<!-- 						<when test="searchType.equals('store_content_store_name')"> -->
+<!-- 							store_name LIKE '%${searchKeyword}%' -->
+<!-- 							OR store_content LIKE '%${searchKeyword}%' -->
+<!-- 						</when> -->
+		 			</choose>
+		 		</if>
+		 		
 		 		ORDER BY
 		 			store_idx DESC
-		 		LIMIT
-					#{startRow}
-					,#{listLimit}
-			 		
-		 		
-<!-- 		 		<if test="!searchKeyword.equals('')"> -->
-<!-- 				WHERE  -->
-<!-- 				<choose> -->
-<!-- 					<when test="searchType.equals('content')"> -->
-<!-- 						store_name LIKE CONCAT('%', #{searchKeyword}, '%') -->
-<!-- 					</when> -->
-<!-- 				</choose> -->
-<!-- 				</if> -->
-		
+	 	 </select>
+	 	 
+	 	 <select id="selectStoreList1" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		 	SELECT *
+		 		FROM store
+		 		WHERE store_type = '한식' AND auth_status = 'Y'
+		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList2" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '일식'
+		 		WHERE store_type = '일식' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList3" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '중식'
+		 		WHERE store_type = '중식' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList4" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '양식'
+		 		WHERE store_type = '양식' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	 	 
 	 	 <select id="selectStoreList5" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '요리주점'
+		 		WHERE store_type = '요리주점' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 	
 		<select id="selectStoreList6" resultType="com.itwillbs.foodcode.vo.StoreVO">
 		 	SELECT *
 		 		FROM store
-		 		WHERE store_type = '카페/디저트'
+		 		WHERE store_type = '카페/디저트' AND auth_status = 'Y'
 		 		ORDER BY store_idx DESC;
 	 	 </select>
 
@@ -103,8 +111,15 @@
 
 		<!-- 가게 전체 조회 -->
 		<select id="selectStoreListAll" resultType="com.itwillbs.foodcode.vo.StoreVO">
-			SELECT *
-				FROM store
+			SELECT 
+				s.store_name, AVG(r.review_star)
+				FROM store s JOIN review r
+				ON s.store_idx = r.store_idx
+				WHERE r.review_star > 4
+				GROUP BY s.store_name
+				HAVING 
+				AVG(r.review_star) > (SELECT AVG(review_star) FROM review)
+				ORDER BY avg(r.review_star) DESC
 		</select>
 
 		
@@ -123,7 +138,27 @@
 				</if>
 		</select>
 		
+		<select id="getStoreInfo" resultType="com.itwillbs.foodcode.vo.StoreVO">
+			SELECT *
+				FROM store
+		</select>
 		
+		<select id="selectStoreReviewList" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+			SELECT
+				r.review_idx
+				, r.member_id
+				, s.store_name
+				, r.review_content
+				, r.review_file
+				, r.review_star
+				, r.review_date 
+				FROM 
+					review r JOIN store s 
+				ON 
+					r.store_idx = s.store_idx
+				WHERE 
+					s.store_idx = #{store_idx}
+		</select>
 		
 
 </mapper>

@@ -2,12 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -33,6 +27,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <title>리뷰목록</title>
 </head>
@@ -106,13 +101,38 @@
 				<c:forEach items="${reviewList }" var="review">
 					<tr>
 						<td>${review.review_idx }</td>
-						<td>${review.member_id }</td>
-						<td>${storeList[0].store_name }</td>
+						<td>${sessionScope.sId }</td>
+						<td>${review.store_name }</td>
 						<td>${review.review_content }</td>
 						<td>${review.review_file }</td>
-						<td>${review.review_star }</td>
+						<td>
+			           		<div class="review_star">
+			           		<c:if test="${not empty review.review_star }">
+			           			<c:choose>
+			           				<c:when test="${review.review_star == 1 }">
+					  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${review.review_star == 2 }">
+					  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${review.review_star == 3 }">
+					  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${review.review_star == 4 }">
+					  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${review.review_star == 5 }">
+					  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:otherwise>
+			           				No Rating
+			           				</c:otherwise>
+			           			</c:choose>
+			           		</c:if>
+			           		</div>						
+						</td>
 						<td>${review.review_date }</td>
-						<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td>
+						<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me?review_idx=${review.review_idx}'"></td>
 						<!-- 리뷰 삭제시 서블릿 주소로 review_idx를 전달해야 한다. -->
 						<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me?review_idx=${review.review_idx}'"></td>
 					</tr>
@@ -120,6 +140,8 @@
 				</c:forEach>
 			</table>
   </div>
+  
+      &nbsp; &nbsp; &nbsp;
   
   <div class="py-5 cta-section">
     <div class="container">

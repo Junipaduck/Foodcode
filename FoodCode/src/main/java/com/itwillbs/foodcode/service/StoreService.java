@@ -2,13 +2,13 @@ package com.itwillbs.foodcode.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.foodcode.mapper.OwnerMapper;
 import com.itwillbs.foodcode.mapper.StoreMapper;
-import com.itwillbs.foodcode.vo.OwnerVO;
-import com.itwillbs.foodcode.vo.StoreVO;
+import com.itwillbs.foodcode.vo.*;
 
 @Service
 public class StoreService {
@@ -21,9 +21,13 @@ public class StoreService {
 		return mapper.insertStore(store);
 	}
 	
-	// 가게리스트 6개타입(한식,일식,중식 등...) 
-	public List<StoreVO> getStoreList(String searchType, String searchKeyword, int startRow, int listLimit) {
-		return mapper.selectStoreList(searchType, searchKeyword, startRow, listLimit);
+	// 가게리스트 전체타입(한식,일식,중식 등...) 
+	public List<StoreVO> getStoreList(@Param("searchType") String searchType, @Param("searchKeyword") String searchKeyword) {
+		return mapper.selectStoreList(searchType, searchKeyword);
+	}
+	
+	public List<StoreVO> getStoreList1() {
+		return mapper.selectStoreList1();
 	}
 
 	public List<StoreVO> getStoreList2() {
@@ -56,9 +60,16 @@ public class StoreService {
 		return mapper.selectStoreInfo(store, store_idx);
 	}
 
-	// 맛집리스트 페이징 카운트
-	public int getStoreListCount(String searchType, String searchKeyword) {
-		return mapper.selectStoreListCount(searchType, searchKeyword);
+
+	// 가게 상세페이지 리뷰 게시판 업체명 출력을 위한 코드 
+	public List<StoreVO> getStoreInfo(StoreVO store) {
+		
+		return mapper.getStoreInfo(store);
+	}
+
+	public List<ReviewVO> getStoreReviewList(ReviewVO review) {
+		
+		return mapper.selectStoreReviewList(review);
 	}
 
 

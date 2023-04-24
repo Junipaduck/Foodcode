@@ -29,6 +29,7 @@ public class MainController {
 	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index(StoreVO store, Model model) {
 		
+		
 		// 메인 페이지에서 맛집 추천을 위한 store 조회 코드 
 		List<StoreVO> storeList = storeService.selectStoreList(store);
 		model.addAttribute("storeList", storeList);
@@ -83,6 +84,7 @@ public class MainController {
 	@GetMapping("/mypage.me")
 	public String mypage(HttpSession session, Model model, StoreVO store) {
 //		return "customer/customer_mypage";
+		
 		String id = (String)session.getAttribute("sId");
 		if(id == null) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
@@ -98,9 +100,9 @@ public class MainController {
 		
 		// 마이페이지 접근 오류로 인해 잠시 주석 
 		// 점주회원 예약 정보 조회--------------------------------
-//		List<BookingVO> storeBooking = ownerService.showBooking(booking);
-//		System.out.println(storeBooking);
-//		model.addAttribute("storeBooking", storeBooking);
+		List<BookingVO> storeBooking = ownerService.showBooking(id);
+		System.out.println(storeBooking);
+		model.addAttribute("storeBooking", storeBooking);
 		
 		
 		if(member.getMember_type().equals("c")) {

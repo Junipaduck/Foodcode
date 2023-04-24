@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
+
 <!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -78,6 +74,7 @@
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
             <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
+            <input type="hidden" name="review_idx" value="${param.review_idx}" />
             <form class="contact-form bg-white" action="ownerReplyPro.me" method="post" enctype="multipart/form-data">
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="customer_id">아이디</label> -->

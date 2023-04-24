@@ -16,7 +16,6 @@ function Approve(store_license) {
 		alert("승인 실패");
 		return false;
 	}
-	
 }
 </script>
                 <div class="container-fluid">

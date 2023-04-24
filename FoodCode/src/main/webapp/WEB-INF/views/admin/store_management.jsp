@@ -3,7 +3,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 				<%@include file="../includes/header.jsp" %>
                 <!-- Begin Page Content -->
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 
+
+<script type="text/javascript">
+
+
+function Mail(member_email) {
+	const eamil = member_email; // 이메일 주소값 얻어오기!
+	console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+	const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+															
+	$.ajax({
+		type : 'get',
+		url : "mailCheck?email="+eamil, // GET방식
+		success : function (data) {
+			console.log("데이타 : " +  data);
+			checkInput.attr('disabled',false);
+			code = data;
+			alert('경고 메세지가 전송되었습니다.')
+		}	
+	}); // end ajax
+}
+	
+</script>
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
@@ -25,6 +48,7 @@
                                             <th >식당명</th>
                                             <th>사업자등록번호</th>
                                             <th>가게평점</th>
+                                            <th>점주 이메일</th>
                                             <th>경고 메세지</th>
                                             <th>식당삭제</th>
                                            
@@ -36,6 +60,7 @@
                                             <th>식당명</th>
                                             <th>사업자등록번호</th>
                                             <th>가게평점</th>
+                                             <th>점주 이메일</th>
                                             <th>경고 메세지</th>
                                             <th>식당삭제</th>
                                         </tr>
@@ -47,12 +72,13 @@
                                             <td>${aList.store_name}</td>
                                             <td>${aList.store_license}</td>
                                             <td align="center">${aList.review_star}</td>
+                                            <td align="center">${aList.member_email}</td>
                                             <td align="center">
                                             <a href="#" class="btn btn-warning btn-icon-split">
 		                                        <span class="icon text-white-50">
 		                                            <i class="fas fa-exclamation-triangle"></i>
 		                                        </span>
-		                                        <span class="text" msttexthash="359"_msthash="70" onclick="location.href = 'adminMail_store'">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
+		                                        <span class="text" msttexthash="359"_msthash="70" onclick="Mail('${aList.member_email}')">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
 		                                    </a>
                                             </td>
                                              <td align="center">

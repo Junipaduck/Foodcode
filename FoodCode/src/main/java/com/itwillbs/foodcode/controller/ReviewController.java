@@ -24,6 +24,12 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@Autowired
+	private StoreService storeService;
+	
+	@Autowired
+	private MemberService memberService;
+	
     // 예약관리 -> 방문후 -> 리뷰 
     @GetMapping(value = "/customerReviewWrite.me")
     public String customerReviewWrite(@RequestParam int store_idx) {
@@ -37,7 +43,6 @@ public class ReviewController {
     public String reviewWritePro(ReviewVO vo, Model model, HttpSession session, @RequestParam int store_idx) {
     	
 //    	 store_idx 받아오기 
-    	System.out.println("선정이" + store_idx);
     	
     	
     	
@@ -118,15 +123,101 @@ public class ReviewController {
     
     // 리뷰 수정 폼 -> 
     @RequestMapping(value = "/reviewModifyPro.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewModifyPro(ReviewVO vo, Model model) {
+    public String reviewModifyPro(ReviewVO vo, Model model, HttpSession session) {
+
+    	// 리뷰 수정 시 파일 처리 코드 - 0422
+		boolean isUploadProcess = false; // 업로드 작업 수행 여부를 저장하는 변수 선언
+		
+		String uploadDir = "/resources/upload"; // 프로젝트 상의 업로드 경로
+		String saveDir = session.getServletContext().getRealPath(uploadDir);
+		
+		if(vo.getFile() != null && !vo.getFile().getOriginalFilename().equals("")) {
+			isUploadProcess = true;
+			
+			// BoardVO 객체에 전달된 MultipartFile 객체로부터 파일명 알아내기
+			String originalFileName = vo.getFile().getOriginalFilename();
+			
+			// 파일명 중복 방지를 위한 대책
+			String uuid = UUID.randomUUID().toString();
+			vo.setReview_file(uuid.substring(0, 8) + "_" + originalFileName);
+			
+			// 날짜별 디렉토리명 생성
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			vo.setReview_file_path("/" + sdf.format(date));
+			saveDir = saveDir + vo.getReview_file_path();
+		}    
+    	
     	int updateCount = reviewService.updateReview(vo);
     	if(updateCount > 0) { // 리뷰 수정 성공 시 [리뷰관리] 페이지로 리다이렉트 
+    		
+			if(isUploadProcess) { // 업로드 할 파일이 있을 경우
+				try {
+					// 디렉토리 생성
+					Path path = Paths.get(saveDir);
+					Files.createDirectories(path);
+					
+					// BoardVO 객체에 전달된 MultipartFile 객체 꺼내서 파일 업로드 처리
+					MultipartFile mFile = vo.getFile(); // 단일 파일
+					mFile.transferTo(new File(saveDir, vo.getReview_file()));
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+    		
     		return "redirect:/customerReview.me";
     	} else { // 리뷰 수정 실패 시 알람 창 띄운 후 돌아오기 
     		model.addAttribute("msg", "리뷰 수정 실패!");
     		return "fail_back";
     	}
     }
+    
+    @ResponseBody
+    @PostMapping(value = "/ReviewDeleteFile.bo")
+	public void deleteFile(
+			@RequestParam int review_idx, 
+			@RequestParam String review_file,
+			@RequestParam String review_file_path,
+			HttpServletResponse response,
+			HttpSession session) {
+//		System.out.println(board_num + ", " + board_file);
+		
+		try {
+			// 응답데이터 출력을 위한 response 객체의 인코딩 타입 설정
+			response.setCharacterEncoding("UTF-8");
+			
+			// Service - removeBoardFile() 메서드 호출하여 파일 삭제 요청
+			// => 파라미터 : 글번호   리턴타입 : int(deleteCount)
+			int deleteCount = reviewService.removeReviewFile(review_idx);
+			
+			// DB 파일 삭제 성공 시 실제 파일을 서버에서 삭제
+			if(deleteCount > 0) {
+				String uploadDir = "/resources/upload"; // 프로젝트 상의 업로드 경로
+				String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
+				// 실제 업로드 경로에 서브 디렉토리명 결합
+				saveDir += review_file_path;
+				
+				// Paths.get() 메서드를 호출하여 파일 경로 관리 객체(Path) 생성
+				// => 업로드 디렉토리와 파일명 결합하여 전달
+				Path path = Paths.get(saveDir + "/" + review_file);
+				// Files 클래스의 deleteIfExists() 메서드를 호출하여 파일 존재 시 삭제
+				// => 파라미터 : 경로
+				Files.deleteIfExists(path);
+				
+				// response 객체의 getWriter() 메서드를 호출하여 PrintWriter 객체를 얻어온 후
+				// 다시 print() 또는 println() 메서드를 호출하여 응답데이터 출력
+				response.getWriter().print("true");
+			} else {
+				response.getWriter().print("false");
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
     
     // 리뷰 삭제 
     // url 주소에 파라미터 넘기는 거 까먹지 말기 !!! 
@@ -147,9 +238,13 @@ public class ReviewController {
     @RequestMapping(value = "/reviewList.me", method = {RequestMethod.GET, RequestMethod.POST})
     public String reviewList(ReviewVO review, 
     						 Model model,
+    						 StoreVO store,
+    						 MemberVO member,
     						@RequestParam(defaultValue = "") String searchType,
     						@RequestParam(defaultValue = "") String searchKeyword,
-    						@RequestParam(defaultValue = "1") int pageNum) {
+    						@RequestParam(defaultValue = "1") int pageNum,
+    						HttpSession session
+    						) {
     	System.out.println("/reviewList.me");
     	
     	//페이징 처리 - 조회 목록 갯수 조절 시 사용하는 변수 
@@ -164,6 +259,9 @@ public class ReviewController {
 		
 		List<ReviewVO> reviewList = reviewService.getReviewList(searchType, searchKeyword, startRow, listLimit);
 		
+		// 리뷰 페이지에 업체명 출력을 위한 코드 0420
+		List<StoreVO> storeInfo = storeService.getStoreInfo(store);
+
 		// 1. 전체 게시물 수 조회 
 		int listCount = reviewService.getReviewListCount(searchType, searchKeyword);
 		
@@ -187,8 +285,12 @@ public class ReviewController {
 		// 페이징 처리를 저장하는 PageInfo 객체 생성 
 		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
 		
+		// 답글 달기 버튼 개인회원 / 점주회원 구분을 위한 코드 
+		model.addAttribute("member", new MemberVO());
+		
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("storeInfo", storeInfo);
     	
     	
     	return "store/store_review_list";
@@ -200,16 +302,31 @@ public class ReviewController {
     
     // 점주 답글 작성 페이지로 이동 
     @RequestMapping(value = "/ownerReplyForm.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String ownerReplyForm() {
+    public String ownerReplyForm(HttpSession session, Model model) {
+    	String id = (String)session.getAttribute("sId");
     	
+		if(id == null) {
+			model.addAttribute("msg", "로그인 필수!");
+			model.addAttribute("target", "login.me");
+			return "success";
+		} else {
+			return "owner/owner_reply_form";
+		}
     	
-    	return "owner/owner_reply_form";
     }
     
     // 점주 답글 작성 후 리뷰 게시판 리스트로 다시 이동 
     @PostMapping(value = "/ownerReplyPro.me")
-    public String ownerReplyPro() {
-    	return "redirect:/reviewList.me";
+    public String ownerReplyPro(ReviewVO vo, Model model) {
+    	
+    	int insertCount = reviewService.insertReview(vo);
+    	if(insertCount > 0) {
+    		return "redirect:/reviewList.me";
+    	} else {
+    		model.addAttribute("msg", "답글 수정 실패!");
+    		return "fail_back";
+    	}
+    	
     }
     
 }

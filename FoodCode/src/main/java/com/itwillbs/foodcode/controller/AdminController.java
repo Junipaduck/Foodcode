@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.foodcode.service.AdminService;
+import com.itwillbs.foodcode.service.MailSendService;
 import com.itwillbs.foodcode.service.NoticeService;
 import com.itwillbs.foodcode.vo.*;
 
@@ -30,6 +32,9 @@ public class AdminController {
 	 
 	 @Autowired
 	 private NoticeService noticeService;
+	 
+	 @Autowired
+	 private MailSendService mailService;
 	 
 	
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
@@ -184,7 +189,6 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		
 		int isDeleteSuccess = adminService.StoreApprove(store_license);
 		
 		if(isDeleteSuccess>0) {
@@ -229,6 +233,8 @@ public class AdminController {
 		
 	}
 	
+	
+	
 	// ================메일 보내기======================	
 	@GetMapping(value = "adminMail_store")
 	public String Mail() {
@@ -238,10 +244,11 @@ public class AdminController {
 	
 	//이메일 인증
 	@GetMapping("/mailCheck")
-	public String mailCheck(String email, Model model) {
+	@ResponseBody
+	public String mailCheck(String email) {
 		System.out.println("이메일 인증 요청이 들어옴!");
 		System.out.println("이메일 인증 이메일 : " + email);
 		
-		return "/admin/store_mail";
+		return mailService.joinEmail(email);
 	}
 }

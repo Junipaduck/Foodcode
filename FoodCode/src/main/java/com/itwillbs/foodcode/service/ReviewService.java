@@ -55,6 +55,29 @@ public class ReviewService {
 		return mapper.reviewList(review);
 	}
 
+	public List<MemberVO> getMemberList(MemberVO member) {
+
+		return mapper.selectMemberList(member);
+	}
+
+	public List<ReviewVO> getOwnerReivewList(String id) {
+
+		return mapper.selectOwnerReviewList(id);
+	}
+
+	// 리뷰 수정 시 파일 삭제
+	public int removeReviewFile(int review_idx) {
+		
+		return mapper.deleteReiviewFile(review_idx);
+	}
+
+	public int getOwnerReviewListCount() {
+		
+		return mapper.selectOwnerReviewListCount();
+	}
+
+	
+	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {
 //		// TODO Auto-generated method stub
 //		return mapper.getReviewList(starRow, listLimit);

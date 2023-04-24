@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
+import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
-import com.itwillbs.foodcode.service.OwnerService;
-import com.itwillbs.foodcode.service.ReviewService;
+import com.itwillbs.foodcode.service.*;
 import com.itwillbs.foodcode.vo.*;
 
 @Controller
@@ -23,6 +23,9 @@ public class OwnerController {
 	
 	@Autowired
 	private OwnerService ownerService;
+	
+	@Autowired
+	private StoreService storeService;
 	
 	// 점주 회원가입페이지로 이동
 	@GetMapping(value = "/ownerJoin.me")
@@ -44,9 +47,10 @@ public class OwnerController {
 //		System.out.println(storeInfo);
 		model.addAttribute("storeInfo", storeInfo);
 		
-//		List<BookingVO> storeBooking = ownerService.showBooking(booking);
-//		System.out.println(storeBooking);
-//		model.addAttribute("storeBooking", storeBooking);
+		List<BookingVO> storeBooking = ownerService.showBooking(id);
+//		ArrayList<HashMap<String, String>> storeBooking = ownerService.showBooking(id);
+		System.out.println(storeBooking);
+		model.addAttribute("storeBooking", storeBooking);
 		
 //		Map<String, Object> mav = new HashMap<>();
 //		mav.put("stoerInfo", storeInfo);
@@ -80,15 +84,26 @@ public class OwnerController {
 	
 	// 점주 가게 리뷰페이지로 이동
 	@GetMapping(value = "/ownerReview.me")
-	public String ownerReview(ReviewVO review, Model model) {
-		System.out.println("4/16배하나테스트 : 리뷰리스트");
+	public String ownerReview(ReviewVO review, 
+							  Model model,
+    						 HttpSession session
+    						 ) {
     	
-    	List<ReviewVO> reviewList = reviewService.reviewList(review);
+		
+		// 0422 리뷰 리스트 조회 수정 
+		String id = (String)session.getAttribute("sId");
+		MemberVO member = new MemberVO();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sId", id);
+		
+    	List<ReviewVO> reviewList = reviewService.getOwnerReivewList(id);
     	
-    	System.out.println("리뷰리스트ㅋㅋㅋ : " + reviewList);
+
+		
+		// 페이징 처리를 저장하는 PageInfo 객체 생성 
+		model.addAttribute("reviewList", reviewList);
     	
-    	model.addAttribute("reviewList", reviewList);
-    	
+    	System.out.println("선정 테스트 : " + map.get("sId"));
 		
 		return "owner/owner_mypage_review";
 	}
@@ -150,7 +165,19 @@ public class OwnerController {
 	
 	// 점주 가게정보 수정페이지로 이동
 	@GetMapping(value = "/storeModify.me")
-	public String storeModify() {
+	public String storeModify(@RequestParam int store_idx, HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		if(id == null) {
+			model.addAttribute("msg", "잘못된 접근입니다");
+			return "fail_back";
+		}
+		
+		StoreVO store = ownerService.getStore(store_idx);
+		model.addAttribute("store", store);
+		
+//		Map<String, StoreVO> map = new HashMap<String, StoreVO>();
+//		map.put("store", store);
+		
 		return "owner/owner_store_modify";
 	}
 	

@@ -27,12 +27,12 @@
   
 
   
-  <title>식당 등록페이지</title>
+  <title>가게 등록</title>
 </head>
 
 <body>
 	<header>
-		<jsp:include page="../inc/top2.jsp"></jsp:include>
+		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>
 <!-- 파일 업로드 기능을 사용하려면 form 태그의 enctype 속성을 사용 (POST방식 필수) -->
  <form class="contact-form bg-white" action="storeRegisterPro.so" name="storeRegisterPro" method="POST" enctype="multipart/form-data">
@@ -54,9 +54,9 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
-          <div class="intro-wrap">
-            <h1 class="mb-0">식당 등록</h1>
-          </div>
+<!--           <div class="intro-wrap"> -->
+<!--             <h1 class="mb-0">식당 등록</h1> -->
+<!--           </div> -->
         </div>
       </div>
     </div>
@@ -64,45 +64,72 @@
 
   
   
+
+  
+  
+  
   <div class="untree_co-section">
     <div class="container my-5">
 
       <div class="row justify-content-center">
-
+	
         <div class="col-lg-4">
-          <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title">STORE</h2>
+          <div class="custom-block" data-aos="fade-up" data-aos-delay="100" style="width: 540px; margin-left: -80px;">
+            <h3 class="section-title">STORE</h3>
               <div class="row">
               	<div class="col-md-6">
-                  <div class="form-group">
-                    <label class="text-black" for="storeType" >업종</label>
-                    <input type="text" class="form-control" id="store_type" name="store_type">
-                  </div>
                	 </div>
               </div>
               <div class="row">
               	<div class="col-md-6">
-                  <div class="form-group">
-                    <label class="text-black" for="storeName" >업체명</label>
-                    <input type="text" class="form-control" name="store_name" id="store_name">
-                  </div>
                	 </div>
               </div>
                <div class="form-group">
+                 <label class="text-black" for="storeType" >업종</label>
+                 <input type="text" class="form-control" id="store_type" name="store_type" required="required">
+                 <small id="small1" class="form-text text-muted">ex) 한식, 일식, 중식, 양식, 요리주점, 카페/디저트 중 택1 </small>
+               </div>
+               <div class="form-group">
+                 <label class="text-black" for="storeName" >업체명</label>
+                 <input type="text" class="form-control" name="store_name" id="store_name" required="required">
+                 <small id="small2" class="form-text text-muted">실제 영업중인 가게상호명을 정확히 입력해주세요.</small>
+               </div>
+               <div class="form-group">
                 <label class="text-black" for="file" >업체사진</label>
                 <input type="file" class="form-control" id="file" name="file" required="required">
+                <small id="small3" class="form-text text-muted">메인화면에 보여지는 사진입니다.</small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="storeLicense" >사업자등록번호</label>
-                <input type="text" class="form-control" name="store_license" id="store_license">
+                <input type="text" class="form-control" name="store_license" id="store_license" required="required">
+                <small id="small4" class="form-text text-muted">'-'기호를 생략하고 입력해주세요. ex) 1112233333</small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="storePhone" >매장 전화번호</label>
                 <input type="text" class="form-control" name="store_phone" id="store_phone">
+                <small id="small5" class="form-text text-muted">'-'기호를 생략하고 입력해주세요. ex) 0513337777</small>
               </div>
               <div class="form-group">
-                <label class="text-black" for="storeAddress" >매장 주소</label>
-                <input type="text" class="form-control" name="store_address" id="store_address">
+                <label class="text-black" for="storeAddress">매장 주소</label>
+                <input type="text" class="form-control" name="store_address1" id="store_address1" required="required" placeholder="주소검색">
+                <input type="text" class="form-control" name="store_address2" id="store_address2" placeholder="상세주소입력">
+              	<small id="small6" class="form-text text-muted">영업중인 사업장의 실제 주소를 정확히 입력해주세요.</small>
+		               <!-- 주소 API 스크립트 -->
+		                <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+						<script>
+						window.onload = function(){
+						    document.getElementById("store_address1").addEventListener("click", function(){ //주소입력칸을 클릭하면
+						        //카카오 지도 발생
+						        new daum.Postcode({
+						            oncomplete: function(data) { //선택시 입력값 세팅
+						                document.getElementById("store_address1").value = data.address; // 주소 넣기
+						                document.querySelector("input[name=store_address2]").focus(); //상세입력 포커싱
+						            }
+						        }).open();
+						    });
+						}
+						</script>
+				
               </div>
               
               <!-- 기존 메뉴 탭 -->
@@ -126,21 +153,24 @@
 <!--                   </div> -->
 <!--                	 </div> -->
               <!-- 기존 메뉴 탭 끝 -->
-              </div>
               <div class="form-group">
                 <label class="text-black" for="storeTime" >영업시간</label>
                 <input type="text" class="form-control" name="store_time" id="store_time">
+                <small id="small7" class="form-text text-muted">ex) 09:00~22:00 형식으로 입력해주세요. </small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="storeTime">가게 소개글</label>
-                <input type="text" class="form-control" name="store_content" id="store_content">
+                <input type="text" class="form-control22" name="store_content" id="store_content" style="border: 2px solid #e9ecef; font-size: 16px; width:540px; height: 150px;">
+                <small id="small8" class="form-text text-muted">메인화면에 보여질 가게 소개글을 자유롭게 입력해주세요 :) </small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="storeEtc">기타</label>
-                <input type="text" class="form-control" name="store_etc" id="store_etc" placeholder="주차, 결제가능한 페이 종류, 화장실 유무 등 기타 안내사항을 입력해주세요.">
+                <input type="text" class="form-control" name="store_etc" id="store_etc">
+              	<small id="small9" class="form-text text-muted">주차가능 여부, 결제가능한 페이 종류, 화장실 유무 등 기타 안내사항을 자유롭게 입력해주세요 :) </small>
               </div>
               <button type="submit" class="btn btn-primary">등록하기</button>
 <!--               <button type="submit" class="btn btn-primary">돌아가기</button> -->
+              </div>
           </div>
          
 
@@ -156,17 +186,17 @@
     </div>
 <!--   </div> -->
 
-  <div class="py-5 cta-section">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-          <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-          <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--   <div class="py-5 cta-section"> -->
+<!--     <div class="container"> -->
+<!--       <div class="row text-center"> -->
+<!--         <div class="col-md-12"> -->
+<!--           <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2> -->
+<!--           <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p> -->
+<!--           <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
 
   	<footer>
 		<jsp:include page="../inc/bottom.jsp"></jsp:include>

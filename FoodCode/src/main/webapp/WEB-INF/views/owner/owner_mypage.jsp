@@ -32,12 +32,169 @@
   <!-- owner css -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css">
 
+
+
+  <!-- 캘린더 -->
+  <script>
+        window.onload = function () { buildCalendar(); }
+
+        // 현재 월과 날 초기화, 시간 초기화
+        let nowMonth = new Date();
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+        let clickedYMD;
+        let cnt = 0;
+
+        // 달력 생성
+        function buildCalendar() {
+
+            let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);
+            let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);
+
+            let tbody_Calendar = document.querySelector(".Calendar > tbody");
+            document.getElementById("calYear").innerText = nowMonth.getFullYear();
+            document.getElementById("calMonth").innerText = leftPad(nowMonth.getMonth() + 1);
+
+            // 출력 결과 초기화
+            while (tbody_Calendar.rows.length > 0) {
+                tbody_Calendar.deleteRow(tbody_Calendar.rows.length - 1);
+            }
+
+            let nowRow = tbody_Calendar.insertRow();
+
+            for (let j = 0; j < firstDate.getDay(); j++) {
+                let nowColumn = nowRow.insertCell();
+                cnt += 1;
+                
+//                 console.log(cnt);
+//                 if (cnt % 7 == 1) {
+//                 	newDIV.innerHTML = "<font color=#F79DC2>" + j + "</font>";
+//                 }
+            }
+
+            // 날짜 생성
+            for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {  
+
+                let nowColumn = nowRow.insertCell();
+                cnt += 1;
+                nowColumn.setAttribute('id', nowDay);		// 선택된 날짜값 가져오기 위해 id에 저장
+//                 console.log(nowColumn.getAttribute('id'));
+
+                let newDIV = document.createElement("p");
+                newDIV.innerHTML = leftPad(nowDay.getDate());        // 추가한 열에 날짜 입력
+                nowColumn.appendChild(newDIV);
+                
+//                 console.log(cnt);
+
+				
+
+                if (nowDay.getDay() == 6) {                 // 토요일인 경우
+                    nowRow = tbody_Calendar.insertRow();
+                }
+
+                if (nowDay < today) {                       // 지난날인 경우
+                    newDIV.className = "pastDay";
+                }
+                else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) { // 오늘인 경우           
+                    newDIV.className = "today";
+                    newDIV.onclick = function () { choiceDate(this); }
+                }
+                else {                                      // 미래인 경우
+                    newDIV.className = "futureDay";
+                    newDIV.onclick = function () { choiceDate(this); }
+                }
+                
+                
+                // 선택한 날짜 값 가져오기
+                nowColumn.onclick = function() {
+                	clickedYear = nowMonth.getFullYear();
+                	clickedMonth = (1 + nowMonth.getMonth());
+                	clickedDate = this.getAttribute('id').toString().substr(8,3);
+                	
+                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
+                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
+
+                	document.getElementById("clickedDay").value = clickedYMD;
+//                 	console.log(clickedYMD);
+                }
+                
+//                 console.log(cnt);
+				// 토요일은 파란색, 일요일은 빨간색으로 표시
+                if (cnt % 7 == 1) {
+                	newDIV.innerHTML = "<font color=#F79DC2>" + leftPad(nowDay.getDate()) + "</font>";
+                }
+                if (cnt % 7 == 0) {
+                	newDIV.innerHTML = "<font color=skyblue>" + leftPad(nowDay.getDate()) + "</font>";
+                }
+            }
+            
+            cnt = 0;	// 다음 달 위해 cnt값 초기화
+        }
+
+        // 날짜 선택
+        function choiceDate(newDIV) {
+            if (document.getElementsByClassName("choiceDay")[0]) { 
+                document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay"); 
+            }
+            newDIV.classList.add("choiceDay");
+        }
+
+        // 이전달 버튼 클릭
+        function prevCalendar() {
+            nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() - 1, nowMonth.getDate());
+            buildCalendar();
+        }
+        // 다음달 버튼 클릭
+        function nextCalendar() {
+            nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, nowMonth.getDate());   // 현재 달을 1 증가
+            buildCalendar();
+        }
+
+        // input값이 한자리 숫자인 경우 앞에 '0' 붙혀주는 함수
+        function leftPad(value) {
+            if (value < 10) {
+                value = "0" + value;
+                return value;
+            }
+            return value;
+        }
+        
+        console.log(clickedYMD);
+        
+    </script>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+    </style>
 </head>
 <body>
 	<header>
-		<jsp:include page="../inc/top2.jsp"></jsp:include>
+		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
 
+  <nav class="site-nav">
+  
+  </nav>
+  
+  <div class="hero hero-inner">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mx-auto text-center">
+<!--           <div class="intro-wrap"> -->
+<!--             <h1 class="mb-0"></h1> -->
+<!--           </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+<jsp:include page="owner_left.jsp"></jsp:include>
 <div class="untree_co-section">
 	<div class="container">
 		<div class="row">
@@ -90,13 +247,13 @@
 							              </div>
 				          			</ul>
 				          			</div>
+									<br>
+									<button type="button" class="btn btn-primary" onclick="location.href='storeModify.me?store_idx=${storeInfo.store_idx}'">수정</button>
 				       			</div>
 							</div>
 						</c:forEach>
 					</div>
 				</div>
-				<br>
-				<button type="button" class="btn btn-primary" onclick="location.href='storeModify.me'">수정</button>
 				<button type="button" class="btn btn-primary" onclick="location.href='storeRegister.me'">식당 추가</button>
 			</div>
 		</div>
@@ -113,7 +270,29 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion_1">
                   <div class="accordion-body">
                   <!-- 캘린더 시작 -->
-                   <jsp:include page="owner_reservation_cal.jsp"></jsp:include>
+                   <table class="Calendar">
+			            <thead>
+			                <tr>
+			                    <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+			                    <td colspan="5">
+			                        <span id="calYear"></span>.
+			                        <span id="calMonth"></span>
+			                    </td>
+			                    <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+			                </tr>
+			                <tr>
+			                    <td><font color ="#F79DC2">일</td>
+			                    <td>월</td>
+			                    <td>화</td>
+			                    <td>수</td>
+			                    <td>목</td>
+			                    <td>금</td>
+			                    <td><font color ="skyblue">토</td>
+			                </tr>
+			            </thead>
+			            <tbody>
+			            </tbody>
+			        </table>
                   <!-- 캘린더 끝 -->
                 </div>
               </div>
@@ -129,6 +308,7 @@
             <table class="table">
 			  <thead class="undefined">
 			    <tr>
+			      <th scope="col">가게이름</th>
 			      <th scope="col">예약번호</th>
 			      <th scope="col">예약날짜</th>
 			      <th scope="col">예약시간</th>
@@ -142,10 +322,11 @@
 			  <tbody>
 			  <c:forEach items="${storeBooking }" var="storeBooking">
 			    <tr>
-			      <th scope="row">${storeBooking.booking_idx }</th>
+			      <th scope="row">가게 이름</th>
+			      <td>${storeBooking.booking_idx }</td>
 			      <td>${storeBooking.booking_date }</td>
 			      <td>${storeBooking.booking_time }</td>
-			      <td>최보아</td>
+			      <td>예약자이름</td>
 			      <td>${storeBooking.booking_num }</td>
 			      <td>051-803-0909</td>
 			      <td>${storeBooking.booking_seat }</td>
@@ -160,6 +341,8 @@
           </div>
         </div>
       </div>
+      
+      
   
           
           
@@ -206,9 +389,6 @@
   <script src="${pageContext.request.contextPath }/resources/js/aos.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/moment.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/daterangepicker.js"></script>
-  <!-------------------------- 캘린더 js ----------------------------------->
-  
-  <!-- ------------------------------------------------------------------ -->
   <script src="${pageContext.request.contextPath }/resources/js/typed.js"></script>
   
   <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
