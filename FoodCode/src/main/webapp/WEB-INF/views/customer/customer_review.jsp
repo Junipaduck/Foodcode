@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +32,8 @@
 
   <title>리뷰목록</title>
 </head>
-
+<script type="text/javascript">
+</script>
 <body>
 <header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
@@ -104,7 +106,12 @@
 						<td>${sessionScope.sId }</td>
 						<td>${review.store_name }</td>
 						<td>${review.review_content }</td>
-						<td>${review.review_file }</td>
+						<td>
+				            <c:set var="length" value="${fn:length(review.review_file) }"/>
+							<c:set var="index" value="${fn:indexOf(review.review_file, '_') }"/>
+							<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }"/>
+							<img alt="..." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px;width: 50px;">
+						</td>
 						<td>
 			           		<div class="review_star">
 			           		<c:if test="${not empty review.review_star }">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -471,7 +472,10 @@
 	           <td>${storeInfo[0].store_name }</td> 
 	           <td>${review.review_content }</td>
 		        <td class="image_hover">
-	           		${review.review_file }
+  				    <c:set var="length" value="${fn:length(review.review_file) }"/>
+					<c:set var="index" value="${fn:indexOf(review.review_file, '_') }"/>
+					<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }"/>
+					<img alt="..." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px;width: 50px;">
 	           	</td>
 	           <td>
         		   <div class="review_star">
