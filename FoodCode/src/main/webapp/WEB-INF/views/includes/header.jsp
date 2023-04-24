@@ -141,12 +141,12 @@
                 </div>
             </li>
 			
-            <!-- Nav Item - Charts (active시 밝은 색상 표현 -->
-            <li class="nav-item active">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>차트(연결 준비중...)</span></a>
-            </li>
+<!--             Nav Item - Charts (active시 밝은 색상 표현 -->
+<!--             <li class="nav-item active"> -->
+<!--                 <a class="nav-link" href="charts.html"> -->
+<!--                     <i class="fas fa-fw fa-chart-area"></i> -->
+<!--                     <span>차트(연결 준비중...)</span></a> -->
+<!--             </li> -->
 			
             <!-- Nav Item - Tables -->
             <li class="nav-item">

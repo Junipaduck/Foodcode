@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-				<%@include file="../includes/header.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@include file="../includes/header.jsp" %>
+<script type="text/javascript">
+	function DeletePopup(member_idx, member_type, member_id) {
+		
+		var url = "adminMember_delete?member_idx="+member_idx+"&member_id="+member_id+"&member_type="+member_type
+		
+		var name = "DeletePopUp";
+		
+		var option = "width = 500, height = 200, top = 300, left = 200, location = yes"
+		
+ 		window.open(url, name, option);
+				
+	}
+</script>				
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -59,7 +73,7 @@
                                             <td>${memberList.member_birth}</td>
                                             <td>${memberList.member_join_date}</td>
                                             <td align="center">
-                                            	<a href="adminMember_delete?member_idx=${memberList.member_idx }&member_type=${memberList.member_type}" class="btn btn-danger btn-circle">
+                                            	<a onclick="DeletePopup('${memberList.member_idx }','${memberList.member_type }', '${memberList.member_id}');" class="btn btn-danger btn-circle">
                                        			<i class="fas fa-trash"></i>
                                    				</a>
                                    			</td>
