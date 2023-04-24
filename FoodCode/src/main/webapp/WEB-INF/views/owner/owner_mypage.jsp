@@ -42,7 +42,7 @@
         let nowMonth = new Date();
         let today = new Date();
         today.setHours(0, 0, 0, 0);
-        let clickedYMD;
+        let clickedYMD=null;
         let cnt = 0;
 
         // 달력 생성
@@ -115,7 +115,7 @@
                 	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
 
                 	document.getElementById("clickedDay").value = clickedYMD;
-//                 	console.log(clickedYMD);
+                	console.log(clickedYMD);
                 }
                 
 //                 console.log(cnt);
@@ -159,7 +159,7 @@
             return value;
         }
         
-        console.log(clickedYMD);
+//         console.log(clickedYMD);
         
     </script>
     <style>
@@ -322,13 +322,13 @@
 			  <tbody>
 			  <c:forEach items="${storeBooking }" var="storeBooking">
 			    <tr>
-			      <th scope="row">가게 이름</th>
+			      <th scope="row">${storeBooking.store_name }</th>
 			      <td>${storeBooking.booking_idx }</td>
 			      <td>${storeBooking.booking_date }</td>
 			      <td>${storeBooking.booking_time }</td>
-			      <td>예약자이름</td>
+			      <td>${storeBooking.member_name }</td>
 			      <td>${storeBooking.booking_num }</td>
-			      <td>051-803-0909</td>
+			      <td>${storeBooking.member_phone }</td>
 			      <td>${storeBooking.booking_seat }</td>
 			      <td class="white-space-nowrap">${storeBooking.booking_content }</td>
 			    </tr>
