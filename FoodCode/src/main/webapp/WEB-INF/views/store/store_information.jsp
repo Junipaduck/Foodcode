@@ -91,7 +91,13 @@
       <div class="row">
         <div class="col-lg-7">
           <div class="owl-single dots-absolute owl-carousel">
-            <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid rounded-20">
+<!--             <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid rounded-20"> -->
+          	<c:forEach items="${storeInfo }" var="store2">
+	          	<c:set var="length" value="${fn:length(store2.store_file) }"/>
+				<c:set var="index" value="${fn:indexOf(store2.store_file, '_') }"/>
+				<c:set var="fileName" value="${fn:substring(store2.store_file, index + 1, length) }"/>
+	            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." />
+          	</c:forEach>
           </div>
        	</div>
         	<!--  가게 정보  -->
