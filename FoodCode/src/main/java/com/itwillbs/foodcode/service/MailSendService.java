@@ -25,8 +25,7 @@ public class MailSendService {
 			authNumber = checkNum;
 		}
 		
-		
-				//인증 이메일 보낼 양식! 
+		//인증 이메일 보낼 양식! 
 		public String joinEmail(String email) {
 			makeRandomNumber();
 			String setFrom = "dkeka0411@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
@@ -42,7 +41,7 @@ public class MailSendService {
 			return Integer.toString(authNumber);
 		}
 		
-		//이메일 보낼 양식! 
+		//식당 경고 보낼 양식! 
 				public String storeEmail(String email, String storeName) {
 					String setFrom = "dkeka0411@gmail.com"; 
 					String toMail = email;
