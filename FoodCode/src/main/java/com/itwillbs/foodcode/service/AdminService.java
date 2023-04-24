@@ -39,10 +39,10 @@ public class AdminService {
 	}
 	
 	//---------------일반 회원 삭제-------------
-	public int MemberDelete(String member_idx, String member_id) {
+	public int MemberDelete(String member_idx, String member_id, String member_type) {
 		
 //		System.out.println("CustomerDelect 객체 안" + customer_idx+customer_passwd);
-		return mapper.deleteMember(member_idx, member_id);
+		return mapper.deleteMember(member_idx, member_id, member_type);
 	}
 
 	public List<ReviewVO> getReviews() {

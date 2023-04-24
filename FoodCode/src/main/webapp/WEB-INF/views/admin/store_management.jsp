@@ -9,22 +9,36 @@
 <script type="text/javascript">
 
 
-function Mail(member_email) {
-	const eamil = member_email; // 이메일 주소값 얻어오기!
-	console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-	const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-															
-	$.ajax({
-		type : 'get',
-		url : "mailCheck?email="+eamil, // GET방식
-		success : function (data) {
-			console.log("데이타 : " +  data);
-			checkInput.attr('disabled',false);
-			code = data;
-			alert('경고 메세지가 전송되었습니다.')
-		}	
-	}); // end ajax
-}
+	function Mail(member_email) {
+		const eamil = member_email; // 이메일 주소값 얻어오기!
+		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+		const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+																
+		$.ajax({
+			type : 'get',
+			url : "mailCheck?email="+eamil, // GET방식
+			success : function (data) {
+				console.log("데이타 : " +  data);
+				checkInput.attr('disabled',false);
+				code = data;
+				alert('경고 메세지가 전송되었습니다.')
+			}	
+		}); // end ajax
+	}
+	
+	
+	function DeletePopup(store_license, owner_id) {
+		
+		var url = "adminStore_managementDelete?store_license="+store_license+"&owner_id="+owner_id
+		
+		var name = "DeletePopUp";
+		
+		var option = "width = 500, height = 200, top = 300, left = 200, location = yes"
+		
+			window.open(url, name, option);
+				
+	}
+	
 	
 </script>
                 <div class="container-fluid">
@@ -82,7 +96,7 @@ function Mail(member_email) {
 		                                    </a>
                                             </td>
                                              <td align="center">
-                                            	<a href="adminStore_managementDelete?store_license=${aList.store_license }&owner_id=${aList.member_id}" class="btn btn-danger btn-circle btn-5x">
+                                            	<a onclick="DeletePopup('${aList.store_license}','${aList.member_id}');" class="btn btn-danger btn-circle btn-5x">
                                        			<i class="fas fa-trash"></i>
                                    				</a>
                                    			</td>

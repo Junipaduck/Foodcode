@@ -15,7 +15,7 @@ public interface AdminMapper {
 	
 	List<StoreVO> selectStoreList();
 	
-	int deleteMember(@Param("member_idx")String member_idx, @Param("member_id")String member_id);
+	int deleteMember(@Param("member_idx")String member_idx, @Param("member_id")String member_id, @Param("member_type")String member_type);
 
 	MemberVO selectMemberInfo(String id);
 

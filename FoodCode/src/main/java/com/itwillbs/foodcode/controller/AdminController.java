@@ -144,7 +144,7 @@ public class AdminController {
 		return "/admin/store_delete";
 	}
 	
-	@PostMapping(value = "adminStoreManagementDeletePro")
+	@RequestMapping(value = "adminStoreManagementDeletePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String storeManagementD(@RequestParam String store_license,
 			@RequestParam String owner_id, Model model, HttpSession session) {
 		
@@ -154,6 +154,8 @@ public class AdminController {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
+		
+		System.out.println("가게 서압자런ㅁ럼 !!!!" + store_license + owner_id);
 		
 		int isDeleteSuccess = adminService.managementDelete(store_license, owner_id);
 		
@@ -176,8 +178,8 @@ public class AdminController {
 		return "/admin/store_approve";
 	}
 	
-	@GetMapping(value = "adminStoreManagementApprovePro")
-	public String storeApprovePro(@RequestParam String store_license, Model model, HttpSession session) {
+	@RequestMapping(value = "adminStoreManagementApprovePro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String storeApprovePro(@RequestParam String store_license, @RequestParam String member_id, Model model, HttpSession session) {
 		
 		String id = (String)session.getAttribute("sId");
 		
@@ -214,8 +216,8 @@ public class AdminController {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
-		System.out.println(member_idx + member_id);
-		int isDeleteSuccess = adminService.MemberDelete(member_idx, member_id);
+		System.out.println("지울 항목 !!!!=" + member_idx + member_id + member_type);
+		int isDeleteSuccess = adminService.MemberDelete(member_idx, member_id,member_type);
 		
 		if(isDeleteSuccess>0&&member_type.equals("c")) {
 			return "redirect:/adminMember_list";
