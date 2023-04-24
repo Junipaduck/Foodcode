@@ -93,9 +93,16 @@ public class ReviewService {
 		return mapper.selectReply(review_idx);
 	}
 
+	// 답글 insert
 	public int insertReviewReply(ReplyVO reply) {
 		
 		return mapper.insertReviewReply(reply);
+	}
+
+	// 리뷰 게시판 답글 작성 시 로그인 판단 
+	public MemberVO getMemberInfo(String id) {
+		
+		return mapper.selectMemberInfo(id);
 	}
 	
 	

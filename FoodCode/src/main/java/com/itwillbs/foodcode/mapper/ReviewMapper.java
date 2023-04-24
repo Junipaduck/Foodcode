@@ -44,6 +44,8 @@ public interface ReviewMapper {
 
 	int insertReviewReply(ReplyVO reply);
 
+	MemberVO selectMemberInfo(String id);
+
 }
 
 
