@@ -38,6 +38,12 @@ public interface ReviewMapper {
 
 	List getStarAvg(int store_idx);
 
+	ReviewVO selectReview(int review_idx);
+
+	ReplyVO selectReply(int review_idx);
+
+	int insertReviewReply(ReplyVO reply);
+
 }
 
 

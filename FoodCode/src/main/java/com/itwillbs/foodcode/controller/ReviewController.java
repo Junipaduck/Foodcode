@@ -297,36 +297,86 @@ public class ReviewController {
     }
     
    
-    
+    // 리뷰 상세 보기 
+    @GetMapping(value = "/ReviewDetail.me")
+    public String reviewDetail(@RequestParam int review_idx, @RequestParam int store_idx, Model model, HttpSession session) {
+    	
+    	System.out.println(store_idx);
+    	
+    	String id = (String)session.getAttribute("sId");
+    	
+    	ReviewVO review = reviewService.getReview(review_idx);
+    	model.addAttribute("review", review);
+    	
+    	
+    	ReplyVO reply = reviewService.getReply(review_idx);
+    	model.addAttribute("reply", reply);
+    	
+    	
+    	return "store/store_review_view";
+    }
     
     
     // 점주 답글 작성 페이지로 이동 
     @RequestMapping(value = "/ownerReplyForm.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String ownerReplyForm(HttpSession session, Model model) {
+    public String ownerReplyForm(@RequestParam(defaultValue = "1") int review_idx, @RequestParam int store_idx, HttpSession session, Model model) {
     	String id = (String)session.getAttribute("sId");
     	
-		if(id == null) {
-			model.addAttribute("msg", "로그인 필수!");
-			model.addAttribute("target", "login.me");
-			return "success";
-		} else {
+    	if(id == null) {
+    		model.addAttribute("msg", "로그인 필수!");
+    		model.addAttribute("target", "login.me");
+    	} 
+    	
+    	
+    	MemberVO member = memberService.getMemberInfo(id);
+    	member.setMember_id(id);
+    	model.addAttribute("member", member);
+    	
+    	ReviewVO review = reviewService.getReview(review_idx);
+    	model.addAttribute("review", review);
+    	
+    	if(!member.getMember_type().equals("o")) {
+    		model.addAttribute("msg", "답글 작성 권한이 없습니다");
+    		return "fail_back";
+    	} 
+    	
+    	System.out.println("------------------------------------------" + store_idx);
+    	
+    	int getStoreCount = storeService.getStoreOwner(id, store_idx);
+    	
+    	System.out.println("------------------------------------------이건가" + getStoreCount);
+    	
+    	if(getStoreCount > 0) {
 			return "owner/owner_reply_form";
-		}
-    	
-    }
-    
-    // 점주 답글 작성 후 리뷰 게시판 리스트로 다시 이동 
-    @PostMapping(value = "/ownerReplyPro.me")
-    public String ownerReplyPro(ReviewVO vo, Model model) {
-    	
-    	int insertCount = reviewService.insertReview(vo);
-    	if(insertCount > 0) {
-    		return "redirect:/reviewList.me";
     	} else {
-    		model.addAttribute("msg", "답글 수정 실패!");
+    		model.addAttribute("msg", "해당 가게의 점주가 아닙니다.");
     		return "fail_back";
     	}
     	
+
+    	
+    }
+    
+    
+    // 점주 답글 작성 후 리뷰 게시판 리스트로 다시 이동 
+    @GetMapping(value = "/ownerReplyPro.me")
+    public String ownerReplyPro(ReplyVO reply, Model model, @RequestParam int review_idx, HttpSession session) {
+
+    	reply.setReview_idx(review_idx);
+    	System.out.println("--------------------------------------" + review_idx);
+    	
+
+		int insertCount = reviewService.insertReviewReply(reply);
+		
+		
+		if(insertCount > 0) {
+			return "redirect:/reviewList.me";
+		} else {
+			model.addAttribute("msg", "댓글 작성 실패!");
+			return "fail_back";
+		}
+    	
+//    	
     }
     
 }

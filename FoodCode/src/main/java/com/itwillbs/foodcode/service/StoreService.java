@@ -72,6 +72,11 @@ public class StoreService {
 		return mapper.selectStoreReviewList(review);
 	}
 
+	// 리뷰게시판 점주 확인용
+	public int getStoreOwner(String id, int store_idx) {
+		
+		return mapper.selectStoreOwner(id, store_idx);
+	}
 
 	
 }

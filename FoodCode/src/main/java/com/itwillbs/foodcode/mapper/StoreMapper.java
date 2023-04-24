@@ -38,4 +38,6 @@ public interface StoreMapper {
 
 	List<ReviewVO> selectStoreReviewList(ReviewVO review);
 
+	int selectStoreOwner(@Param("id") String id, @Param("store_idx") int store_idx);
+
 }

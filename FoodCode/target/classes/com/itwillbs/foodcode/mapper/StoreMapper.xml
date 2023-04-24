@@ -245,7 +245,13 @@
 					s.store_idx = #{store_idx}
 		</select>
 		
-
+	<!-- 점주 회원 판단  - 답글 작성 -->
+	<select id="selectStoreOwner" resultType="int">
+		SELECT COUNT(*)
+			FROM store s JOIN review r
+			ON s.store_idx = r.store_idx
+			WHERE s.member_id = #{id} AND s.store_idx = #{store_idx}
+	</select>
 </mapper>
 
 

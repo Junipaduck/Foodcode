@@ -225,25 +225,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 			    <div class="w3-quarter">
 				      <img src="https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg" alt="Sandwich" style="width:100%">
 				      <h3>${store.store_name }</h3>
-				      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+				      <p>${store.store_content }</p>
 			    </div>
 	  		</c:forEach>
-		    <div class="w3-quarter">
-			      <img src="https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg" alt="Steak" style="width:100%">
-			      <h3>Let Me Tell You About This Steak</h3>
-			      <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-		    </div>
-		    <div class="w3-quarter">
-			      <img src="https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg" alt="Cherries" style="width:100%">
-			      <h3>Cherries, interrupted</h3>
-			      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-			      <p>What else?</p>
-		    </div>
-		    <div class="w3-quarter">
-			      <img src="https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg" alt="Pasta and Wine" style="width:100%">
-			      <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
-			      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-		    </div>
   	</div>
   	
   	  <!-- Pagination -->

@@ -22,6 +22,20 @@
 			)
 	</insert>
 	
+	<!-- 답글 insert -->
+	<insert id="insertReviewReply">
+		<selectKey keyProperty="reply_idx" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(reply_idx), 0) FROM review_reply
+		</selectKey>
+		INSERT INTO review_reply
+			VALUES (
+				#{reply_idx} + 1 -- 리뷰 글번호
+				,#{review_idx}
+				,#{reply_content}
+				,now()
+			)
+	</insert>
+	
 	<update id="updateReview">
 		UPDATE review 
 			SET
@@ -182,6 +196,19 @@
 					s.store_idx = #{s.store_idx}; 
 	</select>
 	
+	<!-- 글 상세정보 조회 -->
+	<select id="selectReview" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+		SELECT *
+			FROM review
+			WHERE review_idx = #{review_idx}	
+	</select>
+	
+	<!-- 댓글 조회 -->
+	<select id="selectReply" resultType="com.itwillbs.foodcode.vo.ReplyVO">
+		SELECT *
+			FROM review_reply
+			WHERE review_idx = #{review_idx}	
+	</select>
 	
 	
 </mapper>

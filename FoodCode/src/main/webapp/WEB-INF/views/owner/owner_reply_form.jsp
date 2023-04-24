@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!doctype html>
 <html lang="en">
 <head>
@@ -74,8 +74,8 @@
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
             <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
-            <input type="hidden" name="review_idx" value="${param.review_idx}" />
-            <form class="contact-form bg-white" action="ownerReplyPro.me" method="post" enctype="multipart/form-data">
+<%--             <input type="hidden" name="review_idx" value="${param.review_idx}" /> --%>
+            <form class="contact-form bg-white" action="ownerReplyPro.me">
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="customer_id">아이디</label> -->
 <!--                 <input type="text" class="form-control" id="customer_id" name="customer_id" aria-describedby="emailHelp"> -->
@@ -84,11 +84,22 @@
 <!--                 <label class="text-black" for="email">업체명</label> -->
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
 <!--               </div> -->
-              <div class="form-group">
-                <label class="text-black" for="review_content">내용</label>
-                <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5"></textarea>
+               <div class="form-group">
+                <label class="text-black" for="review_content">리뷰작성자</label>
+                <br>
+                <input type="text" placeholder="${review.member_id}" readonly="readonly">
               </div>
-
+               <div class="form-group">
+                <label class="text-black" for="review_idx">리뷰글번호</label>
+                <br>
+                <input type="hidden" placeholder="${param.review_idx}"  name="review_idx" value="${param.review_idx}" readonly="readonly">
+              </div>
+              <div class="form-group">
+                <label class="text-black" for="review_content">점주댓글내용</label>
+                <textarea name="reply_content" class="form-control" id="reply_content" cols="30" rows="5"></textarea>
+              </div>
+ 
+              <!-- 작성 버튼 클릭시 리뷰 양식 제출 -->
               <button type="submit" class="btn btn-primary">작성</button>
             </form>
           </div>

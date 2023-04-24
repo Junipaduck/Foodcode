@@ -94,7 +94,7 @@
 		          <td>${review.review_idx }</td>
 		          <td>${review.member_id }</td>
 		           <td>${review.store_name }</td>
-		           <td>${review.review_content }</td>
+		           <td><a href="ReviewDetail.me?review_idx=${review.review_idx }&store_idx=${review.store_idx}">${review.review_content }</a></td>
 			        <td class="image_hover">
      	                <c:set var="length" value="${fn:length(review.review_file) }"/>
 						<c:set var="index" value="${fn:indexOf(review.review_file, '_') }"/>

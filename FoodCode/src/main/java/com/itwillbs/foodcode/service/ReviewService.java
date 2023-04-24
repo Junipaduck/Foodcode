@@ -81,6 +81,22 @@ public class ReviewService {
 		return mapper.getStarAvg(store_idx);
 	}
 
+	// 리뷰 상세 페이지 
+	public ReviewVO getReview(int review_idx) {
+		
+		return mapper.selectReview(review_idx);
+	}
+
+	// 댓글 
+	public ReplyVO getReply(int review_idx) {
+
+		return mapper.selectReply(review_idx);
+	}
+
+	public int insertReviewReply(ReplyVO reply) {
+		
+		return mapper.insertReviewReply(reply);
+	}
 	
 	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {
