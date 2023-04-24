@@ -76,6 +76,11 @@ public class ReviewService {
 		return mapper.selectOwnerReviewListCount();
 	}
 
+	// 리뷰 별점 평균 계산
+	public List getStarAvg(int store_idx) {
+		return mapper.getStarAvg(store_idx);
+	}
+
 	
 	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {

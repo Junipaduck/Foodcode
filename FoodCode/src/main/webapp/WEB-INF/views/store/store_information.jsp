@@ -84,7 +84,7 @@
 <!-- 	  </div> -->
 <!-- 	</div> -->
 
-  
+
   
   <div class="untree_co-section">
     <div class="container">
@@ -119,7 +119,11 @@
 		            <li>${store.store_etc }</li>
 		            <li>${store.store_address }</li>
 		            <!--  review 테이블의 1개의 컬럼만 조회하면 되므로 반목문 사용 x  -->
-		            <li>${reviewList[0].review_star }</li>
+		            <li>${reviewList[0].review_star }
+		            	<c:forEach var="starAvg" items="${starAvg }">
+		            		<img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${starAvg.review_star}</span>
+		            	</c:forEach>
+		            </li>
 		          </ul>
 	          <input type="button" class="btn btn-primary btn-block" value="예약하기" onclick="location.href='booking.bo?store_idx=${store.store_idx }'">
 				</c:forEach>

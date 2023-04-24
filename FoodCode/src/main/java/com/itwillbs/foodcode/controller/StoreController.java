@@ -48,6 +48,15 @@ public class StoreController {
 						ReviewVO review, 
 						@RequestParam int store_idx) {
 		
+		// 0424 배하나 별점평균 계산코드 추가 ---------------------
+		List starAvg = reviewService.getStarAvg(store_idx);
+		model.addAttribute("starAvg", starAvg);
+		System.out.println("하나테스트 ㅋㅋㅋㅋ : " + starAvg );
+		System.out.println("스토어아이디엑스 : " + store.getStore_idx());
+		//---------------------------------------------------------
+		
+		
+		
 		// 20230412 양선정 - 가게 상세페이지 가게 정보 조회 
 		// 가게 상세페이지 클릭 시 바로 가게 정보 출력 가능 - 현재 하드코딩으로 store_idx = 1 인 경우만 출력 
 		

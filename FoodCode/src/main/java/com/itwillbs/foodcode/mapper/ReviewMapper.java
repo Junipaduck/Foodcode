@@ -36,6 +36,8 @@ public interface ReviewMapper {
 
 	int selectOwnerReviewListCount();
 
+	List getStarAvg(int store_idx);
+
 }
 
 

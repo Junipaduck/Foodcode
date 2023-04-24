@@ -167,6 +167,23 @@
 			WHERE
 				review_idx = #{review_idx}
 	</delete>
+	
+	
+	<!-- 리뷰 별점 평균 계산 -->
+	<select id="getStarAvg" resultType="map">
+			SELECT
+<!-- 				ROUND(AVG(r.review_star), 1) AS review_star, s.store_idx -->
+				IFNULL(ROUND(AVG(r.review_star), 1),'아직 리뷰가 없어요~‍') AS review_star, s.store_idx <!-- 만약 review가 하나도 없는 가게는 리뷰별점평균을 0으로 설정함 -->
+				FROM
+					store s
+				JOIN review r ON
+					s.store_idx = r.store_idx
+				WHERE
+					s.store_idx = #{s.store_idx}; 
+	</select>
+	
+	
+	
 </mapper>
 
 
