@@ -34,6 +34,9 @@ public class OwnerController {
 	@Autowired
 	private StoreService storeService;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	// 점주 회원가입페이지로 이동
 	@GetMapping("/ownerJoin.me")
 	public String ownerJoin() {
@@ -69,7 +72,7 @@ public class OwnerController {
 	}
 	
 	// 점주 회원가입
-	@GetMapping("/ownerJoinPro.me")
+	@PostMapping("/ownerJoinPro.me")
 	public String ownerJoinPro(MemberVO member, Model model, @RequestParam String member_passwd2) {
 		if(member.getMember_passwd().equals(member_passwd2)) {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -77,7 +80,9 @@ public class OwnerController {
 			member.setMember_passwd(securePasswd);
 			int insertCnt = ownerService.insertOwner(member);
 			if(insertCnt > 0) {
-				return "redirect:/main";
+				model.addAttribute("msg", "회원 가입 성공!");
+        		model.addAttribute("target","main");
+				return "success";
 			} else {
 				model.addAttribute("msg", "회원가입 실패!");
 				return "fail_back";
@@ -285,6 +290,35 @@ public class OwnerController {
 	@GetMapping("/storeRegister.me")
 	public String storeRegister() {
 		return "owner/owner_store_register";
+	}
+	
+	
+	// 0426 보아 수정중
+	// 로그인 시 top.jsp에서 점주회원인지 판별
+	@ResponseBody
+	@GetMapping("/SelectId.me")
+	public String selectId(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+//			if(id == null) {
+//				model.addAttribute("msg", "잘못된 접근입니다!");
+//				return "fail_back";
+//			}
+		String res="";
+		System.out.println("test");
+		MemberVO member = memberService.getMemberInfo(id);
+		System.out.println(member);
+		model.addAttribute("member", member);
+		if(member.getMember_id().equals("admin")) {
+			System.out.println("admin");
+			res = "admin";
+		} else if(member.getMember_type().equals("c")) {
+			System.out.println("c");
+			res = "c";
+		} else {
+			System.out.println("o");
+			res = "o";
+		}
+		return res;
 	}
 	
 	

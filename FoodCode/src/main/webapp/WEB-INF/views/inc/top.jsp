@@ -8,6 +8,36 @@
 		let result = confirm("로그아웃 하시겠습니까?");	
 		return result;
 	}
+	
+	
+	// 0426 최보아 수정중
+// 	$('document').ready(function () {
+// 		$.ajax({
+// 			type: "GET",
+// 			url: "SelectId.me",
+// 				//async:false,
+//	 			//data: ${sessionScope.sId},
+//	 			//dataType: "JSON",
+// 			dataType: "text",
+// 			success: function(res) {
+// 					console.log(res);
+//	 				let result = JSON.parse(result).toString();
+// 					data = res;
+// 				if(res == 'o') {
+// 					let loginId = 
+// 						'<li class="has-children"><a href="#">' + ${sessionScope.sId } + '님</a>' +
+// 						'<ul class="dropdown">' +
+// 						'<li><a href="mypage.me" title="내식당">내 식당</a></li>' + 
+// 						'<li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>' + 
+// 						'<li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>' + 
+// 						'</ul>' + 
+// 						'</li>';
+// 					$("#sessionArea").html(loginId);
+// 				}
+// 			}
+				
+// 		})
+// 	});
 </script>
 
 
@@ -53,7 +83,8 @@
 					<li><a href="service_view.no">이용안내</a></li>
 <!-- 					<li><a href="contact.html">Contact Us</a></li> -->
 					<li><a href="main">홈</a> </li>
-					 
+					
+					<li id="sessionArea"></li> 
 					
 					<c:choose>
 						<c:when test="${empty sessionScope.sId }">
@@ -62,7 +93,7 @@
 						<c:otherwise>
 							<!-- ㅇㅇ님 클릭시 마이페이지로 이동 -->
 <%-- 							<li><a href="customerMypage.me">${sessionScope.sId } 님</a></li>  --%>
-							<li  ></li>
+							<li></li>
 								<!-- 점주 회원이면 드롭다운 -0421 최보아 수정  / 후에 수정 -->
 <%-- 								<c:choose> --%>
 <%-- 									<c:when test="${sessionScope.sId eq 'owner1'}"> --%>

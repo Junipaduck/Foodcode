@@ -103,7 +103,7 @@
 	                	clickedMonth = (1 + nowMonth.getMonth());
 	                	clickedDate = this.getAttribute('id').toString().substr(8,2);
 	                	
-// 	                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
+	                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
 	                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
                 		console.log(clickedYMD);
                 		
@@ -132,7 +132,7 @@
                 						  $("#bookingArea").html(tr);
                 						});
 									
-                				} else {
+                				} else if(result.equals("")){
                 					alert("실패!");
                 				}
                 				
