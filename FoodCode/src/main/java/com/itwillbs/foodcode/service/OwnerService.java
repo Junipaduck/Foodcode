@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
 import com.itwillbs.foodcode.mapper.OwnerMapper;
 import com.itwillbs.foodcode.vo.*;
@@ -48,8 +50,8 @@ public class OwnerService {
 //	public List<BookingVO> showBooking(BookingVO booking) {
 //		return mapper.showBooking(booking);
 //	}
-	public List<BookingVO> showBooking(String id) {
-		return mapper.showBooking(id);
+	public List<HashMap<String, String>> showBooking(@Param("id") String id, @Param("clickedYMD") String clickedYMD) {
+		return mapper.showBooking(id, clickedYMD);
 	}
 	
 	// 점주의 가게 갯수 조회
@@ -71,6 +73,7 @@ public class OwnerService {
 	public int modifyStore(StoreVO store) {
 		return mapper.modifyStore(store);
 	}
+
 
 	
 

@@ -318,7 +318,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	
 	
 	<!-- 지도 api  -->
-	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a91ec8056a635e82b3a39377778273a1"></script>
+	  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a91ec8056a635e82b3a39377778273a1&libraries=services"></script>
+<!-- 	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a91ec8056a635e82b3a39377778273a1"></script> -->
 	<script>
 	// 마커를 담을 배열입니다
 	var markers = [];

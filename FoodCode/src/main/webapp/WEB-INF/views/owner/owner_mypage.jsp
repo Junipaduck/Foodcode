@@ -42,9 +42,8 @@
         let nowMonth = new Date();
         let today = new Date();
         today.setHours(0, 0, 0, 0);
-        let clickedYMD=null;
+        let clickedYMD;
         let cnt = 0;
-
         // 달력 생성
         function buildCalendar() {
 
@@ -104,19 +103,32 @@
                     newDIV.onclick = function () { choiceDate(this); }
                 }
                 
-                
-                // 선택한 날짜 값 가져오기
-                nowColumn.onclick = function() {
-                	clickedYear = nowMonth.getFullYear();
-                	clickedMonth = (1 + nowMonth.getMonth());
-                	clickedDate = this.getAttribute('id').toString().substr(8,3);
-                	
-                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
-                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
-
-                	document.getElementById("clickedDay").value = clickedYMD;
-                	console.log(clickedYMD);
-                }
+              
+//                 선택한 날짜 값 가져오기
+	                nowColumn.onclick = function() {
+	                	clickedYear = nowMonth.getFullYear();
+	                	clickedMonth = (1 + nowMonth.getMonth());
+	                	clickedDate = this.getAttribute('id').toString().substr(8,2);
+	                	
+	                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
+	                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
+                		console.log(clickedYMD);
+                		
+                		$.ajax({
+                			type: "GET",
+                			url: "getTodayBooking",
+                			data:{"clickedDay" : clickedYMD},
+                			//data: {"clickedYMD" : clickedYMD},
+                			success: function(result){
+                				if(result == true) {
+                					$("#bookingArea").html("테스트");
+                				} else {
+                					alert("실패!");
+                				}
+                				
+                			}
+                		});
+	                }
                 
 //                 console.log(cnt);
 				// 토요일은 파란색, 일요일은 빨간색으로 표시
@@ -129,6 +141,7 @@
             }
             
             cnt = 0;	// 다음 달 위해 cnt값 초기화
+//             console.log(clickedYMD);
         }
 
         // 날짜 선택
@@ -292,6 +305,19 @@
 			            </thead>
 			            <tbody>
 			            </tbody>
+<!-- 			            <script> -->
+<!-- 				            nowColumn.onclick = function() { -->
+<!-- 			                	clickedYear = nowMonth.getFullYear(); -->
+<!-- 			                	clickedMonth = (1 + nowMonth.getMonth()); -->
+<!-- 			                	clickedDate = this.getAttribute('id').toString().substr(8,3); -->
+			                	
+<!-- 			                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth; -->
+<!-- 			                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate; -->
+	
+<!-- 			                	document.getElementById("clickedDay").value = clickedYMD; -->
+<!-- 			                	console.log(clickedYMD); -->
+<!-- 			                } -->
+<!-- 			            </script> -->
 			        </table>
                   <!-- 캘린더 끝 -->
                 </div>
@@ -320,6 +346,7 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  <div id="bookingArea">
 			  <c:forEach items="${storeBooking }" var="storeBooking">
 			    <tr>
 			      <th scope="row">${storeBooking.store_name }</th>
@@ -333,6 +360,7 @@
 			      <td class="white-space-nowrap">${storeBooking.booking_content }</td>
 			    </tr>
 			    </c:forEach>
+			    </div>
 			  </tbody>
 			</table>
             

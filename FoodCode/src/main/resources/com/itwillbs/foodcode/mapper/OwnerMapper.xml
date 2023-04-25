@@ -93,7 +93,7 @@
 <!-- 		<result column="store_idx" property="storeIdx" /> -->
 <!-- 		<collection property="storeVO" resultMap="storeVO" /> -->
 <!-- 	</resultMap> -->
-	<select id="showBooking" resultType="map">
+	<select id="showBooking" resultType="hashmap">
 		SELECT 
 			b.booking_idx
 			,b.booking_date
@@ -113,7 +113,8 @@
 			ON
 				b.member_id = m.member_id
 			WHERE 
-				s.member_id = #{sId};
+				s.member_id = #{id}
+				AND b.booking_date = #{clickedYMD}
 	</select>
 	
 	<!-- 점주 가게 정보 수정 - 가게 조회 -->

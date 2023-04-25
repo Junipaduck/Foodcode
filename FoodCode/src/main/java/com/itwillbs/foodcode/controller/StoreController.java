@@ -70,6 +70,7 @@ public class StoreController {
 		List<ReviewVO> storeReviewList = storeService.getStoreReviewList(review);
 		model.addAttribute("storeReviewList", storeReviewList);
 		
+		
 		return "store/store_information";
 	}
 	

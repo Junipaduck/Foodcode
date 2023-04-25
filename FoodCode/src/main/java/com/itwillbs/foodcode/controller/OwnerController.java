@@ -49,10 +49,10 @@ public class OwnerController {
 //		System.out.println(storeInfo);
 		model.addAttribute("storeInfo", storeInfo);
 		
-		List<BookingVO> storeBooking = ownerService.showBooking(id);
+//		List<BookingVO> storeBooking = ownerService.showBooking(id);
 //		ArrayList<HashMap<String, String>> storeBooking = ownerService.showBooking(id);
-		System.out.println(storeBooking);
-		model.addAttribute("storeBooking", storeBooking);
+//		System.out.println(storeBooking);
+//		model.addAttribute("storeBooking", storeBooking);
 		
 //		Map<String, Object> mav = new HashMap<>();
 //		mav.put("stoerInfo", storeInfo);
@@ -220,6 +220,21 @@ public class OwnerController {
 			model.addAttribute("msg", "가게 정보 수정 실패!");
 			return "fail_back";
 		}
+	}
+	
+	// 점주 마이페이지 선택한 날짜에 해당하는 예약 조회
+	@ResponseBody
+	@GetMapping("/getTodayBooking")
+	public String getTodayBooking(@RequestParam String clickedDay, Model model, HttpSession session) {
+		System.out.println(clickedDay);
+		String id = (String)session.getAttribute("sId");
+		System.out.println(id);
+		List<HashMap<String, String>> storeBooking = ownerService.showBooking(id, clickedDay);
+//		ArrayList<HashMap<String, String>> storeBooking = ownerService.showBooking(id);
+		System.out.println(storeBooking);
+		model.addAttribute("storeBooking", storeBooking);
+		return "owner/owner_mypage";
+		
 	}
 	
 	// 점주 마이페이지에 있는 '새로운 식당 추가' 링크 클릭 시 식당 등록 페이지로 이동

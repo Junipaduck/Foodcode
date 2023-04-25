@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.*;
 
 import com.itwillbs.foodcode.vo.*;
 
@@ -24,7 +25,7 @@ public interface OwnerMapper {
 
 	List<StoreVO> selectStore(String id);
 
-	List<BookingVO> showBooking(String id);
+	List<HashMap<String, String>> showBooking(@Param("id") String id, @Param("clickedYMD") String clickedYMD);
 
 	int countStore(String id);
 	
