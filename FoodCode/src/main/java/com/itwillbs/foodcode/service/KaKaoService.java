@@ -97,10 +97,8 @@ public class KaKaoService {
 
             String id = obj.get("id").toString();
             String email = kakao_account.get("email").toString();
-            String gender = kakao_account.get("gender").toString();
             result.put("id", id);
             result.put("email", email);
-            result.put("gender", gender);
 
             br.close();
 

@@ -151,7 +151,8 @@
 		
 		$("#member_gender").on("change", function() {
 			let gender = $("#member_gender").val();
-			if(gender != null){
+			let gender2 = $("#member_gender2").val();
+			if(gender != null || gender2 != null){
 				genderStatus = true;
 			}
 		});
@@ -332,16 +333,8 @@
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">
-                <c:choose>
-                <c:when test="${not empty userInfo.gender }">
-				 <input type="radio" id="member_gender" value="남" name="member_gender"><label for="member_gender" <c:if test="${userInfo.gender eq 'male'}">checked</c:if>>남</label>
-				 <input type="radio" id="member_gender2" value="여" name="member_gender"><label for="member_gender2" <c:if test="${userInfo.gender eq 'female'}">checked</c:if>>여</label>
-                </c:when>
-                <c:otherwise>
 				 <input type="radio" id="member_gender" value="남" name="member_gender"><label for="member_gender">남</label>
 				 <input type="radio" id="member_gender2" value="여" name="member_gender"><label for="member_gender2">여</label>
-                </c:otherwise>
-                </c:choose>
 				</div>
               </div>
               <button type="submit" class="btn btn-primary">가입</button>

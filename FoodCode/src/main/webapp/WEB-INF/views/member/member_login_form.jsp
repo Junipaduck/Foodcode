@@ -28,7 +28,7 @@
   <title>로그인</title>
 <script type="text/javascript">
 function doKakaoLogin() {
-    location.href = "https://kauth.kakao.com/oauth/authorize?client_id=17cca8149886e3a10cca266bef314925&redirect_uri=http://localhost:8089/foodcode/kakao&response_type=code&scope=account_email gender";
+    location.href = "https://kauth.kakao.com/oauth/authorize?client_id=17cca8149886e3a10cca266bef314925&redirect_uri=http://localhost:8089/foodcode/kakao&response_type=code&scope=account_email";
     		}
 </script>
 </head>
