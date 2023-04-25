@@ -77,8 +77,8 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">리뷰 수정</h1>
-            <p class="text-white">양식을 작성해주세요. </p>
+            <h1 class="mb-0"></h1>
+            <p class="text-white"></p>
           </div>
         </div>
       </div>
@@ -89,9 +89,9 @@
 		
       <div class="row justify-content-center">
 
-        <div class="col-lg-4">
+        <div class="col-lg-4" style="margin-top: 100px;">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title">Form</h2>
+            <h2 class="section-title">리뷰수정</h2>
             <form class="contact-form bg-white" action="reviewModifyPro.me" method="post" enctype="multipart/form-data">
              <input type="hidden" name="review_idx" value="${param.review_idx}" />
 <!--               <div class="form-group"> -->

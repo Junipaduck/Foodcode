@@ -83,7 +83,7 @@ function DeleteMember() {
 
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title">Form</h2>
+            <h2 class="section-title">회원수정</h2>
             <form class="contact-form bg-white" action="customerModifyPro.me">
               <input type="hidden" id="member_idx" value="${map.member.member_idx }" name="member_idx">
               <div class="form-group">

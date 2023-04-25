@@ -286,7 +286,7 @@
 
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title">Form</h2>
+            <h2 class="section-title">회원가입</h2>
             <form class="contact-form bg-white" action="customerJoinPro.me" method="post">
               <div class="form-group">
                 <label class="text-black">아이디</label>

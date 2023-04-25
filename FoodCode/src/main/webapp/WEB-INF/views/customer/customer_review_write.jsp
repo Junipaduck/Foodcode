@@ -54,8 +54,8 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">리뷰 작성</h1>
-            <p class="text-white">양식을 작성해주세요. </p>
+            <h1 class="mb-0"></h1>
+            <p class="text-white"></p>
           </div>
         </div>
       </div>
@@ -65,9 +65,9 @@
 		<jsp:include page="customer_left.jsp"></jsp:include>
       <div class="row justify-content-center">
 
-        <div class="col-lg-4">
+        <div class="col-lg-4" style="margin-top: 100px;">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title">Form</h2>
+            <h2 class="section-title">리뷰작성</h2>
             <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
             <form class="contact-form bg-white" action="reviewWritePro.me" method="post" enctype="multipart/form-data">
 					<!-- 히든 속성으로 store_idx 가져오기??????  -->
