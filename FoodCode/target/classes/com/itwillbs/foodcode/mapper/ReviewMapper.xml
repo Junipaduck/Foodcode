@@ -216,6 +216,13 @@
 			FROM member
 			WHERE member_id = #{id}
 	</select>
+	
+	<!-- 댓글 작성 시 이미 작성되었는지 판단. 댓글이 존재할 시 경고창  -->
+	<select id="selectReplyCount" resultType="int">
+		SELECT COUNT(*)
+			FROM review_reply
+			WHERE review_idx = #{review_idx}
+	</select>
 </mapper>
 
 

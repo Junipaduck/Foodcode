@@ -353,10 +353,14 @@ public class ReviewController {
     	
     	int getStoreCount = storeService.getStoreOwner(id, store_idx);
     	
+    	// 댓글 유무 판단용 메서드 호출 
+    	
+    	int selectReplyCount = reviewService.getReplyCount(review_idx);
+    	
 		// 해당 가게의 점주회원인지 판단 
 		if(getStoreCount > 0) { // 해당 가게의 점주가 맞음 
 			
-		   	if(reply.getReply_idx() > 0) { // 댓글이 존재할 시 
+		   	if(selectReplyCount > 0) { // 댓글이 존재할 시 
 	    		model.addAttribute("msg", "이미 답글을 작성하셨습니다!");
 	    		return "fail_back";
 	    	} else { // 댓글이 존재하지 않을 시 

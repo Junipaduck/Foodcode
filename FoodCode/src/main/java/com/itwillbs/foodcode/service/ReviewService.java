@@ -104,6 +104,12 @@ public class ReviewService {
 		
 		return mapper.selectMemberInfo(id);
 	}
+
+	// 댓글 유무 확인용 
+	public int getReplyCount(int review_idx) {
+		
+		return mapper.selectReplyCount(review_idx);
+	}
 	
 	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {

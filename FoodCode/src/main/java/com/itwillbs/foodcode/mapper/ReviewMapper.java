@@ -46,6 +46,8 @@ public interface ReviewMapper {
 
 	MemberVO selectMemberInfo(String id);
 
+	int selectReplyCount(int review_idx);
+
 }
 
 
