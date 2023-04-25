@@ -10,7 +10,7 @@ package com.itwillbs.foodcode.vo;
 	booking_seat varchar(10),      선호자리
 	booking_content varchar(200),  요청사항
 	store_idx int,                 예약할 가게 번호
-	member_id varchar(45)		   예약할 고객 아이디
+	member_id varchar(45),		   예약할 고객 아이디
 	merchant_uid varchar(30));     결제 고유 아이디
  */
 

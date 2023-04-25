@@ -126,11 +126,12 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 	
 	function requestPay() {
 			IMP.request_pay({
-		        pg : 'kakaopay.TC0ONETIME',
+				pg : 'kcp',
 		        pay_method : 'card',
 		        merchant_uid:  'merchant' + new Date().getTime(), 
 		        name : '${storeInfo[0].store_name }',
-		        amount : ${bookinginfo.get(2) } * 5000,
+// 		        amount : ${bookinginfo.get(2) } * 5000,
+		        amount : 100,                                        //돈 빠져나가는 결제도 있어서 100원 
 		        buyer_email : '${member.member_email }',
 		        buyer_name : '${member.member_name }',
 		        buyer_tel : '${member.member_phone }',
