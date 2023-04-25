@@ -143,11 +143,10 @@
               </div>
               <div class="form-group">
                 <label class="text-black" for="storeAddress">매장 주소</label>
-<%--                 <c:set var="length" value="${fn:length(store.store_address) }" /> --%>
-<%-- 				<c:set var="index" value="${fn:indexOf(store.store_address, '_') }" /> --%>
-<%-- 				<c:set var="addressName" value="${fn:substring(store.store_address, index + 1, length) }" /> --%>
-                <input type="text" class="form-control" name="store_address1" id="store_address1" required="required" placeholder="주소검색">
-                <input type="text" class="form-control" name="store_address2" id="store_address2" placeholder="상세주소입력">
+				<c:set var="addressName1" value="${fn:split(store.store_address,',')[0] }" />
+				<c:set var="addressName2" value="${fn:split(store.store_address,',')[1] }" />
+                <input type="text" class="form-control" name="store_address1" id="store_address1" required="required" value="${addressName1}">
+                <input type="text" class="form-control" name="store_address2" id="store_address2" value="${addressName2}">
               	<small id="small6" class="form-text text-muted">영업중인 사업장의 실제 주소를 정확히 입력해주세요.</small>
 		               <!-- 주소 API 스크립트 -->
 		                <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
