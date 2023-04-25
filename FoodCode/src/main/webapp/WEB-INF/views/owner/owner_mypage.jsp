@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!doctype html>
 <html lang="kr">
 <head>
@@ -64,11 +65,6 @@
             for (let j = 0; j < firstDate.getDay(); j++) {
                 let nowColumn = nowRow.insertCell();
                 cnt += 1;
-                
-//                 console.log(cnt);
-//                 if (cnt % 7 == 1) {
-//                 	newDIV.innerHTML = "<font color=#F79DC2>" + j + "</font>";
-//                 }
             }
 
             // 날짜 생성
@@ -82,10 +78,7 @@
                 let newDIV = document.createElement("p");
                 newDIV.innerHTML = leftPad(nowDay.getDate());        // 추가한 열에 날짜 입력
                 nowColumn.appendChild(newDIV);
-                
 //                 console.log(cnt);
-
-				
 
                 if (nowDay.getDay() == 6) {                 // 토요일인 경우
                     nowRow = tbody_Calendar.insertRow();
@@ -124,30 +117,6 @@
 //                 				debugger;
 //                 				alert(result);
                 				if(result) {
-                					// 밑에 2줄은 하나가 테스트 한것 (지워도됨)
-                					
-                					
-                					
-                					//$("#bookingArea").text("짜증!!!!!")
-                					
-                					
-                					
-                					//let storeBooking = ${storeBooking };
-                					
-//                 					$("#bookingArea").html('<c:forEach items="${storeBooking }" var="storeBooking">
-//                 				    <tr>
-//                 				      <th scope="row">${storeBooking.store_name }</th>
-//                 				      <td>${storeBooking.booking_idx }</td>
-//                 				      <td>${storeBooking.booking_date }</td>
-//                 				      <td>${storeBooking.booking_time }</td>
-//                 				      <td>${storeBooking.member_name }</td>
-//                 				      <td>${storeBooking.booking_num }</td>
-//                 				      <td>${storeBooking.member_phone }</td>
-//                 				      <td>${storeBooking.booking_seat }</td>
-//                 				      <td class="white-space-nowrap">${storeBooking.booking_content }</td>
-//                 				    </tr>
-//                 				    </c:forEach>');
-// 									debugger;
                 					result.forEach((el, index) => { 
                 						let tr = '<tr>' +
 	                				         '<th scope="row">' + el.store_name + '</th>' +
@@ -161,8 +130,6 @@
 	                				         '<td class="white-space-nowrap">' + el.booking_content + '</td>' +
 	                				         '</tr>';
                 						  $("#bookingArea").html(tr);
-                						  
-                						  console.log(tr);
                 						});
 									
                 				} else {
@@ -215,8 +182,6 @@
             return value;
         }
         
-//         console.log(clickedYMD);
-        
     </script>
     <style>
     @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
@@ -262,18 +227,13 @@
 				      			<h5 class="mb-0"><button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapse_${storeInfo.store_idx}" aria-expanded="true" aria-controls="collapse_${storeInfo.store_idx}">${storeInfo.store_name }</button></h5>
 				       		</div>
 				    		<div class="collapse" id="collapse_${storeInfo.store_idx}" aria-labelledby="heading_${storeInfo.store_idx}" data-parent="#accordionExample">
-							<!-- 0421 사진 css 안맞아서 잠시 주석 -->
+								<c:set var="length" value="${fn:length(storeInfo.store_file) }" />
+								<c:set var="index" value="${fn:indexOf(storeInfo.store_file, '_') }" />
+								<c:set var="fileName" value="${fn:substring(storeInfo.store_file, index + 1, length) }" />
+								<img src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" style="width:50%; float:left;">
+								
 				        		<div class="card-body">
-<!-- 				       		<div class="col-lg-5"> -->
-<!-- 								<div class="owl-single dots-absolute owl-carousel"> -->
-<%-- 									<img src="${pageContext.request.contextPath }/resources/images/slider-1.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
-<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-2.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
-<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-3.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
-<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-4.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
-<!-- 				          		</div> -->
-<!-- 				        	</div> -->
-        							<div class="col-lg-5 pl-lg-7 ml-auto">
-				            		<img src="${pageContext.request.contextPath }/resources/images/slider-5.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
+        							<div class="col-lg-5 pl-lg-7 ml-auto" style="margin-right: 60px;">
 				        			<h2 class="section-title mb-4" >${storeInfo.store_name }</h2>
 				         			<p>${storeInfo.store_content }</p>
 				          			<ul class="list-unstyled two-col clearfix">
@@ -298,7 +258,7 @@
 					            			&nbsp;&nbsp;&nbsp;${storeInfo.store_etc }
 					          			</div>
 					          			<div class="form-group">
-							              <label class="text-black" for="storeMenu">메뉴 등록</label>
+<!-- 							              <label class="text-black" for="storeMenu">메뉴 등록</label> -->
 							              <input type="button" class="btn btn-primary btn-block" value="메뉴를 등록해주세요" id="store_menu" onclick="window.open('store_menu.so?store_idx=${storeInfo.store_idx}', 'window_name')">
 							              </div>
 				          			</ul>
@@ -349,19 +309,6 @@
 			            </thead>
 			            <tbody>
 			            </tbody>
-<!-- 			            <script> -->
-<!-- 				            nowColumn.onclick = function() { -->
-<!-- 			                	clickedYear = nowMonth.getFullYear(); -->
-<!-- 			                	clickedMonth = (1 + nowMonth.getMonth()); -->
-<!-- 			                	clickedDate = this.getAttribute('id').toString().substr(8,3); -->
-			                	
-<!-- 			                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth; -->
-<!-- 			                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate; -->
-	
-<!-- 			                	document.getElementById("clickedDay").value = clickedYMD; -->
-<!-- 			                	console.log(clickedYMD); -->
-<!-- 			                } -->
-<!-- 			            </script> -->
 			        </table>
                   <!-- 캘린더 끝 -->
                 </div>
@@ -390,20 +337,11 @@
 			    </tr>
 			  </thead>
 			  <tbody id="bookingArea">
-			   
-			   
-			   
 			  </tbody>
 			</table>
-            
-            
-            
           </div>
         </div>
       </div>
-      
-      
-  
           
           
   <div class="untree_co-section">
