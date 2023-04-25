@@ -2,6 +2,7 @@ package com.itwillbs.foodcode.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -98,6 +99,10 @@ public class AdminService {
 		return mapper.updateStoreApprove(store_license);
 	}
 	
+	// =============식당 메일 발송 후 신고 카운트 초기화===============
 	
+	public void deleteReportCount(String store_idx) {
+		mapper.deleteReportCount(store_idx);
+	}
 	
 }

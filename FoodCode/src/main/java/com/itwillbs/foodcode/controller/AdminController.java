@@ -155,8 +155,6 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		System.out.println("가게 서압자런ㅁ럼 !!!!" + store_license + owner_id);
-		
 		int isDeleteSuccess = adminService.managementDelete(store_license, owner_id);
 		
 		if(isDeleteSuccess>0) {
@@ -178,8 +176,8 @@ public class AdminController {
 		return "/admin/store_approve";
 	}
 	
-	@RequestMapping(value = "adminStoreManagementApprovePro", method = {RequestMethod.GET, RequestMethod.POST})
-	public String storeApprovePro(@RequestParam String store_license, @RequestParam String member_id, Model model, HttpSession session) {
+	@GetMapping(value = "adminStoreManagementApprovePro")
+	public String storeApprovePro(@RequestParam String store_license, Model model, HttpSession session) {
 		
 		String id = (String)session.getAttribute("sId");
 		
@@ -227,20 +225,23 @@ public class AdminController {
 			model.addAttribute("msg", "아이디를 다시 확인해주세요!");
 			return "admin/fail_back";
 		}
-		
 	}
 	
 	// ================메일 보내기======================	
 
 	@GetMapping("/mailCheck")
 	@ResponseBody
-	public String mailCheck(String email, String storeName) {
+	public String mailCheck(String email, String storeName, String store_idx) {
 		System.out.println("이메일 인증 요청이 들어옴!");
 		System.out.println("이메일 인증 이메일 : " + email + "받는 사람:" + storeName);
+		
+		System.out.println("메일 출력시 메일 체크 --------------- :" + store_idx);
+		adminService.deleteReportCount(store_idx);
 		
 		if(storeName==null || storeName.equals("")) {
 		return mailService.joinEmail(email); //회원가입시 랜덤 코드 발송 메일
 		}
 		return mailService.storeEmail(email, storeName); //식당 경고 메세지 발송 메일
 	}
+	
 }

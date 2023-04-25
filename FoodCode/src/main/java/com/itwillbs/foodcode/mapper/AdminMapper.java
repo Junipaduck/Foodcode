@@ -38,6 +38,8 @@ public interface AdminMapper {
 	String getReportCount();
 
 	int updateStoreApprove(@Param("store_license") String store_license);
+
+	void deleteReportCount(@Param("store_idx")String store_idx);
 	
 	
 }

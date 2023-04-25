@@ -9,14 +9,15 @@
 <script type="text/javascript">
 
 
-	function Mail(member_email, store_name) {
+	function Mail(member_email, store_name, store_idx) {
 		const eamil = member_email; // 이메일 주소값 얻어오기!
 		const storeName = store_name;
+		alert(store_idx);
 		console.log('완성된 이메일 : ' + eamil + '받는 사람 :' + storeName); // 이메일 오는지 확인
 																
 		$.ajax({
 			type : 'get',
-			url : "mailCheck?email="+eamil+"&storeName="+storeName, // GET방식
+			url : "mailCheck?email="+eamil+"&storeName="+storeName+"&store_idx="+store_idx, // GET방식
 			success : function (data) {
 				console.log("데이타 : " +  data);
 				code = data;
@@ -24,6 +25,7 @@
 			}	
 		}); // end ajax
 	}
+	
 	
 	
 	function DeletePopup(store_license, owner_id) {
@@ -55,42 +57,42 @@
                                 <table class="table table-bordered" align ="center"
                                   style="color: black;">
                                     <thead>
-                                        <tr>
-                                            <th align="center" valign="middle">점주 ID</th>
-                                            <th >식당명</th>
+                                        <tr align="center">
+                                            <th valign="middle">점주 ID</th>
+                                            <th>식당명</th>
                                             <th>사업자등록번호</th>
-                                            <th>가게평점</th>
                                             <th>점주 이메일</th>
+                                            <th>신고 횟수</th>
                                             <th>경고 메세지</th>
                                             <th>식당삭제</th>
                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        <tr>
-                                            <th align="center" >점주 ID</th>
+                                        <tr align="center">
+                                            <th>점주 ID</th>
                                             <th>식당명</th>
                                             <th>사업자등록번호</th>
-                                            <th>가게평점</th>
-                                             <th>점주 이메일</th>
+                                            <th>점주 이메일</th>
+                                            <th>신고 횟수</th>
                                             <th>경고 메세지</th>
                                             <th>식당삭제</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                     	<c:forEach var="aList" items="${aList }">
-                                    	<tr>
+                                    	<tr align="center">
                                             <td>${aList.member_id}</td>
                                             <td>${aList.store_name}</td>
                                             <td>${aList.store_license}</td>
-                                            <td align="center">${aList.review_star}</td>
                                             <td align="center">${aList.member_email}</td>
+                                            <td>${aList.report_count}</td>
                                             <td align="center">
                                             <a href="#" class="btn btn-warning btn-icon-split">
 		                                        <span class="icon text-white-50">
 		                                            <i class="fas fa-exclamation-triangle"></i>
 		                                        </span>
-		                                        <span class="text" msttexthash="359"_msthash="70" onclick="Mail('${aList.member_email}', '${aList.store_name}' )">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
+		                                        <span class="text" msttexthash="359"_msthash="70" onclick="Mail('${aList.member_email}','${aList.store_name}','${aList.store_idx}');">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
 		                                    </a>
                                             </td>
                                              <td align="center">

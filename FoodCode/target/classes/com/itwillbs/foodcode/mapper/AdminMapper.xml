@@ -30,11 +30,18 @@
 	</select>
 	
 	<select id="getStoreList2" resultType="map">
-	SELECT m.member_id, m.member_email, s.store_name, s.store_license, s.auth_status, ROUND(AVG(re.review_star),1) AS review_star
-		FROM member m
-			JOIN store s ON m.member_id = s.member_id
-				LEFT JOIN review re ON s.store_idx = re.store_idx
-					GROUP BY s.store_name;
+	SELECT 
+		m.member_id ,
+		m.member_email ,
+		s.store_name ,
+		s.store_idx ,
+		s.store_license ,
+		count(rep.report_count) AS report_count
+			FROM report rep 
+				JOIN store s ON rep.store_idx = s.store_idx 
+					JOIN member m ON m.member_id = s.member_id
+		GROUP BY s.store_idx
+		HAVING count(rep.report_count) >= 2;
 	</select>
 	
 	<delete id="deleteStore">
@@ -79,6 +86,11 @@
  			SET auth_status = 'Y'
  				WHERE store_license = "${store_license}";
 	</update>
+	
+	<delete id="deleteReportCount">
+		DELETE FROM report 
+				WHERE store_idx = "${store_idx}";
+	</delete>
 	
 </mapper>
 
