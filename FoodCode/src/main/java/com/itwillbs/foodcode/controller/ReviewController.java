@@ -332,6 +332,11 @@ public class ReviewController {
     		return "success";
     	} 
     	
+    	// 0425 이미 댓글이 존재할 시 경고 문구 출력
+    	ReplyVO reply = reviewService.getReply(review_idx);
+    	
+    	System.out.println("--------------------------------------------------뭐지 : " + review_idx);
+    	
     	MemberVO member = reviewService.getMemberInfo(id);
     	member.setMember_id(id);
     	model.addAttribute("member", member);
@@ -348,13 +353,20 @@ public class ReviewController {
     	
     	int getStoreCount = storeService.getStoreOwner(id, store_idx);
     	
-    	// 해당 가게의 점주회원인지 판단 
-    	if(getStoreCount > 0) {
-    		return "owner/owner_reply_form";
-    	} else {
-    		model.addAttribute("msg", "해당 가게의 점주가 아닙니다.");
-    		return "fail_back";
-    	}
+		// 해당 가게의 점주회원인지 판단 
+		if(getStoreCount > 0) { // 해당 가게의 점주가 맞음 
+			
+		   	if(reply.getReply_idx() > 0) { // 댓글이 존재할 시 
+	    		model.addAttribute("msg", "이미 답글을 작성하셨습니다!");
+	    		return "fail_back";
+	    	} else { // 댓글이 존재하지 않을 시 
+	    		return "owner/owner_reply_form";
+	    	}
+		   	
+		} else { // 해당 가게의 점주가 아님
+			model.addAttribute("msg", "해당 가게의 점주가 아닙니다.");
+			return "fail_back";
+		}
     	
     }
     
