@@ -193,6 +193,7 @@ public class CustomerController {
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("storeList", storeList);
 		
+		
 		return "customer/customer_review";
     }
 
@@ -206,6 +207,8 @@ public class CustomerController {
 		
 		Map<String, MemberVO> map = new HashMap<String, MemberVO>();
 		map.put("member", member);
+		
+
 
         return new ModelAndView("customer/customer_modify","map",map);
     }
@@ -270,9 +273,10 @@ public class CustomerController {
     
     @GetMapping(value = "/customerReviewModify.me")
     public String customerReviewModify() {
+    	
         System.out.println("customerReviewModify.me");
 
-
+        
         return "customer/customer_review_modify";
     }
     

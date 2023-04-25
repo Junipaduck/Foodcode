@@ -31,30 +31,7 @@
   <!-- 별점 기능 css -->
   <link href="${pageContext.request.contextPath }/resources/css/star.css" rel="stylesheet"/>
   <title>리뷰 수정 페이지</title>
-<script type="text/javascript">
-	function deleteFile() {
-	
-		$.ajax({
-			type: "POST",
-			url: "ReviewDeleteFile.bo",
-			data: {
-				"review_idx" : ${review.board_num},
-				"review_file" : "${review.file}",
-				"review_file_path" : "${review.review_file_path}"
-			},
-			success: function(result) {
-				// 삭제 성공/실패 여부 판별(result 값 "true"/"false" 판별 => 주의! 문자열이다!)
-				if(result == "true") {
-					// 삭제 성공 시 파일명 표시 위치의 기존 항목을 제거하고
-					// 파일 업로드를 수행할 수 있도록 "파일 선택" 버튼 표시
-					$("#fileBtnArea").html("<input type='file' name='file'/>")
-				} else {
-					alert("일시적인 오류로 파일 삭제에 실패했습니다!");
-				}
-			}
-		});
-	}
-</script>
+
 </head>
 <body>
 <header>
@@ -105,7 +82,7 @@
               </div>
               <div class="form-group">
                 <label class="text-black" for="review_content">내용</label>
-                <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5">${vo.review_content }</textarea>
+                <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5">${review.review_content }</textarea>
               </div>
               <!-- 별점 선택 코드  -->
               <div class="form-group">
@@ -130,16 +107,16 @@
                 </div>
                 <div class="form-group" id="fileBtnArea">
                 	<c:choose>
-                		<c:when test="${empty vo.review_file }">
+                		<c:when test="${empty review.review_file }">
                 			<input type="file" name="file">
                 		</c:when>
                 		<c:otherwise>
-            				<c:set var="length" value="${fn:length(vo.review_file) }" />
-							<c:set var="index" value="${fn:indexOf(vo.review_file, '_') }" />
-							<c:set var="fileName" value="${fn:substring(vo.review_file, index + 1, length) }" />
-							<a href="${pageContext.request.contextPath }/resources/upload/${vo.review_file_path}/${vo.review_file}" download="${fileName }">${fileName }</a>
+            				<c:set var="length" value="${fn:length(review.review_file) }" />
+							<c:set var="index" value="${fn:indexOf(review.review_file, '_') }" />
+							<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }" />
+							<a href="${pageContext.request.contextPath }/resources/upload/${review.review_file_path}/${review.review_file}" download="${fileName }">${fileName }</a>
 							<%-- 삭제버튼 클릭 시 deleteFile() 함수 호출(파라미터로 글번호, 파일명 전달) --%>
-							<input type="button" value="삭제" onclick="deleteFile()">
+							<input type="button" value="삭제" onclick="">
                 		</c:otherwise>
                 	</c:choose>
               </div>
