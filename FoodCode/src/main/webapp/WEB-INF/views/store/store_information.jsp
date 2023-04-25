@@ -573,6 +573,9 @@
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a91ec8056a635e82b3a39377778273a1&libraries=services"></script>
 <!--   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a91ec8056a635e82b3a39377778273a1"></script> -->
 	<script>
+	
+	
+	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -586,7 +589,7 @@
 	var geocoder = new kakao.maps.services.Geocoder();
 	
 	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+	geocoder.addressSearch("${storeInfo[0].store_address}", function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -601,7 +604,7 @@
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${storeInfo[0].store_name}</div>'
         });
         infowindow.open(map, marker);
 
