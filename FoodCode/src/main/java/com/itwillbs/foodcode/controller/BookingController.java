@@ -79,12 +79,6 @@ public class BookingController {
 		bookinginfo.add(booking_seat);
 		bookinginfo.add(booking_content);
 				
-		
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("member", member);
-//		map.put("storeInfo", storeInfo);
-//		map.put("bookinginfo", bookinginfo);
-		
 		model.addAttribute("member", member);
 		model.addAttribute("storeInfo", storeInfo);
 		model.addAttribute("bookinginfo", bookinginfo);
@@ -93,48 +87,15 @@ public class BookingController {
 	}
 	
 	
-	// 결제하기 전 예약 확인 페이지
-//	@RequestMapping(value = "reservation.bo", method = {RequestMethod.GET, RequestMethod.POST})
-//	 public String reservation(HttpSession session, Model model, StoreVO store, BookingVO booking, @RequestParam int store_idx, @RequestParam String merchant_uid ,RedirectAttributes re) {
-		
-//		String id = (String)session.getAttribute("sId").toString();
-//		booking.setMember_id(id);
-//		booking.setStore_idx(store_idx);
-//		booking.setMerchant_uid(merchant_uid);
-		
-//		int insertBooking = bookingService.insertBooking(booking); 
-//		int bookingNum = booking.getBooking_idx();
-//		re.addAttribute("booking_idx", bookingNum);
-//		int storeNum = booking.getStore_idx();
-//		re.addAttribute("store_idx", store_idx);
-//		re.addAttribute("merchant_uid", merchant_uid);
-		
-//		if(id == null) {
-//			model.addAttribute("msg", "로그인 후 이용해주세요");
-//			return "fail_back";
-//		} else {
-//			if(insertBooking > 0) {
-//				System.out.println("결제 번호 " + merchant_uid);
-//			}
-//			return "redirect:/bookingsuccess.bo";
-//			} else {
-//				model.addAttribute("msg", "예약을 다시 확인해주세요");
-//				return "fail_back";
-//			}
-//		}
-//	}
+
 
 	//결제 끝난 후 보여줄 페이지
 	@PostMapping(value = "bookingsuccess.bo")
-//	public String bookingSuccess(HttpSession session, Model model, @RequestParam(value = "booking_idx", defaultValue = "defalutValue") int booking_idx, @RequestParam(value = "store_idx", defaultValue = "defalutValue") int store_idx) {
-//	public String bookingSuccess(HttpSession session, Model model, String merchant_uid, int store_idx, String booking_date, String booking_time, String booking_num, String booking_seat, String booking_content, BookingVO booking) {
 		public String bookingSuccess(HttpSession session, Model model, BookingVO booking, String merchant_uid) {
 		String id = (String)session.getAttribute("sId").toString();
 		
 		booking.setMember_id(id);
 		int insertBooking = bookingService.insertBooking(booking); 
-//		booking.setStore_idx(store_idx);
-//		booking.setMerchant_uid(merchant_uid);
 		
 		System.out.println("값 확인하기 " + booking);
 		
