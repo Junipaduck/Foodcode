@@ -130,15 +130,20 @@ public class CustomerController {
 
     @GetMapping(value = "/customerAfter.me")
     public ModelAndView customerAfter(HttpSession session, Model model) {
+    	
         System.out.println("customerAfter.me");
+        
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) { // 세션 아이디가 없을 경우 돌려보내기
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return new ModelAndView("customer/fail_back");
 		}
+		
 		List bookingList = customerService.bookingList(sId); // 세션 아이디의 예약목록을 불러옴
 		Map map = new HashMap();
 		map.put("bookingList",bookingList);
+		
+		
 		System.out.println(bookingList);
 		
 		
@@ -147,7 +152,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerLast.me")
-    public ModelAndView customerLast(HttpSession session,Model model) {
+    public ModelAndView customerLast(HttpSession session, Model model) {
         System.out.println("customerLast.me");
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) { // 세션아이디가 없을경우 돌려보냄
@@ -164,24 +169,16 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customerReview.me")
-    public String customerReview(HttpSession session, Model model, ReviewVO review, StoreVO store) {
-        System.out.println("customerReview.me");
+    public String customerReview(ReviewVO review, StoreVO store, HttpSession session, Model model) {
+   
+    	System.out.println("customerReview.me");
+    	
         String sId = (String) session.getAttribute("sId");
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return "customer/fail_back";
 		}
 		
-		// 위찬영 코드 
-//		List myReviewList = customerService.selectMyReview(sId);
-//		System.out.println(myReviewList);
-//		model.addAttribute("myReviewList", myReviewList);
-//		
-//		Map map = new HashMap();
-//		map.put("myReviewList", myReviewList);
-//
-//        return new ModelAndView("customer/customer_review","map",map);
-//        return new ModelAndView("customer/customer_review");
 		
 		// 0418 양선정 수정 코드 
 		// 마이페이지 리뷰 목록 조회 
@@ -189,6 +186,8 @@ public class CustomerController {
 //		List<ReviewVO> reviewList = reviewService.reviewList(review);
 		List<ReviewVO> reviewList = reviewService.customerReviewList(review);
 		List<StoreVO> storeList = storeService.selectStoreList(store);
+		
+		// merchant_uid
 		
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("storeList", storeList);

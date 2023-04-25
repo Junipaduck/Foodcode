@@ -72,6 +72,7 @@
             <form class="contact-form bg-white" action="reviewWritePro.me" method="post" enctype="multipart/form-data">
 					<!-- 히든 속성으로 store_idx 가져오기??????  -->
             		<input type="hidden" name="store_idx" value="${param.store_idx}" />
+            		<input type="hidden" name="merchant_uid" value="${param.merchant_uid }">
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="customer_id">아이디</label> -->
 <!--                 <input type="text" class="form-control" id="customer_id" name="customer_id" aria-describedby="emailHelp"> -->

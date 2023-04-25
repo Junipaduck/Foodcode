@@ -16,9 +16,9 @@
 				,1 -- review_re_seq
 				,#{store_idx} -- store_idx
 				,#{member_id} -- member_id
-				,1 -- pay_idx
 				,#{review_file} -- 리뷰 이미지 파일
 				,#{review_file_path}
+				,#{merchant_uid}
 			)
 	</insert>
 	
@@ -66,7 +66,6 @@
 			, r.review_re_ref
 			, r.review_re_lev
 			, r.review_re_seq
-			, r.pay_idx
 			, r.review_file_path 
 			FROM review r JOIN store s
 			ON r.store_idx = s.store_idx
@@ -114,7 +113,6 @@
 				, r.review_re_ref
 				, r.review_re_lev
 				, r.review_re_seq
-				, r.pay_idx
 				, r.review_file_path 
 				FROM review r JOIN store s
 				ON r.store_idx = s.store_idx

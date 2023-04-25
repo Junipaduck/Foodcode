@@ -97,7 +97,7 @@
 					<td>${booking.booking_content }</td>
 					<!-- 리뷰작성 버튼 클릭시 리뷰 작성 양식으로 이동 -->
 					
-					<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${booking.store_idx}'"></td>
+					<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${booking.store_idx}&merchant_uid=${booking.merchant_uid }'"></td>
 				</tr>
 				</c:forEach>
 				</c:when>

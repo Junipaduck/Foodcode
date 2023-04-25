@@ -34,13 +34,13 @@ public class ReviewController {
     @GetMapping(value = "/customerReviewWrite.me")
     public String customerReviewWrite(@RequestParam int store_idx) {
     	System.out.println("왔니----------------------------------------------------");
-    	System.out.println("선정이" + store_idx);
+    	
     	return "customer/customer_review_write";
     }
 	
     // 리뷰 작성 
-    @RequestMapping(value = "/reviewWritePro.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewWritePro(ReviewVO vo, Model model, HttpSession session, @RequestParam int store_idx) {
+    @PostMapping(value = "/reviewWritePro.me")
+    public String reviewWritePro(@RequestParam int store_idx, ReviewVO vo, @RequestParam String merchant_uid, Model model, HttpSession session) {
     	
 //    	 store_idx 받아오기 
     	
@@ -85,6 +85,10 @@ public class ReviewController {
     	// 로그인 된 회원만 작성 가능하도록 세션 아이디 받아오기
     	session.getAttribute("sId");
     	vo.setMember_id(session.getAttribute("sId").toString()); // review 테이블 member_id
+    	
+    	// merchant_uid 저장하기 
+//    	vo.setMerchant_uid(merchant_uid);
+//    	System.out.println("---------------------------------------흠흠흠" + merchant_uid);
     	
     	int insertCount = reviewService.insertReview(vo); 
     	if(insertCount > 0) { // 리뷰 작성 성공 시 [방문후] 페이지로 리다이렉트 
