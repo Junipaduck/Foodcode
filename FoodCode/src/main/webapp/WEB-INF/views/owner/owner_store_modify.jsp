@@ -92,7 +92,7 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100" style="width: 540px; margin-left: -80px;">
             <h3 class="section-title">STORE</h3>
-            <form class="contact-form bg-white" action="ownerStoreModifyPro.me" method="post">
+            <form class="contact-form bg-white" action="ownerStoreModifyPro.me" name="ownerStoreModifyPro" method="post"  enctype="multipart/form-data">
             <input type="hidden" name="store_idx" value="${param.store_idx }">
               <div class="row">
               	<div class="col-md-6">
@@ -123,7 +123,7 @@
 	                		<c:set var="length" value="${fn:length(store.store_file) }" />
 							<c:set var="index" value="${fn:indexOf(store.store_file, '_') }" />
 							<c:set var="fileName" value="${fn:substring(store.store_file, index + 1, length) }" />
-							<a href="${pageContext.request.contextPath }/resources/storeFileUpload/${store.store_file_path}/${store.store_file}" download="${fileName }">${fileName }</a>
+							<a>${fileName }</a>
 							<%-- 삭제버튼 클릭 시 deleteFile() 함수 호출(파라미터로 글번호, 파일명 전달) --%>
 							<input type="button" value="삭제" onclick="deleteFile()">
                 		</c:otherwise>

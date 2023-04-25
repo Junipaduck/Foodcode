@@ -65,8 +65,8 @@ public class OwnerService {
 	}
 
 	// 점주 가게 정보 수정 - 업체사진 삭제
-	public int removeStoreFile(int store_index) {
-		return mapper.deleteStoreFile(store_index);
+	public int removeStoreFile(int store_idx) {
+		return mapper.deleteStoreFile(store_idx);
 	}
 
 	// 점주 가게 정보 수정
