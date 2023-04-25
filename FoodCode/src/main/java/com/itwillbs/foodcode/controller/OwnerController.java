@@ -7,6 +7,9 @@ import java.util.*;
 
 import javax.servlet.http.*;
 
+import org.json.*;
+import org.json.simple.JSONObject;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
@@ -264,9 +267,17 @@ public class OwnerController {
 		System.out.println(id);
 		List<HashMap<String, String>> storeBooking = ownerService.showBooking(id, clickedDay);
 //		ArrayList<HashMap<String, String>> storeBooking = ownerService.showBooking(id);
-		System.out.println(storeBooking);
-		model.addAttribute("storeBooking", storeBooking);
-		return "owner/owner_mypage";
+//		System.out.println(storeBooking);
+//		model.addAttribute("storeBooking", storeBooking);
+		
+//		if(storeBooking != null) {
+//			return "true";
+//		} else {
+//			return "false";
+//		}
+		JSONArray jsonArr = new JSONArray(storeBooking);
+			
+		return jsonArr.toString();
 		
 	}
 	

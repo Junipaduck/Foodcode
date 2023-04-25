@@ -110,7 +110,7 @@
 	                	clickedMonth = (1 + nowMonth.getMonth());
 	                	clickedDate = this.getAttribute('id').toString().substr(8,2);
 	                	
-	                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
+// 	                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
 	                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
                 		console.log(clickedYMD);
                 		
@@ -118,10 +118,53 @@
                 			type: "GET",
                 			url: "getTodayBooking",
                 			data:{"clickedDay" : clickedYMD},
-                			//data: {"clickedYMD" : clickedYMD},
+                			dataType    : "json",
+                			// contentType : "application/json; charset=UTF-8",
                 			success: function(result){
-                				if(result == true) {
-                					$("#bookingArea").html("테스트");
+//                 				debugger;
+//                 				alert(result);
+                				if(result) {
+                					// 밑에 2줄은 하나가 테스트 한것 (지워도됨)
+                					
+                					
+                					
+                					//$("#bookingArea").text("짜증!!!!!")
+                					
+                					
+                					
+                					//let storeBooking = ${storeBooking };
+                					
+//                 					$("#bookingArea").html('<c:forEach items="${storeBooking }" var="storeBooking">
+//                 				    <tr>
+//                 				      <th scope="row">${storeBooking.store_name }</th>
+//                 				      <td>${storeBooking.booking_idx }</td>
+//                 				      <td>${storeBooking.booking_date }</td>
+//                 				      <td>${storeBooking.booking_time }</td>
+//                 				      <td>${storeBooking.member_name }</td>
+//                 				      <td>${storeBooking.booking_num }</td>
+//                 				      <td>${storeBooking.member_phone }</td>
+//                 				      <td>${storeBooking.booking_seat }</td>
+//                 				      <td class="white-space-nowrap">${storeBooking.booking_content }</td>
+//                 				    </tr>
+//                 				    </c:forEach>');
+// 									debugger;
+                					result.forEach((el, index) => { 
+                						let tr = '<tr>' +
+	                				         '<th scope="row">' + el.store_name + '</th>' +
+	                				         '<td>' + el.booking_idx + '</td>' +
+	                				         '<td>' + el.booking_date + '</td>' +
+	                				         '<td>' + el.booking_time + '</td>' +
+	                				         '<td>' + el.member_name + '</td>' +
+	                				         '<td>' + el.booking_num + '</td>' +
+	                				         '<td>' + el.member_phone + '</td>' +
+	                				         '<td>' + el.booking_seat + '</td>' +
+	                				         '<td class="white-space-nowrap">' + el.booking_content + '</td>' +
+	                				         '</tr>';
+                						  $("#bookingArea").html(tr);
+                						  
+                						  console.log(tr);
+                						});
+									
                 				} else {
                 					alert("실패!");
                 				}
@@ -220,17 +263,17 @@
 				       		</div>
 				    		<div class="collapse" id="collapse_${storeInfo.store_idx}" aria-labelledby="heading_${storeInfo.store_idx}" data-parent="#accordionExample">
 							<!-- 0421 사진 css 안맞아서 잠시 주석 -->
+				        		<div class="card-body">
 <!-- 				       		<div class="col-lg-5"> -->
 <!-- 								<div class="owl-single dots-absolute owl-carousel"> -->
 <%-- 									<img src="${pageContext.request.contextPath }/resources/images/slider-1.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
 <%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-2.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
 <%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-3.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
 <%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-4.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
-<%-- 				            		<img src="${pageContext.request.contextPath }/resources/images/slider-5.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20"> --%>
 <!-- 				          		</div> -->
 <!-- 				        	</div> -->
-				        		<div class="card-body">
         							<div class="col-lg-5 pl-lg-7 ml-auto">
+				            		<img src="${pageContext.request.contextPath }/resources/images/slider-5.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
 				        			<h2 class="section-title mb-4" >${storeInfo.store_name }</h2>
 				         			<p>${storeInfo.store_content }</p>
 				          			<ul class="list-unstyled two-col clearfix">
@@ -259,6 +302,7 @@
 							              <input type="button" class="btn btn-primary btn-block" value="메뉴를 등록해주세요" id="store_menu" onclick="window.open('store_menu.so?store_idx=${storeInfo.store_idx}', 'window_name')">
 							              </div>
 				          			</ul>
+				          			
 				          			</div>
 									<br>
 									<button type="button" class="btn btn-primary" onclick="location.href='storeModify.me?store_idx=${storeInfo.store_idx}'">수정</button>
@@ -345,22 +389,10 @@
 			      <th class="white-space-nowrap" scope="col">기타</th>
 			    </tr>
 			  </thead>
-			  <tbody>
-			  <div id="bookingArea">
-			  <c:forEach items="${storeBooking }" var="storeBooking">
-			    <tr>
-			      <th scope="row">${storeBooking.store_name }</th>
-			      <td>${storeBooking.booking_idx }</td>
-			      <td>${storeBooking.booking_date }</td>
-			      <td>${storeBooking.booking_time }</td>
-			      <td>${storeBooking.member_name }</td>
-			      <td>${storeBooking.booking_num }</td>
-			      <td>${storeBooking.member_phone }</td>
-			      <td>${storeBooking.booking_seat }</td>
-			      <td class="white-space-nowrap">${storeBooking.booking_content }</td>
-			    </tr>
-			    </c:forEach>
-			    </div>
+			  <tbody id="bookingArea">
+			   
+			   
+			   
 			  </tbody>
 			</table>
             
