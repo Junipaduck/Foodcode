@@ -76,4 +76,9 @@ public class CustomerService {
 	}
 
 
+	public String JoinPerson(String email) {
+		return mapper.joinPerson(email);
+	}
+
+
 }

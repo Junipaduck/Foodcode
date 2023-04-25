@@ -1,14 +1,17 @@
 package com.itwillbs.foodcode.controller;
 
-import java.util.List;
-import java.util.Optional;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
+import org.springframework.validation.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.itwillbs.foodcode.service.*;
@@ -25,6 +28,8 @@ public class MainController {
 	private MemberService memberService;
 	@Autowired
 	private StoreService storeService;
+	@Autowired
+    private KaKaoService ks;
 	
 	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index(StoreVO store, Model model) {
@@ -133,7 +138,27 @@ public class MainController {
 		return "notice/service_view";
 	}
 	
-	
+	// 카카오 로그인 및 회원가입
+    @GetMapping("/kakao")
+    public String getCI(@RequestParam String code, Model model, HttpSession session) throws IOException {
+        System.out.println("code = " + code);
+        String access_token = ks.getToken(code); 
+        Map<String, Object> userInfo = ks.getUserInfo(access_token);
+        model.addAttribute("code", code);
+        model.addAttribute("access_token", access_token);
+        model.addAttribute("userInfo", userInfo);
+        String email = (String)userInfo.get("email");
+        
+    	String id = customerService.JoinPerson(email);
+    	System.out.println(id);
+    	if(id == null || id.equals("")) {
+    		return "customer/customer_join_form";
+    	} else {
+    		session.setAttribute("sId", id);
+    		return "index";
+    	}
+    	
+	}
 }
 
 

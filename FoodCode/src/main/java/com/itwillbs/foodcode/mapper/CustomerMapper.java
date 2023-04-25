@@ -34,4 +34,6 @@ public interface CustomerMapper {
 
 	boolean isDuplicateMember(String member_id);
 
+	String joinPerson(String email);
+
 }

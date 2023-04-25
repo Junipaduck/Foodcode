@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
 
 
-  <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+  <title>마이페이지</title>
 </head>
 
 <body>

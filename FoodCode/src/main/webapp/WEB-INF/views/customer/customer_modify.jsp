@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
 
-  <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+  <title>회원 정보 수정</title>
   <script type="text/javascript">
 function DeleteMember() {
 	if(window.confirm("탈퇴하시겠습니까?")){

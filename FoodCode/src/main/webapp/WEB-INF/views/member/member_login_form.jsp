@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="kr">
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,6 +26,11 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
   <title>로그인</title>
+<script type="text/javascript">
+function doKakaoLogin() {
+    location.href = "https://kauth.kakao.com/oauth/authorize?client_id=17cca8149886e3a10cca266bef314925&redirect_uri=http://localhost:8089/foodcode/kakao&response_type=code&scope=account_email gender";
+    		}
+</script>
 </head>
 
 <body>
@@ -83,9 +88,10 @@
               	  </div>
               	</div>
               </div>
+              <div>
               <button type="submit" class="btn btn-primary">로그인</button>
               <input type="hidden" id="member_idx" value="1" name="member_idx">
-              <div>
+              <img src="${pageContext.request.contextPath }/resources/images/kakao_login_medium_narrow.png" onclick="doKakaoLogin()">
               <br>
               <br>
               <div>

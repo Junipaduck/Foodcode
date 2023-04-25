@@ -8,6 +8,7 @@
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
 <!doctype html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,7 +33,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
-  <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+  <title>개인 회원 가입</title>
   <script type="text/javascript">
   $(function() {
 		let nameStatus = false;
@@ -318,7 +319,7 @@
               </div>
               <div class="form-group">
                 <label class="text-black">이메일</label>
-                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="member_email" name="member_email" value="${userInfo.email }" aria-describedby="emailHelp">
                 <input type="button" value="인증하기" id="mail-Check-Btn">
               </div>
               <div class="form-group">
@@ -331,8 +332,16 @@
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">
+                <c:choose>
+                <c:when test="${not empty userInfo.gender }">
+				 <input type="radio" id="member_gender" value="남" name="member_gender"><label for="member_gender" <c:if test="${userInfo.gender eq 'male'}">checked</c:if>>남</label>
+				 <input type="radio" id="member_gender2" value="여" name="member_gender"><label for="member_gender2" <c:if test="${userInfo.gender eq 'female'}">checked</c:if>>여</label>
+                </c:when>
+                <c:otherwise>
 				 <input type="radio" id="member_gender" value="남" name="member_gender"><label for="member_gender">남</label>
 				 <input type="radio" id="member_gender2" value="여" name="member_gender"><label for="member_gender2">여</label>
+                </c:otherwise>
+                </c:choose>
 				</div>
               </div>
               <button type="submit" class="btn btn-primary">가입</button>
@@ -354,9 +363,6 @@
         </div>
       </div>
 
-
-    </div>
-  </div>
 
   <div class="py-5 cta-section">
     <div class="container">

@@ -257,7 +257,46 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 			</div>
 		</div>
 	</div>
+	<!-- 카카오 로그인 함수들! -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
 
+        window.Kakao.init('17cca8149886e3a10cca266bef314925');
+        window.Kakao.Auth.setAccessToken(JSON.parse(sessionStorage.getItem('AccessKEY'))); //sessionStorage에 저장된 사용자 엑세스 토큰 받아온다.
+        
+        function kakaoLogout() {
+            if (!Kakao.Auth.getAccessToken()) {
+                console.log('Not logged in.');
+                return;
+            }
+            Kakao.Auth.logout(function(response) {
+                alert(response +' logout');
+                window.location.href='http://localhost:8089/foodcode/main';
+            });
+        };
+
+        function secession() {
+            Kakao.API.request({
+                url: '/v1/user/unlink',
+                success: function(response) {
+                    console.log(response);
+                    //callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+                    window.location.href='http://localhost:8089/foodcode/main';
+                },
+                fail: function(error) {
+                    console.log('탈퇴 미완료')
+                    console.log(error);
+                },
+            });
+        };
+
+        const logout = document.querySelector('#kakaoLogout');
+        const sion = document.querySelector('#secession');
+
+        logout.addEventListener('click', kakaoLogout);
+        sion.addEventListener('click', secession);
+    </script>
+		<!-- 카카오 함수 끝! -->
 	<footer>
 		<jsp:include page="inc/bottom.jsp"></jsp:include>
 	</footer>

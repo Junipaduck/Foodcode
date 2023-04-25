@@ -295,12 +295,13 @@ public class CustomerController {
     	}
     }
     
+    // 아이디 중복 확인을 위한 요청
     @ResponseBody
     @GetMapping(value = "MemberCheckDupIdPro.me")
     public boolean MemberCheckDupIdPro(@RequestParam String member_id) {
     	System.out.println("MemberCheckDupIdPro");
     	System.out.println(member_id);
-    	boolean isDupilcateMember = customerService.isDupilcateMember(member_id);
+    	boolean isDupilcateMember = customerService.isDupilcateMember(member_id); // 일치하는 값이 있을 시 true를 응답
     	System.out.println(isDupilcateMember);
     	return isDupilcateMember;
     	

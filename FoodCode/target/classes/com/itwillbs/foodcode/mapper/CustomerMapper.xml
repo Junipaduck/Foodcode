@@ -123,4 +123,10 @@
 	FROM member
 	WHERE member_id = #{member_id}
 	</select>
+	
+	<select id="joinPerson" resultType="String">
+	SELECT member_id
+		FROM member
+			WHERE member_email = #{email}
+	</select>
 </mapper>
