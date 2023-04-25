@@ -61,7 +61,7 @@
     </div>
   </div>
   <jsp:include page="customer_left.jsp"></jsp:include>
-  <div align="center">
+  <div align="center" style="padding-top: 70px;">
 	  		<table id="rwd-table">
 				<tr>
 			  		<td>
