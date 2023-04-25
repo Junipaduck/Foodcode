@@ -67,6 +67,11 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
  .inner-container77::-webkit-scrollbar77 {
    display: none;
  }
+ 
+ .form222 {
+  border-radius: 10px;
+  z-index: 9;
+  background: #ffffff; }
 
 </style>
 <!-- ----------------------------------------------------------------------------------------- -->
@@ -104,23 +109,32 @@ $(document).ready(function() {
 　<!-- 이 줄에 띄어쓰기 해놓았습니다. 삭제X -->
 
 
-    <!-- 0421 배하나 검색기능 테스트용으로 추가한 부분 시작 -->
-		<section id="buttonArea">
-			<form action="store_recommend.so"> <!-- 검색 눌렀을 때 이동할 곳 -->
-				<!-- 검색타입목록, 검색창 추가 -->
-				<select name="searchType">
-					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
-					<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
+<!-- 		<section id="buttonArea"> -->
+<!-- 			<form action="store_recommend.so"> 검색 눌렀을 때 이동할 곳 -->
+<!-- 				검색타입목록, 검색창 추가 -->
+<!-- 				<select name="searchType"> -->
+<%-- 					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option> --%>
+<%-- 					<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option> --%>
 <%-- 					<option value="store_name_store_content" <c:if test="${param.searchKeyword eq 'store_name_store_content'}">selected</c:if>>가게명&가게소개글</option> --%>
 <%-- 					<option value="subject_content" <c:if test="${param.searchKeyword eq 'subject_content'}">selected</c:if>>지역</option> --%>
+<!-- 				</select> -->
+<%-- 				<input type="text" name="searchKeyword" value="${param.searchKeyword }"/> --%>
+<!-- 				<input type="submit" value="검색" /> -->
+<!-- 			</form> -->
+<!-- 		</section> -->
+   
+   <div> 		
+    <section id="buttonArea">		
+		<form class="form222" action="store_recommend.so" style="margin-bottom: 10px; margin-top: -10px; margin-left: 10px;">
+				<select name="searchType" id="" class="custom-select" style="width: 5%; float: left;">
+					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
+					<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
 				</select>
-				<input type="text" name="searchKeyword" value="${param.searchKeyword }"/>
-				<input type="submit" value="검색" />
-			</form>
-		</section>
-	<!-- 0421 배하나 검색기능 테스트용으로 추가한 부분 끝 -->
-    		
-			    
+				<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }" style="width: 14%; float: left; margin-left: 10px;">
+				<button class="btn btn-outline-success" type="submit" style="margin-left: 10px;">Search</button>
+		</form>
+	</section>
+</div>	    
 			    
 <section class="contents">
 	<div class="tab_menu">
