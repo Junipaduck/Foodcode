@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="lnb-area addchat">
-            <ul style="margin-top: 100px;">
+            <ul style="margin-top: 100px;height: 170px;margin-bottom: 0px;">
                 <li><a href="customerModify.me" title="내 정보 수정">내 정보 수정</a></li>
                 <li><a href="customerBooking.me" title="예약 관리">예약 관리</a></li>
                 <li><a href="customerAfter.me" title="이용 내역">이용 내역</a></li>

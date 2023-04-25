@@ -65,7 +65,7 @@
     </div>
   </div>
   <jsp:include page="customer_left.jsp"></jsp:include>
-  <div class="untree_co-section">
+  <div class="untree_co-section" style="margin-left: 100px;">
   	<div align="center">
 		<table id="rwd-table">
 			<tr>
