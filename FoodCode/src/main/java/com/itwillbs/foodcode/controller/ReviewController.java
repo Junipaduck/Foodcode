@@ -35,6 +35,7 @@ public class ReviewController {
     public String customerReviewWrite(@RequestParam int store_idx) {
     	System.out.println("왔니----------------------------------------------------");
     	
+//    	return "customer/customer_review_write";
     	return "customer/customer_review_write";
     }
 	

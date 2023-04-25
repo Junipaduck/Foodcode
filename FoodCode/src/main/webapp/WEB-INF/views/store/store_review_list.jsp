@@ -61,18 +61,18 @@
 </head>
 
 <body>
-
 	
 
 	<form action="reviewList.me">
 		<!-- 검색창 -->
 		<select name="searchType">
 			<option value="content">내용</option>
-<!-- 			<option value="name">작성자</option> -->
+			<option value="name">작성자</option>
 		</select>
 		<input type="text" name="searchKeyword" value="${param.searchKeyword }">
 		<input type="submit" value="검색">
 		<input type="button" value="글쓰기" onclick="location.href='reviewList.me'">
+		<a href="main">홈</a>
 	</form>
 	
 	&nbsp; &nbsp; &nbsp; 
