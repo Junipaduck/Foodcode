@@ -65,6 +65,7 @@
 				<a href="main" class="logo m-0"><img class="logo99" alt="" src="${pageContext.request.contextPath }/resources/images/foodcodelogo2.png" width="160" height="60"><span class="text-primary"></span></a>
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+					<li><a href="reviewList.me">리뷰게시판</a></li>
 					<li><a href="store_recommend.so">맛집찾기</a></li>
 					<!-- <li><a href="noticeList.no">공지사항</a></li> --> <!-- 수정전 코드 -->
 					

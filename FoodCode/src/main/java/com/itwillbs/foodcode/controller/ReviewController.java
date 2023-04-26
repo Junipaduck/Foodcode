@@ -194,6 +194,7 @@ public class ReviewController {
     	}
     }
     
+    // 리뷰 수정 시 파일 삭제 및 수정 코드 
     @ResponseBody
     @PostMapping(value = "/ReviewDeleteFile.bo")
 	public void deleteFile(
@@ -329,6 +330,7 @@ public class ReviewController {
     	return "store/store_review_list";
     }
     
+
    
     // 리뷰 상세 보기 
     @GetMapping(value = "/ReviewDetail.me")

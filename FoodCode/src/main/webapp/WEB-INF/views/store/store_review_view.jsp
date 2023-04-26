@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
@@ -121,8 +123,16 @@ h2 {
 			        <div class="contents" style="white-space: pre-line;"> 
 			        ${review.review_content }
 			        </div>
+			        <hr>
+			        <div class="contents" style="white-space: pre-line;"> 
+    	                <c:set var="length" value="${fn:length(review.review_file) }"/>
+						<c:set var="index" value="${fn:indexOf(review.review_file, '_') }"/>
+						<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }"/>
+						<img alt="..." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 200px;width: 200px;">
+			        </div>
 			        <hr>	
 			        <div class="contents" style="white-space: pre-line;"> 
+			        <h4>점주답글</h4>
 			        ${reply.reply_content }
 			        </div>	
 	    		<br><hr>

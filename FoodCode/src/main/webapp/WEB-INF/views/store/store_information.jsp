@@ -459,7 +459,12 @@
 	
 	
 	<!-- 리뷰 게시판 영역 -->
-	<div id="reviewArea"></div>
+	<div id="reviewArea">
+	
+	</div>
+	
+	
+	
 		<!--  리뷰 목록 조회  -->
 	    <table  class="rwd-table">
         <tbody>
