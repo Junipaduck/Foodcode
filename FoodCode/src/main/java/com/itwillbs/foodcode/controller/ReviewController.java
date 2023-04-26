@@ -30,10 +30,20 @@ public class ReviewController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private BookingService bookingService;
+	
     // 예약관리 -> 방문후 -> 리뷰 
     @GetMapping(value = "/customerReviewWrite.me")
-    public String customerReviewWrite(@RequestParam int store_idx) {
+    public String customerReviewWrite(@RequestParam int store_idx, @RequestParam int booking_idx, Model model) {
     	System.out.println("왔니----------------------------------------------------");
+    	
+		// 리뷰 작성 시 merchant_uid 넘겨 주려고 
+//    	BookingVO booking = bookingService.getMerchantUid(booking_idx);
+    	String merchant_uid = bookingService.getMerchantUid(booking_idx);
+    	model.addAttribute("merchant_uid", merchant_uid);
+    	System.out.println("----------------------------------------" + merchant_uid);
+//    	System.out.println("----------------------------------------" + booking);
     	
 //    	return "customer/customer_review_write";
     	return "customer/customer_review_write";
@@ -232,10 +242,23 @@ public class ReviewController {
     // 리뷰 삭제 
     // url 주소에 파라미터 넘기는 거 까먹지 말기 !!! 
     @RequestMapping(value = "/reviewDelete.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewDelete(@RequestParam int review_idx, Model model) {
+    public String reviewDelete(@RequestParam int review_idx, Model model, HttpServletResponse response) {
     	System.out.println(review_idx);
     	int deleteCount = reviewService.deleteReview(review_idx);
     	if(deleteCount > 0) { // 리뷰 삭제 성공 시 [리뷰관리] 페이지로 이동
+    		
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("confirm('정말 리뷰를 삭제하시겠습니까?')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     		
     		return "redirect:/customerReview.me";
     	} else {

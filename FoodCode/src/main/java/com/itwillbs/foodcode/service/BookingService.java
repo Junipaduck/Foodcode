@@ -21,5 +21,16 @@ public class BookingService {
 	public List bookingList(String id, String merchant_uid) {
 		return mapper.bookingList(id, merchant_uid);
 	}
+
+	// 리뷰 작성 시 merchant_uid 넘기는 용도
+//	public BookingVO getMerchantUid(int booking_idx) {
+//		
+//		return mapper.selectMerchantUid(booking_idx);
+//	}
+	
+	public String getMerchantUid(int booking_idx) {
+		
+		return mapper.selectMerchantUid(booking_idx);
+	}
 	
 }
