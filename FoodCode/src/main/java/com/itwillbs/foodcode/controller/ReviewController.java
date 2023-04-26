@@ -102,16 +102,9 @@ public class ReviewController {
 //    	System.out.println("---------------------------------------흠흠흠" + merchant_uid);
     	
     	int insertCount = reviewService.insertReview(vo); 
+    	
     	if(insertCount > 0) { // 리뷰 작성 성공 시 [방문후] 페이지로 리다이렉트 
 
-    		
-    		// 파일 업로드 코드 
-    		/*
-    		 * 업로드 된 파일은 MultipartFile 객체에 의해 임시 폴더에 저장되어 있으며 리뷰 작성 성공 시 
-    		 * 임시 위치에 저장된 파일을 실제 폴더로 옮기는 작업이 필요하다. 
-    		 * transferTo() 메서드를 호출하며 실제 위치로 이동(업로드) 
-    		 * 파라미터: File 객체 
-    		 * */
     		
     		try {
 				mFile.transferTo(new File(saveDir, vo.getReview_file()));
@@ -432,7 +425,7 @@ public class ReviewController {
     
     // 점주 회원 리뷰 삭제 요청
     @GetMapping(value = "/ownerReviewDelete.me")
-    public String ownerReviewDelete(@RequestParam int review_idx, HttpSession session, Model model) {
+    public String ownerReviewDelete(@RequestParam int review_idx, HttpSession session, Model model, HttpServletResponse response) {
     	
     	// 리뷰 삭제 요청 클릭시 update 구문을 실행하여 delete_auth_status를 "Y"로 변경한다. 
     	// 삭제 요청을 하지 않았을 시 항상 "N"인 상태 
@@ -459,6 +452,18 @@ public class ReviewController {
     	int reviewUpdateCount = reviewService.ownerReviewDelete(review_idx);
     	
     	if(reviewUpdateCount > 0) { // 리뷰 삭제 신청이 성공하였을 경우 
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("confirm('정말 리뷰 삭제 요청을 하시겠습니까?')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     		return "owner/owner_mypage_review";
     	} else {
     		model.addAttribute("msg", "리뷰 삭제 신청에 실패하였습니다!");
