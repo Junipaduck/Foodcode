@@ -33,6 +33,26 @@
   <title>리뷰 수정 페이지</title>
 
 </head>
+<script type="text/javascript">
+	function deleteFile(){
+		$.ajax({
+			type: "POST",
+			url: "ReviewDeleteFile.bo",
+			data: {
+				"review_idx" : ${review.review_idx},
+				"review_file" : "${review.review_file}",
+				"review_file_path" : "${review.review_file_path}"
+			},
+			success: function(result) {
+				if(result == "true"){
+					$("#fileBtnArea").html("<input type='file' name='file'/>")
+				} else {
+					alert("일시적인 오류로 파일 삭제에 실패했습니다!");
+				}
+			}
+		});
+	}
+</script>
 <body>
 <header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
@@ -116,7 +136,7 @@
 							<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }" />
 							<a href="${pageContext.request.contextPath }/resources/upload/${review.review_file_path}/${review.review_file}" download="${fileName }">${fileName }</a>
 							<%-- 삭제버튼 클릭 시 deleteFile() 함수 호출(파라미터로 글번호, 파일명 전달) --%>
-							<input type="button" value="삭제" onclick="">
+							<input type="button" value="삭제" onclick="deleteFile()">
                 		</c:otherwise>
                 	</c:choose>
               </div>
