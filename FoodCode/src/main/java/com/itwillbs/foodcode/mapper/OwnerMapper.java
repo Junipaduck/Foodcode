@@ -35,4 +35,6 @@ public interface OwnerMapper {
 
 	int modifyStore(StoreVO store);
 
+	List<HashMap<String, String>> getMemberInfo(String id);
+
 }

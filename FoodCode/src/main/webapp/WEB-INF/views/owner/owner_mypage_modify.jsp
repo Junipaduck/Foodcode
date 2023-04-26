@@ -125,6 +125,7 @@ function DeleteMember() {
               </div>
               <button type="submit" class="btn btn-primary">수정</button>
               <button type="button" class="btn btn-primary" onclick="DeleteMember();">회원 탈퇴</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='ownerPage.me'">돌아가기</button>
               <input type="hidden" id="member_idx" value="1" name="member_idx">
             </form>
           </div>

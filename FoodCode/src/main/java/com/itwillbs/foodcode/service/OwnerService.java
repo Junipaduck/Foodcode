@@ -74,6 +74,10 @@ public class OwnerService {
 		return mapper.modifyStore(store);
 	}
 
+	public List<HashMap<String, String>> getMemberInfo(String id) {
+		return mapper.getMemberInfo(id);
+	}
+
 
 	
 

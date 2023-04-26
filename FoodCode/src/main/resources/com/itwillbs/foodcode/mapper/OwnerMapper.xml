@@ -31,6 +31,12 @@
 			WHERE member_id = #{member_id} AND member_passwd = #{member_passwd}
 	</select>
 	
+	<select id="getMemberInfo" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT *
+			FROM member
+			WHERE member_id = #{member_id}
+	</select>
+	
 	<select id="selectMember" resultType="com.itwillbs.foodcode.vo.MemberVO">
 		SELECT 
 			 member_idx

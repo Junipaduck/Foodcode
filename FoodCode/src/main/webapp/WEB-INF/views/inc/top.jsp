@@ -11,33 +11,49 @@
 	
 	
 	// 0426 최보아 수정중
-// 	$('document').ready(function () {
-// 		$.ajax({
-// 			type: "GET",
-// 			url: "SelectId.me",
-// 				//async:false,
-//	 			//data: ${sessionScope.sId},
-//	 			//dataType: "JSON",
-// 			dataType: "text",
-// 			success: function(res) {
-// 					console.log(res);
-//	 				let result = JSON.parse(result).toString();
-// 					data = res;
-// 				if(res == 'o') {
-// 					let loginId = 
-// 						'<li class="has-children"><a href="#">' + ${sessionScope.sId } + '님</a>' +
-// 						'<ul class="dropdown">' +
-// 						'<li><a href="mypage.me" title="내식당">내 식당</a></li>' + 
-// 						'<li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>' + 
-// 						'<li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>' + 
-// 						'</ul>' + 
-// 						'</li>';
-// 					$("#sessionArea").html(loginId);
-// 				}
-// 			}
+	$('document').ready(function () {
+		$.ajax({
+			type: "GET",
+			url: "selectId.me",
+// 			async:false,
+// //	 			//data: ${sessionScope.sId},
+	 		dataType: "json",
+// // 			dataType: "text",
+			success: function(result) {
+					console.log(result);
+					result.forEach((idArr, index) => {
+						if(idArr.member_type == 'o') {
+						let loginId = 
+							'<li class="has-children" style="color: rgba(255, 255, 255, 0.7);font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;"><a href="mypage.me">' + idArr.member_id + '님</a>' +
+							'<ul class="dropdown">' +
+							'<li><a href="mypage.me" title="내식당">내 식당</a></li>' + 
+							'<li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>' + 
+							'<li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>' + 
+							'</ul>' + 
+							'</li>';
+						$("#sessionArea").html(loginId);
+						} else if(idArr.member_type == 'c') {
+							let loginId = 
+// 								'<div style="margin-top:100px">' + 
+								'<li class="has-children" style="color: rgba(255, 255, 255, 0.7);font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;"><a href="mypage.me">' + idArr.member_id + '님</a>' +
+								'<ul class="dropdown">' +
+								'<li><a href="customerModify.me" title="내 정보 수정">내 정보 수정</a></li>' + 
+								'<li><a href="customerBooking.me" title="예약 관리">예약 관리</a></li>' + 
+								'<li><a href="customerAfter.me" title="이용 내역">이용 내역</a></li>' + 
+								'<li><a href="customerReview.me" title="리뷰 관리">리뷰 관리</a></li>' + 
+								'</ul>' + 
+								'</li>';
+						$("#sessionArea").html(loginId);
+						} else if(idArr.member_type == 'admin') {
+							let loginId = 
+								'<li class="has-children"><a href="#">' + idArr.member_id + '님</a>'
+						$("#sessionArea").html(loginId);
+						}
+					});
+			}
 				
-// 		})
-// 	});
+		})
+	});
 </script>
 
 
@@ -94,8 +110,8 @@
 						<c:otherwise>
 							<!-- ㅇㅇ님 클릭시 마이페이지로 이동 -->
 <%-- 							<li><a href="customerMypage.me">${sessionScope.sId } 님</a></li>  --%>
-							<li></li>
-								<!-- 점주 회원이면 드롭다운 -0421 최보아 수정  / 후에 수정 -->
+							<li id="sessionArea"></li>
+								<!-- 0426최보아 - 회원 타입에 따라 드롭다운(메뉴) 생기도록 수정(상단 ajax부분) -->
 <%-- 								<c:choose> --%>
 <%-- 									<c:when test="${sessionScope.sId eq 'owner1'}"> --%>
 <%-- 										<li class="has-children"><a href="#">${sessionScope.sId } 님</a> --%>
@@ -107,7 +123,7 @@
 <!-- 										</li> -->
 <%-- 									</c:when> --%>
 <%-- 									<c:otherwise> --%>
-										<li><a href="mypage.me">${sessionScope.sId } 님</a></li>
+<%-- 										<li><a href="mypage.me">${sessionScope.sId } 님</a></li> --%>
 <%-- 									</c:otherwise> --%>
 <%-- 								</c:choose> --%>
 								<!-- 드롭다운 끝 -->

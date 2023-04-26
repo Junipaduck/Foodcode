@@ -109,7 +109,7 @@
                 		
                 		$.ajax({
                 			type: "GET",
-                			url: "getTodayBooking",
+                			url: "getTodayBooking.me",
                 			data:{"clickedDay" : clickedYMD},
                 			dataType    : "json",
                 			// contentType : "application/json; charset=UTF-8",
@@ -118,6 +118,7 @@
 //                 				alert(result);
                 				if(result) {
                 					result.forEach((el, index) => { 
+                						let url = "location.href='customerBookingCancle.me?booking_idx=" + el.booking_idx + "'";
                 						let tr = '<tr>' +
 	                				         '<th scope="row">' + el.store_name + '</th>' +
 	                				         '<td>' + el.booking_idx + '</td>' +
@@ -128,6 +129,7 @@
 	                				         '<td>' + el.member_phone + '</td>' +
 	                				         '<td>' + el.booking_seat + '</td>' +
 	                				         '<td class="white-space-nowrap">' + el.booking_content + '</td>' +
+	                				         '<td><input type="button" class="btn btn-primary" value="취소" onclick="' + url + '"></td>' + 
 	                				         '</tr>';
                 						  $("#bookingArea").html(tr);
                 						});

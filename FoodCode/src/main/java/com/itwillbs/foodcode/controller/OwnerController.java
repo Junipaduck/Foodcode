@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 
 import org.json.*;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -265,7 +266,7 @@ public class OwnerController {
 	
 	// 점주 마이페이지 선택한 날짜에 해당하는 예약 조회
 	@ResponseBody
-	@GetMapping("/getTodayBooking")
+	@GetMapping("/getTodayBooking.me")
 	public String getTodayBooking(@RequestParam String clickedDay, Model model, HttpSession session) {
 		System.out.println(clickedDay);
 		String id = (String)session.getAttribute("sId");
@@ -293,32 +294,16 @@ public class OwnerController {
 	}
 	
 	
-	// 0426 보아 수정중
 	// 로그인 시 top.jsp에서 점주회원인지 판별
 	@ResponseBody
-	@GetMapping("/SelectId.me")
+	@GetMapping("/selectId.me")
 	public String selectId(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("sId");
-//			if(id == null) {
-//				model.addAttribute("msg", "잘못된 접근입니다!");
-//				return "fail_back";
-//			}
-		String res="";
-		System.out.println("test");
-		MemberVO member = memberService.getMemberInfo(id);
-		System.out.println(member);
-		model.addAttribute("member", member);
-		if(member.getMember_id().equals("admin")) {
-			System.out.println("admin");
-			res = "admin";
-		} else if(member.getMember_type().equals("c")) {
-			System.out.println("c");
-			res = "c";
-		} else {
-			System.out.println("o");
-			res = "o";
-		}
-		return res;
+		List<HashMap<String, String>> member = ownerService.getMemberInfo(id);
+		JSONArray idArr = new JSONArray(member);
+		System.out.println(idArr);
+		
+		return idArr.toString();
 	}
 	
 	
