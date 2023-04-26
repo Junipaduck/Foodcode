@@ -185,15 +185,17 @@
                                     <div class="text-center">
                                       <table class="table table-bordered">
 										  	<tr style="color: black;">
-										  		<th>번호</th>
-										  		<th>아이디</th>
-										  		<th>이름</th>
+										  		<th>신고 번호</th>
+										  		<th>해당 식당 이름</th>
+										  		<th>식당 IDX</th>
+										  		<th>신고 내용</th>
 										  	</tr>
-										  <c:forEach var="memberList" items="${memberList }" begin="0" end="4" step="1">
+										  <c:forEach var="reportList" items="${reportList }" begin="0" end="4" step="1">
 										  	<tr>
-										  		<td>${memberList.member_idx }</td>
-										  		<td>${memberList.member_id }</td>
-										  		<td>${memberList.member_name }</td>
+										  		<td>${reportList.report_idx }</td>
+										  		<td>${reportList.store_name }</td>
+										  		<td>${reportList.store_idx }</td>
+										  		<td>${reportList.report_content }</td>
 										  	</tr>
 										  </c:forEach>
 									  </table>

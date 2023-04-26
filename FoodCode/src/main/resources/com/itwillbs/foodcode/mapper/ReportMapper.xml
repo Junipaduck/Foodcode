@@ -18,6 +18,13 @@
 					,#{store_idx}
 				)
 	</insert>
-
+	
+	
+	<select id="selectReportList" resultType="map">
+		SELECT r.report_idx, s.store_name, s.store_idx, r.report_content
+			FROM store s 
+				JOIN report r  ON s.store_idx = r.store_idx
+					ORDER BY r.report_idx DESC;
+	</select>
 
 </mapper>
