@@ -242,10 +242,23 @@ public class ReviewController {
     // 리뷰 삭제 
     // url 주소에 파라미터 넘기는 거 까먹지 말기 !!! 
     @RequestMapping(value = "/reviewDelete.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewDelete(@RequestParam int review_idx, Model model) {
+    public String reviewDelete(@RequestParam int review_idx, Model model, HttpServletResponse response) {
     	System.out.println(review_idx);
     	int deleteCount = reviewService.deleteReview(review_idx);
     	if(deleteCount > 0) { // 리뷰 삭제 성공 시 [리뷰관리] 페이지로 이동
+    		
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("confirm('정말 리뷰를 삭제하시겠습니까?')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     		
     		return "redirect:/customerReview.me";
     	} else {
