@@ -135,7 +135,10 @@
 	           		</div>						
 	           </td>
 	           <td>${review.review_date }</td>
-	           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
+	            <td>
+	           	<input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'">
+	           	<input type="button" value="리뷰삭제요청" onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">
+	           	</td>
 	           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
 	        </tr>
 		</c:forEach>

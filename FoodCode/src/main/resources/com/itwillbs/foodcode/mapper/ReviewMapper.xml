@@ -19,6 +19,7 @@
 				,#{review_file} -- 리뷰 이미지 파일
 				,#{review_file_path}
 				,#{merchant_uid}
+				,'N' -- 리뷰 삭제 요청 대기 상태 
 			)
 	</insert>
 	
@@ -221,6 +222,15 @@
 			FROM review_reply
 			WHERE review_idx = #{review_idx}
 	</select>
+	
+	<!-- 점주 회원 리뷰 삭제 신청 -->
+	<update id="updateOwnerReview">
+		UPDATE review
+			SET
+			delete_auth_status = 'Y' 
+			WHERE
+			review_idx = #{review_idx}	
+	</update>
 </mapper>
 
 

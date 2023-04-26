@@ -48,6 +48,9 @@ public interface ReviewMapper {
 
 	int selectReplyCount(int review_idx);
 
+	// 점주 회원 리뷰 삭제 신청 버튼 
+	int updateOwnerReview(int review_idx);
+
 }
 
 

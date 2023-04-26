@@ -428,7 +428,44 @@ public class ReviewController {
 			return "fail_back";
 		}
     	
-//    	
+    }
+    
+    // 점주 회원 리뷰 삭제 요청
+    @GetMapping(value = "/ownerReviewDelete.me")
+    public String ownerReviewDelete(@RequestParam int review_idx, HttpSession session, Model model) {
+    	
+    	// 리뷰 삭제 요청 클릭시 update 구문을 실행하여 delete_auth_status를 "Y"로 변경한다. 
+    	// 삭제 요청을 하지 않았을 시 항상 "N"인 상태 
+    	
+    	//로그인 한 점주 회원만 삭제 요청 가능 
+    	String id = (String)session.getAttribute("sId");
+    	
+    	if(id == null) {
+    		model.addAttribute("msg", "삭제 권한이 없습니다!");
+    		return "fail_back";
+    	}
+    	
+    	// delete_auth_status가 존재하는지 판단 하기 위해 
+    	ReviewVO review = reviewService.getReview(review_idx);
+    	model.addAttribute("review", review);
+    	
+    	// 이미 삭제 요청을 한 경우 
+    	if(review.getDelete_auth_status().equals("Y")) {
+    		model.addAttribute("msg", "이미 삭제 요청이 접수되었습니다!");
+    		return "fail_back";
+    	}
+    	
+    	// 삭제 버튼을 누르면 delete_auth_status를 "Y"로 변경 
+    	int reviewUpdateCount = reviewService.ownerReviewDelete(review_idx);
+    	
+    	if(reviewUpdateCount > 0) { // 리뷰 삭제 신청이 성공하였을 경우 
+    		return "owner/owner_mypage_review";
+    	} else {
+    		model.addAttribute("msg", "리뷰 삭제 신청에 실패하였습니다!");
+    		return "fail_back";
+    	}
+    	
+    	
     }
     
 }

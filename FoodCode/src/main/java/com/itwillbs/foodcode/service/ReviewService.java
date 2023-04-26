@@ -110,6 +110,11 @@ public class ReviewService {
 		
 		return mapper.selectReplyCount(review_idx);
 	}
+
+	public int ownerReviewDelete(int review_idx) {
+
+		return mapper.updateOwnerReview(review_idx);
+	}
 	
 	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {
