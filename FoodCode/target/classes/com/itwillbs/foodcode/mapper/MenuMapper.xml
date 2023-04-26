@@ -39,11 +39,11 @@
 	 , menu_name= #{menu.menu_name}
 	 , menu_type=#{menu.menu_type}
 	 , menu_price=#{menu.menu_price}
-	 <if test="menu_image != null and !menu_image.equals('')">
+	 <if test="menu.menu_image != null and !menu.menu_image.equals('')">
 	 , menu_image=#{menu.menu_image}
 	 </if>
 	 , menu_content=#{menu.menu_content}
-	 <if test="menu_image != null and !menu_image.equals('')">
+	 <if test="menu.menu_image != null and !menu.menu_image.equals('')">
 	 , menu_image_path = #{menu.menu_image_path}
 	 </if>
 	 WHERE menu_idx = #{menu.menu_idx} AND

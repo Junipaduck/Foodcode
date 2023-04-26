@@ -100,6 +100,7 @@ var menu_type="";
 var menu_price="";
 var menu_image="";
 var menu_content="";
+// 수정
 $(document).ready(function() {     
     $('#editEmployeeModal').on('show.bs.modal', function(event) {          
         menu_idx = $(event.relatedTarget).data('menu_idx');

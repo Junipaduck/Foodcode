@@ -232,37 +232,46 @@ public class StoreController {
 	@RequestMapping(value = "menuModify.so", method = {RequestMethod.GET,RequestMethod.POST})
 	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model, HttpSession session,@RequestParam MultipartFile file ) {
 		System.out.println("수정 : " + menu);
+		System.out.println("store_idx: " + store_idx);
 		MultipartFile mFile = file;
 		System.out.println(mFile.getOriginalFilename());
-		
-		 String uploadDir = "/resources/menuImage"; //프로젝트상의 가상 업로드 경로(근데 깃커밋하면 다른팀원들한테 폴더가 생성이 안됨.. 서버pc필요)
-	        String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
-	        System.out.println("실제 업로드 경로 : " + saveDir);
-
-	        
-
+		if(mFile != null && !mFile.equals("")) {
+			String uploadDir = "/resources/menuImage"; //프로젝트상의 가상 업로드 경로(근데 깃커밋하면 다른팀원들한테 폴더가 생성이 안됨.. 서버pc필요)
+			String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
+			System.out.println("실제 업로드 경로 : " + saveDir);
+			
+			
+			
 //	        MultipartFile mFile = menu.getFlie();
-	        String originalFileName = mFile.getOriginalFilename();
-
-	        String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
-
-	        menu.setMenu_image(uuid.substring(0, 8) + "_" + originalFileName);
-	        System.out.println("실제 업로드 될 파일명 : " + menu.getMenu_image());
+			String originalFileName = mFile.getOriginalFilename();
+			
+			String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
+			
+			menu.setMenu_image(uuid.substring(0, 8) + "_" + originalFileName);
+			System.out.println("실제 업로드 될 파일명 : " + menu.getMenu_image());
+			
+			try {
+				Date date = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+				menu.setMenu_image_path("/" + sdf.format(date));
+				saveDir = saveDir + menu.getMenu_image_path(); //실제 업로드 경로와 서브 디렉토리 경로 결합하여 저장
+				Path path = Paths.get(saveDir);
+				Files.createDirectories(path);
+				mFile.transferTo(new File(saveDir,uuid.substring(0, 8) + "_"+mFile.getOriginalFilename()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		int modifyCnt = menuService.modifyMenu(store_idx, menu);
+		if(modifyCnt > 0) {
+			return "redirect:/store_menu.so?store_idx=" + store_idx;
+		} else {
+			model.addAttribute("msg", "메뉴 수정 실패!");
+			return "customer/fail_back";
+		}
 	        
 	        
-	        try {
-	            Date date = new Date();
-	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-	            menu.setMenu_image_path("/" + sdf.format(date));
-	            saveDir = saveDir + menu.getMenu_image_path(); //실제 업로드 경로와 서브 디렉토리 경로 결합하여 저장
-	            Path path = Paths.get(saveDir);
-	            Files.createDirectories(path);
-	            mFile.transferTo(new File(saveDir,uuid.substring(0, 8) + "_"+mFile.getOriginalFilename()));
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
 	        
-	        return "redirect:/store_menu.so";
 	}
 	
 		
