@@ -248,23 +248,23 @@ function remove_tr(This) {//행 삭제
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>메뉴 이름</label>
-						<input type="text" class="form-control" name="menu_name" id="menu_name">
+						<input type="text" class="form-control" name="menu_name" id="menu_name" required="required">
 					</div>
 					<div class="form-group">
 						<label>메뉴 종류</label>
-						<input type="text" class="form-control" name="menu_type" id="menu_type">
+						<input type="text" class="form-control" name="menu_type" id="menu_type" required="required">
 					</div>
 					<div class="form-group">
 						<label>가격</label>
-						<input class="form-control" name="menu_price" id="menu_price">
+						<input class="form-control" name="menu_price" id="menu_price" required="required">
 					</div>
 					<div class="form-group">
 						<label>사진</label>
-						<input type="file" class="form-control" name="file" id="file">
+						<input type="file" class="form-control" name="file" id="file" required="required">
 					</div>					
 					<div class="form-group">
 						<label>메뉴 설명</label>
-						<textarea class="form-control" name="menu_content" id="menu_content" required></textarea>
+						<textarea class="form-control" name="menu_content" id="menu_content" required="required"></textarea>
 					</div>
 					<input type="hidden" value="${param.store_idx }" name="store_idx"> 					
 				</div>

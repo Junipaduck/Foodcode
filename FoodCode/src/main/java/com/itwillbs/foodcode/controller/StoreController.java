@@ -233,18 +233,13 @@ public class StoreController {
 	public String storeMenuModify(@RequestParam int store_idx, MenuVO menu, Model model, HttpSession session,@RequestParam MultipartFile file ) {
 		System.out.println("수정 : " + menu);
 		System.out.println("store_idx: " + store_idx);
-		MultipartFile mFile = file;
-		System.out.println(mFile.getOriginalFilename());
-		if(mFile != null && !mFile.equals("")) {
+		if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) {
+			MultipartFile mFile = file;
+			System.out.println(mFile.getOriginalFilename());
 			String uploadDir = "/resources/menuImage"; //프로젝트상의 가상 업로드 경로(근데 깃커밋하면 다른팀원들한테 폴더가 생성이 안됨.. 서버pc필요)
 			String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
 			System.out.println("실제 업로드 경로 : " + saveDir);
-			
-			
-			
-//	        MultipartFile mFile = menu.getFlie();
 			String originalFileName = mFile.getOriginalFilename();
-			
 			String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
 			
 			menu.setMenu_image(uuid.substring(0, 8) + "_" + originalFileName);
