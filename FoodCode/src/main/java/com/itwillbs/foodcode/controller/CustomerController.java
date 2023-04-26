@@ -27,6 +27,9 @@ public class CustomerController {
     
     @Autowired
     private StoreService storeService;
+    
+    @Autowired 
+    private BookingService bookingService;
 
     @GetMapping(value = "/customerJoin.me")
     public String customerJoin() {
@@ -145,7 +148,6 @@ public class CustomerController {
 		
 		
 		System.out.println(bookingList);
-		
 		
 
         return new ModelAndView("customer/customer_after","map",map);

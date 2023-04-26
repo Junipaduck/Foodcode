@@ -11,5 +11,8 @@ public interface BookingMapper {
 	int insertBooking(BookingVO booking);
 
 	List bookingList(@Param("id") String id, @Param("merchant_uid") String merchant_uid);
+
+	String selectMerchantUid(int booking_idx);
+//	String selectMerchantUid(int booking_idx);
 	
 }

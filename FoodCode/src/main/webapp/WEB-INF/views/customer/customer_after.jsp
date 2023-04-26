@@ -67,45 +67,45 @@
   <div align="center">
   		<!-- form 태그 추가  --> <!-- 여기 get mapping -->
 		<form action="customerReviewWrite.me" style="padding-top: 70px;">
-		<table id="rwd-table">
-			<tr>
-			  		<td>
-				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-							<h2 class="section-title">이용 내역</h2>
-					  	</div>
-			  		</td>
-		  		</tr>
-			<c:choose>
-				<c:when test="${not empty map.bookingList }">
+			<table id="rwd-table">
 				<tr>
-					<th class="td_left">예약번호</th>
-					<th class="td_left">가게명</th>
-					<th class="td_left">예약일</th>
-					<th class="td_left">예약시간</th>
-					<th class="td_left">인원 수</th>
-					<th class="td_left">선호 자리</th>
-					<th class="td_left">요청 사항</th>
-				</tr>
-				<c:forEach items="${map.bookingList }" var="booking">
-				<tr>
-					<td>${booking.booking_idx }</td>
-					<td>${booking.store_name }</td>
-					<td>${booking.booking_date }</td>
-					<td>${booking.booking_time }</td>
-					<td>${booking.booking_num }</td>
-					<td>${booking.booking_seat }</td>
-					<td>${booking.booking_content }</td>
-					<!-- 리뷰작성 버튼 클릭시 리뷰 작성 양식으로 이동 -->
-					
-					<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${booking.store_idx}&merchant_uid=${booking.merchant_uid }'"></td>
-				</tr>
-				</c:forEach>
-				</c:when>
-				<c:otherwise>
-				<tr><td align="center">이용하신 내역이 없어요!</td></tr>
-				</c:otherwise>
-				</c:choose>
-		</table>
+				  		<td>
+					  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
+								<h2 class="section-title">이용 내역</h2>
+						  	</div>
+				  		</td>
+			  		</tr>
+				<c:choose>
+					<c:when test="${not empty map.bookingList }">
+					<tr>
+						<th class="td_left">예약번호</th>
+						<th class="td_left">가게명</th>
+						<th class="td_left">예약일</th>
+						<th class="td_left">예약시간</th>
+						<th class="td_left">인원 수</th>
+						<th class="td_left">선호 자리</th>
+						<th class="td_left">요청 사항</th>
+					</tr>
+					<c:forEach items="${map.bookingList }" var="booking">
+					<tr>
+						<td>${booking.booking_idx }</td>
+						<td>${booking.store_name }</td>
+						<td>${booking.booking_date }</td>
+						<td>${booking.booking_time }</td>
+						<td>${booking.booking_num }</td>
+						<td>${booking.booking_seat }</td>
+						<td>${booking.booking_content }</td>
+						<!-- 리뷰작성 버튼 클릭시 리뷰 작성 양식으로 이동 -->
+						
+						<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${booking.store_idx}&booking_idx=${booking.booking_idx }'"></td>
+					</tr>
+					</c:forEach>
+					</c:when>
+					<c:otherwise>
+					<tr><td align="center">이용하신 내역이 없어요!</td></tr>
+					</c:otherwise>
+					</c:choose>
+			</table>
 <%-- 		<input type="hidden" name="store_idx" value="${booking.store_idx}" /> --%>
 <%--       	<input type="hidden" name="booking_idx" value="${booking.booking_idx}" /> --%>
 		</form>
