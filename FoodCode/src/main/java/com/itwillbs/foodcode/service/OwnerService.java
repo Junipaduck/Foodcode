@@ -78,6 +78,10 @@ public class OwnerService {
 		return mapper.getMemberInfo(id);
 	}
 
+	public int deleteOwnerStore(StoreVO store) {
+		return mapper.deleteOwnerStore(store);
+	}
+
 
 	
 

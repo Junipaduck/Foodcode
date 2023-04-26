@@ -37,4 +37,6 @@ public interface OwnerMapper {
 
 	List<HashMap<String, String>> getMemberInfo(String id);
 
+	int deleteOwnerStore(StoreVO store);
+
 }

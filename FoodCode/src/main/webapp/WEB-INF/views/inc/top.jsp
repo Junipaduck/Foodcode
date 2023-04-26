@@ -10,7 +10,7 @@
 	}
 	
 	
-	// 0426 최보아 수정중
+	// 로그인 시 회원 유형 판별
 	$('document').ready(function () {
 		$.ajax({
 			type: "GET",
@@ -32,6 +32,10 @@
 							'</ul>' + 
 							'</li>';
 						$("#sessionArea").html(loginId);
+						} else if(idArr.member_name == 'admin') {
+							let loginId = 
+								'<li style="color: rgba(255, 255, 255, 0.7);font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;"><a href="#">관리자님</a>'
+						$("#sessionArea").html(loginId);
 						} else if(idArr.member_type == 'c') {
 							let loginId = 
 // 								'<div style="margin-top:100px">' + 
@@ -43,10 +47,6 @@
 								'<li><a href="customerReview.me" title="리뷰 관리">리뷰 관리</a></li>' + 
 								'</ul>' + 
 								'</li>';
-						$("#sessionArea").html(loginId);
-						} else if(idArr.member_type == 'admin') {
-							let loginId = 
-								'<li class="has-children"><a href="#">' + idArr.member_id + '님</a>'
 						$("#sessionArea").html(loginId);
 						}
 					});

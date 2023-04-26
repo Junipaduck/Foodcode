@@ -48,6 +48,12 @@
 			}
 		});
 	}
+	
+	function DeleteMyStore() {
+		if(window.confirm("탈퇴하시겠습니까?")){
+		location.href="ownerStoreDelete.me";
+		}
+	}
 </script>
 </head>
 
@@ -203,7 +209,7 @@
               	<small id="small9" class="form-text text-muted">주차가능 여부, 결제가능한 페이 종류, 화장실 유무 등 기타 안내사항을 자유롭게 입력해주세요 :) </small>
               </div>
               <button type="submit" class="btn btn-primary">수정</button>
-              <button type="button" class="btn btn-primary">삭제요청</button>
+              <button type="button" class="btn btn-primary" onclick="DeleteMyStore();">가게 삭제</button>
               <button type="button" class="btn btn-primary">돌아가기</button>
               </form>
               </div>

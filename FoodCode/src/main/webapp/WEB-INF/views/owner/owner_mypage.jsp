@@ -33,6 +33,7 @@
   <!-- owner css -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css">
 
+  <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 
 
   <!-- 캘린더 -->

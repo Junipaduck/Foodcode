@@ -160,6 +160,16 @@
 				store_idx = #{store_idx}
 				
 	</update>
+	
+	<!-- 점주 가게 삭제 -->
+	<delete id="deleteOwnerStore">
+		DELETE 
+			FROM 
+				store, booking, review, menu, report
+			WHERE 
+				store_idx = #{store_idx}
+				
+	</delete>
 		
 	
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!doctype html>
 <html lang="kr">
 <head>
@@ -26,8 +27,9 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
 
-  <title>점주 회원가입</title>
-    <script type="text/javascript">
+  <title>FOODCODE : 점주 회원가입</title>
+  <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
+  <script type="text/javascript">
   $(function() {
 		let nameStatus = false;
 		let idStatus = false;
@@ -87,7 +89,7 @@
 			let specRegex = /[!@#$%]/;  // 대문자
 			if(!lengthRegex.exec(passwd)){
 				passwdStatus = false;
-				$("#checkPasswdResult").html("영문자, 숫자, 특수만자 8 ~ 16자 필수").css('color','red');
+				$("#checkPasswdResult").html("영문자, 숫자, 특수문자 8 ~ 16자 필수").css('color','red');
 				$("#member_passwd").select();
 			} else {
 				let count = 0;
@@ -268,7 +270,6 @@
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
 <!--             <h1 class="mb-0">점주 회원가입</h1> -->
-<!--             <p class="text-white">글씨체 뭐야..여기 뭐 적ㅈㅣ? </p> -->
           </div>
         </div>
       </div>
@@ -288,12 +289,12 @@
               <div class="form-group">
                 <label class="text-black">아이디</label>
                 <input type="text" class="form-control" id="member_id" name="member_id">
-                <small id="checkIdResult"></small>
+                <small id="checkIdResult">4 ~ 8자의 영문자, 숫자를 입력해주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호</label>
                 <input type="password" class="form-control" id="member_passwd" name="member_passwd">
-                  <small id="checkPasswdResult"></small>
+                  <small id="checkPasswdResult">8 ~ 16자의 영문자, 숫자, 특수문자를 입력해주세요.</small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호확인</label>

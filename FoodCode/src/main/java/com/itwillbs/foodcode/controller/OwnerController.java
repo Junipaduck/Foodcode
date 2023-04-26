@@ -306,5 +306,19 @@ public class OwnerController {
 		return idArr.toString();
 	}
 	
+	// 점주 가게 수정 페이지에서 가게 삭제 요청
+	@PostMapping("/ownerStoreDelete.me")
+	public String ownerStoreDelete(StoreVO store, Model model) {
+		int deleteCount = ownerService.deleteOwnerStore(store);
+		if(deleteCount > 0) {
+			model.addAttribute("msg", "가게 삭제 성공");
+			model.addAttribute("target", "ownerPage.me");
+			return "success";
+		} else {			
+			model.addAttribute("msg", "가게 삭제 실패");
+			return "fail_back";
+		}
+	}
+	
 	
 }
