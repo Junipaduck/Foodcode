@@ -135,8 +135,8 @@
                         <div class="collapse-divider"></div>
                         
                         <h6 class="collapse-header">그 외 페이지</h6>
-                        <a class="collapse-item" href="adminNoticeList.no">공지사항</a>
-                        <a class="collapse-item" href="blank.html">신고내역</a>
+                        <a class="collapse-item" href="adminNoticeList.no" target="_blank">공지사항</a>
+                        <a class="collapse-item" href="reportList" target="_blank">신고내역</a>
                     </div>
                 </div>
             </li>

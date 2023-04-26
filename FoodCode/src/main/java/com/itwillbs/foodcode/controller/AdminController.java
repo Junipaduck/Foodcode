@@ -222,7 +222,7 @@ public class AdminController {
 			return "fail_back";
 		}
 		System.out.println("지울 항목 !!!!=" + member_idx + member_id + member_type);
-		int isDeleteSuccess = adminService.MemberDelete(member_idx, member_id,member_type);
+		int isDeleteSuccess = adminService.MemberDelete(member_idx, member_id, member_type);
 		
 		if(isDeleteSuccess>0&&member_type.equals("c")) {
 			return "redirect:/adminMember_list";
@@ -249,6 +249,17 @@ public class AdminController {
 		return mailService.joinEmail(email); //회원가입시 랜덤 코드 발송 메일
 		}
 		return mailService.storeEmail(email, storeName); //식당 경고 메세지 발송 메일
+	}
+	
+	
+	// ================신고 리스트======================
+	@GetMapping(value = "reportList")
+	public String reportList(Model model) {
+		
+		List reportList = reportService.getNoticeList();
+		model.addAttribute("reportList", reportList);
+		
+		return "/admin/admin_report_list";
 	}
 	
 }
