@@ -44,6 +44,7 @@
 		let phoneStatus = false;
 		let genderStatus = false;
 		let emailStatus = false;
+		let emailDupStatus = false;
 		$("#member_id").on("blur", function() {
 			
 			if($("#member_id").val() == ""){
@@ -158,6 +159,33 @@
 		});
 		
 
+	$("#member_email").on("keyup", function() {
+			
+			if($("#member_email").val() == ""){
+				emailDupStatus = false;
+				$("#checkEmailResult").html("이메일은 필수 항목입니다.").css('color','red');
+			} else {
+					$.ajax({
+						url: "MemberCheckDupEmailPro.me",
+						data: {
+							member_email: $("#member_email").val()
+						},
+						success: function(isDupilcateMember) {
+							if(isDupilcateMember == true){
+								$("#checkEmailResult").html("중복된 이메일 입니다.").css('color','red');
+								emailDupStatus = false;
+							} else {
+								$("#checkEmailResult").html("사용 가능한 이메일 입니다.").css('color','green');
+								emailDupStatus = true;
+							}
+						}
+					});
+					// ajax 끝
+				}
+		});
+		
+		
+	if(emailDupStatus = true){
 		$(function() {
 			$('#mail-Check-Btn').click(function() {
 				const eamil = $('#member_email').val(); // 이메일 주소값 얻어오기!
@@ -205,7 +233,7 @@
 				}
 			});
 		});
-
+	}
 		
 		
 		
@@ -318,18 +346,39 @@
                 <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp">
                 <small id="emailHelp"> - 기호 생략 ex)01012341234</small>
               </div>
-              <div class="form-group">
-                <label class="text-black">이메일</label>
-                <input type="email" class="form-control" id="member_email" name="member_email" value="${userInfo.email }" aria-describedby="emailHelp">
-                <input type="button" value="인증하기" id="mail-Check-Btn">
-              </div>
-              <div class="form-group">
-                <label class="text-black">이메일 인증번호</label>
-                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
-              </div>
-              <div class="form-group">
-				<span id="mail-check-warn"></span>
-			  </div>
+             <c:choose>
+	             <c:when test="${not empty userInfo.email }">
+		              <div class="form-group">
+		                <label class="text-black">이메일</label>
+		                <input type="email" class="form-control" id="member_email" name="member_email" readonly="readonly" value="${userInfo.email }" aria-describedby="emailHelp">
+		                <small id="emailHelp"> 카카오 로그인 시 사용되는 이메일이므로 변경 불가능 합니다.</small>
+		                <br>
+		                <input type="button" value="인증하기" id="mail-Check-Btn">
+		              </div>
+		              <div class="form-group">
+		                <label class="text-black">이메일 인증번호</label>
+		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
+		              </div>
+		              <div class="form-group">
+						<span id="mail-check-warn"></span>
+					  </div>
+				  </c:when>
+				  <c:otherwise>
+		              <div class="form-group">
+		                <label class="text-black">이메일</label>
+		                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
+		                <small id="checkEmailResult"></small><br>
+		                <input type="button" value="인증하기" id="mail-Check-Btn">
+		              </div>
+		              <div class="form-group">
+		                <label class="text-black">이메일 인증번호</label>
+		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
+		              </div>
+		              <div class="form-group">
+						<span id="mail-check-warn"></span>
+					  </div>
+				  </c:otherwise>
+			  </c:choose>
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">

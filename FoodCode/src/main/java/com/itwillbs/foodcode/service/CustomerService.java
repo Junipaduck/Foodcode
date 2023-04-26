@@ -81,4 +81,9 @@ public class CustomerService {
 	}
 
 
+	public boolean isDupilcateMemberEmail(String member_email) {
+		return mapper.isDupilcateMemberEmail(member_email);
+	}
+
+
 }

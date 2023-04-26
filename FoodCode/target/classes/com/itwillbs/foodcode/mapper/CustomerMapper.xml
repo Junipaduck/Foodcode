@@ -125,6 +125,12 @@
 	WHERE member_id = #{member_id}
 	</select>
 	
+	<select id="isDupilcateMemberEmail" parameterType="String" resultType="boolean">
+	SELECT IF(COUNT(*) = 1, 1, 0)
+	FROM member
+	WHERE member_email = #{member_email}
+	</select>
+	
 	<select id="joinPerson" resultType="String">
 	SELECT member_id
 		FROM member

@@ -2,8 +2,10 @@ package com.itwillbs.foodcode.controller;
 
 import java.io.*;
 import java.net.*;
+import java.net.http.*;
 import java.util.*;
 
+import javax.script.*;
 import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
@@ -148,17 +150,26 @@ public class MainController {
         model.addAttribute("access_token", access_token);
         model.addAttribute("userInfo", userInfo);
         String email = (String)userInfo.get("email");
+
         
     	String id = customerService.JoinPerson(email);
     	System.out.println(id);
     	if(id == null || id.equals("")) {
-    		return "customer/customer_join_form";
+    		
+    		
+    		
+    		return "kakaoLogin";
     	} else {
     		session.setAttribute("sId", id);
     		return "index";
     	}
     	
 	}
+    
+    @GetMapping(value = "/kakaoLogin")
+    public String kakaoLogin() {
+    	return "kakaoLogin";
+    }
 }
 
 

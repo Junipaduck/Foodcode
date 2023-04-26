@@ -310,5 +310,16 @@ public class CustomerController {
     	
     }
     
+    @ResponseBody
+    @GetMapping(value = "MemberCheckDupEmailPro.me")
+    public boolean MemberCheckDupEmailPro(@RequestParam String member_email) {
+    	System.out.println("MemberCheckDupEmailPro");
+    	System.out.println(member_email);
+    	boolean isDupilcateMember = customerService.isDupilcateMemberEmail(member_email); // 일치하는 값이 있을 시 true를 응답
+    	System.out.println(isDupilcateMember);
+    	return isDupilcateMember;
+    	
+    }
+    
 
 }
