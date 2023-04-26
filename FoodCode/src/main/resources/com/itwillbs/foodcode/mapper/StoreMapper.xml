@@ -77,6 +77,9 @@
 									<when test="searchType.equals('store_content')">
 										store_content LIKE '%${searchKeyword}%'
 									</when>
+									<when test="searchType.equals('store_address')">
+										store_address LIKE '%${searchKeyword}%'
+									</when>
 					 			</choose>
 					 		</if>
 					 		

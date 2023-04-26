@@ -129,6 +129,7 @@ $(document).ready(function() {
 				<select name="searchType" id="" class="custom-select" style="width: 5%; float: left;">
 					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
 					<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
+					<option value="store_address" <c:if test="${param.searchKeyword eq 'store_address'}">selected</c:if>>지역</option>
 				</select>
 				<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }" style="width: 14%; float: left; margin-left: 10px;">
 				<button class="btn btn-outline-success" type="submit" style="margin-left: 10px;">Search</button>

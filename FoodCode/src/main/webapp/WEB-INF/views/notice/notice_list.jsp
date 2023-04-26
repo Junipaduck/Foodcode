@@ -50,9 +50,9 @@
 /* 공지사항 더보기버튼 ajax 코드 시작 */
 /* 주석있는 두 곳의 숫자 이외의 코드는 바꿀 필요 없음 */
 $(window).on('load', function () {
-    load('#js-load', '6'); //=> 처음에 전체묶은 div태그 6개씩 보여짐
+    load('#js-load', '10'); //=> 처음에 전체묶은 div태그 10개씩 보여짐
     $("#js-btn-wrap .button").on("click", function () {
-        load('#js-load', '3', '#js-btn-wrap'); //=> 더보기버튼 클릭할때마다 전체묶은 div태그 3개씩 보여짐
+        load('#js-load', '5', '#js-btn-wrap'); //=> 더보기버튼 클릭할때마다 전체묶은 div태그 5개씩 보여짐
     })
 });
  
