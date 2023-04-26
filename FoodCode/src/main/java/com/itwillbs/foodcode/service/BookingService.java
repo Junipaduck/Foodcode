@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.foodcode.mapper.BookingMapper;
 import com.itwillbs.foodcode.vo.BookingVO;
@@ -31,6 +32,10 @@ public class BookingService {
 	public String getMerchantUid(int booking_idx) {
 		
 		return mapper.selectMerchantUid(booking_idx);
+	}
+	
+	public void insertPayList(@RequestParam String id, @RequestParam String merchant_uid, @RequestParam String pay_price) {
+		mapper.insertPayList(id, merchant_uid, pay_price);
 	}
 	
 }

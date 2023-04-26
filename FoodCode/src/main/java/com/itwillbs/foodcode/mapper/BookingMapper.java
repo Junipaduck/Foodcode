@@ -9,10 +9,14 @@ import com.itwillbs.foodcode.vo.BookingVO;
 public interface BookingMapper {
 
 	int insertBooking(BookingVO booking);
-
+	
+	//예약 내역 확인 
 	List bookingList(@Param("id") String id, @Param("merchant_uid") String merchant_uid);
 
 	String selectMerchantUid(int booking_idx);
 //	String selectMerchantUid(int booking_idx);
+	
+	// pay테이블 insert
+	void insertPayList(@Param("id") String id, @Param("merchant_uid") String merchant_uid, @Param("pay_price") String pay_price);
 	
 }

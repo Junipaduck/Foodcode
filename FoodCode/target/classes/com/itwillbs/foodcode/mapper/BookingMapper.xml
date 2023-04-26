@@ -48,4 +48,16 @@
 			ON b.store_idx = s.store_idx
 			WHERE b.booking_idx = 1
 	</select>
+	
+	<insert id="insertPayList">
+		INSERT 
+		INTO pay
+		VALUES(
+		#{merchant_uid}
+		,#{pay_price}
+		,now()
+		,#{id}
+		)
+	</insert>
+	
 </mapper>

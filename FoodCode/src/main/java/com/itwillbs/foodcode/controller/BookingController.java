@@ -90,19 +90,21 @@ public class BookingController {
 
 
 	//결제 끝난 후 보여줄 페이지
-	@PostMapping(value = "bookingsuccess.bo")
-		public String bookingSuccess(HttpSession session, Model model, BookingVO booking, String merchant_uid) {
-		String id = (String)session.getAttribute("sId").toString();
-		
-		booking.setMember_id(id);
-		int insertBooking = bookingService.insertBooking(booking); 
-		
-		System.out.println("값 확인하기 " + booking);
-		
-		List bookingList = bookingService.bookingList(id,merchant_uid);
-		model.addAttribute("bookingList", bookingList);
-		
-		return "booking/booking_success";
-	}
+		@PostMapping(value = "bookingsuccess.bo")
+			public String bookingSuccess(HttpSession session, Model model, BookingVO booking, @RequestParam String merchant_uid, @RequestParam String pay_price) {
+			String id = (String)session.getAttribute("sId");
+			
+			System.out.println("고유결제번호 " + merchant_uid + " 결제 금액 " + pay_price);
+			
+			booking.setMember_id(id);
+			int insertBooking = bookingService.insertBooking(booking); 
+			
+			bookingService.insertPayList(id, merchant_uid, pay_price);
+			
+			List bookingList = bookingService.bookingList(id,merchant_uid);
+			model.addAttribute("bookingList", bookingList);
+			
+			return "booking/booking_success";
+		}
 	
 }
