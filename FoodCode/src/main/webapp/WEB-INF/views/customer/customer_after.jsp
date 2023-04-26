@@ -65,7 +65,7 @@
   </div>
   <jsp:include page="customer_left.jsp"></jsp:include>
   <div align="center">
-  		<!-- form 태그 추가  -->
+  		<!-- form 태그 추가  --> <!-- 여기 get mapping -->
 		<form action="customerReviewWrite.me" style="padding-top: 70px;">
 		<table id="rwd-table">
 			<tr>

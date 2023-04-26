@@ -208,7 +208,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	<div class="untree_co-section">
 	<div class="container">
 		<div class="row text-center justify-content-center mb-5">
-			<div class="col-lg-7"><h2 class="section-title text-center">지금 인기 있는 맛집</h2></div>
+			<div class="col-lg-7"><h2 class="section-title text-center">지금 인기 있는 맛집 - 별점 평균 4점 이상</h2></div>
 		</div>
 
 		<div class="owl-carousel owl-3-slider">
@@ -226,6 +226,30 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 				      <img src="https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg" alt="Sandwich" style="width:100%">
 				      <h3>${store.store_name }</h3>
 				      <p>${store.store_content }</p>
+    		           	<div class="review_star">
+			           		<c:if test="${not empty store.review_star }">
+			           			<c:choose>
+			           				<c:when test="${store.review_star == 1 }">
+					  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${store.review_star == 2 }">
+					  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${store.review_star == 3 }">
+					  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${store.review_star == 4 }">
+					  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${store.review_star == 5 }">
+					  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:otherwise>
+			           				No Rating
+			           				</c:otherwise>
+			           			</c:choose>
+			           		</c:if>
+		           		</div>
 			    </div>
 	  		</c:forEach>
   	</div>

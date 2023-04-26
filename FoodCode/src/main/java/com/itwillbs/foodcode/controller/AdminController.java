@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.itwillbs.foodcode.service.AdminService;
 import com.itwillbs.foodcode.service.MailSendService;
 import com.itwillbs.foodcode.service.NoticeService;
+import com.itwillbs.foodcode.service.ReportService;
 import com.itwillbs.foodcode.vo.*;
 
 @Controller
@@ -35,6 +36,9 @@ public class AdminController {
 	 
 	 @Autowired
 	 private MailSendService mailService;
+	 
+	 @Autowired
+	 private ReportService reportService ;
 	 
 	
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
@@ -53,6 +57,9 @@ public class AdminController {
 		
 		List<NoticeVO> noticeList = noticeService.getNoticeList();
 		model.addAttribute("noticeList", noticeList);
+		
+		List reportList = reportService.getNoticeList();
+		model.addAttribute("reportList", reportList);
 		
 //		====================각 항목 카운트 값 가져오기
 		
