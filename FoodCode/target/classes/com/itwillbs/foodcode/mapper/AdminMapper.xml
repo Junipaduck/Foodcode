@@ -24,10 +24,10 @@
 			FROM store;
 	</select>
 	
-	<select id="selectReviews" resultType="com.itwillbs.foodcode.vo.ReviewVO">
-		SELECT *
-			FROM review
-	</select>
+<!-- 	<select id="selectReviews" resultType="com.itwillbs.foodcode.vo.ReviewVO"> -->
+<!-- 		SELECT * -->
+<!-- 			FROM review -->
+<!-- 	</select> -->
 	
 	<select id="getStoreList2" resultType="map">
 	SELECT 
@@ -84,12 +84,25 @@
 	<update id="updateStoreApprove">
 		UPDATE store 
  			SET auth_status = 'Y'
- 				WHERE store_license = "${store_license}";
+ 				WHERE store_license = ${store_license};
 	</update>
 	
 	<delete id="deleteReportCount">
 		DELETE FROM report 
-				WHERE store_idx = "${store_idx}";
+				WHERE store_idx = ${store_idx};
+	</delete>
+	
+	<select id="getRivewList" resultType="map">
+		SELECT r.review_idx, s.store_name, r.review_content, r.review_star, r.member_id, r.review_file
+			FROM review r
+				JOIN store s ON r.store_idx = s.store_idx
+					WHERE r.delete_auth_status = 'Y'
+						ORDER BY review_idx DESC;
+	</select>
+	
+	<delete id="deleteReview">
+		DELETE FROM review 
+				WHERE review_idx = ${review_idx};
 	</delete>
 	
 </mapper>

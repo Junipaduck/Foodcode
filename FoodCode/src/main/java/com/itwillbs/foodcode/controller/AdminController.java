@@ -58,7 +58,7 @@ public class AdminController {
 		List<NoticeVO> noticeList = noticeService.getNoticeList();
 		model.addAttribute("noticeList", noticeList);
 		
-		List reportList = reportService.getNoticeList();
+		List reportList = reportService.getReportList();
 		model.addAttribute("reportList", reportList);
 		
 //		====================각 항목 카운트 값 가져오기
@@ -256,10 +256,31 @@ public class AdminController {
 	@GetMapping(value = "reportList")
 	public String reportList(Model model) {
 		
-		List reportList = reportService.getNoticeList();
+		List reportList = reportService.getReportList();
 		model.addAttribute("reportList", reportList);
 		
 		return "/admin/admin_report_list";
 	}
+	
+	
+	// ================리뷰 삭제 요청======================
+	@GetMapping(value = "reviewDeletetList")
+	public String reviewList(Model model) {
+		
+		List reviewList = adminService.getRivewList();
+		model.addAttribute("reviewList", reviewList);
+		
+		return "/admin/review_delete";
+	}
+	
+	// ================리뷰 삭제 처리======================
+	@GetMapping(value = "reviewDeletetListPro")
+	public String reviewDelete(String review_idx, Model model) {
+		
+		adminService.deleteReview(review_idx);
+		
+		return "redirect:/reviewDeletetList";
+	}
+	
 	
 }

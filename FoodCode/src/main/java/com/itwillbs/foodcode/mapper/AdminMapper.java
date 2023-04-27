@@ -19,7 +19,7 @@ public interface AdminMapper {
 
 	MemberVO selectMemberInfo(String id);
 
-	List<ReviewVO> selectReviews();
+//	List<ReviewVO> selectReviews();
 
 	int deleteStore(@Param("store_license") String store_license, @Param("owner_id") String owner_id);
 
@@ -40,6 +40,11 @@ public interface AdminMapper {
 	int updateStoreApprove(@Param("store_license") String store_license);
 
 	void deleteReportCount(@Param("store_idx")String store_idx);
+
+	List<ReviewVO> getRivewList();
+	
+	void deleteReview(@Param("review_idx")String review_idx);
+
 	
 	
 }

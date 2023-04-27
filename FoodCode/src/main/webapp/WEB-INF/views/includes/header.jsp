@@ -178,6 +178,12 @@
                     <i class="fas fa-fw fa-calendar"></i>
                     <span>식당 관리</span></a>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath }/reviewDeletetList">
+                    <i class="fas fa-fw fa-calendar"></i>
+                    <span>리뷰 관리</span></a>
+            </li>
 			
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

@@ -46,9 +46,9 @@ public class AdminService {
 		return mapper.deleteMember(member_idx, member_id, member_type);
 	}
 
-	public List<ReviewVO> getReviews() {
-		return mapper.selectReviews();
-	}
+//	public List<ReviewVO> getReviews() {
+//		return mapper.selectReviews();
+//	}
 
 
 	public int managementDelete(String store_license, String owner_id) {
@@ -105,4 +105,19 @@ public class AdminService {
 		mapper.deleteReportCount(store_idx);
 	}
 	
+	
+	// =============리뷰 리스트 출력===============
+	
+	
+	
+	// =============리뷰 삭제===============
+	
+	public void deleteReview(String review_idx) {
+		mapper.deleteReview(review_idx);
+	}
+
+	public List<ReviewVO> getRivewList() {
+		
+		return mapper.getRivewList();
+	}
 }
