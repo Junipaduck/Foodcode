@@ -38,18 +38,9 @@
 	<title>FOODCODE : MAIN</title>
 <style type="text/css">
 body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-.w3-bar-block .w3-bar-item {padding:20px}</style>	
+.w3-bar-block .w3-bar-item {padding:20px}
+</style>	
 </head>
-<script type="text/javascript">
-// 맛집 추천 슬라이드 쇼 스크립트
-	function w3_open() {
-	  document.getElementById("mySidebar").style.display = "block";
-	}
-	 
-	function w3_close() {
-	  document.getElementById("mySidebar").style.display = "none";
-	}
-</script>
 <body>
 	<header>
 		<jsp:include page="inc/top.jsp"></jsp:include>
@@ -280,28 +271,28 @@ google.charts.setOnLoadCallback(drawStuff);
 
 function drawStuff() {
   var data = new google.visualization.arrayToDataTable([
-      ["누적리뷰수", "누적리뷰수", { role: "style" } ],
-      ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}, "#ff4658"],
-      ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}, "#ffa55a"],
-      ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}, "#fbde88"],
-      ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}, "#20c997"],
-      ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}, "#7ba9ff"],
-      ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}, "#ff4658"],
-      ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}, "#ff4658"],
-      ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}, "#ff4658"],
-      ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}, "#ff4658"],
-      ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}, "#ff4658"],
-//     ['누적리뷰수', '누적리뷰수'],
-//     ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}],
-//     ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}],
-//     ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}],
-//     ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}],
-//     ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}],
-//     ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}],
-//     ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}],
-//     ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}],
-//     ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}],
-//     ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}]
+//       ["누적리뷰수", "누적리뷰수", { role: "style" } ],
+//       ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}, "#ff4658"],
+//       ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}, "#ffa55a"],
+//       ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}, "#fbde88"],
+//       ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}, "#20c997"],
+//       ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}, "#7ba9ff"],
+//       ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}, "#ff4658"],
+//       ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}, "#ff4658"],
+//       ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}, "#ff4658"],
+//       ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}, "#ff4658"],
+//       ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}, "#ff4658"],
+    ['누적리뷰수', '누적리뷰수'],
+    ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}],
+    ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}],
+    ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}],
+    ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}],
+    ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}],
+    ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}],
+    ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}],
+    ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}],
+    ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}],
+    ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}]
 	]);
 
   var options = {
@@ -316,7 +307,8 @@ function drawStuff() {
         0: { side: 'bottom', label: ''} // Top x-axis.
       }
     },
-    bar: { groupWidth: "70%"}
+    bar: { groupWidth: "70%"},
+    colors: "#ff9508"
 
   };
 
@@ -344,8 +336,8 @@ function drawStuff() {
 									<c:set var="fileName" value="${fn:substring(store.store_file, index + 1, length) }"/>
 									<a class="media-thumb" href="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" data-fancybox="gallery">
 										<div class="media-text">
-											<h3>${store.store_name }</h3>
-											<span class="location">${store.store_content }</span>
+											<font color="white"><h2>${store.store_name }</h2></font>
+											<span class="location"><font color="white">${store.store_content }</font></span>
 					    		           	<div class="review_star">
 								           		<c:if test="${not empty store.review_star }">
 								           			<c:choose>
