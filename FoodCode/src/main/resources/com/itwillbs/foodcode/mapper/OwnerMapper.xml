@@ -163,12 +163,17 @@
 	
 	<!-- 점주 가게 삭제 -->
 	<delete id="deleteOwnerStore">
-		DELETE 
-			FROM 
-				store, booking, review, menu, report
-			WHERE 
-				store_idx = #{store_idx}
-				
+		DELETE store, booking, review, menu, report
+			FROM store 
+				LEFT JOIN booking 
+					ON store.store_idx = booking.store_idx
+				LEFT JOIN review
+					ON store.store_idx = review.store_idx
+				LEFT JOIN menu 
+					ON store.store_idx = menu.store_idx
+				LEFT JOIN report 
+					ON store.store_idx = report.store_idx
+			WHERE store.store_idx = #{store_idx}		
 	</delete>
 		
 	
