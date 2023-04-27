@@ -54,6 +54,14 @@
 .image_hover {
 
 }
+.form222 {
+  border-radius: 10px;
+  z-index: 9;
+  background: #ffffff; }
+
+#review_content {
+	text-decoration: underline;
+}  
 </style>
 
   <title>아이티윌 2팀</title>
@@ -62,18 +70,22 @@
 
 <body>
 	
-
-	<form action="reviewList.me">
-		<!-- 검색창 -->
-		<select name="searchType">
-			<option value="content">내용</option>
-			<option value="name">작성자</option>
-		</select>
-		<input type="text" name="searchKeyword" value="${param.searchKeyword }">
-		<input type="submit" value="검색">
-		<input type="button" value="글쓰기" onclick="location.href='reviewList.me'">
-		<a href="main">홈</a>
-	</form>
+	<header>
+		<jsp:include page="../inc/top2.jsp"></jsp:include>
+	</header>
+	&nbsp;&nbsp;&nbsp;
+	<!-- 리뷰게시판 검색창 -->
+	<section id="buttonArea">
+		<form class="form222" action="reviewList.me" style="margin-bottom: 10px; margin-top: -10px; margin-left: 10px;">
+			<!-- 검색창 -->
+			<select name="searchType" id="" class="custom-select" style="width: 5%; float: left;">
+				<option value="content">내용</option>
+				<option value="name">작성자</option>
+			</select>
+			<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }" style="width: 14%; float: left; margin-left: 10px;">
+			<button class="btn btn-outline-success" type="submit" style="margin-left: 10px;">검색하기</button>
+		</form>
+	</section>
 	
 	&nbsp; &nbsp; &nbsp; 
     <table  class="rwd-table" id="dataTable" width="100%" cellspacing="0">
@@ -94,7 +106,7 @@
 		          <td>${review.review_idx }</td>
 		          <td>${review.member_id }</td>
 		           <td>${review.store_name }</td>
-		           <td><a href="ReviewDetail.me?review_idx=${review.review_idx }&store_idx=${review.store_idx}">${review.review_content }</a></td>
+		           <td><a id="review_content" href="ReviewDetail.me?review_idx=${review.review_idx }&store_idx=${review.store_idx}">${review.review_content }</a></td>
 			        <td class="image_hover">
      	                <c:set var="length" value="${fn:length(review.review_file) }"/>
 						<c:set var="index" value="${fn:indexOf(review.review_file, '_') }"/>
@@ -129,7 +141,7 @@
 		           		</div>
 		           </td>
 		           <td>${review.review_date }</td>
-		           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'"></td>
+		           <td><input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me?store_idx=${review.store_idx}'"></td>
 		           <!-- 이 점주답글달기 버튼은 점주 아이디로 로그인 했을 경우에만 보이도록. 관리자페이지 세션아이디 접근 처럼  -->
 		        </tr>
 		</c:forEach>
@@ -179,7 +191,11 @@
 		</div>
     </div>
     </section>
-    
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <footer>
+   		<jsp:include page="../inc/bottom.jsp"></jsp:include>
+  </footer>  
 	
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>

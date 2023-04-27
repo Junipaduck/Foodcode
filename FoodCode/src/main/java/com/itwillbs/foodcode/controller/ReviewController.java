@@ -275,7 +275,7 @@ public class ReviewController {
     	System.out.println("/reviewList.me");
     	
     	//페이징 처리 - 조회 목록 갯수 조절 시 사용하는 변수 
-    	int listLimit = 10;
+    	int listLimit = 7;
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
 
 		
