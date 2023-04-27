@@ -92,7 +92,8 @@
 	<!-- 글 목록 총 갯수 조회 -->
 	<select id="selectReviewListCount" resultType="int">
 		SELECT COUNT(*)
-			FROM review 
+			FROM review r JOIN store s
+			ON r.store_idx = s.store_idx
 			<if test="!searchKeyword.equals('')">
 				WHERE
 				<choose>

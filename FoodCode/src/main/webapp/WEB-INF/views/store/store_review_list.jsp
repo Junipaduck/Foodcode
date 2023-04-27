@@ -73,7 +73,7 @@
 	<header>
 		<jsp:include page="../inc/top2.jsp"></jsp:include>
 	</header>
-	&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<!-- 리뷰게시판 검색창 -->
 	<section id="buttonArea">
 		<form class="form222" action="reviewList.me" style="margin-bottom: 10px; margin-top: -10px; margin-left: 600px;">
