@@ -244,16 +244,16 @@ public class AdminController {
 
 	@GetMapping("/mailCheck")
 	@ResponseBody
-	public String mailCheck(String email, String storeName, String store_idx) {
+	public String mailCheck(String email,@RequestParam(defaultValue = "") String storeName,@RequestParam(defaultValue = "0") String store_idx) {
 		System.out.println("이메일 인증 요청이 들어옴!");
 		System.out.println("이메일 인증 이메일 : " + email + "받는 사람:" + storeName);
 		
 		System.out.println("메일 출력시 메일 체크 --------------- :" + store_idx);
+		if(storeName==null || storeName.equals("")) {
+			return mailService.joinEmail(email); //회원가입시 랜덤 코드 발송 메일
+		}
 		adminService.deleteReportCount(store_idx);
 		
-		if(storeName==null || storeName.equals("")) {
-		return mailService.joinEmail(email); //회원가입시 랜덤 코드 발송 메일
-		}
 		return mailService.storeEmail(email, storeName); //식당 경고 메세지 발송 메일
 	}
 	

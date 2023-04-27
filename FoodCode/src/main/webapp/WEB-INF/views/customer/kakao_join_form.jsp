@@ -159,77 +159,62 @@
 		});
 		
 
-	$("#member_email").on("keyup", function() {
-			
 			if($("#member_email").val() == ""){
 				emailDupStatus = false;
 				$("#checkEmailResult").html("이메일은 필수 항목입니다.").css('color','red');
 			} else {
-					$.ajax({
-						url: "MemberCheckDupEmailPro.me",
-						data: {
-							member_email: $("#member_email").val()
-						},
-						success: function(isDupilcateMember) {
-							if(isDupilcateMember == true){
-								$("#checkEmailResult").html("중복된 이메일 입니다.").css('color','red');
-								emailDupStatus = false;
-							} else {
-								$("#checkEmailResult").html("사용 가능한 이메일 입니다.").css('color','green');
-								emailDupStatus = true;
-									$(function() {
-										$('#mail-Check-Btn').click(function() {
-											const eamil = $('#member_email').val(); // 이메일 주소값 얻어오기!
-											console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-											const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-																									
-											$.ajax({
-												type : 'get',
-												url : "mailCheck?email="+eamil, // GET방식
-												success : function (data) {
-													console.log("데이타 : " +  data);
-													checkInput.attr('disabled',false);
-													code = data;
-													alert('인증번호가 전송되었습니다.')
-												}	
-											}); // end ajax
-										}); // end send eamil
-										
-										// 인증번호 비교 
-										$('#member_emailcheck').keyup(function () {
-											const inputCode = $(this).val();
-											const $resultMsg = $('#mail-check-warn');
-											
-											if(inputCode === code){
-												$resultMsg.html('인증번호가 일치합니다.');
-												$resultMsg.css('color','green');
-												$('#mail-Check-Btn').attr('disabled',true);
-												$('#member_email').attr('readonly',true);
-												$('#member_emailcheck').attr('readonly',true);
-												emailStatus = true;
-										        
-							//		 	        $('#mail-check-warn').append(
-							//		 	                $(document.createElement('input')).prop({
-							//		 	                    type: 'button',
-							//		 	                    id: 'submit',
-							//		 	                    value: '확인',
-							//		 	                    className: 'btn'
-							//		 	                })
-							//		 	            ); 서브밋 버튼 생성 
-										        
-											}else{
-												$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
-												$resultMsg.css('color','red');
-												emailStatus = false;
-											}
-										});
-									});
+					$(function() {
+						$('#mail-Check-Btn').click(function() {
+							const email = $('#member_email').val(); // 이메일 주소값 얻어오기!
+							console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
+							const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+																					
+							$.ajax({
+								type : 'get',
+								url : "mailCheck?email="+email, // GET방식
+								success : function (data) {
+									console.log("데이타 : " +  data);
+									checkInput.attr('disabled',false);
+									code = data;
+									alert('인증번호가 전송되었습니다.')
+								}	
+							}); // end ajax
+						}); // end send eamil
+						
+						// 인증번호 비교 
+						$('#member_emailcheck').keyup(function () {
+							const inputCode = $(this).val();
+							const $resultMsg = $('#mail-check-warn');
+							
+							if(inputCode === code){
+								$resultMsg.html('인증번호가 일치합니다.');
+								$resultMsg.css('color','green');
+								$('#mail-Check-Btn').attr('disabled',true);
+								$('#member_email').attr('readonly',true);
+								$('#member_emailcheck').attr('readonly',true);
+								emailStatus = true;
+						        
+			//		 	        $('#mail-check-warn').append(
+			//		 	                $(document.createElement('input')).prop({
+			//		 	                    type: 'button',
+			//		 	                    id: 'submit',
+			//		 	                    value: '확인',
+			//		 	                    className: 'btn'
+			//		 	                })
+			//		 	            ); 서브밋 버튼 생성 
+						        
+							}else{
+								$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+								$resultMsg.css('color','red');
+								emailStatus = false;
 							}
-						}
+						});
 					});
+								
 					// ajax 끝
+						
+					
 				}
-		});
 		
 		
 		

@@ -97,4 +97,15 @@ public class CustomerService {
 	}
 
 
+	public MemberVO selectMemberFindPasswd(MemberVO member) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberFindPasswd(member);
+	}
+
+
+	public int updateMemberFindPasswd(MemberVO member) {
+		return mapper.updateMemberFindPasswd(member);
+	}
+
+
 }

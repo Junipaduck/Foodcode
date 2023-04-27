@@ -42,4 +42,8 @@ public interface CustomerMapper {
 
 	String findId(MemberVO member);
 
+	MemberVO selectMemberFindPasswd(MemberVO member);
+
+	int updateMemberFindPasswd(MemberVO member);
+
 }

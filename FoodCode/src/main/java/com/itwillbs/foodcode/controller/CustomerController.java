@@ -377,5 +377,29 @@ public class CustomerController {
     		return "customer/fail_back";
     	}
     }
+    @GetMapping(value = "/findPasswd.me")
+    public String findPasswd() {
+    	return "customer/findPasswd";
+    }
+    @PostMapping(value = "/findPasswdPro.me")
+    public String findPasswdPro(MemberVO member,Model model) {
+    	member = customerService.selectMemberFindPasswd(member);
+    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    	String securePasswd = passwordEncoder.encode("1234"); // 비밀번호 암호화
+    	System.out.println("암호문 : " + securePasswd);
+    	member.setMember_passwd(securePasswd); // 암호화 비밀번호
+    	int updateCnt = customerService.updateMemberFindPasswd(member);
+    	
+    	if(updateCnt > 0) {
+    		model.addAttribute("msg", "비밀번호가 재설정 되었습니다. 변경된 비밀번호는 1234입니다. 로그인 후 비밀번호를 꼭 변경해주세요!");
+    		model.addAttribute("msg2", "로그인 하시겠습니까?");
+    		model.addAttribute("target", "login.me?member_id=" + member.getMember_id());
+    		return "customer/confirm";
+    	} else {
+    		model.addAttribute("msg", "아이디, 전화번호, 이메일이 일치하는지 확인해주세요!");
+    		return "customer/fail_back";
+    	}
+    		
+    }
 
 }

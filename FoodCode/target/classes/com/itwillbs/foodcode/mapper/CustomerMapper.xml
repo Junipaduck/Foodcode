@@ -164,5 +164,13 @@
 			WHERE member_phone = #{member_phone} AND member_name = #{member_name}
 	</select>
 	
+	<select id="selectMemberFindPasswd" resultType="com.itwillbs.foodcode.vo.MemberVO">
+	SELECT * FROM member WHERE member_id = #{member_id} AND member_email = #{member_email} AND member_phone = #{member_phone}
+	</select>
+	
+	<update id="updateMemberFindPasswd">
+	UPDATE member SET member_passwd = #{member_passwd} WHERE member_id = #{member_id}
+	</update>
+	
 	
 </mapper>
