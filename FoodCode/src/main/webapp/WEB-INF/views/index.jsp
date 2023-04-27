@@ -144,10 +144,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	</div>
 	<br>
 
-<<<<<<< HEAD
-	
-	
-	
 	
 	
 <!-- 0427배하나 추가) 예약건수 많은순위(1~10등) 차트 시작! -->
@@ -237,11 +233,8 @@ const config = {
 	
 
 
-	<!-- 추천맛집, 조회수 높은 맛집들 소개하는 공간 -->
 
-=======
 	<!-- 제공 서비스 소개 -->
->>>>>>> branch 'main' of https://github.com/Junipaduck/Foodcode.git
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row mb-5 justify-content-center">
