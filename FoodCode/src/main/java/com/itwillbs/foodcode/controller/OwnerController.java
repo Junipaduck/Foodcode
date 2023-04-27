@@ -307,7 +307,7 @@ public class OwnerController {
 	}
 	
 	// 점주 가게 수정 페이지에서 가게 삭제 요청
-	@PostMapping("/ownerStoreDelete.me")
+	@GetMapping("/ownerStoreDelete.me")
 	public String ownerStoreDelete(StoreVO store, Model model) {
 		int deleteCount = ownerService.deleteOwnerStore(store);
 		if(deleteCount > 0) {

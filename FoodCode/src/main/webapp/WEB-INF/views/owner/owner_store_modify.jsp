@@ -50,8 +50,8 @@
 	}
 	
 	function DeleteMyStore() {
-		if(window.confirm("탈퇴하시겠습니까?")){
-		location.href="ownerStoreDelete.me";
+		if(window.confirm("가게를 삭제하시겠습니까?")){
+		location.href="ownerStoreDelete.me?store_idx=${param.store_idx}";
 		}
 	}
 </script>
