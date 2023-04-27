@@ -32,10 +32,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@300&family=Gowun+Dodum&family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">  
 <style type="text/css">
-.menubox {
-	width: 80px;
-	object-fit: contain;
-}
+/* .menubox { */
+/* 	width: 80px; */
+/* 	height: 80px; */
+/* 	object-fit: contain; */
+/* } */
 
 .mb-0 { /*폰트수정*/
 	font-family: 'Noto Sans KR', sans-serif;
@@ -118,19 +119,42 @@
 		          </h2>
 		          <p style="font-family: 'Noto Sans KR', sans-serif;">${StoreVO.store_content }</p>
 		          <ul class="list-unstyled two-col clearfix" style="font-family: 'Noto Sans KR', sans-serif;">
-		            <li>${store.store_type }</li>
-		            <li>${store.store_phone }</li>
-		            <li>${store.store_time }</li>
-		            <li>${store.store_etc }</li>
-		            <li>${store.store_address }</li>
-		            <!--  review 테이블의 1개의 컬럼만 조회하면 되므로 반목문 사용 x  -->
-		            <li>${reviewList[0].review_star }
+    	      		<div class="icon">
+					     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          				 &nbsp;&nbsp;&nbsp;${store.store_type }
+          			</div>
+          			&nbsp;&nbsp;
+    	      		<div class="icon">
+					     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          				 &nbsp;&nbsp;&nbsp;${store.store_phone }
+          			</div>
+          			&nbsp;&nbsp;
+    	      		<div class="icon">
+					     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+          				 &nbsp;&nbsp;&nbsp;${store.store_time }
+          			</div>
+          			&nbsp;&nbsp;
+    	      		<div class="icon">
+					     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+          				 &nbsp;&nbsp;&nbsp;${store.store_etc }
+          			</div>
+          			&nbsp;&nbsp;
+    	      		<div class="icon">
+            			 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+          				 &nbsp;&nbsp;&nbsp;${store.store_address }
+          			</div>
+          			&nbsp;&nbsp;
+    	      		<div class="icon">
+					     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+          				 &nbsp;&nbsp;&nbsp;
 		            	<c:forEach var="starAvg" items="${starAvg }">
 		            		<img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${starAvg.review_star}</span>
 		            	</c:forEach>
-		            </li>
-		          </ul>
-	          <input type="button" class="btn btn-primary btn-block" value="예약하기" onclick="location.href='booking.bo?store_idx=${store.store_idx }'">
+          			</div>
+          			&nbsp;&nbsp;
+					<div class="form-group">
+	          		<input type="button" class="btn btn-primary btn-block" value="예약하기" onclick="location.href='booking.bo?store_idx=${store.store_idx }'">
+					</div>
 				</c:forEach>
 	        </div>
       </div> <!--row  -->
@@ -158,7 +182,7 @@
                                     	 <c:set var="length" value="${fn:length(menuList[0].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[0].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[0].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>${menuList[0].menu_name }</span>
@@ -173,7 +197,7 @@
                                     	 <c:set var="length" value="${fn:length(menuList[1].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[1].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[1].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                  <span>${menuList[1].menu_name }</span>
@@ -188,7 +212,7 @@
                                         <c:set var="length" value="${fn:length(menuList[2].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[2].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[2].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>${menuList[2].menu_name }</span>
@@ -203,7 +227,7 @@
                                         <c:set var="length" value="${fn:length(menuList[3].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[3].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[3].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." />
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>${menuList[3].menu_name }</span>
@@ -218,7 +242,7 @@
                                         <c:set var="length" value="${fn:length(menuList[4].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[4].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[4].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>${menuList[4].menu_name }</span>
@@ -233,7 +257,7 @@
                                         <c:set var="length" value="${fn:length(menuList[5].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[5].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[5].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." "/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>${menuList[5].menu_name }</span>
@@ -248,7 +272,7 @@
                                         <c:set var="length" value="${fn:length(menuList[6].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[6].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[6].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." />
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>${menuList[6].menu_name }</span>
@@ -263,7 +287,7 @@
                                        <c:set var="length" value="${fn:length(menuList[7].menu_image) }"/>
 										 <c:set var="index" value="${fn:indexOf(menuList[7].menu_image, '_') }"/>
 										 <c:set var="fileName" value="${fn:substring(menuList[7].menu_image, index + 1, length) }"/>
-							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." style="height: 80px;width: 80px;"/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>${menuList[7].menu_name }</span>
@@ -282,7 +306,7 @@
   
 	
 		<!--  리뷰 목록 조회  -->
-	    <table  class="rwd-table">
+	    <table  class="rwd-table" style="width: 1300px;">
         <tbody>
         <tr>
             <th>글번호</th>
@@ -340,7 +364,7 @@
 		           		<input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'">
 	           		</c:if>
 	           		<c:if test="${sessionScope.sId == 'hana' }">
-		           		<input type="button" value="리뷰신고하기" onclick="location.href='ownerReplyForm.me'">
+		           		<input type="button" value="리뷰신고하기" onclick="location.href='storeReport.re?store_idx=${store.store_idx}'">
 	           		</c:if>
 	           </td>
 	        </tr>

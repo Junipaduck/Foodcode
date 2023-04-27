@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -61,8 +62,9 @@
     </div>
   </div>
   <jsp:include page="customer_left.jsp"></jsp:include>
-  <div align="center" style="padding-top: 70px;">
-	  		<table id="rwd-table">
+
+		  <div align="center" style="padding-top: 70px;">
+	  		<table id="rwd-table" style="width: 1100px;">
 				<tr>
 			  		<td>
 				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
@@ -70,34 +72,17 @@
 					  	</div>
 			  		</td>
 		  		</tr>
-		  		<!-- 위찬영코드 -->
-<%-- 				<c:choose> --%>
-<%-- 				<c:when test="${not empty map.myReviewList }"> --%>
+
 				<tr>
 					<th class="td_left">리뷰번호</th>
 					<th class="td_left">작성자</th>
 					<th class="td_left">업체명</th>
 					<th class="td_left">리뷰내용</th>
-					<th class="td_left">리뷰이미지</th>
+					<th class="td_left">리뷰사진</th>
 					<th class="td_left">별점</th>
 					<th class="td_left">작성일자</th>
 				</tr>
-<%-- 				<c:forEach items="${map.myReviewList }" var="myReview" end="2"> --%>
-<!-- 				<tr> -->
-<%-- 					<td>${myReview.review_idx }</td> --%>
-<%-- 					<td>${myReview.review_content }</td> --%>
-<%-- 					<td>${myReview.review_star }</td> --%>
-<%-- 					<td>${myReview.review_date }</td> --%>
-<!-- 					수정 버튼 클릭 시 리뷰 수정 양식으로 이동 -->
-<!-- 					<td><input type="button" value="수정" onclick="location.href='reviewModifyForm.me'"></td> -->
-<!-- 					<td><input type="button" value="삭제" onclick="location.href='reviewDelete.me'"></td> -->
-<!-- 				</tr> -->
-<%-- 				</c:forEach> --%>
-<%-- 				</c:when> --%>
-<%-- 				<c:otherwise> --%>
-<!-- 				<tr><td align="center">조회 된 리뷰가 없어요.</td></tr> -->
-<%-- 				</c:otherwise> --%>
-<%-- 				</c:choose> --%>
+
 
 				<!-- 0418 양선정 코드 -->
 				<c:forEach items="${reviewList }" var="review">
@@ -147,10 +132,20 @@
 				
 				</c:forEach>
 			</table>
-  </div>
-  
+  	</div>
       &nbsp; &nbsp; &nbsp;
   
+  <div class="py-5 cta-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
+          <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
+          <p class="mb-0"><a href="booking.po" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 	<!-- footer -->
 	<footer>
