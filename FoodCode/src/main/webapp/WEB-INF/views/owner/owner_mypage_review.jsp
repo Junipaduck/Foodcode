@@ -60,16 +60,17 @@
 
 .btn btn-primary btn-block {
 	font-family: 'Noto Sans KR', sans-serif;
-}
+	
 </style>
 
-<title>가게 리뷰페이지</title>
+<title>FOODCODE : 가게 리뷰페이지</title>
 </head>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 </script>
 <body>
 	<header>
-		<jsp:include page="../inc/top2.jsp"></jsp:include>
+		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>
 
 	<div class="site-mobile-menu site-navbar-target">
@@ -83,84 +84,89 @@
 
 
 	<!--  메인화면 소개글  -->
-	<div class="hero hero-inner">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6 mx-auto text-center">
-					<div class="intro-wrap"></div>
-				</div>
-			</div>
-		</div>
+	<div class="hero hero-inner" >
+<!-- 		<div class="container"> -->
+<!-- 			<div class="row align-items-center"> -->
+<!-- 				<div class="col-lg-6 mx-auto text-center"> -->
+<!-- 					<div class="intro-wrap"></div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 
-	&nbsp; &nbsp; &nbsp;
-	<div align="center">
-		<table class="rwd-table">
-			<tbody>
-				<tr>
-					<th>글번호</th>
-					<th>작성자</th>
-					<th>업체명</th>
-					<th>리뷰내용</th>
-					<th>리뷰사진</th>
-					<th>별점</th>
-					<th>작성일자</th>
-					<th></th>
-				</tr>
-				<c:forEach items="${reviewList }" var="review">
-					<tr class="KOTRA-fontsize-80">
-						<td>${review.review_idx }</td>
-						<td>${review.member_id }</td>
-						<td>${review.store_name }</td>
-						<td>${review.review_content }</td>
-						<td class="image_hover"><c:set var="length" value="${fn:length(review.review_file) }" />
-						 	<c:set var="index" value="${fn:indexOf(review.review_file, '_') }" />
-						 	<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }" />
-							<img alt="..." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px; width: 50px;">
-						</td>
-						<td>
-							<div class="review_star">
-								<c:if test="${not empty review.review_star }">
-									<c:choose>
-										<c:when test="${review.review_star == 1 }">
-											<label for="review_star1" title="1점" id="review_star">&#11088;</label>
-										</c:when>
-										<c:when test="${review.review_star == 2 }">
-											<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
-										</c:when>
-										<c:when test="${review.review_star == 3 }">
-											<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
-										</c:when>
-										<c:when test="${review.review_star == 4 }">
-											<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
-										</c:when>
-										<c:when test="${review.review_star == 5 }">
-											<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
-										</c:when>
-										<c:otherwise>
-				           				No Rating
-				           				</c:otherwise>
-									</c:choose>
-								</c:if>
-							</div>
-						</td>
-						<td>${review.review_date }</td>
-						<td><input type="button" value="점주답글달기"
-							onclick="location.href='ownerReplyForm.me'"> <input
-							type="button" value="리뷰삭제요청"
-							onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">
-						</td>
+<div class="untree_co-section">
+	<div style="font-size: 25px;padding-left: 323px;">우리 가게 리뷰</div>
+    	<div class="container my-13">
+			&nbsp; &nbsp; &nbsp;
+		<div align="center">
+			<table class="rwd-table" style="width:1300px;margin-left:-80px;">
+				<tbody>
+					<tr>
+						<th>글번호</th>
+						<th>작성자</th>
+						<th>업체명</th>
+						<th>리뷰내용</th>
+						<th>리뷰사진</th>
+						<th>별점</th>
+						<th>작성일자</th>
+						<th></th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+					<c:forEach items="${reviewList }" var="review">
+						<tr class="KOTRA-fontsize-80">
+							<td>${review.review_idx }</td>
+							<td>${review.member_id }</td>
+							<td>${review.store_name }</td>
+							<td>${review.review_content }</td>
+							<td class="image_hover"><c:set var="length" value="${fn:length(review.review_file) }" />
+							 	<c:set var="index" value="${fn:indexOf(review.review_file, '_') }" />
+							 	<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }" />
+								<img alt="..." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px; width: 50px;">
+							</td>
+							<td>
+								<div class="review_star">
+									<c:if test="${not empty review.review_star }">
+										<c:choose>
+											<c:when test="${review.review_star == 1 }">
+												<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+											</c:when>
+											<c:when test="${review.review_star == 2 }">
+												<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+											</c:when>
+											<c:when test="${review.review_star == 3 }">
+												<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+											</c:when>
+											<c:when test="${review.review_star == 4 }">
+												<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+											</c:when>
+											<c:when test="${review.review_star == 5 }">
+												<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+											</c:when>
+											<c:otherwise>
+					           				No Rating
+					           				</c:otherwise>
+										</c:choose>
+									</c:if>
+								</div>
+							</td>
+							<td>${review.review_date }</td>
+							<td><input type="button" value="점주답글달기"
+								onclick="location.href='ownerReplyForm.me'"> <input
+								type="button" value="리뷰삭제요청"
+								onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
+</div>
 
 	&nbsp; &nbsp; &nbsp;
 	<!-- 페이징 -->
 	<section id="pageList">
 		<div class="w3-container">
-			<div class="w3-center">
+			<div class="w3-center" style="margin-left:18x">
 				<div class="w3-bar w3-border">
 					<c:choose>
 						<c:when test="${empty param.pageNum }">

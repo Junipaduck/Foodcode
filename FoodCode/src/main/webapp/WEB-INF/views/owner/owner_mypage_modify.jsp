@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
   <title>FOODCODE : 점주 정보 수정</title>
+  <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
   <script type="text/javascript">
 function DeleteMember() {
 	if(window.confirm("탈퇴하시겠습니까?")){
