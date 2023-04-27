@@ -78,9 +78,17 @@
 	</update>
 	
 	<delete id="deleteMember">
-		DELETE 
-		FROM member
-		WHERE member_id = #{sId}
+		DELETE member, store, booking, review, pay
+            FROM member 
+                LEFT JOIN booking 
+                    ON member.member_id = booking.member_id
+                LEFT JOIN review
+                    ON member.member_id = review.member_id
+                LEFT JOIN pay 
+                    ON member.member_id = pay.member_id
+                LEFT JOIN store 
+                	ON MEMBER.member_id = store.member_id 
+            WHERE member.member_id = #{sId};
 	</delete>
 	
 	<select id="getPasswd" resultType="string">
