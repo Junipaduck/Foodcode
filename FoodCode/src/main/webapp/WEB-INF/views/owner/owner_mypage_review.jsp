@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
   
-  
-  
+  <!-- 더보기 버튼 css -->
+  <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/js-load_notice.css" media="screen" />
   
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> <!-- 테이블 외부 css 파일 경로 -->
   
@@ -53,7 +53,27 @@
 
   <title>가게 리뷰페이지</title>
 </head>
-
+<script type="text/javascript">
+	$(window).on('load', function () {
+	    load('#js-load', '10'); //=> 처음에 전체묶은 div태그 10개씩 보여짐
+	    $("#js-btn-wrap .button").on("click", function () {
+	        load('#js-load', '5', '#js-btn-wrap'); //=> 더보기버튼 클릭할때마다 전체묶은 div태그 5개씩 보여짐
+	    })
+	});
+	 
+	function load(id, cnt, btn) {
+	    var noticeList = id + " .js-load:not(.active)";
+	    var girls_length = $(noticeList).length;
+	    var girls_total_cnt;
+	    if (cnt < girls_length) {
+	        girls_total_cnt = cnt;
+	    } else {
+	        girls_total_cnt = girls_length;
+	        $('.button').hide()
+	    }
+	    $(noticeList + ":lt(" + girls_total_cnt + ")").addClass("active");
+	}
+</script>
 <body>
 	<header>
 		<jsp:include page="../inc/top2.jsp"></jsp:include>
@@ -142,7 +162,7 @@
 	        </tr>
 		</c:forEach>
 		</tbody>
-    </table>
+    </table> <div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a></div>
 	</div>
 	
 	&nbsp; &nbsp; &nbsp;
@@ -215,6 +235,8 @@
   <script src="${pageContext.request.contextPath }/resources/js/typed.js"></script>
   
   <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+  
+ <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 
 </body>
 
