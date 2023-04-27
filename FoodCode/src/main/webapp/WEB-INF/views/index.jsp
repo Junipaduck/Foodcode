@@ -144,6 +144,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	</div>
 	<br>
 
+<<<<<<< HEAD
 	
 	
 	
@@ -238,70 +239,120 @@ const config = {
 
 	<!-- 추천맛집, 조회수 높은 맛집들 소개하는 공간 -->
 
+=======
+	<!-- 제공 서비스 소개 -->
+>>>>>>> branch 'main' of https://github.com/Junipaduck/Foodcode.git
 	<div class="untree_co-section">
-	<div class="container">
-		<div class="row text-center justify-content-center mb-5">
-			<div class="col-lg-7"><h2 class="section-title text-center">지금 인기 있는 맛집 - 별점 평균 4점 이상</h2></div>
-		</div>
-
-		<div class="owl-carousel owl-3-slider">
-
-			
+		<div class="container">
+			<div class="row mb-5 justify-content-center">
+				<div class="col-lg-6 text-center">
+					<h2 class="section-title text-center mb-3" style="font-family: 'Noto Sans KR', sans-serif;">우리가 제공하는 서비스</h2>
+					<p style="font-family: 'Noto Sans KR', sans-serif;">식당 예약 및 리뷰 작성가능하답니다</p>
+				</div>
 			</div>
+			<div class="row align-items-stretch">
+				<div class="col-lg-4 order-lg-1">
+					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url(https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"></div></div></div>
+				</div>
 
+				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
+
+					<div class="feature-1 d-md-flex">
+						<div class="align-self-center">
+							<span class="flaticon-house display-4 text-primary"></span>
+							<h3>다양한 맛집 보유</h3>
+							<p class="mb-0">인기있는 맛집 여기 있음</p>
+						</div>
+					</div>
+
+					<div class="feature-1 ">
+						<div class="align-self-center">
+							<span class="flaticon-restaurant display-4 text-primary"></span>
+							<h3>어쩌구저쩌구</h3>
+							<p class="mb-0">랄라라라라라라아랄라</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
+
+					<div class="feature-1 d-md-flex">
+						<div class="align-self-center">
+							<span class="flaticon-mail display-4 text-primary"></span>
+							<h3>미리 예약가능</h3>
+							<p class="mb-0">줄서지말고 미리 예약하세요</p>
+						</div>
+					</div>
+
+					<div class="feature-1 d-md-flex">
+						<div class="align-self-center">
+							<span class="flaticon-phone-call display-4 text-primary"></span>
+							<h3>어쩌구저쩌구</h3>
+							<p class="mb-0">다양한 후기 구경해보고가세요~</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
 		</div>
 	</div>
 
 
-	  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-	  		<c:forEach items="${storeList }" var="store">
-			    <div class="w3-quarter">
-				      <img src="https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg" alt="Sandwich" style="width:100%">
-				      <h3>${store.store_name }</h3>
-				      <p>${store.store_content }</p>
-    		           	<div class="review_star">
-			           		<c:if test="${not empty store.review_star }">
-			           			<c:choose>
-			           				<c:when test="${store.review_star == 1 }">
-					  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
-			           				</c:when>
-			           				<c:when test="${store.review_star == 2 }">
-					  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
-			           				</c:when>
-			           				<c:when test="${store.review_star == 3 }">
-					  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
-			           				</c:when>
-			           				<c:when test="${store.review_star == 4 }">
-					  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
-			           				</c:when>
-			           				<c:when test="${store.review_star == 5 }">
-					  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
-			           				</c:when>
-			           				<c:otherwise>
-			           				No Rating
-			           				</c:otherwise>
-			           			</c:choose>
-			           		</c:if>
-		           		</div>
-			    </div>
-	  		</c:forEach>
-  	</div>
-  	
-  	  <!-- Pagination -->
-	  <div class="w3-center w3-padding-32">
-	    <div class="w3-bar">
-	      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-	      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-	      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-	      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-	      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-	      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-	    </div>
-	  </div>
-
-
+	<!-- 추천맛집, 조회수 높은 맛집들 소개하는 공간 -->
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row text-center justify-content-center mb-5">
+				<div class="col-lg-7"><h2 class="section-title text-center">지금 인기 있는 맛집 - 별점 평균 4점 이상</h2></div>
+			</div>
 
+				<div class="owl-carousel owl-3-slider">
+					<c:forEach items="${storeList }" var="store">
+								<div class="item">
+									<c:set var="length" value="${fn:length(store.store_file) }"/>
+									<c:set var="index" value="${fn:indexOf(store.store_file, '_') }"/>
+									<c:set var="fileName" value="${fn:substring(store.store_file, index + 1, length) }"/>
+									<a class="media-thumb" href="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" data-fancybox="gallery">
+										<div class="media-text">
+											<h3>${store.store_name }</h3>
+											<span class="location">${store.store_content }</span>
+					    		           	<div class="review_star">
+								           		<c:if test="${not empty store.review_star }">
+								           			<c:choose>
+								           				<c:when test="${store.review_star == 1 }">
+										  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+								           				</c:when>
+								           				<c:when test="${store.review_star == 2 }">
+										  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+								           				</c:when>
+								           				<c:when test="${store.review_star == 3 }">
+										  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+								           				</c:when>
+								           				<c:when test="${store.review_star == 4 }">
+										  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+								           				</c:when>
+								           				<c:when test="${store.review_star == 5 }">
+										  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+								           				</c:when>
+								           				<c:otherwise>
+								           				No Rating
+								           				</c:otherwise>
+								           			</c:choose>
+								           		</c:if>
+							           		</div>
+										</div>
+										<img alt="..." src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" style="height: 400px;width: 400px;">
+									</a> 
+								</div>
+			
+					</c:forEach>
+				</div>
+
+		</div>
+	</div>
+				
 	
 	<div class="py-5 cta-section">
 		<div class="container">
