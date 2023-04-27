@@ -95,15 +95,17 @@
 <!--                 <label class="text-black" for="email">아이디</label> -->
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
 <!--               </div> -->
-              <div class="form-group">
-                <label class="text-black" for="review_content">작성자</label>
-                <br>
-                <input type="text" placeholder="${sessionScope.sId}" readonly="readonly">
+             <div class="form-group">
+                <label class="text-black">작성자</label>
+                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" placeholder="${sessionScope.sId}" readonly="readonly" >
+                <small id="emailHelp" class="form-text text-muted">리뷰 작성자 아이디 입니다.</small>
               </div>
+              &nbsp;
               <div class="form-group">
                 <label class="text-black" for="review_content">내용</label>
                 <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5">${review.review_content }</textarea>
               </div>
+              &nbsp;
               <!-- 별점 선택 코드  -->
               <div class="form-group">
                 <label class="text-black" for="review_star">별점</label>
@@ -122,13 +124,14 @@
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
                 <small id="emailHelp" class="form-text text-muted">1 ~ 5점 사이 별점을 선택하세요</small>
               </div>
-               <div class="form-group" >
-                <label class="text-black" for="review_file">리뷰 사진 수정</label>
-                </div>
+              &nbsp;
+              <div class="form-group">
+                <label class="text-black" for="file" >리뷰 사진 수정</label>
+                &nbsp;
                 <div class="form-group" id="fileBtnArea">
                 	<c:choose>
                 		<c:when test="${empty review.review_file }">
-                			<input type="file" name="file">
+             			    <input type="file" class="form-control" id="file" name="file" required="required">
                 		</c:when>
                 		<c:otherwise>
             				<c:set var="length" value="${fn:length(review.review_file) }" />
@@ -139,7 +142,10 @@
 							<input type="button" value="삭제" onclick="deleteFile()">
                 		</c:otherwise>
                 	</c:choose>
+              	</div>
+                <small id="small3" class="form-text text-muted">리뷰게시판에 보여지는 사진입니다.</small>
               </div>
+              &nbsp;&nbsp;
               <button type="submit" class="btn btn-primary">수정</button>
             </form>
           </div>

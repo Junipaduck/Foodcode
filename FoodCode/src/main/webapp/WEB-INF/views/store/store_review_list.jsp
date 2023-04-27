@@ -76,14 +76,14 @@
 	&nbsp;&nbsp;&nbsp;
 	<!-- 리뷰게시판 검색창 -->
 	<section id="buttonArea">
-		<form class="form222" action="reviewList.me" style="margin-bottom: 10px; margin-top: -10px; margin-left: 10px;">
+		<form class="form222" action="reviewList.me" style="margin-bottom: 10px; margin-top: -10px; margin-left: 600px;">
 			<!-- 검색창 -->
-			<select name="searchType" id="" class="custom-select" style="width: 5%; float: left;">
-				<option value="content">내용</option>
-				<option value="name">작성자</option>
+			<select name="searchType" id="" class="custom-select" style="width: 150px; float: left;">
+				<option value="content" <c:if test="${param.searchKeyword eq 'content'}">selected</c:if>>내용</option>
+				<option value="name" <c:if test="${param.searchKeyword eq 'name'}">selected</c:if>>업체명</option>
 			</select>
-			<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }" style="width: 14%; float: left; margin-left: 10px;">
-			<button class="btn btn-outline-success" type="submit" style="margin-left: 10px;">검색하기</button>
+			<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }" style="width: 300px; float: left; margin-right: 500px;">
+			<button class="btn btn-outline-success" type="submit" style="margin-left: 10px;height: 43px;">검색하기</button>
 		</form>
 	</section>
 	

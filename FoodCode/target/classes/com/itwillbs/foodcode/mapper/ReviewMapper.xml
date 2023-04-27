@@ -76,6 +76,9 @@
 					<when test="searchType.equals('content')">
 						review_content LIKE CONCAT('%', #{searchKeyword}, '%')
 					</when>
+					<when test="searchType.equals('name')">
+						s.store_name LIKE CONCAT('%', #{searchKeyword}, '%')
+					</when>
 				</choose>
 			</if>
 			ORDER BY
@@ -95,6 +98,9 @@
 				<choose>
 					<when test="searchType.equals('content')">
 						review_content LIKE CONCAT('%', #{searchKeyword}, '%')
+					</when>
+					<when test="searchType.equals('name')">
+						s.store_name LIKE CONCAT('%', #{searchKeyword}, '%')
 					</when>
 				</choose>
 			</if>

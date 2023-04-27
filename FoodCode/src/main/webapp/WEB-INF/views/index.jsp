@@ -82,7 +82,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 								<form class="form" action="store_recommend.so">
 									<div class="row mb-2">
 										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<select name="searchType" id="" class="form-control custom-select">
+											<select name="searchType" id="" class="form-control custom-select" style="width: 300px;">
 												<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
 												<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
 											</select>
@@ -92,9 +92,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 									<br>    
 									<div class="row align-items-center">
 										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }">
+											<input class="form-control me-2" type="search" placeholder="검색해 보세요" aria-label="Search" name="searchKeyword" value="${param.searchKeyword }" style="width: 300px;">
 											<br>
-											<button class="btn btn-outline-success" type="submit">Search</button>
+											<button class="btn btn-outline-success" type="submit" style="margin-left: 90px;">Search</button>
 										</div>
 										<div class="col-lg-8">
 										</div>
@@ -106,7 +106,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 				</div>
 				<div class="col-lg-5">
 					<div class="slides"> <!--  메인화면 음식 사진 -->
-						<img src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid active" onclick="location.href='${pageContext.request.contextPath }/store.so'">
+						<img src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid active">
 						<img src="https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
 						<img src="https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
 						<img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">

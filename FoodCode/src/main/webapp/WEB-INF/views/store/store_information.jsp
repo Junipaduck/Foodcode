@@ -280,19 +280,6 @@
             </div>
         </div>
   
-	<div>
-	<!--  [리뷰목록] 클릭 시 리뷰 게시판으로 이동  -->
-	<input type="button" value="리뷰목록" onclick="location.href='reviewList.me'">
-    <input type="hidden" name="store_idx" value="${param.store_idx}" />
-	</div>
-	
-	
-	<!-- 리뷰 게시판 영역 -->
-	<div id="reviewArea">
-	
-	</div>
-	
-	
 	
 		<!--  리뷰 목록 조회  -->
 	    <table  class="rwd-table">
@@ -373,9 +360,9 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h2 class="mb-2 text-white">와 맛있겠다</h2>
-          <p class="mb-4 lead text-white text-white-opacity">지금 당장 예약하세요</p>
-          <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">예약하기</a></p>
+          <h2 class="mb-2 text-white">더 많은 리뷰를 보고 싶으신가요?</h2>
+          <p class="mb-4 lead text-white text-white-opacity">리뷰게시판으로 이동하세요</p>
+          <p class="mb-0"><a href="reviewList.me" class="btn btn-outline-white text-white btn-md font-weight-bold">리뷰게시판</a></p>
         </div>
       </div>
     </div>

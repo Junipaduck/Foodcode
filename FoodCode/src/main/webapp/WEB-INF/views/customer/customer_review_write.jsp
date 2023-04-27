@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -86,14 +88,16 @@
 <!--               </div> -->
 				
               <div class="form-group">
-                <label class="text-black" for="review_content">작성자</label>
-                <br>
-                <input type="text" placeholder="${sessionScope.sId}" readonly="readonly">
-              </div>
+                <label class="text-black">작성자</label>
+                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" placeholder="${sessionScope.sId}" readonly="readonly" >
+                <small id="emailHelp" class="form-text text-muted">리뷰 작성자 아이디 입니다.</small>
+              </div>	
+              &nbsp;
               <div class="form-group">
                 <label class="text-black" for="review_content">내용</label>
                 <textarea name="review_content" class="form-control" id="review_content" cols="30" rows="5"></textarea>
               </div>
+              &nbsp;
               <!-- 별점 선택 코드  -->
               <div class="form-group">
                 <label class="text-black" for="review_star">별점</label>
@@ -112,11 +116,28 @@
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
                 <small id="emailHelp" class="form-text text-muted">1 ~ 5점 사이 별점을 선택하세요</small>
               </div>
+              &nbsp;
               <div class="form-group">
-                <label class="text-black" for="file">리뷰 사진 등록</label>
-                <!-- MultipartFile 변수와 name 속성이 일치해야함. file -->
-                <input type="file" name="file" id="file" >
+                <label class="text-black" for="file" >리뷰 사진 수정</label>
+                &nbsp;
+                <div class="form-group" id="fileBtnArea">
+                	<c:choose>
+                		<c:when test="${empty review.review_file }">
+             			    <input type="file" class="form-control" id="file" name="file" required="required">
+                		</c:when>
+                		<c:otherwise>
+            				<c:set var="length" value="${fn:length(review.review_file) }" />
+							<c:set var="index" value="${fn:indexOf(review.review_file, '_') }" />
+							<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }" />
+							<a href="${pageContext.request.contextPath }/resources/upload/${review.review_file_path}/${review.review_file}" download="${fileName }">${fileName }</a>
+							<%-- 삭제버튼 클릭 시 deleteFile() 함수 호출(파라미터로 글번호, 파일명 전달) --%>
+							<input type="button" value="삭제" onclick="deleteFile()">
+                		</c:otherwise>
+                	</c:choose>
+              	</div>
+                <small id="small3" class="form-text text-muted">리뷰게시판에 보여지는 사진입니다.</small>
               </div>
+              &nbsp;
               <!-- 작성 버튼 클릭시 리뷰 양식 제출 -->
               <button type="submit" class="btn btn-primary" onclick="location.href='reviewWritePro.me'">작성</button>
             </form>
