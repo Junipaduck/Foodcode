@@ -52,7 +52,7 @@ public class MainController {
 	
 	// 로그인 화면으로 이동
 	@RequestMapping(value = "login.me", method = {RequestMethod.GET, RequestMethod.POST})
-	public String ownerLogin(@RequestParam String member_id) {
+	public String ownerLogin(@RequestParam(defaultValue = "") String member_id) {
 		return "member/member_login_form";
 	}
 	
