@@ -21,7 +21,7 @@ public class ReportService {
 		return mapper.insertStoreReport(report);
 	}
 	
-	public List<ReportVO> getReportList() {
+	public List getReportList() {
 		return mapper.selectReportList();
 	}
 

@@ -87,7 +87,11 @@ public class AdminService {
 		
 		return mapper.getReportCount();
 	}
-
+	
+	public String getReviewCount() {
+		
+		return mapper.getReviewCount();
+	}
 	
 	// =============식당 승인 리스트 조회 후 승인===============
 	public List getNoApprove() {
@@ -116,8 +120,10 @@ public class AdminService {
 		mapper.deleteReview(review_idx);
 	}
 
-	public List<ReviewVO> getRivewList() {
+	public List<ReviewVO> getReviewList() {
 		
-		return mapper.getRivewList();
+		return mapper.getReviewList();
 	}
+
+	
 }

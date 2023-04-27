@@ -52,10 +52,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminMain"> 
-                <div class="sidebar-brand-icon rotate">
-                    <i class='fas fa-kiss-wink-heart' style="font-size: 50px; color: #79DCFD;"></i>
-                </div>
-                <div class="sidebar-brand-text mx-1"><sup>관리자페이지</sup>FoodCode</div>
+                <div class="sidebar-brand-text mx-1">관리자페이지 FoodCode</div>
              </a>
              </li>
 
@@ -141,12 +138,6 @@
                 </div>
             </li>
 			
-<!--             Nav Item - Charts (active시 밝은 색상 표현 -->
-<!--             <li class="nav-item active"> -->
-<!--                 <a class="nav-link" href="charts.html"> -->
-<!--                     <i class="fas fa-fw fa-chart-area"></i> -->
-<!--                     <span>차트(연결 준비중...)</span></a> -->
-<!--             </li> -->
 			
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -181,7 +172,7 @@
             
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/reviewDeletetList">
-                    <i class="fas fa-fw fa-calendar"></i>
+                    <i class="fas fa-fw fa-clipboard-check"></i>
                     <span>리뷰 관리</span></a>
             </li>
 			

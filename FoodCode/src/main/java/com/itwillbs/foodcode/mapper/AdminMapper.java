@@ -36,14 +36,18 @@ public interface AdminMapper {
 	String getNoticeCount();
 
 	String getReportCount();
+	
+	String getReviewCount();
 
 	int updateStoreApprove(@Param("store_license") String store_license);
 
 	void deleteReportCount(@Param("store_idx")String store_idx);
 
-	List<ReviewVO> getRivewList();
+	List<ReviewVO> getReviewList();
 	
 	void deleteReview(@Param("review_idx")String review_idx);
+
+	
 
 	
 	

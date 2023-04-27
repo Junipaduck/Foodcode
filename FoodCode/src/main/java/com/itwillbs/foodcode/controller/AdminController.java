@@ -61,6 +61,9 @@ public class AdminController {
 		List reportList = reportService.getReportList();
 		model.addAttribute("reportList", reportList);
 		
+		List reviewList = adminService.getReviewList();
+		model.addAttribute("reviewList", reviewList);
+		
 //		====================각 항목 카운트 값 가져오기
 		
 		String memberCount = adminService.getMemberCount();
@@ -77,6 +80,9 @@ public class AdminController {
 		
 		String reportCount = adminService.getReportCount();
 		model.addAttribute("reportCount", reportCount);
+		
+		String reviewCount = adminService.getReviewCount();
+		model.addAttribute("reviewCount", reviewCount);
 		
 		return "/admin/admin_main";
 	}
@@ -267,7 +273,7 @@ public class AdminController {
 	@GetMapping(value = "reviewDeletetList")
 	public String reviewList(Model model) {
 		
-		List reviewList = adminService.getRivewList();
+		List reviewList = adminService.getReviewList();
 		model.addAttribute("reviewList", reviewList);
 		
 		return "/admin/review_delete";

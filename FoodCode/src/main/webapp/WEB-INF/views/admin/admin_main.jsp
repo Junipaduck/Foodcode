@@ -170,6 +170,35 @@
                             </div>
                         </div>
                         
+                        <div class="col-xl-2 col-md-4 mb-3">
+                            <div class="card border-left-dark shadow h-80 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                리뷰 삭제 요청</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-900">${reviewCount}</div>
+                                                </div>
+                                                <!-- 탑 카드 게이지바 적용 style="width = ? " 넘겨주기 -->
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-dark" role="progressbar"
+                                                            style="width: ${reviewCount}%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                        	<i class="fas fa-clipboard-check fa-2x text-gray-600"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
 					</div>
 				<!-- 상단 최대값 카드 끝 -->
 					
@@ -201,7 +230,7 @@
 									  </table>
                                     </div>
                                     <div align="right">
-                                    	<a target="_blank" href="notice_list.no">신고 리스트 바로가기</a> &rarr; &nbsp;
+                                    	<a target="_blank" href="reportList">신고 리스트 바로가기</a> &rarr; &nbsp;
                                    </div>
                                 </div>
                             </div>
@@ -317,7 +346,7 @@
                                   role="button" aria-expanded="true" aria-controls="collapseCardExample">
                                   <h6 class="m-0 font-weight-bold text-danger">최근 공지사항</h6>
                               </a>
-                              <div class="collapse show" id="collapseCardExample">
+                              <div class="collapse" id="collapseCardExample">
                                   <div class="card-body">
                                      <table class="table table-bordered">
 										  	<tr style="color: black;" align="center">
@@ -342,7 +371,46 @@
                               </div>
                           	</div>
                           </div>
+                          
                          <!-- 공지사항 리스트 끝 (카드 접이식) -->    
+                         
+                         <div class="card shadow mb-4" align="center">
+                              <!-- Card Header - Accordion -->
+                              <div class="card border-left-dark shadow h-100 py-2" align="center">
+                              <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse"
+                                  role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                  <h6 class="m-0 font-weight-bold text-dark">리뷰 삭제 요청</h6>
+                              </a>
+                              <div class="collapse" id="collapseCardExample2">
+                                  <div class="card-body">
+                                     <table class="table table-bordered">
+										  	<tr style="color: black;" align="center">
+											  	<th>리뷰 번호</th>
+	                                            <th>식당명</th>
+	                                            <th>리뷰 내용</th>
+	                                            <th>리뷰 평점</th>
+	                                            <th>작성자</th>
+	                                            <th>리뷰 사진</th>
+										  	</tr>
+										  <c:forEach var="reviewList" items="${reviewList }" begin="0" end="4" step="1" >
+										  	<tr align="center">
+										  		<td>${reviewList.review_idx }</td>
+										  		<td><div style="width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${reviewList.store_name }</div></td>
+										  		<td><div style= "width:500px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${reviewList.review_content }</div></td>
+										  		<td>${reviewList.review_star}</td>
+										  		<td>${reviewList.member_id }</td>
+										  		<td>${reviewList.review_file}</td>
+										  	</tr>
+										  </c:forEach>
+									  </table>
+                                  </div>
+                                   <div align="right">
+                                    	<a target="_blank" href="reviewDeletetList">리뷰 삭제 요청 바로가기</a> &rarr; &nbsp;
+                                   </div>
+                              </div>
+                          	</div>
+                          </div>
+                          
                      </div>
                        	
                     

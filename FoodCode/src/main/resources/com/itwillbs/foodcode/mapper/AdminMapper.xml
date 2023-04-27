@@ -73,6 +73,11 @@
 		SELECT COUNT(*) FROM report;
 	</select>
 	
+	<select id="getReviewCount" resultType="String">
+		SELECT COUNT(*) FROM review
+			WHERE delete_auth_status = 'Y';
+	</select>
+	
 	<select id="getNoApprove" resultType="map">
 		SELECT m.member_id, s.store_name, s.store_license, s.store_type , s.store_date, s.auth_status
 		FROM member m
@@ -92,7 +97,7 @@
 				WHERE store_idx = ${store_idx};
 	</delete>
 	
-	<select id="getRivewList" resultType="map">
+	<select id="getReviewList" resultType="map">
 		SELECT r.review_idx, s.store_name, r.review_content, r.review_star, r.member_id, r.review_file
 			FROM review r
 				JOIN store s ON r.store_idx = s.store_idx
@@ -104,6 +109,7 @@
 		DELETE FROM review 
 				WHERE review_idx = ${review_idx};
 	</delete>
+	
 	
 </mapper>
 
