@@ -95,7 +95,7 @@ function doKakaoLogin() {
               <br>
               <br>
               <div>
-              	<a href="findId.me"><small id="findId">아이디찾기</small></a>  |  <a href="findPasswd.me"><small id="findPasswd">비밀번호찾기</small></a>  |  <small id="ownerJoin">회원가입</small>
+              	<a href="findId.me"><small id="findId">아이디찾기</small></a>  |  <a href="findPasswd.me"><small id="findPasswd">비밀번호찾기</small></a>
               </div>
               </div>
             </form>
