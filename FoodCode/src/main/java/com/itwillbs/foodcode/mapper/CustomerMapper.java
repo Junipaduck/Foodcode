@@ -40,4 +40,6 @@ public interface CustomerMapper {
 
 	int insertKakaoMember(MemberVO member);
 
+	String findId(MemberVO member);
+
 }

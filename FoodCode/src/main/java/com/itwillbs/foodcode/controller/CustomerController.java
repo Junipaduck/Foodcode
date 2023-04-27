@@ -1,5 +1,7 @@
 package com.itwillbs.foodcode.controller;
 
+import java.io.*;
+import java.net.http.*;
 import java.util.*;
 
 import javax.servlet.http.*;
@@ -356,5 +358,24 @@ public class CustomerController {
     	
     }
     
+    @GetMapping(value = "/findId.me")
+    public String findId() {
+    	return "customer/findId";
+    }
+    
+    @PostMapping(value = "/findIdPro.me")
+    public String findIdPro(MemberVO member,Model model) {
+    	String id = customerService.findId(member);
+    	String msg = "";
+    	if(id != null && !id.equals("")) {
+    		model.addAttribute("msg", "조회 된 아이디는 " + id + "입니다.");
+    		model.addAttribute("msg2", "해당 아이디로 로그인 하시겠습니까?");
+    		model.addAttribute("target", "login.me?member_id=" + id);
+    		return "customer/confirm";
+    	} else {
+    		model.addAttribute("msg", "조회 된 아이디가 없습니다.");
+    		return "customer/fail_back";
+    	}
+    }
 
 }

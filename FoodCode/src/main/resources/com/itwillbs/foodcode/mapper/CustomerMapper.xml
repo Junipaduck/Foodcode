@@ -157,4 +157,12 @@
 		FROM member
 			WHERE member_email = #{email}
 	</select>
+	
+	<select id="findId" resultType="String">
+	SELECT member_id
+		FROM member
+			WHERE member_phone = #{member_phone} AND member_name = #{member_name}
+	</select>
+	
+	
 </mapper>

@@ -91,4 +91,10 @@ public class CustomerService {
 	}
 
 
+	public String findId(MemberVO member) {
+		// TODO Auto-generated method stub
+		return mapper.findId(member);
+	}
+
+
 }

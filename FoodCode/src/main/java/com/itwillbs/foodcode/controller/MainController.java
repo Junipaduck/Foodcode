@@ -52,7 +52,7 @@ public class MainController {
 	
 	// 로그인 화면으로 이동
 	@RequestMapping(value = "login.me", method = {RequestMethod.GET, RequestMethod.POST})
-	public String ownerLogin() {
+	public String ownerLogin(@RequestParam String member_id) {
 		return "member/member_login_form";
 	}
 	
@@ -155,21 +155,13 @@ public class MainController {
     	String id = customerService.JoinPerson(email);
     	System.out.println(id);
     	if(id == null || id.equals("")) {
-    		
-    		
-    		
-    		return "kakaoLogin";
+    		return "customer/kakao_join_form";
     	} else {
     		session.setAttribute("sId", id);
     		return "index";
     	}
     	
 	}
-    
-    @GetMapping(value = "/kakaoLogin")
-    public String kakaoLogin() {
-    	return "kakaoLogin";
-    }
 }
 
 
