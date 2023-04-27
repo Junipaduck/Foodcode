@@ -199,10 +199,12 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
       .site-nav .site-navigation .site-menu > li.active > a {
         color: #ffffff; }
     .site-nav .site-navigation .site-menu .has-children {
-      position: relative; }
+      position: relative;
+       }
       .site-nav .site-navigation .site-menu .has-children > a {
         position: relative;
-        padding-right: 20px; }
+        padding-right: 20px;
+        color: rgba(255, 255, 255, 0.7); }
         .site-nav .site-navigation .site-menu .has-children > a:before {
           position: absolute;
           content: "\e313";
