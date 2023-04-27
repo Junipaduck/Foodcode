@@ -115,6 +115,12 @@ public class ReviewService {
 
 		return mapper.updateOwnerReview(review_idx);
 	}
+
+	// 메인 화면 리뷰 차트 추가 
+	public List<ReviewVO> reviewChart(StoreVO store) {
+		
+		return mapper.reviewChart(store);
+	}
 	
 	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {

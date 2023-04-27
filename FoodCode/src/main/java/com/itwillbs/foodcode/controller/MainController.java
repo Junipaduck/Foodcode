@@ -33,6 +33,8 @@ public class MainController {
 	private StoreService storeService;
 	@Autowired
     private KaKaoService ks;
+	@Autowired
+	private ReviewService reviewService;
 	
 	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView index(StoreVO store, Model model) {
@@ -48,6 +50,12 @@ public class MainController {
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("bookingChart", bookingChart);
+		
+		// 누적 리뷰 수 차트 
+		List<ReviewVO> reviewChart = reviewService.reviewChart(store);
+		model.addAttribute("reviewChart", reviewChart);
+		map.put("reviewChart", reviewChart);
+//		System.out.println("리뷰차트확인" + reviewChart);
 		
 		return new ModelAndView("index","map",map);
 		

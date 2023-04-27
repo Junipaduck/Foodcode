@@ -238,6 +238,19 @@
 			WHERE
 			review_idx = #{review_idx}	
 	</update>
+	
+	<select id="reviewChart" resultType="com.itwillbs.foodcode.vo.ReviewVO">
+		SELECT
+			s.store_name
+			, s.store_idx
+			, COUNT(r.review_idx) AS review_count
+			FROM store s
+				JOIN review r
+				ON s.store_idx = r.store_idx
+				GROUP BY s.store_idx
+				ORDER BY
+					review_count DESC;	
+	</select>
 </mapper>
 
 

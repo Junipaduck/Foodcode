@@ -20,6 +20,7 @@ public class ReviewVO {
 	private String member_type; // 점주회원 개인회원 구분을 위해 추가 
 	private String merchant_uid;
 	private String delete_auth_status; // 점주 회원 리뷰 삭제 - 리뷰 작성 시 항상 'N'으로 insert되며, 삭제 신청 시 'Y'로 변경 
+	private int review_count; // 메인화면 차트를 위한 변수
 	
 	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
 	private MultipartFile file;
@@ -31,7 +32,7 @@ public class ReviewVO {
 	public ReviewVO(int review_idx, String review_content, int review_star, Date review_date, int review_re_ref,
 			int review_re_lev, int review_re_seq, int store_idx, String member_id, String review_file,
 			String review_file_path, String store_name, String member_type, String merchant_uid,
-			String delete_auth_status, MultipartFile file) {
+			String delete_auth_status, int review_count, MultipartFile file) {
 		super();
 		this.review_idx = review_idx;
 		this.review_content = review_content;
@@ -48,6 +49,7 @@ public class ReviewVO {
 		this.member_type = member_type;
 		this.merchant_uid = merchant_uid;
 		this.delete_auth_status = delete_auth_status;
+		this.review_count = review_count;
 		this.file = file;
 	}
 
@@ -171,6 +173,14 @@ public class ReviewVO {
 		this.delete_auth_status = delete_auth_status;
 	}
 
+	public int getReview_count() {
+		return review_count;
+	}
+
+	public void setReview_count(int review_count) {
+		this.review_count = review_count;
+	}
+
 	public MultipartFile getFile() {
 		return file;
 	}
@@ -186,9 +196,10 @@ public class ReviewVO {
 				+ review_re_lev + ", review_re_seq=" + review_re_seq + ", store_idx=" + store_idx + ", member_id="
 				+ member_id + ", review_file=" + review_file + ", review_file_path=" + review_file_path
 				+ ", store_name=" + store_name + ", member_type=" + member_type + ", merchant_uid=" + merchant_uid
-				+ ", delete_auth_status=" + delete_auth_status + ", file=" + file + "]";
+				+ ", delete_auth_status=" + delete_auth_status + ", review_count=" + review_count + ", file=" + file
+				+ "]";
 	}
-	
+
 	
 	
 }

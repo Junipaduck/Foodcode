@@ -221,18 +221,63 @@ const config = {
 
 </script>
 <script>
-  const mtChart = new Chart(
+const mtChart = new Chart(
     document.getElementById('mtChart'),
     config
   );
 </script>
 <!-- 예약순위 차트 끝 -->
+
+<!-- 누적 리뷰 순위 -->
+ <hr>
+	 <div style="display: block; box-sizing: border-box; height: 500px; width: 1000px; margin: auto;">
+	 <div class="h5 text-center" style="font-size: 30px;">실시간 누적 리뷰 순위 <img width="50px;" style="margin-bottom: 10px;" src="https://www.svgrepo.com/show/491984/notice-certificate-of-deposit.svg"></div>
+	 <div id="top_x_div" style="width: 800px; height: 600px;"></div>
+	 </div>
+<br><br><br>
+<hr> 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['bar']});
+google.charts.setOnLoadCallback(drawStuff);
+
+function drawStuff() {
+  var data = new google.visualization.arrayToDataTable([
+    ['누적리뷰수', '누적리뷰수'],
+    ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}],
+    ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}],
+    ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}],
+    ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}],
+    ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}],
+    ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}],
+    ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}],
+    ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}],
+    ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}],
+    ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}]
  
-	
-	
-	
+  ]);
 
+  var options = {
+    width: 1000,
+    legend: { position: 'none' },
+    chart: {
+      title: '',
+      subtitle: ''
+      },
+    axes: {
+      x: {
+        0: { side: 'bottom', label: ''} // Top x-axis.
+      }
+    },
+    bar: { groupWidth: "70%"}
 
+  };
+
+  var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+  // Convert the Classic options to Material options.
+  chart.draw(data, google.charts.Bar.convertOptions(options));
+}
+</script>
 
 	<!-- 제공 서비스 소개 -->
 	<div class="untree_co-section">
