@@ -38,4 +38,6 @@ public interface CustomerMapper {
 
 	boolean isDupilcateMemberEmail(String member_email);
 
+	int insertKakaoMember(MemberVO member);
+
 }

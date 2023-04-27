@@ -64,6 +64,32 @@ public class CustomerController {
         	return "customer/fail_back";
         }
     }
+    
+    @PostMapping(value = "kakaoJoinPro.me")
+    public String kakaoJoinPro(MemberVO member, Model model, @RequestParam String member_passwd2) {
+    	System.out.println("customerJoinPro");
+    	System.out.println(member);
+    	
+    	if(member.getMember_passwd().equals(member_passwd2)) { // 비밀번호와 비밀번호 확인이 동일한지 판단
+    		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    		String securePasswd = passwordEncoder.encode(member.getMember_passwd()); // 비밀번호 암호화
+    		System.out.println("암호문 : " + securePasswd);
+    		member.setMember_passwd(securePasswd); // 암호화 비밀번호 
+    		int insertCnt = customerService.insertKakaoMember(member); // 회원가입이 이루어 졌는지 정수에 저장
+    		
+    		if(insertCnt > 0) { // 회원가입을 성공 했을 때
+    			model.addAttribute("msg", "회원 가입 성공!");
+    			model.addAttribute("target","main");
+    			return "customer/success";
+    		} else { // 회원가입을 실패 했을 때
+    			model.addAttribute("msg", "회원가입 실패!");
+    			return "customer/fail_back";
+    		}
+    	} else { // 비밀번호 확인과 비밀번호 가 서로 다를 때
+    		model.addAttribute("msg", "비밀번호가 서로 다름!");
+    		return "customer/fail_back";
+    	}
+    }
 
 
     @GetMapping(value = "MemberInfo.me")
@@ -320,6 +346,13 @@ public class CustomerController {
     	boolean isDupilcateMember = customerService.isDupilcateMemberEmail(member_email); // 일치하는 값이 있을 시 true를 응답
     	System.out.println(isDupilcateMember);
     	return isDupilcateMember;
+    	
+    }
+    
+    @GetMapping(value = "passwdFinder.me")
+    public String passwdFinder() {
+    	System.out.println("passwdFinder.me");
+    	return "customer/NewFile";
     	
     }
     

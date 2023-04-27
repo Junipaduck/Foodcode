@@ -177,53 +177,53 @@
 							} else {
 								$("#checkEmailResult").html("사용 가능한 이메일 입니다.").css('color','green');
 								emailDupStatus = true;
-										$(function() {
-											$('#mail-Check-Btn').click(function() {
-												const eamil = $('#member_email').val(); // 이메일 주소값 얻어오기!
-												console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-												const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-																										
-												$.ajax({
-													type : 'get',
-													url : "mailCheck?email="+eamil, // GET방식
-													success : function (data) {
-														console.log("데이타 : " +  data);
-														checkInput.attr('disabled',false);
-														code = data;
-														alert('인증번호가 전송되었습니다.')
-													}	
-												}); // end ajax
-											}); // end send eamil
+									$(function() {
+										$('#mail-Check-Btn').click(function() {
+											const eamil = $('#member_email').val(); // 이메일 주소값 얻어오기!
+											console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+											const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+																									
+											$.ajax({
+												type : 'get',
+												url : "mailCheck?email="+eamil, // GET방식
+												success : function (data) {
+													console.log("데이타 : " +  data);
+													checkInput.attr('disabled',false);
+													code = data;
+													alert('인증번호가 전송되었습니다.')
+												}	
+											}); // end ajax
+										}); // end send eamil
+										
+										// 인증번호 비교 
+										$('#member_emailcheck').keyup(function () {
+											const inputCode = $(this).val();
+											const $resultMsg = $('#mail-check-warn');
 											
-											// 인증번호 비교 
-											$('#member_emailcheck').keyup(function () {
-												const inputCode = $(this).val();
-												const $resultMsg = $('#mail-check-warn');
-												
-												if(inputCode === code){
-													$resultMsg.html('인증번호가 일치합니다.');
-													$resultMsg.css('color','green');
-													$('#mail-Check-Btn').attr('disabled',true);
-													$('#member_email').attr('readonly',true);
-													$('#member_emailcheck').attr('readonly',true);
-													emailStatus = true;
-											        
-								//		 	        $('#mail-check-warn').append(
-								//		 	                $(document.createElement('input')).prop({
-								//		 	                    type: 'button',
-								//		 	                    id: 'submit',
-								//		 	                    value: '확인',
-								//		 	                    className: 'btn'
-								//		 	                })
-								//		 	            ); 서브밋 버튼 생성 
-											        
-												}else{
-													$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
-													$resultMsg.css('color','red');
-													emailStatus = false;
-												}
-											});
+											if(inputCode === code){
+												$resultMsg.html('인증번호가 일치합니다.');
+												$resultMsg.css('color','green');
+												$('#mail-Check-Btn').attr('disabled',true);
+												$('#member_email').attr('readonly',true);
+												$('#member_emailcheck').attr('readonly',true);
+												emailStatus = true;
+										        
+							//		 	        $('#mail-check-warn').append(
+							//		 	                $(document.createElement('input')).prop({
+							//		 	                    type: 'button',
+							//		 	                    id: 'submit',
+							//		 	                    value: '확인',
+							//		 	                    className: 'btn'
+							//		 	                })
+							//		 	            ); 서브밋 버튼 생성 
+										        
+											}else{
+												$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+												$resultMsg.css('color','red');
+												emailStatus = false;
+											}
 										});
+									});
 							}
 						}
 					});
@@ -313,7 +313,14 @@
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">회원가입</h2>
-            <form class="contact-form bg-white" action="customerJoinPro.me" method="post">
+            <form class="contact-form bg-white" action="kakaoJoinPro.me" method="post">
+            <div class="form-group">
+                <label class="text-black">개인 / 점주</label>
+                <div class="select">
+				 <input type="radio" id="member_type" value="c" name="member_type"><label for="member_type">개인</label>
+				 <input type="radio" id="member_type2" value="o" name="member_type"><label for="member_type2">점주</label>
+				</div>
+              </div>
               <div class="form-group">
                 <label class="text-black">아이디</label>
                 <input type="text" class="form-control" id="member_id" name="member_id">
@@ -344,6 +351,24 @@
                 <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp">
                 <small id="emailHelp"> - 기호 생략 ex)01012341234</small>
               </div>
+             <c:choose>
+	             <c:when test="${not empty userInfo.email }">
+		              <div class="form-group">
+		                <label class="text-black">이메일</label>
+		                <input type="email" class="form-control" id="member_email" name="member_email" readonly="readonly" value="${userInfo.email }" aria-describedby="emailHelp">
+		                <small id="emailHelp"> 카카오 로그인 시 사용되는 이메일이므로 변경 불가능 합니다.</small>
+		                <br>
+		                <input type="button" value="인증하기" id="mail-Check-Btn">
+		              </div>
+		              <div class="form-group">
+		                <label class="text-black">이메일 인증번호</label>
+		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
+		              </div>
+		              <div class="form-group">
+						<span id="mail-check-warn"></span>
+					  </div>
+				  </c:when>
+				  <c:otherwise>
 		              <div class="form-group">
 		                <label class="text-black">이메일</label>
 		                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
@@ -357,6 +382,8 @@
 		              <div class="form-group">
 						<span id="mail-check-warn"></span>
 					  </div>
+				  </c:otherwise>
+			  </c:choose>
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">

@@ -66,7 +66,7 @@
 	    <div class="row align-items-center">
 	      <div class="col-lg-6 mx-auto text-center">
 	        <div class="intro-wrap">
-	          <h1 class="mb-0">회원가입 선택 창</h1>
+	          <h1 class="mb-0"></h1>
 	          <p class="text-white"></p>
 	        </div>
 	      </div>

@@ -69,8 +69,8 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">개인 회원 수정</h1>
-            <p class="text-white">수정하세요. </p>
+            <h1 class="mb-0"></h1>
+            <p class="text-white"></p>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
 
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title">Form</h2>
+            <h2 class="section-title">회원탈퇴</h2>
             <form action="customerDeletePro.me" method="post" onsubmit="return confirmQuit()" class="contact-form bg-white">
 			 <div class="form-group">
                 <label class="text-black" for="email">패스워드</label>

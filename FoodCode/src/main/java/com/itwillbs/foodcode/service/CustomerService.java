@@ -86,4 +86,9 @@ public class CustomerService {
 	}
 
 
+	public int insertKakaoMember(MemberVO member) {
+		return mapper.insertKakaoMember(member);
+	}
+
+
 }
