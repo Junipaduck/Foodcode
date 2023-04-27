@@ -228,6 +228,44 @@ const mtChart = new Chart(
 </script>
 <!-- 예약순위 차트 끝 -->
 
+
+<!-- 누적 리뷰 순위 차트 -->
+ <hr>
+	 <div style="display: block; box-sizing: border-box; height: 500px; width: 1000px; margin: auto;">
+	 <div class="h5 text-center" style="font-size: 30px;">실시간 누적 리뷰 순위 <img width="50px;" style="margin-bottom: 10px;" src="https://www.svgrepo.com/show/491984/notice-certificate-of-deposit.svg"></div>
+	<div id="donutchart" style="width: 900px; height: 500px;"></div>	 </div>
+<br><br><br>
+<hr>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load("current", {packages:["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+
+     function drawChart() {
+       var data = google.visualization.arrayToDataTable([
+         ['누적리뷰수', '누적리뷰수'],
+         ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}],
+         ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}],
+         ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}],
+         ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}],
+         ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}],
+         ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}],
+         ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}],
+         ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}],
+         ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}],
+         ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}]
+       ]);
+
+       var options = {
+         title: '누적 리뷰 순위',
+         pieHole: 0.4,
+       };
+
+       var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+       chart.draw(data, options);
+     }
+</script>
+
 <!-- 누적 리뷰 순위 -->
  <hr>
 	 <div style="display: block; box-sizing: border-box; height: 500px; width: 1000px; margin: auto;">
@@ -236,26 +274,35 @@ const mtChart = new Chart(
 	 </div>
 <br><br><br>
 <hr> 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 google.charts.load('current', {'packages':['bar']});
 google.charts.setOnLoadCallback(drawStuff);
 
 function drawStuff() {
   var data = new google.visualization.arrayToDataTable([
-    ['누적리뷰수', '누적리뷰수'],
-    ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}],
-    ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}],
-    ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}],
-    ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}],
-    ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}],
-    ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}],
-    ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}],
-    ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}],
-    ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}],
-    ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}]
- 
-  ]);
+      ["누적리뷰수", "누적리뷰수", { role: "style" } ],
+      ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}, "#ff4658"],
+      ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}, "#ffa55a"],
+      ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}, "#fbde88"],
+      ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}, "#20c997"],
+      ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}, "#7ba9ff"],
+      ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}, "#ff4658"],
+      ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}, "#ff4658"],
+      ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}, "#ff4658"],
+      ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}, "#ff4658"],
+      ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}, "#ff4658"],
+//     ['누적리뷰수', '누적리뷰수'],
+//     ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}],
+//     ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}],
+//     ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}],
+//     ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}],
+//     ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}],
+//     ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}],
+//     ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}],
+//     ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}],
+//     ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}],
+//     ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}]
+	]);
 
   var options = {
     width: 1000,
@@ -278,64 +325,7 @@ function drawStuff() {
   chart.draw(data, google.charts.Bar.convertOptions(options));
 }
 </script>
-
-	<!-- 제공 서비스 소개 -->
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row mb-5 justify-content-center">
-				<div class="col-lg-6 text-center">
-					<h2 class="section-title text-center mb-3" style="font-family: 'Noto Sans KR', sans-serif;">우리가 제공하는 서비스</h2>
-					<p style="font-family: 'Noto Sans KR', sans-serif;">식당 예약 및 리뷰 작성가능하답니다</p>
-				</div>
-			</div>
-			<div class="row align-items-stretch">
-				<div class="col-lg-4 order-lg-1">
-					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url(https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"></div></div></div>
-				</div>
-
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-house display-4 text-primary"></span>
-							<h3>다양한 맛집 보유</h3>
-							<p class="mb-0">인기있는 맛집 여기 있음</p>
-						</div>
-					</div>
-
-					<div class="feature-1 ">
-						<div class="align-self-center">
-							<span class="flaticon-restaurant display-4 text-primary"></span>
-							<h3>어쩌구저쩌구</h3>
-							<p class="mb-0">랄라라라라라라아랄라</p>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-mail display-4 text-primary"></span>
-							<h3>미리 예약가능</h3>
-							<p class="mb-0">줄서지말고 미리 예약하세요</p>
-						</div>
-					</div>
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-phone-call display-4 text-primary"></span>
-							<h3>어쩌구저쩌구</h3>
-							<p class="mb-0">다양한 후기 구경해보고가세요~</p>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
+<!-- 리뷰 누적 차트 끝 -->
 
 
 	<!-- 추천맛집, 조회수 높은 맛집들 소개하는 공간 -->
