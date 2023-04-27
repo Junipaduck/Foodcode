@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%-- <%@ page session="false" %> --%>
 
 <%@include file="/WEB-INF/views/includes/header.jsp" %>
@@ -40,7 +41,8 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                          <i class="fas fa-comments fa-2x text-gray-600"></i>
+                                          <i class="fas fa-head-side-cough fa-2x text-gray-600"></i>
+<!--                                           <i class="fab fa-weixin fa-2x text-gray-600"></i> -->
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +74,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                        	<i class="fas fa-calendar fa-2x text-gray-600"></i>
+                                        	<i class="fas fa-store fa-2x text-gray-600"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +135,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                           <i class="fas fa-user fa-2x text-gray-600"></i>
+                                           <i class="fas fa-user-tie fa-2x text-gray-600"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +165,8 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                        	<i class="fas fa-clipboard fa-2x text-gray-600"></i>
+                                        	<i class="fas fa-bullhorn fa-2x text-gray-600"></i>
+<!--                                         	<i class="fas fa-lightbulb fa-2x text-gray-600"></i> -->
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +195,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                        	<i class="fas fa-clipboard-check fa-2x text-gray-600"></i>
+                                        	<i class="fas fa-pray fa-2x text-gray-600"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -399,7 +402,12 @@
 										  		<td><div style= "width:500px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${reviewList.review_content }</div></td>
 										  		<td>${reviewList.review_star}</td>
 										  		<td>${reviewList.member_id }</td>
-										  		<td>${reviewList.review_file}</td>
+										  		<td align="center">
+								                <c:set var="length" value="${fn:length(reviewList.review_file) }"/>
+												<c:set var="index" value="${fn:indexOf(reviewList.review_file, '_') }"/>
+												<c:set var="fileName" value="${fn:substring(reviewList.review_file, index + 1, length) }"/>
+												<img alt="등록된 사진이 없습니다." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px;width: 50px;">
+                                            </td>
 										  	</tr>
 										  </c:forEach>
 									  </table>

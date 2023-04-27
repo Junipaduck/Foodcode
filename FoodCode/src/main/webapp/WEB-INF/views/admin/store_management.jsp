@@ -97,7 +97,7 @@
                                             </td>
                                              <td align="center">
                                             	<a onclick="DeletePopup('${aList.store_license}','${aList.member_id}');" class="btn btn-danger btn-circle btn-5x">
-                                       			<i class="fas fa-trash"></i>
+                                       			<i class="fas fa-store-slash"></i>
                                    				</a>
                                    			</td>
 <!--                                             <td><button value="식당삭제" onclick="window.open('adminStore_managementD', width=30, height=30)"></td> -->

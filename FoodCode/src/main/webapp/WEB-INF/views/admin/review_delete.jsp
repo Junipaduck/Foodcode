@@ -72,7 +72,7 @@ function DeleteReview(review_idx) {
                                             </td>
                                             <td align="center">
                                             	<a onclick="DeleteReview('${reviewList.review_idx }');" class="btn btn-danger btn-circle"">
-                                           			 <i class="fas fa-trash"></i>
+                                           			 <i class="fas fa-comment-slash"></i>
                                    				</a>
                                    			</td>
                                         </tr>

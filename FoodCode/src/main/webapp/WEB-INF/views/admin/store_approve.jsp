@@ -67,7 +67,7 @@ function Approve(store_license) {
                                             <td align="center">
                                             	<a onclick="Approve('${aList.store_license }');" class="btn btn-success btn-icon-split">
                                         		<span class="icon text-white-50">
-                                           			 <i class="fas fa-check"></i>
+                                           			 <i class="fas fa-user-check"></i>
                                         		</span>
                                       		  	<span class="text">승인</span>
                                    				 </a>

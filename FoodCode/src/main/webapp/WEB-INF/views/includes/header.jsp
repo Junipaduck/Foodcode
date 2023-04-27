@@ -41,7 +41,8 @@
                 <a class="nav-link" href="${pageContext.request.contextPath }/">
                     <i class=""></i>
                     <span>
-                    <i class="fas fa-arrow-left"></i>
+                    <i class="fas fa-door-open"></i>
+<!--                     <i class="fas fa-portal-exit fa-flip-horizontal"></i> -->
                     관리자 페이지 나가기
                     </span></a>
             </li>
@@ -142,31 +143,31 @@
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminMember_list">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-id-badge"></i>
                     <span>일반회원 목록 조회</span></a>
             </li>
 			
 			<li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminOwner_list">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-id-card"></i>
                     <span>점주회원 목록 조회</span></a>
             </li>
             
 			<li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_list">
-                    <i class="fas fa-fw fa-list"></i>
+                    <i class="fas fa-fw fa-utensils"></i>
                     <span>식당 조회</span></a>
             </li>
             
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_approve">
-                    <i class="fas fa-fw fa-calendar"></i>
+                    <i class="fas fa-fw fa-check"></i>
                     <span>식당 승인</span></a>
             </li>
             
 			<li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath }/adminStore_management">
-                    <i class="fas fa-fw fa-calendar"></i>
+                    <i class="fas fa-fw fa-store"></i>
                     <span>식당 관리</span></a>
             </li>
             
@@ -374,8 +375,9 @@
 									<span class="mr-2 d-none d-lg-inline text-gray-500 small">현재 세션 ID : <B>${sessionScope.sId }</B> </span>
 								</c:otherwise>
 								</c:choose>
-                                <img class="img-profile rounded-circle"
-                                    src="${pageContext.request.contextPath }/resources/img/undraw_profile.svg">
+ 								<i class="fas fa-user-astronaut fa-lg" style="color: #000000;"></i>
+<!--                                 <img class="img-profile rounded-circle" -->
+<%--                                     src="${pageContext.request.contextPath }/resources/img/undraw_profile.svg"> --%>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

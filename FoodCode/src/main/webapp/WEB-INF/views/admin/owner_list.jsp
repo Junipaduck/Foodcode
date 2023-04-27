@@ -68,7 +68,7 @@
                                             <td>${ownerList.member_join_date}</td>
                                              <td align="center">
                                             	<a onclick="DeletePopup('${ownerList.member_idx }','${ownerList.member_type }', '${ownerList.member_id}');" class="btn btn-danger btn-circle">
-                                       			<i class="fas fa-trash"></i>
+                                       			<i class="fas fa-user-alt-slash"></i>
                                    				</a>
                                    			</td>
                                         </tr>

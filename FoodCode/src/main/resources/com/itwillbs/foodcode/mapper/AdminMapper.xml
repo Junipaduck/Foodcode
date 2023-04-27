@@ -41,7 +41,7 @@
 				JOIN store s ON rep.store_idx = s.store_idx 
 					JOIN member m ON m.member_id = s.member_id
 		GROUP BY s.store_idx
-		HAVING count(rep.report_count) >= 2;
+		HAVING count(rep.report_count) >= 1;
 	</select>
 	
 	<delete id="deleteStore">
