@@ -6,21 +6,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/tabler.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owner.css">
 </head>
 <body>
-	<div class="lnb-area addchat">
-            <ul style="margin-top: 100px; color:black;">
-                <li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>
-                <li><a href="ownerPage.me" title="내식당">내식당</a></li>
-                <li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>
-				<li>&nbsp;&nbsp;&nbsp; </li>
-				<li>&nbsp;&nbsp;&nbsp; </li>
-				<li>&nbsp;&nbsp;&nbsp; </li>
-				<li>&nbsp;&nbsp;&nbsp; </li>
-				<li>&nbsp;&nbsp;&nbsp; </li>
-            </ul>
-     </div>
+
+<div class="sidemenu" style="margin-top: 100px; margin-left: 14px;">
+    <label style="margin-bottom: 10px;" for="expand-sidemenu"><div>My Page</div></label>
+    <input type="checkbox" id="expand-sidemenu" name="expand-sidemenu">
+    <ul style="padding: 10px; padding-left: 17px;">
+        <li><a href="ownerPage.me">
+        	<div><svg fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 388.331 388.33" xml:space="preserve"><g>
+					<path d="M264.07,166.541c21.39,11.462,62.59,7.953,93.913-23.377c31.068-31.062,42.815-76.485,13.442-106.828l0.023-0.012
+					c-0.139-0.128-0.639-0.627-0.767-0.761c0,0,0,0.012-0.023,0.012c-30.324-29.36-75.742-17.62-106.821,13.443
+					c-31.324,31.33-34.833,72.53-23.377,93.919c-2.951,17.515-26.979,36.518-48.531,48.851c-16.621-10.253-37.581-28.373-39.783-64.803
+					c1.592-14.552-3.201-29.674-14.337-40.811c-1.022-1.022-3.962-3.509-3.962-3.509L52.656,19.431l-7.396,7.39l88.099,82.649
+					l-9.556,9.556L38.452,33.669L30.615,41.5l85.339,85.362l-8.069,8.069L22.546,49.593l-7.14,7.076l84.828,84.834l-9.719,9.754
+					L8.092,64L0,72.116l67.376,84.897c0,0,1.604,1.644,2.283,2.248c9.806,8.569,22.116,12.612,34.298,12.27
+					c0.087,0,0.215,0.023,0.261,0.035c32.079,0.32,51.901,19.822,64.368,36.646C138.082,238.733,43.413,333.413,43.413,333.413
+					l0.023,0.023c-0.093,0.07-0.215,0.151-0.308,0.244c-7.709,7.703-7.709,20.205,0,27.932c0.395,0.383,1.882,1.859,2.26,2.254
+					c7.709,7.715,20.229,7.715,27.926,0.012c0.093-0.093,0.174-0.209,0.25-0.313l0.023,0.034c0,0,87.913-87.918,121.619-121.612
+					c32.079,32.067,120.997,120.962,120.997,120.962l0.023-0.023c0.069,0.082,0.104,0.197,0.221,0.314
+					c7.575,7.563,19.938,7.563,27.524-0.023c7.587-7.599,7.61-19.914,0.011-27.525c-0.115-0.104-0.231-0.139-0.324-0.243l0.022-0.023
+					c0,0-98.212-98.201-125.458-125.47C230.526,189.9,247.931,169.259,264.07,166.541z M253.636,107.878
+					c0.464-5.211,1.51-11.206,3.241-17.55c0.918-3.154,1.998-6.402,3.312-9.684c1.452-3.334,2.975-6.437,5.205-9.684
+					c4.264-6.233,9.457-11.079,14.628-15.145c5.112-4.119,10.306-7.32,14.918-9.748c4.578-2.475,8.679-4.078,11.607-4.996
+					c2.974-0.976,4.705-1.104,4.705-1.104s-1.429,1.081-3.566,3.079c-2.161,2.01-5.24,4.892-8.946,8.342
+					c-7.111,6.937-17.242,15.941-24.423,25.735c-1.731,2.237-3.276,5.188-4.624,7.889c-1.464,2.76-2.766,5.612-3.95,8.435
+					c-2.464,5.612-4.497,11.049-6.251,15.738c-1.708,4.7-3.044,8.673-3.834,11.497c-0.86,2.829-0.744,4.508-0.604,4.508
+					c-0.069,0.105-1.127-1.522-1.44-4.642C253.229,117.463,253.148,113.077,253.636,107.878z"/></g></svg>
+        	&nbsp;&nbsp;우리 가게</div></a>
+        </li>
+        <li><a href="ownerReview.me">
+        	<div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 9H7V7H17V9Z" fill="currentColor" /><path d="M7 13H17V11H7V13Z" fill="currentColor" /><path fill-rule="evenodd" clip-rule="evenodd" d="M2 18V2H22V18H16V22H14C11.7909 22 10 20.2091 10 18H2ZM12 16V18C12 19.1046 12.8954 20 14 20V16H20V4H4V16H12Z" fill="currentColor" /></svg>
+        	&nbsp;&nbsp;우리 가게 리뷰</div></a>
+        </li>
+        <li><a href="ownerModify.me">
+        	<div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.49997 12.8995C2.71892 13.6805 2.71892 14.9468 3.49997 15.7279L7.35785 19.5858H4.08576C3.53347 19.5858 3.08576 20.0335 3.08576 20.5858C3.08576 21.1381 3.53347 21.5858 4.08576 21.5858H20.0858C20.638 21.5858 21.0858 21.1381 21.0858 20.5858C21.0858 20.0335 20.638 19.5858 20.0858 19.5858H10.9558L20.4705 10.071C21.2516 9.28999 21.2516 8.02366 20.4705 7.24261L16.2279 2.99997C15.4468 2.21892 14.1805 2.21892 13.3995 2.99997L3.49997 12.8995ZM7.82579 11.4021L4.91418 14.3137L9.15683 18.5563L12.0684 15.6447L7.82579 11.4021ZM9.24 9.98787L13.4826 14.2305L19.0563 8.65683L14.8137 4.41418L9.24 9.98787Z" fill="currentColor" /></svg>
+        	&nbsp;&nbsp;회원 정보 수정</div></a>
+        </li>
+        <li><a href="main">
+        	<div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21 8.77217L14.0208 1.79299C12.8492 0.621414 10.9497 0.621413 9.77817 1.79299L3 8.57116V23.0858H10V17.0858C10 15.9812 10.8954 15.0858 12 15.0858C13.1046 15.0858 14 15.9812 14 17.0858V23.0858H21V8.77217ZM11.1924 3.2072L5 9.39959V21.0858H8V17.0858C8 14.8767 9.79086 13.0858 12 13.0858C14.2091 13.0858 16 14.8767 16 17.0858V21.0858H19V9.6006L12.6066 3.2072C12.2161 2.81668 11.5829 2.81668 11.1924 3.2072Z" fill="currentColor"/></svg>
+        	&nbsp;&nbsp;홈으로</div></a>
+        </li>
+        <li><a href="noticeList.no">
+        	<div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 3V3.28988C16.8915 4.15043 19 6.82898 19 10V17H20V19H4V17H5V10C5 6.82898 7.10851 4.15043 10 3.28988V3C10 1.89543 10.8954 1 12 1C13.1046 1 14 1.89543 14 3ZM7 17H17V10C17 7.23858 14.7614 5 12 5C9.23858 5 7 7.23858 7 10V17ZM14 21V20H10V21C10 22.1046 10.8954 23 12 23C13.1046 23 14 22.1046 14 21Z" fill="currentColor" /></svg>
+        	&nbsp;&nbsp;공지사항</div></a>
+        </li>
+    </ul>
+</div>
 
 </body>
 </html>

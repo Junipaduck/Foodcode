@@ -35,7 +35,7 @@
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-	<title>푸드코드 메인페이지</title>
+	<title>FOODCODE : MAIN</title>
 <style type="text/css">
 body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 .w3-bar-block .w3-bar-item {padding:20px}</style>	

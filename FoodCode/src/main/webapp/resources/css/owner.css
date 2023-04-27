@@ -153,3 +153,89 @@ td {
 .p-0 {
     padding: 0!important;
 }
+
+
+
+/* 사이드바 */
+.sidemenu {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    background-color: #ffc554;
+    color: #fff;
+    transition: all 0.5s ease;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    float: left;
+}
+.sidemenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sidemenu a, .sidemenu > label {
+    display: block;
+    height: 34px;
+    padding: 5px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidemenu a:hover {
+    color: #ffc554;
+}
+.sidemenu ul li:hover, .sidemenu > label:hover {
+    background-color: #fff;
+    color: #ffc554;
+    border-radius: 10px;
+}
+.sidemenu div {
+    position: absolute;
+    left: 50px;
+    line-height: 1.5;
+    font-size: 1em;
+    font-family: 'Noto Sans KR';
+    padding: 0 0 0 20px;
+}
+
+#expand-sidemenu {
+    display: none;
+}
+/* #expand-sidemenu:checked ~ ul { */
+/*     display: block; */
+/*     height: auto; */
+/* } */
+#expand-sidemenu:checked ~ ul {
+display: none;
+}
+
+#expand-sidemenu:not(:checked) ~ ul {
+display: block;
+height: auto;
+}
+.sidemenu ::before {
+    font-family: 'Material Icons';
+    font-size: 1.5em;
+    float: left;
+    clear: left;
+}
+.sidemenu label::before{ content: '\e5d2'; }
+.sidemenu li:nth-child(1){}
+.sidemenu li:nth-child(2){}
+.sidemenu li:nth-child(3){}
+.sidemenu li:nth-child(4){}
+.sidemenu li:nth-child(5){}
+.sidemenu li:nth-child(6){}
+
+@media screen and (max-width:1023px) {
+    .sidemenu {
+        width: 60px;
+    }
+}
+@media screen and (max-width:560px) {
+    .sidemenu #expand-menu:not(:checked) ~ ul {
+        display: none;
+    }
+}

@@ -9,6 +9,7 @@
   <title>FOODCODE : 마이페이지</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
+  
   <link rel="shortcut icon" href="favicon.png">
 
   <meta name="description" content="" />
@@ -27,7 +28,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-  <!-- 왼쪽 목록 css  ...근데 이 css있으면 top2.jsp css가 문제생김 -->
+  <!-- 왼쪽 사이드바 css  ...근데 이 css있으면 top2.jsp css가 문제생김 -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   
   <!-- owner css -->
@@ -46,6 +47,7 @@
         today.setHours(0, 0, 0, 0);
         let clickedYMD;
         let cnt = 0;
+        let bookingDateIdx = 0;
         // 달력 생성
         function buildCalendar() {
 
@@ -117,7 +119,8 @@
                 			success: function(result){
 								let area = "";
 								for(let booking of result) {
-								let url = "location.href='myBookingCancle.me?booking_idx=" + booking.booking_idx + "'";
+								bookingDateIdx = booking.booking_idx;
+// 								let url = "location.href='myBookingCancle.me?booking_idx=" + booking.booking_idx + "'";
 								area += '<tr>' +
                				         '<th scope="row">' + booking.store_name + '</th>' +
                				         '<td>' + booking.booking_idx + '</td>' +
@@ -128,7 +131,8 @@
                				         '<td>' + booking.member_phone + '</td>' +
                				         '<td>' + booking.booking_seat + '</td>' +
                				         '<td>' + booking.booking_content + '</td>' +
-               				         '<td class="white-space-nowrap"><input type="button" class="btn btn-primary" style="padding:1rem 1rem" value="취소" onclick="' + url + '"></td>' + 
+//                				         '<td class="white-space-nowrap"><input type="button" class="btn btn-primary" style="padding:1rem 1rem" value="취소" onclick="' + url + '"></td>' + 
+               				         '<td class="white-space-nowrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="DeleteStoreBooking();"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 11C10.2091 11 12 9.20914 12 7C12 4.79086 10.2091 3 8 3C5.79086 3 4 4.79086 4 7C4 9.20914 5.79086 11 8 11ZM8 9C9.10457 9 10 8.10457 10 7C10 5.89543 9.10457 5 8 5C6.89543 5 6 5.89543 6 7C6 8.10457 6.89543 9 8 9Z" fill="currentColor"/><path d="M11 14C11.5523 14 12 14.4477 12 15V21H14V15C14 13.3431 12.6569 12 11 12H5C3.34315 12 2 13.3431 2 15V21H4V15C4 14.4477 4.44772 14 5 14H11Z" fill="currentColor"/><path d="M22 9H16V11H22V9Z" fill="currentColor" /></svg></td>' + 
                				         '</tr>';
 								}
 								$("#bookingArea").html(area);
@@ -177,7 +181,14 @@
             }
             return value;
         }
+    
         
+        function DeleteStoreBooking() {
+    		if(window.confirm("예약을 삭제하시겠습니까?")){
+//     		location.href="ownerStoreDelete.me?store_idx=${param.store_idx}";
+    		location.href="myBookingCancle.me?booking_idx=" + bookingDateIdx;
+    		}
+        }
     </script>
     <style>
     @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
@@ -218,18 +229,24 @@
       </div>
     </div>
   </div>
+  
+  
+<%-- 사이드바 --%>
 <jsp:include page="owner_left.jsp"></jsp:include>
+
 <div class="untree_co-section">
+<div class="col-lg-5">
+</div>
 	<div class="container">
 		<div class="row">
         	<div class="col-lg-12">
 				<div class="accordion" id="accordionExample">
 					<div class="card">
-						<c:forEach items="${storeInfo }" var="storeInfo">
+						<c:forEach items="${storeInfo}" var="storeInfo" varStatus="loop">
 				       		<div class="card-header border-bottom" id="headingOne">
 				      			<h5 class="mb-0"><button class="btn btn-link p-0 collapsed" type="button" data-toggle="collapse" data-target="#collapse_${storeInfo.store_idx}" aria-expanded="true" aria-controls="collapse_${storeInfo.store_idx}">${storeInfo.store_name }</button></h5>
 				       		</div>
-				    		<div class="collapse" id="collapse_${storeInfo.store_idx}" aria-labelledby="heading_${storeInfo.store_idx}" data-parent="#accordionExample">
+							<div class="collapse ${loop.first ? 'show' : ''}" id="collapse_${storeInfo.store_idx}" aria-labelledby="heading_${storeInfo.store_idx}" data-parent="#accordionExample">
 								<c:set var="length" value="${fn:length(storeInfo.store_file) }" />
 								<c:set var="index" value="${fn:indexOf(storeInfo.store_file, '_') }" />
 								<c:set var="fileName" value="${fn:substring(storeInfo.store_file, index + 1, length) }" />
@@ -264,11 +281,10 @@
 <!-- 							              <label class="text-black" for="storeMenu">메뉴 등록</label> -->
 							              <input type="button" class="btn btn-primary btn-block" value="메뉴를 등록해주세요" id="store_menu" onclick="window.open('store_menu.so?store_idx=${storeInfo.store_idx}', 'window_name')">
 							              </div>
-				          			</ul>
-				          			
-				          			</div>
 									<br>
-									<button type="button" class="btn btn-primary" onclick="location.href='storeModify.me?store_idx=${storeInfo.store_idx}'">수정</button>
+									<button type="button" class="btn btn-primary" style="padding: 0.3125rem 1.7rem;" onclick="location.href='storeModify.me?store_idx=${storeInfo.store_idx}'">수정</button>
+				          			</ul>
+				          			</div>
 				       			</div>
 							</div>
 						</c:forEach>

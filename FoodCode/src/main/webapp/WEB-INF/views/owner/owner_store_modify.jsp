@@ -110,7 +110,32 @@
               </div>
                <div class="form-group">
                  <label class="text-black" for="storeType" >업종</label>
-                 <input type="text" class="form-control" id="store_type" name="store_type" value="${store.store_type }" required="required">
+<%--                  <input type="text" class="form-control" id="store_type" name="store_type" value="${store.store_type }" required="required"> --%>
+                 <br>
+		                <div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio1" value="한식">
+						  <label class="form-check-label" for="inlineRadio1" style="font-size: 17px;">한식</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio2" value="일식">
+						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">일식</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio3" value="중식">
+						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">중식</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio4" value="양식">
+						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">양식</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio5" value="요리주점">
+						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">요리주점</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio6" value="카페/디저트">
+						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">카페/디저트</label>
+						</div>
                  <small id="small1" class="form-text text-muted">ex) 한식, 일식, 중식, 양식, 요리주점, 카페/디저트 중 택1 </small>
                </div>
                <div class="form-group">
@@ -210,7 +235,7 @@
               </div>
               <button type="submit" class="btn btn-primary">수정</button>
               <button type="button" class="btn btn-primary" onclick="DeleteMyStore();">가게 삭제</button>
-              <button type="button" class="btn btn-primary">돌아가기</button>
+              <button type="button" class="btn btn-primary" onclick="javascript:history.back()">돌아가기</button>
               </form>
               </div>
           </div>
