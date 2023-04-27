@@ -254,6 +254,25 @@
 			ON s.store_idx = r.store_idx
 			WHERE s.member_id = #{id} AND s.store_idx = #{store_idx}
 	</select>
+	
+	
+	<!--  예약건수 차트  -->
+	<select id="bookingChart" resultType="com.itwillbs.foodcode.vo.StoreVO"> 
+		select
+			s.store_name,
+			count(booking_idx) as booking_count,
+			s.store_idx
+		from
+			booking b
+		join store s on
+			b.store_idx = s.store_idx
+		group by
+			b.store_idx
+		order by
+			booking_count desc;
+	</select>
+	
+	
 </mapper>
 
 

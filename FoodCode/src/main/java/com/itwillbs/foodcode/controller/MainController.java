@@ -15,6 +15,7 @@ import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.validation.annotation.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.itwillbs.foodcode.service.*;
 import com.itwillbs.foodcode.vo.*;
@@ -34,15 +35,29 @@ public class MainController {
     private KaKaoService ks;
 	
 	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
-	public String index(StoreVO store, Model model) {
-		
+	public ModelAndView index(StoreVO store, Model model) {
 		
 		// 메인 페이지에서 맛집 추천을 위한 store 조회 코드 
 		List<StoreVO> storeList = storeService.selectStoreList(store);
 		model.addAttribute("storeList", storeList);
 		
-		return "index";
+		// 예약건수차트
+		List<StoreVO> bookingChart = storeService.bookingChart(store); 
+		model.addAttribute("bookingChart", bookingChart);
+		System.out.println("예약건수차트 값 : " + bookingChart);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("bookingChart", bookingChart);
+		
+		return new ModelAndView("index","map",map);
+		
+//		return "index";
 	}
+	
+	
+	
+	
+	
 	
 //	@RequestMapping(value = "store.so", method = {RequestMethod.GET, RequestMethod.POST})
 //	public String store() {

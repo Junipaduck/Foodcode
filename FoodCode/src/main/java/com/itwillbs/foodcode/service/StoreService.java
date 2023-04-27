@@ -78,5 +78,9 @@ public class StoreService {
 		return mapper.selectStoreOwner(id, store_idx);
 	}
 
+	// 예약건수 차트
+	public List<StoreVO> bookingChart(StoreVO store) {
+		return mapper.bookingChart(store);
+	}
 	
 }

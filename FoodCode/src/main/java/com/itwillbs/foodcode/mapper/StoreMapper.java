@@ -39,5 +39,8 @@ public interface StoreMapper {
 	List<ReviewVO> selectStoreReviewList(ReviewVO review);
 
 	int selectStoreOwner(@Param("id") String id, @Param("store_idx") int store_idx);
+	
+	// 예약건수 차트
+	List<StoreVO> bookingChart(StoreVO store);
 
 }

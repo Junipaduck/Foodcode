@@ -144,63 +144,96 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	</div>
 	<br>
 
-	<!-- 제공 서비스 소개 -->
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row mb-5 justify-content-center">
-				<div class="col-lg-6 text-center">
-					<h2 class="section-title text-center mb-3" style="font-family: 'Noto Sans KR', sans-serif;">우리가 제공하는 서비스</h2>
-					<p style="font-family: 'Noto Sans KR', sans-serif;">식당 예약 및 리뷰 작성가능하답니다</p>
-				</div>
-			</div>
-			<div class="row align-items-stretch">
-				<div class="col-lg-4 order-lg-1">
-					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url(https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"></div></div></div>
-				</div>
+	
+	
+	
+	
+	
+<!-- 0427배하나 추가) 예약건수 많은순위(1~10등) 차트 시작 -->
+ <hr>
+	 <div style="display: block; box-sizing: border-box; height: 500px; width: 1000px; margin: auto;">
+	 <div class="h5 text-center" style="font-size: 30px;">실시간 예약순위 <img width="50px;" style="margin-bottom: 10px;" src="https://www.svgrepo.com/show/491984/notice-certificate-of-deposit.svg"></div>
+	  <canvas id="mtChart" ></canvas>
+	 </div>
+<br><br><br>
+<hr> 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+ 
+// 메모) 스크립트 안에서 jstl 안먹길래 map으로 받아옴
+// <c:forEach var="bookingChart" items="${bookingChart }" begin="0" end="4" step="1">
+// 	 var store_name = "${bookingChart.store_name }";
+// 	 var booking_count = "${bookingChart.booking_count }";
+// </c:forEach>
 
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
 
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-house display-4 text-primary"></span>
-							<h3>다양한 맛집 보유</h3>
-							<p class="mb-0">인기있는 맛집 여기 있음</p>
-						</div>
-					</div>
+ /* 데이터 정보를 담은 변수 선언 */
+const labels = ['1위♡ ${map.bookingChart[0].store_name}', '${map.bookingChart[1].store_name}', '${map.bookingChart[2].store_name}',
+				'${map.bookingChart[3].store_name}', '${map.bookingChart[4].store_name}', '${map.bookingChart[5].store_name}',
+				'${map.bookingChart[6].store_name}', '${map.bookingChart[7].store_name}', '${map.bookingChart[8].store_name}',
+				'${map.bookingChart[9].store_name}', '${map.bookingChart[10].store_name}'];
+const data = {
+  labels: labels,
+  datasets: [{
+	  label: '예약 건수',
+    backgroundColor: [
+        '#ff4658',
+        '#ffa55a',
+        '#fbde88',
+        '#20c997',
+        '#7ba9ff',
+        '#ba94ff',
+        '#ba94ff',
+        '#ba94ff',
+        '#ba94ff',
+        '#ba94ff'
+    ],
+    borderColor: [
+        '#ff4658',
+        '#ffa55a',
+        '#fbde88',
+        '#20c997',
+        '#7ba9ff',
+        '#ba94ff',
+        '#ba94ff',
+        '#ba94ff',
+        '#ba94ff',
+        '#ba94ff'
+    ],
+    data: ['${map.bookingChart[0].booking_count}', '${map.bookingChart[1].booking_count}', '${map.bookingChart[2].booking_count}',
+			'${map.bookingChart[3].booking_count}', '${map.bookingChart[4].booking_count}', '${map.bookingChart[5].booking_count}',
+			'${map.bookingChart[6].booking_count}', '${map.bookingChart[7].booking_count}', '${map.bookingChart[8].booking_count}',
+			'${map.bookingChart[9].booking_count}', '${map.bookingChart[10].booking_count}'],
+  }
+//   ,
+//   {
+//     label: 'kkk',
+//     backgroundColor: 'rgb(255, 99, 132)',
+//     borderColor: 'rgb(255, 99, 132)',
+//     data: [30, 10, 5, 2, 20, 30, 45],
+//   }
+  ]
+};
 
-					<div class="feature-1 ">
-						<div class="align-self-center">
-							<span class="flaticon-restaurant display-4 text-primary"></span>
-							<h3>어쩌구저쩌구</h3>
-							<p class="mb-0">랄라라라라라라아랄라</p>
-						</div>
-					</div>
+const config = {
+  type: 'bar',
+  data,
+  options: {}
+};
 
-				</div>
 
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-mail display-4 text-primary"></span>
-							<h3>미리 예약가능</h3>
-							<p class="mb-0">줄서지말고 미리 예약하세요</p>
-						</div>
-					</div>
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-phone-call display-4 text-primary"></span>
-							<h3>어쩌구저쩌구</h3>
-							<p class="mb-0">다양한 후기 구경해보고가세요~</p>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
+</script>
+<script>
+  const mtChart = new Chart(
+    document.getElementById('mtChart'),
+    config
+  );
+</script>
+<!-- 예약순위 차트 끝 -->
+ 
+	
+	
+	
 
 
 	<!-- 추천맛집, 조회수 높은 맛집들 소개하는 공간 -->
