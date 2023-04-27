@@ -127,7 +127,10 @@ public class StoreController {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-		            return "redirect:/store_recommend.so";
+				  	model.addAttribute("msg", "완료되었습니다. 관리자 승인 후 맛집추천페이지에 자동으로 노출됩니다 :)");
+				  	model.addAttribute("target", "mypage.me"); // 가게등록 후 점주 본인의 마이페이지로 이동
+				  	return "success";
+//		            return "redirect:/store_recommend.so";
 		      } else {
 		            model.addAttribute("msg", "가게 등록 실패!");
 		            return "fail_back";
