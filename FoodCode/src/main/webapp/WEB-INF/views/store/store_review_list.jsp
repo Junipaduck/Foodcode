@@ -88,7 +88,7 @@
 	</section>
 	
 	&nbsp; &nbsp; &nbsp; 
-    <table  class="rwd-table" id="dataTable" width="100%" cellspacing="0">
+    <table  class="rwd-table" id="dataTable" style="width: 1100px;" cellspacing="0">
         <tbody>
         <tr>
             <th>글번호</th>

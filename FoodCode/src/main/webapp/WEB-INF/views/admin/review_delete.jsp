@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@include file="../includes/header.jsp" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
                 <!-- Begin Page Content -->
 
 <script type="text/javascript">
@@ -63,7 +64,12 @@ function DeleteReview(review_idx) {
                                             <td>${reviewList.review_content}</td>
                                             <td>${reviewList.review_star}</td>
                                             <td>${reviewList.member_id }</td>
-                                            <td align="center">${reviewList.review_file}</td>
+                                            <td align="center">
+								                <c:set var="length" value="${fn:length(reviewList.review_file) }"/>
+												<c:set var="index" value="${fn:indexOf(reviewList.review_file, '_') }"/>
+												<c:set var="fileName" value="${fn:substring(reviewList.review_file, index + 1, length) }"/>
+												<img alt="등록된 사진이 없습니다." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px;width: 50px;">
+                                            </td>
                                             <td align="center">
                                             	<a onclick="DeleteReview('${reviewList.review_idx }');" class="btn btn-danger btn-circle"">
                                            			 <i class="fas fa-trash"></i>
