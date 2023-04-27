@@ -6,7 +6,7 @@
 <html lang="kr">
 <head>
   <meta charset="utf-8">
-  <title>점주가게목록</title>
+  <title>FOODCODE : 마이페이지</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="favicon.png">
@@ -107,7 +107,7 @@
 	                	clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
 	                	clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
                 		console.log(clickedYMD);
-                		
+//                 		$("#bookingArea").hide();
                 		$.ajax({
                 			type: "GET",
                 			url: "getTodayBooking.me",
@@ -115,30 +115,23 @@
                 			dataType    : "json",
                 			// contentType : "application/json; charset=UTF-8",
                 			success: function(result){
-//                 				debugger;
-//                 				alert(result);
-                				if(result) {
-                					result.forEach((el, index) => { 
-                						let url = "location.href='customerBookingCancle.me?booking_idx=" + el.booking_idx + "'";
-                						let tr = '<tr>' +
-	                				         '<th scope="row">' + el.store_name + '</th>' +
-	                				         '<td>' + el.booking_idx + '</td>' +
-	                				         '<td>' + el.booking_date + '</td>' +
-	                				         '<td>' + el.booking_time + '</td>' +
-	                				         '<td>' + el.member_name + '</td>' +
-	                				         '<td>' + el.booking_num + '</td>' +
-	                				         '<td>' + el.member_phone + '</td>' +
-	                				         '<td>' + el.booking_seat + '</td>' +
-	                				         '<td class="white-space-nowrap">' + el.booking_content + '</td>' +
-	                				         '<td><input type="button" class="btn btn-primary" value="취소" onclick="' + url + '"></td>' + 
-	                				         '</tr>';
-                						  $("#bookingArea").html(tr);
-                						});
-									
-                				} else if(result.equals("")){
-                					alert("실패!");
-                				}
-                				
+								let area = "";
+								for(let booking of result) {
+								let url = "location.href='myBookingCancle.me?booking_idx=" + booking.booking_idx + "'";
+								area += '<tr>' +
+               				         '<th scope="row">' + booking.store_name + '</th>' +
+               				         '<td>' + booking.booking_idx + '</td>' +
+               				         '<td>' + booking.booking_date + '</td>' +
+               				         '<td>' + booking.booking_time + '</td>' +
+               				         '<td>' + booking.member_name + '</td>' +
+               				         '<td>' + booking.booking_num + '</td>' +
+               				         '<td>' + booking.member_phone + '</td>' +
+               				         '<td>' + booking.booking_seat + '</td>' +
+               				         '<td>' + booking.booking_content + '</td>' +
+               				         '<td class="white-space-nowrap"><input type="button" class="btn btn-primary" style="padding:1rem 1rem" value="취소" onclick="' + url + '"></td>' + 
+               				         '</tr>';
+								}
+								$("#bookingArea").html(area);
                 			}
                 		});
 	                }
@@ -188,6 +181,13 @@
     </script>
     <style>
     @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+    .row{
+    	margin-right: -138px;
+    	margin-left: -66px;
+    }
+    .a{
+    	color:rgba(255, 255, 255, 0.7);
+    }
     </style>
 </head>
 <body>
@@ -280,7 +280,7 @@
 	</div>
 </div>
  
-  <div class="row justify-content-center">
+  <div class="justify-content-center row">
 	  <!-- 왼쪽 부분 -->
         <div class="col-lg-3.5">
           <div class="custom-block" data-aos="fade-up">
@@ -328,15 +328,16 @@
             <table class="table">
 			  <thead class="undefined">
 			    <tr>
-			      <th scope="col">가게이름</th>
-			      <th scope="col">예약번호</th>
-			      <th scope="col">예약날짜</th>
-			      <th scope="col">예약시간</th>
-			      <th scope="col">예약자이름</th>
+			      <th scope="col">가게</br>이름</th>
+			      <th scope="col">예약</br>번호</th>
+			      <th scope="col">예약</br>날짜</th>
+			      <th scope="col">예약</br>시간</th>
+			      <th scope="col">예약자</br>이름</th>
 			      <th scope="col">인원</th>
 			      <th scope="col">전화번호</th>
 			      <th scope="col">좌석</th>
-			      <th class="white-space-nowrap" scope="col">기타</th>
+			      <th scope="col">기타</th>
+			      <th class="white-space-nowrap" scope="col"></th>
 			    </tr>
 			  </thead>
 			  <tbody id="bookingArea">

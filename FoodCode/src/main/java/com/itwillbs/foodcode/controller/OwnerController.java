@@ -305,15 +305,6 @@ public class OwnerController {
 		String id = (String)session.getAttribute("sId");
 		System.out.println(id);
 		List<HashMap<String, String>> storeBooking = ownerService.showBooking(id, clickedDay);
-//		ArrayList<HashMap<String, String>> storeBooking = ownerService.showBooking(id);
-//		System.out.println(storeBooking);
-//		model.addAttribute("storeBooking", storeBooking);
-		
-//		if(storeBooking != null) {
-//			return "true";
-//		} else {
-//			return "false";
-//		}
 		JSONArray jsonArr = new JSONArray(storeBooking);
 			
 		return jsonArr.toString();
@@ -352,6 +343,21 @@ public class OwnerController {
 			return "fail_back";
 		}
 	}
+	
+	// 점주 마이페이지에서 예약 취소
+		@GetMapping("/myBookingCancle.me")
+		public String myBookingCancle(@RequestParam int booking_idx, Model model) {
+			System.out.println(booking_idx);
+			int deleteCnt = ownerService.deleteBooking(booking_idx);
+			if(deleteCnt > 0) {
+				model.addAttribute("msg", "예약이 삭제되었습니다.");
+				model.addAttribute("target", "ownerPage.me");
+				return "success";
+			} else {			
+				model.addAttribute("msg", "예약 삭제 실패");
+				return "fail_back";
+			}
+		}
 	
 	
 }
