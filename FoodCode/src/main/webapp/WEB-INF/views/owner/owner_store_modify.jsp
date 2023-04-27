@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
-  <title>식당 정보수정</title>
+  <title>FOODCODE : 점주 가게 수정</title>
   
 <script type="text/javascript">
 	function deleteFile() {

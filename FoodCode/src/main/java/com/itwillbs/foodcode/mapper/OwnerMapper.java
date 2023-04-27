@@ -39,4 +39,6 @@ public interface OwnerMapper {
 
 	int deleteOwnerStore(StoreVO store);
 
+	int deleteBooking(@Param("booking_idx") int booking_idx);
+
 }

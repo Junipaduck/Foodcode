@@ -24,10 +24,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-  
+  <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 
   
-  <title>가게 등록</title>
+  <title>FOODCODE : 점주 가게 등록</title>
 </head>
 
 <body>

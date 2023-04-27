@@ -82,6 +82,10 @@ public class OwnerService {
 		return mapper.deleteOwnerStore(store);
 	}
 
+	public int deleteBooking(@Param("booking_idx") int booking_idx) {
+		return mapper.deleteBooking(booking_idx);
+	}
+
 
 	
 

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="lnb-area addchat">
-            <ul style="margin-top: 100px;">
+            <ul style="margin-top: 100px; color:black;">
                 <li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>
                 <li><a href="ownerPage.me" title="내식당">내식당</a></li>
                 <li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>

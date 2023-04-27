@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
-  <title>점주 회원정보 수정</title>
+  <title>FOODCODE : 점주 정보 수정</title>
   <script type="text/javascript">
 function DeleteMember() {
 	if(window.confirm("탈퇴하시겠습니까?")){

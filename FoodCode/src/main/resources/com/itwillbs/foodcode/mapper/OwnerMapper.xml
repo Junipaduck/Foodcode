@@ -175,6 +175,13 @@
 					ON store.store_idx = report.store_idx
 			WHERE store.store_idx = #{store_idx}		
 	</delete>
+	
+	<!-- 점주 마이페이지에서 예약 삭제 -->
+	<delete id="deleteBooking">
+		DELETE
+			FROM booking
+			WHERE booking_idx = #{booking_idx}
+	</delete>
 		
 	
 </mapper>
