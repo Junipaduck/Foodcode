@@ -359,14 +359,6 @@
 	           		</div>
 	           </td>
 	           <td>${review.review_date }</td>
-	           <td>
-	           		<c:if test="${sessionScope.sId == 'owner1' }">
-		           		<input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me'">
-	           		</c:if>
-	           		<c:if test="${sessionScope.sId == 'hana' }">
-		           		<input type="button" value="리뷰신고하기" onclick="location.href='storeReport.re?store_idx=${store.store_idx}'">
-	           		</c:if>
-	           </td>
 	        </tr>
 		</c:forEach>
 	</tbody>
