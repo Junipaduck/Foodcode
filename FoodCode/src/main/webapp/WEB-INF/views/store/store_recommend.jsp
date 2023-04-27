@@ -123,8 +123,8 @@ $(document).ready(function() {
 <!-- 			</form> -->
 <!-- 		</section> -->
    
-   <div> 		
-    <section id="buttonArea">		
+   <div style="margin-left: 410px;"> 		
+    <section id="buttonArea" style="margin-right: -3600px;">		
 		<form class="form222" action="store_recommend.so" style="margin-bottom: 10px; margin-top: -10px; margin-left: 10px;">
 				<select name="searchType" id="" class="custom-select" style="width: 5%; float: left;">
 					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
