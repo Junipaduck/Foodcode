@@ -32,6 +32,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@300&family=Gowun+Dodum&family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">  
 <style type="text/css">
+.menubox {
+	width: 80px;
+	object-fit: contain;
+}
+
 .mb-0 { /*폰트수정*/
 	font-family: 'Noto Sans KR', sans-serif;
 }
@@ -150,297 +155,121 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-1.jpg" alt="" style="width: 80px;">
+                                    	 <c:set var="length" value="${fn:length(menuList[0].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[0].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[0].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>치킨버거</span>
-                                                <span class="text-primary">5000원</span>
+                                                <span>${menuList[0].menu_name }</span>
+                                                <span class="text-primary">${menuList[0].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
+                                            <small class="fst-italic">${menuList[0].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-2.jpg" alt="" style="width: 80px;">
+                                    	 <c:set var="length" value="${fn:length(menuList[1].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[1].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[1].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>불고기버거</span>
-                                                <span class="text-primary">4000원</span>
+                                                 <span>${menuList[1].menu_name }</span>
+                                               <span class="text-primary">${menuList[1].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
+                                            <small class="fst-italic">${menuList[1].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-3.jpg" alt="" style="width: 80px;">
+                                        <c:set var="length" value="${fn:length(menuList[2].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[2].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[2].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>치즈스틱</span>
-                                                <span class="text-primary">2000원</span>
+                                                <span>${menuList[2].menu_name }</span>
+                                                <span class="text-primary">${menuList[2].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
+                                             <small class="fst-italic">${menuList[2].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-4.jpg" alt="" style="width: 80px;">
+                                        <c:set var="length" value="${fn:length(menuList[3].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[3].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[3].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." />
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>감자튀김</span>
-                                                <span class="text-primary">2000원</span>
+                                                <span>${menuList[3].menu_name }</span>
+                                                <span class="text-primary">${menuList[3].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
+                                             <small class="fst-italic">${menuList[3].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-5.jpg" alt="" style="width: 80px;">
+                                        <c:set var="length" value="${fn:length(menuList[4].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[4].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[4].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>아이스크림</span>
-                                                <span class="text-primary">1000원</span>
+                                                <span>${menuList[4].menu_name }</span>
+                                                <span class="text-primary">${menuList[4].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
+                                             <small class="fst-italic">${menuList[4].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-6.jpg" alt="" style="width: 80px;">
+                                        <c:set var="length" value="${fn:length(menuList[5].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[5].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[5].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." "/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>콜라</span>
-                                                <span class="text-primary">2000원</span>
+                                                <span>${menuList[5].menu_name }</span>
+                                                <span class="text-primary">${menuList[5].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
+                                             <small class="fst-italic">${menuList[5].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-7.jpg" alt="" style="width: 80px;">
+                                        <c:set var="length" value="${fn:length(menuList[6].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[6].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[6].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..." />
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>커피</span>
-                                                <span class="text-primary">3000원</span>
+                                                <span>${menuList[6].menu_name }</span>
+                                                <span class="text-primary">${menuList[6].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
+                                             <small class="fst-italic">${menuList[6].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-8.jpg" alt="" style="width: 80px;">
+                                       <c:set var="length" value="${fn:length(menuList[7].menu_image) }"/>
+										 <c:set var="index" value="${fn:indexOf(menuList[7].menu_image, '_') }"/>
+										 <c:set var="fileName" value="${fn:substring(menuList[7].menu_image, index + 1, length) }"/>
+							             <img class="flex-shrink-0 img-fluid rounded menubox" src="${pageContext.request.contextPath }/resources/menuFileUpload/${fileName}" alt="..."/>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>치킨너겟</span>
-                                                <span class="text-primary">3000원</span>
+                                                <span>${menuList[7].menu_name }</span>
+                                                <span class="text-primary">${menuList[7].menu_price }원</span>
                                             </h5>
-                                            <small class="fst-italic">맛있어요</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-1.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-2.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-3.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-4.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-5.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-6.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-7.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-8.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-3" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-1.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-2.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-3.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-4.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-5.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-6.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-7.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${pageContext.request.contextPath }/resources/img/menu-8.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                             <small class="fst-italic">${menuList[7].menu_content }</small>
                                         </div>
                                     </div>
                                 </div>
@@ -455,7 +284,7 @@
 	<!--  [리뷰목록] 클릭 시 리뷰 게시판으로 이동  -->
 	<input type="button" value="리뷰목록" onclick="location.href='reviewList.me'">
     <input type="hidden" name="store_idx" value="${param.store_idx}" />
-	
+	</div>
 	
 	
 	<!-- 리뷰 게시판 영역 -->

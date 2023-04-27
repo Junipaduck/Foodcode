@@ -70,6 +70,9 @@ public class StoreController {
 		List<ReviewVO> storeReviewList = storeService.getStoreReviewList(review);
 		model.addAttribute("storeReviewList", storeReviewList);
 		
+		//0427 강지훈 추가 - 가게 상세 정보 페이지 메뉴 부분
+		List menuList = menuService.getMenuList(store_idx);
+		model.addAttribute("menuList", menuList);
 		
 		return "store/store_information";
 	}
