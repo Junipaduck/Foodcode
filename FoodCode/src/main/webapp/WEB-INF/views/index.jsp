@@ -149,7 +149,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	
 	
 	
-<!-- 0427배하나 추가) 예약건수 많은순위(1~10등) 차트 시작 -->
+<!-- 0427배하나 추가) 예약건수 많은순위(1~10등) 차트 시작! -->
  <hr>
 	 <div style="display: block; box-sizing: border-box; height: 500px; width: 1000px; margin: auto;">
 	 <div class="h5 text-center" style="font-size: 30px;">실시간 예약순위 <img width="50px;" style="margin-bottom: 10px;" src="https://www.svgrepo.com/show/491984/notice-certificate-of-deposit.svg"></div>
