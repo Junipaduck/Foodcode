@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> <!-- 테이블 외부 css 파일 경로 -->
  
  
  
@@ -38,34 +39,6 @@
  
  <!-- css 시작 ------------------------------------------------------------------------------------ -->
  <style type="text/css">
- .board-header h2 {
-    color: rgb(44, 135, 241);
-}
-
-h2 {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 120%;
-    color: #222228;
-}
- 
- 
-.board-wrap {
-	margin-top: 100px;
-	margin-left: 400px;
-	margin-right: 400px;
-	margin-bottom: 100px;
-}
-
-.board-view {
-
-}
-
-
-
-
-
-
  </style>
  <!-- css 끝 ------------------------------------------------------------------------------------ -->
  
@@ -110,36 +83,86 @@ h2 {
   </div>
 
 <!-- html 시작 --------------------------------------------------------------------------------- -->
-<div class="hanadiv">
-	<div class="board-wrap">
-	    <div class="board-view">
-	        <div class="board-header">
-	        
-		            <h2 class="h2-11">작성자 : ${review.member_id }</h2> <!-- 리뷰 작성자 -->
-		            <hr>
-		            <div class="date"><fmt:formatDate value="${review.review_date }" pattern="yyyy년 MM월 dd일" /></div> <!-- 공지사항 날짜 -->
-		            <hr>
-			        </div>
-			        <div class="contents" style="white-space: pre-line;"> 
-			        ${review.review_content }
-			        </div>
-			        <hr>
-			        <div class="contents" style="white-space: pre-line;"> 
-    	                <c:set var="length" value="${fn:length(review.review_file) }"/>
-						<c:set var="index" value="${fn:indexOf(review.review_file, '_') }"/>
-						<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }"/>
-						<img alt="..." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 200px;width: 200px;">
-			        </div>
-			        <hr>	
-			        <div class="contents" style="white-space: pre-line;"> 
-			        <h4>점주답글</h4>
-			        ${reply.reply_content }
-			        </div>	
-	    		<br><hr>
-          <button type="submit" class="btn btn-primary" onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'">답변하기</button>
-	    </div>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <table  class="rwd-table" id="dataTable" style="width: 700px;" cellspacing="0">
+        <tbody>
+        <tr>
+            <th>항목</th>
+            <th>내용</th>
+        </tr>
+
+        <tr class="KOTRA-fontsize-80">
+			<th>작성자</th>
+			<td>${review.member_id }</td>
+        </tr>
+        <tr class="KOTRA-fontsize-80">
+			<th>리뷰작성일</th>
+			<td><fmt:formatDate value="${review.review_date }" pattern="yyyy년 MM월 dd일" /></td>
+        </tr>
+        <tr class="KOTRA-fontsize-80">
+			<th>리뷰사진</th>
+			<td>
+	  	        <c:set var="length" value="${fn:length(review.review_file) }"/>
+				<c:set var="index" value="${fn:indexOf(review.review_file, '_') }"/>
+				<c:set var="fileName" value="${fn:substring(review.review_file, index + 1, length) }"/>
+				<img alt="등록된 사진이 없습니다." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 200px;width: 200px;">
+			</td>
+        </tr>
+        <tr class="KOTRA-fontsize-80">
+			<th>리뷰내용</th>
+			<td>${review.review_content }</td>
+        </tr>
+        <tr class="KOTRA-fontsize-80">
+			<th>리뷰평점</th>
+			<td>
+				<div class="review_star">
+	           		<c:if test="${not empty review.review_star }">
+	           			<c:choose>
+	           				<c:when test="${review.review_star == 1 }">
+			  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+	           				</c:when>
+	           				<c:when test="${review.review_star == 2 }">
+			  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+	           				</c:when>
+	           				<c:when test="${review.review_star == 3 }">
+			  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+	           				</c:when>
+	           				<c:when test="${review.review_star == 4 }">
+			  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+	           				</c:when>
+	           				<c:when test="${review.review_star == 5 }">
+			  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+	           				</c:when>
+	           				<c:otherwise>
+	           				No Rating
+	           				</c:otherwise>
+	           			</c:choose>
+	           		</c:if>
+           		</div>
+			</td>
+        </tr>
+        <tr class="KOTRA-fontsize-80">
+			<th>점주답글</th>
+			<td>
+				<c:choose>
+					<c:when test="${not empty reply.reply_content }">
+						${reply.reply_content }
+					</c:when>
+					<c:when test="${empty reply.reply_content }">
+						등록된 답글이 없습니다. 점주회원 이라면 답글을 남겨보세요!
+					</c:when>
+				</c:choose>
+			</td>
+        </tr>
+	</tbody>
+    </table>
+    &nbsp;&nbsp;&nbsp;
+    <div align="center">
+	    <button type="submit" class="btn btn-primary" onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'">답글달기</button>
     </div>
-</div>
+    
+    
+    
 
 
 
