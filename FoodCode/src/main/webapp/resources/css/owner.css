@@ -162,8 +162,11 @@ td {
     overflow: hidden;
     width: 200px;
     height: 431px;
-    background-color: #ffc554;
-    color: #fff;
+    background-color: #fff;
+/*     border-style: solid; */
+/*     border-width: thick; */
+/*     border-color: #ffc554; */
+    color: #ffc554;
     transition: all 0.5s ease;
     border-radius: 10px;
     padding: 10px;
@@ -180,7 +183,7 @@ td {
     height: 34px;
     padding: 5px;
     cursor: pointer;
-    color: #fff;
+    color: #ffc554;
     text-decoration: none;
 }
 
@@ -196,7 +199,8 @@ td {
     position: absolute;
     left: 50px;
     line-height: 1.5;
-    font-size: 1em;
+    font-size: 1.3em;
+    font-weight: 700;
     font-family: 'Noto Sans KR';
     padding: 0 0 0 20px;
 }

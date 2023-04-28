@@ -63,10 +63,10 @@
 	<jsp:include page="customer_left.jsp"></jsp:include>
 	
 	<div class="untree_co-section" align="center">
-        <div class="col-lg-5 pl-lg-5 ml-auto">
-          <h2 class="section-title mb-4">회원명</h2>
-          <p>회원정보 간단하게</p>
-          <ul class="list-unstyled two-col clearfix" style="height: 135px;">
+		<div class="container">
+        <div class="col-lg-9 pl-lg-9 ml-auto" style="padding-left: 0rem!important; margin-left:0px;">
+          <div class="col-lg-9 ml-auto" style=""><h2 class="section-title mb-4" >회원명</h2></div>
+          <ul class="list-unstyled two-col clearfix" style="height: 135px; text-align:left;">
             <li>회원 이름 : ${map.member.member_name}</li>
             <li>회원 아이디 : ${map.member.member_id}</li>
             <li>전화 번호 : ${map.member.member_phone}</li>
@@ -78,9 +78,9 @@
           <hr>
           <button type="submit" class="btn btn-primary" onclick="location.href='customerModify.me'">수정</button>
         </div>
-  </div>
+        
 	<div align="center">
-	  		<table id="rwd-table">
+	  		<table id="rwd-table" style="width: 1100px;">
 		  		<tr>
 			  		<td>
 				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
@@ -118,7 +118,7 @@
 			</table>
 			<div class="col-lg-4">
 		    </div>
-	  		<table id="rwd-table">
+	  		<table id="rwd-table" style="width: 1100px;">
 				<tr>
 			  		<td>
 				  		<div class="custom-block" data-aos="fade-up" data-aos-delay="100">
@@ -183,6 +183,8 @@
 				</c:choose>
 			</table>
 			
+  </div>
+  </div>
   </div>
   
 

@@ -209,7 +209,7 @@
 					  </script>
 					  <!-- } -->
 					  
-			<div class="col-md-6">
+<!-- 			<div class="col-md-6"> -->
                   <div class="form-group">
                     <label for="">인원</label>
                     <div class="select-wrap one-third">
@@ -224,7 +224,7 @@
                       </select>
                       </div>
                     </div>
-                  </div>		  
+<!--                   </div>		   -->
 					  
               <div class="form-group">
                 <label class="text-black" for="storeTime">가게 소개글</label>
