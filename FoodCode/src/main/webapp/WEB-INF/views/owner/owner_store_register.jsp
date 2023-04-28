@@ -25,7 +25,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
-
+<!-- 타임피커 cdn -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/timepicker.css">
   
   <title>FOODCODE : 점주 가게 등록</title>
 </head>
@@ -178,11 +181,51 @@
 <!--                   </div> -->
 <!--                	 </div> -->
               <!-- 기존 메뉴 탭 끝 -->
+              
               <div class="form-group">
                 <label class="text-black" for="storeTime" >영업시간</label>
-                <input type="text" class="form-control" name="store_time" id="store_time">
-                <small id="small7" class="form-text text-muted">ex) 09:00~22:00 형식으로 입력해주세요. </small>
               </div>
+
+              <div class="form-group">
+                 <input type="text" name="store_open" id="store_open" class="timepicker inp" readonly="true"/> 
+                 ~ 
+                 <input type="text" name="store_close" id="store_close" class="timepicker inp" readonly="true"/> 
+                 <small id="small8" class="form-text text-muted">예약이 가능한 영업시간을 선택해주세요. </small>
+              </div>
+<!--                     <input type="text" name="booking_time" id="booking_time"/>  -->
+					 <!-- 시간 옵션 { -->
+					  <script>
+					  $('.timepicker').timepicker({
+					    timeFormat: 'HH:mm',
+					    interval: 120,
+// 					    minTime: '10',
+// 					    maxTime: '24',
+					    defaultTime: '00',
+					    startTime: '00:00',
+					    dynamic: false,
+					    dropdown: true,
+					    scrollbar: true
+					   });
+					  </script>
+					  <!-- } -->
+					  
+			<div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">인원</label>
+                    <div class="select-wrap one-third">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <select name="store_maxps" id="store_maxps" class="form-control">
+                        <option>인원수 선택</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4+</option>
+                        <option value="0">그 외</option>
+                      </select>
+                      </div>
+                    </div>
+                  </div>		  
+					  
               <div class="form-group">
                 <label class="text-black" for="storeTime">가게 소개글</label>
                 <input type="text" class="form-control22" name="store_content" id="store_content" style="border: 2px solid #e9ecef; font-size: 16px; width:540px; height: 150px;">

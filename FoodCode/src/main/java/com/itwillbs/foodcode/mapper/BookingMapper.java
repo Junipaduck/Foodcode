@@ -18,5 +18,10 @@ public interface BookingMapper {
 	
 	// pay테이블 insert
 	void insertPayList(@Param("id") String id, @Param("merchant_uid") String merchant_uid, @Param("pay_price") String pay_price);
+
+	int bookingSeatCheck(@Param("store_idx") int store_idx, @Param("booking_date") String booking_date, @Param("booking_time") String booking_time);
+
+	int getStore_maxps(int store_idx);
+
 	
 }

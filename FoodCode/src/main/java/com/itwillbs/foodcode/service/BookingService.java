@@ -37,5 +37,15 @@ public class BookingService {
 	public void insertPayList(@RequestParam String id, @RequestParam String merchant_uid, @RequestParam String pay_price) {
 		mapper.insertPayList(id, merchant_uid, pay_price);
 	}
+
+	public int bookingSeatCheck(int store_idx, String booking_date, String booking_time) {
+			
+		return mapper.bookingSeatCheck(store_idx, booking_date, booking_time);
+	}
+
+	public int getStore_maxps(int store_idx) {
+		
+		return mapper.getStore_maxps(store_idx);
+	}
 	
 }

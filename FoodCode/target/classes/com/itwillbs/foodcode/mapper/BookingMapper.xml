@@ -60,4 +60,20 @@
 		)
 	</insert>
 	
+	<select id="bookingSeatCheck" resultType="int">
+		select IFNULL(sum(b.booking_num),0) 
+		from store s join booking b 
+		on s.store_idx = b.store_idx 
+		where s.store_idx = #{store_idx } and b.booking_date = #{booking_date } and b.booking_time = #{booking_time };
+		
+	</select>
+	
+	
+	<select id="getStore_maxps"	resultType="int">
+		select store_maxps
+			from store
+				where store_idx = #{store_idx}
+	</select>
+	
+	
 </mapper>

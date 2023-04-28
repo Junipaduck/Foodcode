@@ -10,12 +10,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
@@ -107,4 +109,29 @@ public class BookingController {
 			return "booking/booking_success";
 		}
 	
+		@ResponseBody
+		@GetMapping(value = "/bookingSeatCheck.bo")
+			public boolean bookingSeatCheck(@RequestParam int store_idx, @RequestParam String booking_date, @RequestParam String booking_time, @RequestParam String booking_num) {
+				System.out.println("bookingSeatCheck");
+			int store_maxps = bookingService.getStore_maxps(store_idx);
+			
+//			System.out.println(store_idx + booking_date + booking_time + store_maxps);
+			boolean Check = false;
+			 
+			int bookingSeatCheckNum = bookingService.bookingSeatCheck(store_idx, booking_date, booking_time) + Integer.parseInt(booking_num);
+			
+			if(bookingSeatCheckNum > 0) {
+				if(store_maxps >= bookingSeatCheckNum) {
+					Check = true;
+				} else {
+					Check = false;
+				}
+			} else {
+				Check = true;
+			}
+			return Check;
+			
+		}
+		
+		
 }

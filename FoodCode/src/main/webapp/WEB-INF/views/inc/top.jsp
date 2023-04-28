@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
 
-<script src="js/jquery-3.6.4.js"></script>
+<!-- <script src="js/jquery-3.6.4.js"></script> -->
 <script type="text/javascript">
 	function confirmLogout(){
 		let result = confirm("로그아웃 하시겠습니까?");	
