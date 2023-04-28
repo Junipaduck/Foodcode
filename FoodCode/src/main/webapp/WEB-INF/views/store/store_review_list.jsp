@@ -64,7 +64,7 @@
 }  
 </style>
 
-  <title>리뷰게시판</title>
+  <title>FOODCODE : 리뷰게시판</title>
   
 </head>
 

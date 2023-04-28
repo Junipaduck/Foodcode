@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
 
-  <title>예약 내역</title>
+  <title>FOODCODE :예약 내역</title>
 </head>
 <body>
 <header>

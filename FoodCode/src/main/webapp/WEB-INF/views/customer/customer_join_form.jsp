@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
-  <title>개인 회원 가입</title>
+  <title>FOODCODE :개인 회원 가입</title>
   <script type="text/javascript">
   $(function() {
 		let nameStatus = false;

@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
 
 
-  <title>마이페이지</title>
+  <title>FOODCODE :마이페이지</title>
 </head>
 
 <body>

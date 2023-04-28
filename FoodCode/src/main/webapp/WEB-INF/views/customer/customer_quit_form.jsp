@@ -2,12 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -35,7 +29,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
 
-  <title>회원 탈퇴</title>
+  <title>FOODCODE :회원 탈퇴</title>
   <script type="text/javascript">
 	function confirmQuit() {
 		return confirm("정말로 탈퇴하시겠습니까?");

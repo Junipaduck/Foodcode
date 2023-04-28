@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-  <title>리뷰목록</title>
+  <title>FOODCODE :리뷰목록</title>
 </head>
 <script type="text/javascript">
 </script>

@@ -39,7 +39,7 @@
 }
 </style>
 
-  <title>마이페이지</title>
+  <title>FOODCODE :마이페이지</title>
   <!-- 마이페이지 클릭 시 제일 처음 보이는 화면 -->
   
 </head>

@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
 
-  <title>예약 관리</title>
+  <title>FOODCODE :예약 관리</title>
 </head>
 
 <body>

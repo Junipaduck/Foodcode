@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FOODCODE :마이페이지</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/tabler.css">
 </head>
 <body>

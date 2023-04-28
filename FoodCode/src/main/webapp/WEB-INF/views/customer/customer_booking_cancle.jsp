@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FOODCODE :예약취소</title>
 <script type="text/javascript">
 if(confirm("예약을 취소하시겠습니까?")){
 	location.href = "customerBookingCanclePro.me?booking_idx=${param.booking_idx}"

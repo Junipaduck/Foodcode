@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
 
-  <title>이용 내역</title>
+  <title>FOODCODE :이용 내역</title>
 </head>
 
 <body>

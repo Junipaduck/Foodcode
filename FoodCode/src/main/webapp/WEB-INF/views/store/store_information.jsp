@@ -54,7 +54,7 @@
 }
 </style>
 
-  <title>맛집추천</title>
+  <title>FOODCODE : 가게 상세페이지</title>
 <script type="text/javascript">
 
 </script>  

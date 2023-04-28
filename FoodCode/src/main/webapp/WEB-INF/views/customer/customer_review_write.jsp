@@ -31,7 +31,7 @@
   <!-- 별점 기능 css -->
   <link href="${pageContext.request.contextPath }/resources/css/star.css" rel="stylesheet"/>
 
-  <title>리뷰작성페이지</title>
+  <title>FOODCODE : 리뷰작성페이지</title>
 
 </head>
 

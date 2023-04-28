@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FOODCODE :예약취소</title>
 </head>
 <body>
 	<h1>customer_booking_cancle.jsp</h1>

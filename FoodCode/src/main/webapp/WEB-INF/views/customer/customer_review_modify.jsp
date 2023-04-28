@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
   <!-- 별점 기능 css -->
   <link href="${pageContext.request.contextPath }/resources/css/star.css" rel="stylesheet"/>
-  <title>리뷰 수정 페이지</title>
+  <title>FOODCODE :리뷰 수정 페이지</title>
 
 </head>
 <script type="text/javascript">
