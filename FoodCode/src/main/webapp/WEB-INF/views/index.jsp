@@ -97,11 +97,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 				</div>
 				<div class="col-lg-5">
 					<div class="slides"> <!--  메인화면 음식 사진 -->
-						<img src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid active">
-						<img src="https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-						<img src="https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-						<img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
-						<img src="https://images.pexels.com/photos/3338681/pexels-photo-3338681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image" class="img-fluid">
+						<img src="${pageContext.request.contextPath }/resources/img/접시사진.jpg" alt="Image" class="img-fluid active">
 					</div>
 				</div>
 			</div>

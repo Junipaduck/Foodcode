@@ -67,12 +67,12 @@
       <div class="row mb-5 justify-content-center">
         <div class="col-lg-6 text-center">
           <h2 class="section-title text-center mb-3">FoodCode 제공 서비스</h2>
-          <p>서비스 내용 ~~</p>
+          <p>다양한 맛집을 예약하고 리뷰를 남겨보세요!</p>
         </div>
       </div>
       <div class="row align-items-stretch">
         <div class="col-lg-4 order-lg-1">
-          <div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('${pageContext.request.contextPath }/resources/images/hero-slider-1.jpg');"></div></div></div>
+          <div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('${pageContext.request.contextPath }/resources/img/FOODCODE로고.png');"></div></div></div>
         </div>
 
         <div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
@@ -80,16 +80,16 @@
           <div class="feature-1 d-md-flex">
             <div class="align-self-center">
               <span class="flaticon-house display-4 text-primary"></span>
-              <h3>미리 식당 예약 가능</h3>
-              <p class="mb-0">줄 설 필요 없음 </p>
+              <h3>맛집, 키워드 검색은 기본!</h3>
+              <p class="mb-0">원하는 맛집을 검색해보세요!</p>
             </div>
           </div>
 
           <div class="feature-1 ">
             <div class="align-self-center">
               <span class="flaticon-restaurant display-4 text-primary"></span>
-              <h3>다양한 맛집 리스트 보유</h3>
-              <p class="mb-0">어쩌구저쩌구</p>
+              <h3>내 주변 맛집</h3>
+              <p class="mb-0">뭘 먹을 지 고민하지 마세요! 푸드코드가 여러분이 원하는 맛집을 알려드려요!</p>
             </div>
           </div>
 
@@ -100,16 +100,16 @@
           <div class="feature-1 d-md-flex">
             <div class="align-self-center">
               <span class="flaticon-mail display-4 text-primary"></span>
-              <h3>편리함</h3>
-              <p class="mb-0">이용하기 쉬워요</p>
+              <h3>생생한 후기 보유!</h3>
+              <p class="mb-0">본인 인증을 완료한 사용자들이 남긴 솔직하고 생생한 후기를 확인해보세요!</p>
             </div>
           </div>
 
           <div class="feature-1 d-md-flex">
             <div class="align-self-center">
               <span class="flaticon-phone-call display-4 text-primary"></span>
-              <h3>리뷰많음</h3>
-              <p class="mb-0">후기보고 먹으러 가세요</p>
+              <h3>웨이팅은 이제 그만!</h3>
+              <p class="mb-0">매번 기다리기 힘드셨죠? 예약을 통해 편리하게 맛집을 이용해보세요!</p>
             </div>
           </div>
 

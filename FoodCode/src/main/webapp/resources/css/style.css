@@ -826,7 +826,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   border-radius: 10px;
   z-index: 9;
   padding: 30px;
-  background: #ffffff; }
+  background: #ffffff;
+  width: 365px; }
 
 #map {
   position: relative;
