@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -140,14 +135,45 @@
 					<th class="td_left">별점</th>
 					<th class="td_left">등록일</th>
 					<th class="td_left">리뷰이미지</th>
-					<th class="td_left">결제번호</th>
 				</tr>
 				<c:forEach items="${map.myReviewList }" var="myReview" end="2">
 				<tr>
 					<td>${myReview.review_idx }</td>
+					<td>${myReview.store_name }</td>
 					<td>${myReview.review_content }</td>
-					<td>${myReview.review_star }</td>
+					<td>
+		           		<div class="review_star">
+			           		<c:if test="${not empty myReview.review_star }">
+			           			<c:choose>
+			           				<c:when test="${myReview.review_star == 1 }">
+					  				<label for="review_star1" title="1점" id="review_star">&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${myReview.review_star == 2 }">
+					  				<label for="review_star2" title="2점" id="review_star">&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${myReview.review_star == 3 }">
+					  				<label for="review_star3" title="3점" id="review_star">&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${myReview.review_star == 4 }">
+					  				<label for="review_star4" title="4점" id="review_star">&#11088;&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:when test="${myReview.review_star == 5 }">
+					  				<label for="review_star5" title="5점" id="review_star">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+			           				</c:when>
+			           				<c:otherwise>
+			           				No Rating
+			           				</c:otherwise>
+			           			</c:choose>
+			           		</c:if>
+		           		</div>						
+					</td>
 					<td>${myReview.review_date }</td>
+					<td>
+			            <c:set var="length" value="${fn:length(myReview.review_file) }"/>
+						<c:set var="index" value="${fn:indexOf(myReview.review_file, '_') }"/>
+						<c:set var="fileName" value="${fn:substring(myReview.review_file, index + 1, length) }"/>
+						<img alt="..." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px;width: 50px;">
+					</td>
 				</tr>
 				</c:forEach>
 				</c:when>

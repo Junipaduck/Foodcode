@@ -53,15 +53,12 @@ public class ReviewController {
     @PostMapping(value = "/reviewWritePro.me")
     public String reviewWritePro(@RequestParam int store_idx, ReviewVO vo, @RequestParam String merchant_uid, Model model, HttpSession session) {
     	
-//    	 store_idx 받아오기 
     	
+    	// 파일 업로드 경로 설정  
+    	String uploadDir = "resources/upload"; // sts에서 저장되는 경로(이 곳에 실제로 파일이 업로드 되지는 않음) 
+    	String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 파일이 저장되는 경로 
     	
-    	
-    	// 파일 업로드 경로  
-    	String uploadDir = "resources/upload"; // 프로젝트 상의 업로드 경로 
-    	String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로 
-    	
-    	// 날짜별로 업로드 폴더 생성 위한 코드 
+    	// 날짜별로 업로드 폴더 생성
     	try {
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -125,7 +122,15 @@ public class ReviewController {
     
      //리뷰 수정 페이지로 이동
     @RequestMapping(value = "/reviewModifyForm.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewModifyForm(@RequestParam int review_idx, Model model) {
+    public String reviewModifyForm(@RequestParam int review_idx, Model model, HttpSession session) {
+    	
+    	// 실제 로그인한 세션 아이디만 리뷰 수정이 가능하도록 권한 설정
+    	// 로그인 하지 않았을 경우 경고 메세지 출력
+    	String id = (String)session.getAttribute("sId");
+    	if(id == null) {
+    		model.addAttribute("msg", "로그인 필수 입니다!");
+    		return "success";
+    	}
     	
 		// 리뷰 조회용 
 		ReviewVO review = reviewService.getReview(review_idx);
@@ -138,12 +143,15 @@ public class ReviewController {
     @RequestMapping(value = "/reviewModifyPro.me", method = {RequestMethod.GET, RequestMethod.POST})
     public String reviewModifyPro(ReviewVO vo, Model model, HttpSession session) {
 
+    	
     	// 리뷰 수정 시 파일 처리 코드 - 0422
 		boolean isUploadProcess = false; // 업로드 작업 수행 여부를 저장하는 변수 선언
 		
 		String uploadDir = "/resources/upload"; // 프로젝트 상의 업로드 경로
 		String saveDir = session.getServletContext().getRealPath(uploadDir);
 		
+		
+		// 파일이 null이 아니거나 파일명이 널스트링이 아닌 경우 -> 파일이 존재할 경우 
 		if(vo.getFile() != null && !vo.getFile().getOriginalFilename().equals("")) {
 			isUploadProcess = true;
 			

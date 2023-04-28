@@ -124,6 +124,8 @@
 		, s.store_name
 		, r.review_star
 		, r.review_date
+		, r.review_content
+		, r.review_file
 		FROM review r JOIN store s ON s.store_idx = r.store_idx 
 		WHERE r.member_id = #{sId}
 	</select>
