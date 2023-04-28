@@ -27,7 +27,7 @@
 
   <title>FoodCode Service 소개</title>
 </head>
-
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <body>
 
 	<!-- top.jsp -->
@@ -150,6 +150,7 @@
   <script src="${pageContext.request.contextPath }/resources/js/typed.js"></script>
   
   <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+  
 
 </body>
 

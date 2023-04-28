@@ -32,7 +32,7 @@
 
   <title>FOODCODE :마이페이지</title>
 </head>
-
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <body>
 <header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
@@ -205,6 +205,7 @@
   <script src="${pageContext.request.contextPath }/resources/js/typed.js"></script>
 			  
   <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+  
 
 </body>
 
