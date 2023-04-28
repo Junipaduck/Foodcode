@@ -44,9 +44,7 @@
                                     	<c:forEach var="storeList" items="${storeList }">
                                     	<tr>
                                             <td>${storeList.store_idx}</td>
-                                            <td>
-                                            <a href=>${storeList.store_name}</a>
-                                            </td>
+                                            <td>${storeList.store_name}</td>
                                             <td>${storeList.store_phone}</td>
                                             <td>${storeList.store_address}</td>
                                             <td>${storeList.store_type}</td>

@@ -40,7 +40,6 @@ public class AdminController {
 	 @Autowired
 	 private ReportService reportService ;
 	 
-	
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminMain(Model model) {
 
@@ -227,12 +226,12 @@ public class AdminController {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
-		System.out.println("지울 항목 !!!!=" + member_idx + member_id + member_type);
+		
 		int isDeleteSuccess = adminService.MemberDelete(member_idx, member_id, member_type);
 		
-		if(isDeleteSuccess>0&&member_type.equals("c")) {
+		if(isDeleteSuccess>0 && member_type.equals("c")) {
 			return "redirect:/adminMember_list";
-		} else if(isDeleteSuccess>0&&member_type.equals("o")) {
+		} else if(isDeleteSuccess>0 && member_type.equals("o")) {
 			return "redirect:/adminOwner_list";
 		} else {
 			model.addAttribute("msg", "아이디를 다시 확인해주세요!");
