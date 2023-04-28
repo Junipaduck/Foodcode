@@ -36,7 +36,7 @@ public class MainController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView index(StoreVO store, Model model) {
 		
 		// 메인 페이지에서 맛집 추천을 위한 store 조회 코드 
@@ -95,7 +95,7 @@ public class MainController {
 			if(isSuccess) {
 				//로그인 성공 시 세션 객체에 아이디 저장 
 				session.setAttribute("sId", member.getMember_id());
-				return "redirect:/main"; // 로그인 성공 시 -> main 페이지로 리다이렉트 이동 
+				return "redirect:/"; // 로그인 성공 시 -> main 페이지로 리다이렉트 이동 
 			} else {
 				model.addAttribute("msg","로그인 실패!");
 				return "customer/fail_back";
@@ -148,7 +148,7 @@ public class MainController {
 	@GetMapping(value = "logout.me")
 	public String logout(HttpSession session) {
 		session.invalidate(); // 세션 초기화 
-		return "redirect:/main"; // 로그아웃 후 메인화면으로 리다이렉트 이동 
+		return "redirect:/"; // 로그아웃 후 메인화면으로 리다이렉트 이동 
 	}
 	
 	// 회원가입 선택 창 --> 개인/ 점주 

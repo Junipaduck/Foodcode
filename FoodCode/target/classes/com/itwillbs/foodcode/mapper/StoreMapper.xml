@@ -29,6 +29,9 @@
 	 			,#{store_file_path}
 	 			,#{member_id} <!-- 로그인된 점주의 sId -->
 	 			,'N'
+	 			,#{store_open}
+	 			,#{store_close}
+	 			,#{store_maxps}
 	 		)
 	 </insert>
 

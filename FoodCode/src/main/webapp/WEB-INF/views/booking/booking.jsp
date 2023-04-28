@@ -275,10 +275,8 @@
 					  $('.timepicker').timepicker({
 					    timeFormat: 'HH:mm',
 					    interval: 60,
-					    minTime: '10',
-					    maxTime: '21:00',
-					    defaultTime: '10',
-					    startTime: '10:00',
+					    minTime: "${map.storeInfo[0].store_open }",
+					    maxTime: "${map.storeInfo[0].store_close }",
 					    dynamic: false,
 					    dropdown: true,
 					    scrollbar: true

@@ -23,6 +23,9 @@ public class StoreVO {
 	private String auth_status;
 	private String review_star; //리뷰별점평균
 	private int booking_count; // 차트테스트용
+	private String store_open;
+	private String store_close;
+	private String store_maxps;
 	
 	
 	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
@@ -30,32 +33,6 @@ public class StoreVO {
 	
 	public StoreVO() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public StoreVO(int store_idx, String store_name, String store_phone, String store_address, String store_address1,
-			String store_address2, String store_type, String store_content, String store_time, String store_license,
-			String store_date, String store_etc, String store_file, String store_file_path, String member_id,
-			String auth_status, String review_star, int booking_count, MultipartFile file) {
-		super();
-		this.store_idx = store_idx;
-		this.store_name = store_name;
-		this.store_phone = store_phone;
-		this.store_address = store_address;
-		this.store_address1 = store_address1;
-		this.store_address2 = store_address2;
-		this.store_type = store_type;
-		this.store_content = store_content;
-		this.store_time = store_time;
-		this.store_license = store_license;
-		this.store_date = store_date;
-		this.store_etc = store_etc;
-		this.store_file = store_file;
-		this.store_file_path = store_file_path;
-		this.member_id = member_id;
-		this.auth_status = auth_status;
-		this.review_star = review_star;
-		this.booking_count = booking_count;
-		this.file = file;
 	}
 
 	public int getStore_idx() {
@@ -202,6 +179,30 @@ public class StoreVO {
 		this.booking_count = booking_count;
 	}
 
+	public String getStore_open() {
+		return store_open;
+	}
+
+	public void setStore_open(String store_open) {
+		this.store_open = store_open;
+	}
+
+	public String getStore_close() {
+		return store_close;
+	}
+
+	public void setStore_close(String store_close) {
+		this.store_close = store_close;
+	}
+
+	public String getStore_maxps() {
+		return store_maxps;
+	}
+
+	public void setStore_maxps(String store_maxps) {
+		this.store_maxps = store_maxps;
+	}
+
 	public MultipartFile getFile() {
 		return file;
 	}
@@ -210,17 +211,37 @@ public class StoreVO {
 		this.file = file;
 	}
 
-	@Override
-	public String toString() {
-		return "StoreVO [store_idx=" + store_idx + ", store_name=" + store_name + ", store_phone=" + store_phone
-				+ ", store_address=" + store_address + ", store_address1=" + store_address1 + ", store_address2="
-				+ store_address2 + ", store_type=" + store_type + ", store_content=" + store_content + ", store_time="
-				+ store_time + ", store_license=" + store_license + ", store_date=" + store_date + ", store_etc="
-				+ store_etc + ", store_file=" + store_file + ", store_file_path=" + store_file_path + ", member_id="
-				+ member_id + ", auth_status=" + auth_status + ", review_star=" + review_star + ", booking_count="
-				+ booking_count + ", file=" + file + "]";
+	public StoreVO(int store_idx, String store_name, String store_phone, String store_address, String store_address1,
+			String store_address2, String store_type, String store_content, String store_time, String store_license,
+			String store_date, String store_etc, String store_file, String store_file_path, String member_id,
+			String auth_status, String review_star, int booking_count, String store_open, String store_close,
+			String store_maxps, MultipartFile file) {
+		super();
+		this.store_idx = store_idx;
+		this.store_name = store_name;
+		this.store_phone = store_phone;
+		this.store_address = store_address;
+		this.store_address1 = store_address1;
+		this.store_address2 = store_address2;
+		this.store_type = store_type;
+		this.store_content = store_content;
+		this.store_time = store_time;
+		this.store_license = store_license;
+		this.store_date = store_date;
+		this.store_etc = store_etc;
+		this.store_file = store_file;
+		this.store_file_path = store_file_path;
+		this.member_id = member_id;
+		this.auth_status = auth_status;
+		this.review_star = review_star;
+		this.booking_count = booking_count;
+		this.store_open = store_open;
+		this.store_close = store_close;
+		this.store_maxps = store_maxps;
+		this.file = file;
 	}
 
+	
 	
 	
 	
