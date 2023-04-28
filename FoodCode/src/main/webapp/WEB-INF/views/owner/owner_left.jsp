@@ -14,10 +14,10 @@
 </head>
 <body>
 
-<div class="sidemenu" style="margin-top: 100px; margin-left: 14px;">
-    <label style="margin-bottom: 10px;" for="expand-sidemenu"><div>My Page</div></label>
+<div class="sidemenu" style="margin-top: 130px; margin-left: 14px;">
+    <label style="margin-bottom: 10px; margin-top: 26px;" for="expand-sidemenu"><div>My Page</div></label>
     <input type="checkbox" id="expand-sidemenu" name="expand-sidemenu">
-    <ul style="padding: 10px; padding-left: 17px;">
+    <ul style="padding: 10px; padding-left: 17px; margin-top: 16px;">
         <li><a href="ownerPage.me">
         	<div><svg fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 388.331 388.33" xml:space="preserve"><g>
 					<path d="M264.07,166.541c21.39,11.462,62.59,7.953,93.913-23.377c31.068-31.062,42.815-76.485,13.442-106.828l0.023-0.012

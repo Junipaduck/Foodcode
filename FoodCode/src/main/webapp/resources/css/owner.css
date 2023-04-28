@@ -161,6 +161,7 @@ td {
     display: block;
     overflow: hidden;
     width: 200px;
+    height: 431px;
     background-color: #ffc554;
     color: #fff;
     transition: all 0.5s ease;

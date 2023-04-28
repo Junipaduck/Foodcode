@@ -125,7 +125,7 @@ $(document).ready(function() {
    
    <div style="margin-left: 520px;"> 		
     <section id="buttonArea" style="margin-right: -3490px;">		
-		<form class="form222" action="store_recommend.so" style="margin-bottom: 10px; margin-top: -10px; margin-left: 10px;">
+		<form class="form222" action="store_recommend.so" style="margin-bottom: 10px; margin-top: -10px; margin-left: -87px;">
 				<select name="searchType" id="" class="custom-select" style="width: 5%; float: left;">
 					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
 					<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
