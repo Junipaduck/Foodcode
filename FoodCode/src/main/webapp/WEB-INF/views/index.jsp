@@ -159,7 +159,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 const labels = ['1위♡ ${map.bookingChart[0].store_name}', '${map.bookingChart[1].store_name}', '${map.bookingChart[2].store_name}',
 				'${map.bookingChart[3].store_name}', '${map.bookingChart[4].store_name}', '${map.bookingChart[5].store_name}',
 				'${map.bookingChart[6].store_name}', '${map.bookingChart[7].store_name}', '${map.bookingChart[8].store_name}',
-				'${map.bookingChart[9].store_name}', '${map.bookingChart[10].store_name}'];
+				'${map.bookingChart[9].store_name}'];
 const data = {
   labels: labels,
   datasets: [{
@@ -171,27 +171,27 @@ const data = {
         '#20c997',
         '#7ba9ff',
         '#ba94ff',
-        '#ba94ff',
-        '#ba94ff',
-        '#ba94ff',
-        '#ba94ff'
+        '#ff8ed4',
+        '#67f1c8',
+        '#abff5b',
+        '#6caaff'
     ],
     borderColor: [
-        '#ff4658',
+    	'#ff4658',
         '#ffa55a',
         '#fbde88',
         '#20c997',
         '#7ba9ff',
         '#ba94ff',
-        '#ba94ff',
-        '#ba94ff',
-        '#ba94ff',
-        '#ba94ff'
+        '#ff8ed4',
+        '#67f1c8',
+        '#abff5b',
+        '#6caaff'
     ],
     data: ['${map.bookingChart[0].booking_count}', '${map.bookingChart[1].booking_count}', '${map.bookingChart[2].booking_count}',
 			'${map.bookingChart[3].booking_count}', '${map.bookingChart[4].booking_count}', '${map.bookingChart[5].booking_count}',
 			'${map.bookingChart[6].booking_count}', '${map.bookingChart[7].booking_count}', '${map.bookingChart[8].booking_count}',
-			'${map.bookingChart[9].booking_count}', '${map.bookingChart[10].booking_count}'],
+			'${map.bookingChart[9].booking_count}'],
   }
 //   ,
 //   {
