@@ -78,7 +78,7 @@
 		<div class="container">
 			<div class="site-navigation">
 				<!--  Tour 클릭시 홈으로 이동  -->
-				<a href="main" class="logo m-0"><img class="logo99" alt="" src="${pageContext.request.contextPath }/resources/images/foodcodelogo2.png" width="160" height="60"><span class="text-primary"></span></a>
+				<a href="./" class="logo m-0"><img class="logo99" alt="" src="${pageContext.request.contextPath }/resources/images/foodcodelogo2.png" width="160" height="60"><span class="text-primary"></span></a>
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right" style="margin-block-start: 0em">
 					<li><a href="reviewList.me">리뷰게시판</a></li>
@@ -99,7 +99,7 @@
 							
 					<li><a href="service_view.no">이용안내</a></li>
 <!-- 					<li><a href="contact.html">Contact Us</a></li> -->
-					<li><a href="main">홈</a> </li>
+					<li><a href="./">홈</a> </li>
 					
 					<li id="sessionArea"></li> 
 					
