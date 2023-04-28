@@ -256,68 +256,8 @@ google.charts.setOnLoadCallback(drawChart);
        chart.draw(data, options);
      }
 </script>
+<!-- 누적 리뷰 순위 차트 끝 -->
 
-<!-- 누적 리뷰 순위 -->
- <hr>
-	 <div style="display: block; box-sizing: border-box; height: 500px; width: 1000px; margin: auto;">
-	 <div class="h5 text-center" style="font-size: 30px;">실시간 누적 리뷰 순위 <img width="50px;" style="margin-bottom: 10px;" src="https://www.svgrepo.com/show/491984/notice-certificate-of-deposit.svg"></div>
-	 <div id="top_x_div" style="width: 800px; height: 600px;"></div>
-	 </div>
-<br><br><br>
-<hr> 
-<script type="text/javascript">
-google.charts.load('current', {'packages':['bar']});
-google.charts.setOnLoadCallback(drawStuff);
-
-function drawStuff() {
-  var data = new google.visualization.arrayToDataTable([
-//       ["누적리뷰수", "누적리뷰수", { role: "style" } ],
-//       ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}, "#ff4658"],
-//       ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}, "#ffa55a"],
-//       ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}, "#fbde88"],
-//       ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}, "#20c997"],
-//       ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}, "#7ba9ff"],
-//       ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}, "#ff4658"],
-//       ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}, "#ff4658"],
-//       ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}, "#ff4658"],
-//       ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}, "#ff4658"],
-//       ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}, "#ff4658"],
-    ['누적리뷰수', '누적리뷰수'],
-    ["${map.reviewChart[0].store_name}", ${map.reviewChart[0].review_count}],
-    ["${map.reviewChart[1].store_name}", ${map.reviewChart[1].review_count}],
-    ["${map.reviewChart[2].store_name}", ${map.reviewChart[2].review_count}],
-    ["${map.reviewChart[3].store_name}", ${map.reviewChart[3].review_count}],
-    ["${map.reviewChart[4].store_name}", ${map.reviewChart[4].review_count}],
-    ["${map.reviewChart[5].store_name}", ${map.reviewChart[5].review_count}],
-    ["${map.reviewChart[6].store_name}", ${map.reviewChart[6].review_count}],
-    ["${map.reviewChart[7].store_name}", ${map.reviewChart[7].review_count}],
-    ["${map.reviewChart[8].store_name}", ${map.reviewChart[8].review_count}],
-    ["${map.reviewChart[9].store_name}", ${map.reviewChart[9].review_count}]
-	]);
-
-  var options = {
-    width: 1000,
-    legend: { position: 'none' },
-    chart: {
-      title: '',
-      subtitle: ''
-      },
-    axes: {
-      x: {
-        0: { side: 'bottom', label: ''} // Top x-axis.
-      }
-    },
-    bar: { groupWidth: "70%"},
-    colors: "#ff9508"
-
-  };
-
-  var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-  // Convert the Classic options to Material options.
-  chart.draw(data, google.charts.Bar.convertOptions(options));
-}
-</script>
-<!-- 리뷰 누적 차트 끝 -->
 
 
 	<!-- 추천맛집, 조회수 높은 맛집들 소개하는 공간 -->
@@ -378,8 +318,8 @@ function drawStuff() {
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-md-12">
-					<h2 class="mb-2 text-white" style="font-family: 'Noto Sans KR', sans-serif;">둘러보기~</h2>
-					<p class="mb-4 lead text-white text-white-opacity">맛있겠다!! 둘러보실래요?</p>
+					<h2 class="mb-2 text-white" style="font-family: 'Noto Sans KR', sans-serif;">궁금하신가요?</h2>
+					<p class="mb-4 lead text-white text-white-opacity">더 많은 식당을 구경해보세요!</p>
 					<p class="mb-0"><a href="store_recommend.so" class="btn btn-outline-white text-white btn-md font-weight-bold">둘러보기</a></p>
 				</div>
 			</div>

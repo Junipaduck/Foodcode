@@ -64,7 +64,7 @@
 }  
 </style>
 
-  <title>아이티윌 2팀</title>
+  <title>리뷰게시판</title>
   
 </head>
 

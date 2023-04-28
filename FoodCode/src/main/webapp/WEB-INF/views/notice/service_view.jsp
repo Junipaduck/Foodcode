@@ -123,9 +123,9 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h2 class="mb-2 text-white">이용하고 싶으신가요~</h2>
-          <p class="mb-4 lead text-white text-white-opacity">둘러보실래요?</p>
-          <p class="mb-0"><a href="store_recommend.so" class="btn btn-outline-white text-white btn-md font-weight-bold">둘러보기</a></p>
+          <h2 class="mb-2 text-white">궁금하신가요?</h2>
+          <p class="mb-4 lead text-white text-white-opacity">맛집추천 페이지에서 이용하실 수 있습니다</p>
+          <p class="mb-0"><a href="store_recommend.so" class="btn btn-outline-white text-white btn-md font-weight-bold">맛집 추천 페이지로 이동</a></p>
         </div>
       </div>
     </div>

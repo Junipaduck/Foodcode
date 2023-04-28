@@ -54,7 +54,7 @@
 }
 </style>
 
-  <title>아이티윌 2팀</title>
+  <title>맛집추천</title>
 <script type="text/javascript">
 
 </script>  
