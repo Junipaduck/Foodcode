@@ -67,7 +67,7 @@
   <title>FOODCODE : 리뷰게시판</title>
   
 </head>
-
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <body>
 	
 	<header>

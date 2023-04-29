@@ -44,6 +44,7 @@
  
 
 </head>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <body>
 	<header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
