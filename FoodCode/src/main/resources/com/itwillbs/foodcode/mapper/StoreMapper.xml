@@ -32,6 +32,7 @@
 	 			,#{store_open}
 	 			,#{store_close}
 	 			,#{store_maxps}
+	 			,null
 	 		)
 	 </insert>
 

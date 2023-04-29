@@ -19,7 +19,7 @@
     <input type="checkbox" id="expand-sidemenu" name="expand-sidemenu">
     <ul style="padding: 10px; padding-left: 17px; margin-top: 16px;">
         <li><a href="ownerPage.me">
-        	<div><svg fill="#ffc554" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 388.331 388.33" xml:space="preserve"><g>
+        	<div><svg fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 388.331 388.33" xml:space="preserve"><g>
 					<path d="M264.07,166.541c21.39,11.462,62.59,7.953,93.913-23.377c31.068-31.062,42.815-76.485,13.442-106.828l0.023-0.012
 					c-0.139-0.128-0.639-0.627-0.767-0.761c0,0,0,0.012-0.023,0.012c-30.324-29.36-75.742-17.62-106.821,13.443
 					c-31.324,31.33-34.833,72.53-23.377,93.919c-2.951,17.515-26.979,36.518-48.531,48.851c-16.621-10.253-37.581-28.373-39.783-64.803
