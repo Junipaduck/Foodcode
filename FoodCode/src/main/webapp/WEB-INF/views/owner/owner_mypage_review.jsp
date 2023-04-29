@@ -103,7 +103,7 @@
     		<div class="container my-13">
 			&nbsp; &nbsp; &nbsp;
 			<div align="center">
-				<table class="rwd-table" style="width:1300px;margin-left:-66px;">
+				<table class="rwd-table" style="width:1200px;margin-left:30px;">
 					<tbody>
 						<tr>
 							<th>글번호</th>

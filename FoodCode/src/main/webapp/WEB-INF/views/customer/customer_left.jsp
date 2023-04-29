@@ -15,7 +15,7 @@
 <body>
 
 <div class="sidemenu" style="margin-top: 130px; margin-left: 14px;">
-    <label style="margin-bottom: 10px; margin-top: 26px;" for="expand-sidemenu"><div>My Page</div></label>
+    <label style="margin-bottom: 10px; margin-top: 26px;" for="expand-sidemenu"><div><a href="MemberInfo.me">My Page</a></div></label>
     <input type="checkbox" id="expand-sidemenu" name="expand-sidemenu">
     <ul style="padding: 10px; padding-left: 17px; margin-top: 16px;">
         <li><a href="customerBooking.me">
@@ -55,6 +55,10 @@
         <li><a href="noticeList.no">
         	<div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 3V3.28988C16.8915 4.15043 19 6.82898 19 10V17H20V19H4V17H5V10C5 6.82898 7.10851 4.15043 10 3.28988V3C10 1.89543 10.8954 1 12 1C13.1046 1 14 1.89543 14 3ZM7 17H17V10C17 7.23858 14.7614 5 12 5C9.23858 5 7 7.23858 7 10V17ZM14 21V20H10V21C10 22.1046 10.8954 23 12 23C13.1046 23 14 22.1046 14 21Z" fill="currentColor" /></svg>
         	&nbsp;&nbsp;공지사항</div></a>
+        </li>
+        <li><a href="./">
+        	<div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21 8.77217L14.0208 1.79299C12.8492 0.621414 10.9497 0.621413 9.77817 1.79299L3 8.57116V23.0858H10V17.0858C10 15.9812 10.8954 15.0858 12 15.0858C13.1046 15.0858 14 15.9812 14 17.0858V23.0858H21V8.77217ZM11.1924 3.2072L5 9.39959V21.0858H8V17.0858C8 14.8767 9.79086 13.0858 12 13.0858C14.2091 13.0858 16 14.8767 16 17.0858V21.0858H19V9.6006L12.6066 3.2072C12.2161 2.81668 11.5829 2.81668 11.1924 3.2072Z" fill="currentColor"/></svg>
+        	&nbsp;&nbsp;홈으로</div></a>
         </li>
     </ul>
 </div>
