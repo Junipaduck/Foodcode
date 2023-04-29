@@ -68,8 +68,6 @@ function DeleteMember() {
     </div>
   </div>
 
-  <%-- 사이드바 --%>
-  <jsp:include page="owner_left.jsp"></jsp:include>
   
   <div class="untree_co-section">
     <div class="container my-5">

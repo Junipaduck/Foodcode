@@ -66,7 +66,6 @@ function DeleteMember() {
       </div>
     </div>
   </div>
-<jsp:include page="customer_left.jsp"></jsp:include>
   
   
   <div class="untree_co-section">
@@ -126,6 +125,7 @@ function DeleteMember() {
 				</div>
               </div>
               <button type="submit" class="btn btn-primary">수정</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='MemberInfo.me'">돌아가기</button>
               <button type="button" class="btn btn-primary" onclick="location.href ='customerDelete.me'">회원 탈퇴</button>
             </form>
           </div>
