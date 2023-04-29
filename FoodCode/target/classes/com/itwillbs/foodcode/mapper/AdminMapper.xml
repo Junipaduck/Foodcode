@@ -36,6 +36,7 @@
 		s.store_name ,
 		s.store_idx ,
 		s.store_license ,
+		s.report_mail_count,
 		count(rep.report_count) AS report_count
 			FROM report rep 
 				JOIN store s ON rep.store_idx = s.store_idx 
@@ -109,6 +110,12 @@
 		DELETE FROM review 
 				WHERE review_idx = ${review_idx};
 	</delete>
+	
+	<update id="addReportCount">
+		UPDATE store 
+ 			SET report_mail_count = report_mail_count + 1
+ 				WHERE store_idx = ${store_idx};
+	</update>
 	
 	
 </mapper>

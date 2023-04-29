@@ -36,7 +36,6 @@
                                         <tr>
                                             <th>IDX</th>
                                             <th>ID</th>
-                                            <th>비밀번호</th>
                                             <th>이름</th>
                                             <th>성별</th>
                                             <th>이메일</th>
@@ -50,7 +49,6 @@
                                         <tr>
                                           	<th>IDX</th>
                                             <th>ID</th>
-                                            <th>비밀번호</th>
                                             <th>이름</th>
                                             <th>성별</th>
                                             <th>이메일</th>
@@ -65,7 +63,7 @@
                                     	<tr>
                                             <td>${memberList.member_idx}</td>
                                             <td>${memberList.member_id}</td>
-                                            <td><div style="width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${memberList.member_passwd}</div></td>
+<%--                                             <td><div style="width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${memberList.member_passwd}</div></td> --%>
                                             <td>${memberList.member_name}</td>
                                             <td>${memberList.member_gender}</td>
                                             <td>${memberList.member_email}</td>

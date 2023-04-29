@@ -26,6 +26,7 @@ public class StoreVO {
 	private String store_open;
 	private String store_close;
 	private String store_maxps;
+	private int report_mail_count;
 	
 	
 	// 파일 업로드 처리를 위한 MultipartFile 타입 변수 선언  
@@ -211,11 +212,19 @@ public class StoreVO {
 		this.file = file;
 	}
 
+	public int getReport_mail_count() {
+		return report_mail_count;
+	}
+
+	public void setReport_mail_count(int report_mail_count) {
+		this.report_mail_count = report_mail_count;
+	}
+
 	public StoreVO(int store_idx, String store_name, String store_phone, String store_address, String store_address1,
 			String store_address2, String store_type, String store_content, String store_time, String store_license,
 			String store_date, String store_etc, String store_file, String store_file_path, String member_id,
 			String auth_status, String review_star, int booking_count, String store_open, String store_close,
-			String store_maxps, MultipartFile file) {
+			String store_maxps, int report_mail_count, MultipartFile file) {
 		super();
 		this.store_idx = store_idx;
 		this.store_name = store_name;
@@ -238,14 +247,20 @@ public class StoreVO {
 		this.store_open = store_open;
 		this.store_close = store_close;
 		this.store_maxps = store_maxps;
+		this.report_mail_count = report_mail_count;
 		this.file = file;
 	}
 
-	
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "StoreVO [store_idx=" + store_idx + ", store_name=" + store_name + ", store_phone=" + store_phone
+				+ ", store_address=" + store_address + ", store_address1=" + store_address1 + ", store_address2="
+				+ store_address2 + ", store_type=" + store_type + ", store_content=" + store_content + ", store_time="
+				+ store_time + ", store_license=" + store_license + ", store_date=" + store_date + ", store_etc="
+				+ store_etc + ", store_file=" + store_file + ", store_file_path=" + store_file_path + ", member_id="
+				+ member_id + ", auth_status=" + auth_status + ", review_star=" + review_star + ", booking_count="
+				+ booking_count + ", store_open=" + store_open + ", store_close=" + store_close + ", store_maxps="
+				+ store_maxps + ", report_mail_count=" + report_mail_count + ", file=" + file + "]";
+	}
 	
 }

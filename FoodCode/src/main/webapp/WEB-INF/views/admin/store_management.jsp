@@ -28,7 +28,12 @@
 	
 	
 	
-	function DeletePopup(store_license, owner_id) {
+	function DeletePopup(store_license, owner_id, report_mail_count) {
+		
+		if(report_mail_count<5) {
+			alert(report_mail_count + "/5회입니다. 경고 횟수를 확인하세요!!");
+			return false;
+		}
 		
 		var url = "adminStore_managementDelete?store_license="+store_license+"&owner_id="+owner_id
 		
@@ -37,6 +42,7 @@
 		var option = "width = 500, height = 200, top = 300, left = 200, location = yes"
 		
 			window.open(url, name, option);
+		
 				
 	}
 	
@@ -64,6 +70,7 @@
                                             <th>점주 이메일</th>
                                             <th>신고 횟수</th>
                                             <th>경고 메세지</th>
+                                            <th>경고 메세지 받은 횟수</th>
                                             <th>식당삭제</th>
                                            
                                         </tr>
@@ -76,6 +83,7 @@
                                             <th>점주 이메일</th>
                                             <th>신고 횟수</th>
                                             <th>경고 메세지</th>
+                                            <th>경고 메세지 받은 횟수</th>
                                             <th>식당삭제</th>
                                         </tr>
                                     </tfoot>
@@ -95,8 +103,9 @@
 		                                        <span class="text" msttexthash="359"_msthash="70" onclick="Mail('${aList.member_email}','${aList.store_name}','${aList.store_idx}');">경고 메세지&nbsp;<i class="fas fa-envelope fa-fw"></i></span>
 		                                    </a>
                                             </td>
+                                            <td>${aList.report_mail_count}</td> 
                                              <td align="center">
-                                            	<a onclick="DeletePopup('${aList.store_license}','${aList.member_id}');" class="btn btn-danger btn-circle btn-5x">
+                                            	<a onclick="DeletePopup('${aList.store_license}','${aList.member_id}', '${aList.report_mail_count}');" class="btn btn-danger btn-circle btn-5x">
                                        			<i class="fas fa-store-slash"></i>
                                    				</a>
                                    			</td>

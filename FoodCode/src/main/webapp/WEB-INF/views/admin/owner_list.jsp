@@ -36,7 +36,6 @@
                                         <tr>
                                        		<th>점주 IDX</th>
                                             <th>점주 ID</th>
-                                            <th>점주 비밀번호</th>
                                             <th>점주 이름</th>
                                             <th>점주 번호</th>
                                             <th>점주 이메일</th>
@@ -48,7 +47,6 @@
                                       <tr>
                                        		<th>점주 IDX</th>
                                             <th>점주 ID</th>
-                                            <th>점주 비밀번호</th>
                                             <th>점주 이름</th>
                                             <th>점주 번호</th>
                                             <th>점주 이메일</th>
@@ -61,7 +59,7 @@
                                     	<tr>
                                             <td>${ownerList.member_idx}</td>
                                             <td>${ownerList.member_id}</td>
-                                            <td><div style="width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ownerList.member_passwd}</div></td>
+<%--                                             <td><div style="width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${ownerList.member_passwd}</div></td> --%>
                                             <td>${ownerList.member_name}</td>
                                             <td>${ownerList.member_phone}</td>
                                             <td>${ownerList.member_email}</td>

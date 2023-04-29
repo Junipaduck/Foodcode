@@ -152,7 +152,6 @@ public class AdminController {
 	@GetMapping(value = "adminStore_managementDelete")
 	public String storeManagementDelete() {
 		
-		
 		return "/admin/store_delete";
 	}
 	
@@ -199,6 +198,7 @@ public class AdminController {
 		}
 		
 		int isDeleteSuccess = adminService.StoreApprove(store_license);
+		
 		
 		if(isDeleteSuccess>0) {
 			return "redirect:/adminStore_approve";
@@ -251,6 +251,9 @@ public class AdminController {
 		if(storeName==null || storeName.equals("")) {
 			return mailService.joinEmail(email); //회원가입시 랜덤 코드 발송 메일
 		}
+		
+		adminService.addReportCount(store_idx);
+		
 		adminService.deleteReportCount(store_idx);
 		
 		return mailService.storeEmail(email, storeName); //식당 경고 메세지 발송 메일

@@ -125,5 +125,11 @@ public class AdminService {
 		return mapper.getReviewList();
 	}
 
+	public void addReportCount(String store_idx) {
+		
+		mapper.addReportCount(store_idx);
+		
+	}
+
 	
 }

@@ -28,7 +28,7 @@ public class MailSendService {
 		//인증 이메일 보낼 양식! 
 		public String joinEmail(String email) {
 			makeRandomNumber();
-			String setFrom = "dkeka0411@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
+			String setFrom = "wlgnscofud@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력 
 			String toMail = email;
 			String title = "비밀번호 인증 이메일 입니다."; // 이메일 제목 
 			String content = 
@@ -43,7 +43,7 @@ public class MailSendService {
 		
 		//식당 경고 보낼 양식! 
 				public String storeEmail(String email, String storeName) {
-					String setFrom = "dkeka0411@gmail.com"; 
+					String setFrom = "wlgnscofud@gmail.com"; 
 					String toMail = email;
 					String title = "식당 경고 메세지 입니다."; // 이메일 제목 
 					String content = 
