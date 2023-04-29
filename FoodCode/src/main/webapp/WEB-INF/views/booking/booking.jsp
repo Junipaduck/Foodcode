@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -197,7 +199,13 @@
       <div class="row">
         <div class="col-lg-7">
           <div class="owl-single dots-absolute owl-carousel">
-            <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid rounded-20">
+          	<c:forEach items="${map.storeInfo[0].store_file }" var="store">
+	          	<c:set var="length" value="${fn:length(store) }"/>
+				<c:set var="index" value="${fn:indexOf(store, '_') }"/>
+				<c:set var="fileName" value="${fn:substring(store, index + 1, length) }"/>
+	            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." class="img-fluid rounded-20" />
+          	</c:forEach>
+<!--             <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid rounded-20"> -->
           </div>
        	</div>
         	<!--  가게 정보  -->
@@ -213,7 +221,7 @@
                     <label for="">이름</label>
                     <input type="hidden" name="store_idx" id="store_idx" value="${param.store_idx }">
 <!--                     <input type="hidden" name="booking_idx" id="booking_idx" value="1"> -->
-                    <input type="text" class="form-control" placeholder="${map.member.member_name }" readonly="true">
+                    <input type="text" class="form-control" placeholder="${map.member.member_name }" readonly="true" style="text-align: center;">
                     
                   </div>
                 </div>
@@ -226,14 +234,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">전화번호</label>
-                    <input type="text" class="form-control" placeholder="${map.member.member_phone }" readonly="true">
+                    <input type="text" class="form-control" placeholder="${map.member.member_phone }" readonly="true" style="text-align: center;">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">날짜</label>
-        				<input type="text" name="booking_date" id="booking_date" class="datepicker inp" placeholder="날짜를 선택 해주세요" readonly="true" /> 
-<!--         				<input type="text" name="booking_date" id="booking_date" />  -->
+        				<input type="text" name="booking_date" id="booking_date" class="datepicker inp" placeholder="날짜를 선택 해주세요" readonly="true" style="text-align: center;" /> 
 						<!-- 캘린더 옵션 { -->
 						<script>
 					    $.datepicker.setDefaults({
@@ -291,7 +298,7 @@
                     <div class="select-wrap one-third">
                       <div class="icon"><span class="ion-ios-arrow-down">
                       </span></div>
-                      <select name="booking_num" id="booking_num" class="form-control">
+                      <select name="booking_num" id="booking_num" class="form-control" style="text-align: center;">
                         <option>인원수 선택</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
