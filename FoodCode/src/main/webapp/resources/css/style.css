@@ -27,6 +27,11 @@ body {
 
 .text-black {
   color: #000000 !important; }
+  
+.text-black2 {
+  color: #000000 !important; 
+  margin-left: 15px; 
+  margin-top: 2px; }
 
 a {
   color: #1A374D;

@@ -214,14 +214,10 @@
                     <label for="">인원</label>
                     <div class="select-wrap one-third">
                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="store_maxps" id="store_maxps" class="form-control">
-                        <option>인원수 선택</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4+</option>
-                        <option value="0">그 외</option>
-                      </select>
+                      <input text="store_maxps" name="store_maxps id="store_maxps" class="form-control">
+                      <small id="small8" class="form-text text-muted">가게의 "좌석"수를 숫자로 입력해주세요 테이블 단위가 아닙니다 </small>
+<!--                       <select name="store_maxps" id="store_maxps" class="form-control"> -->
+<!--                       </select> -->
                       </div>
                     </div>
 <!--                   </div>		   -->

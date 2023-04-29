@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> 
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bookingradio.css">
   <!-- 테이블 외부 css 파일 경로 -->
   
   <!-- 메뉴 css -->
@@ -276,7 +276,6 @@
                   <div class="form-group">
                     <label for="">시간</label>
                     <input type="text" name="booking_time" id="booking_time" class="timepicker inp" readonly="true"/> 
-<!--                     <input type="text" name="booking_time" id="booking_time"/>  -->
 					 <!-- 시간 옵션 { -->
 					  <script>
 					  $('.timepicker').timepicker({
@@ -299,11 +298,10 @@
                       <div class="icon"><span class="ion-ios-arrow-down">
                       </span></div>
                       <select name="booking_num" id="booking_num" class="form-control" style="text-align: center;">
-                        <option>인원수 선택</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4+</option>
+						<option value="">인원수 선택</option>
+    					 <c:forEach var="list" begin="1" end="${map.storeInfo[0].store_maxps }">
+    					 	<option value="${list}">${list}</option>
+   						 </c:forEach>
                       </select>
                       </div>
                       <small id="bookingCheck"></small>
@@ -313,15 +311,15 @@
                   
                   
                   <div class="form-group">
-                <label class="text-black" for="seat"> 선호자리</label>
+                <label class="text-black2" for="seat">선호자리</label>
                 <div class="select">
-				 <input type="radio" id="select1" name="booking_seat" value="상관없음" checked="checked" ><label for="select1">상관없음</label>
-				 <input type="radio" id="select2" name="booking_seat" value="야외"><label for="select2">야외</label>
-				 <input type="radio" id="select3" name="booking_seat" value="실내"><label for="select3">실내</label>
-				 <input type="radio" id="select4" name="booking_seat" value="창가"><label for="select4">창가</label>
+				 <input type="radio" id="select1" name="booking_seat" value="상관없음" checked="checked" class="bookingradio"><label for="select1">상관없음</label>
+				 <input type="radio" id="select2" name="booking_seat" value="야외"><label for="select2" class="bookingradio">야외</label>
+				 <input type="radio" id="select3" name="booking_seat" value="실내"><label for="select3" class="bookingradio">실내</label>
+				 <input type="radio" id="select4" name="booking_seat" value="창가"><label for="select4" class="bookingradio">창가</label>
 				</div>
 				<div class="form-group">
-                <label class="text-black" for="etc">요청사항</label>
+                <label class="text-black2" for="etc">요청사항</label>
                 <textarea name="booking_content" class="form-control" id="booking_content" cols="30" rows="5"></textarea>
               </div>
               </div>
@@ -335,6 +333,7 @@
       </div> <!--row  -->
     </div> <!-- container -->
   </div> <!-- untree_co-section -->
+ </div>
  </div>
 
 

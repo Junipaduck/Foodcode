@@ -37,7 +37,7 @@ public class ReportController {
 		 int storeReportCount = reportService.insertStoreReport(report);
 		 
 		 model.addAttribute("msg", "신고가 접수되었습니다.");
-		 model.addAttribute("target", "main");
+		 model.addAttribute("target", "/foodcode");
 		 return "success";
 	 }
 }
