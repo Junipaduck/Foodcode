@@ -55,11 +55,9 @@
 </style>
 
   <title>FOODCODE : 가게 상세페이지</title>
-<script type="text/javascript">
 
-</script>  
 </head>
-
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <body>
 	<!-- inc/top.jsp -->
 	<header>
