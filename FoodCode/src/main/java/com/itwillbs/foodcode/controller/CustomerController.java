@@ -55,7 +55,7 @@ public class CustomerController {
         	
         	if(insertCnt > 0) { // 회원가입을 성공 했을 때
         		model.addAttribute("msg", "회원 가입 성공!");
-        		model.addAttribute("target","main");
+        		model.addAttribute("target","./");
         		return "customer/success";
         	} else { // 회원가입을 실패 했을 때
         		model.addAttribute("msg", "회원가입 실패!");
@@ -81,7 +81,7 @@ public class CustomerController {
     		
     		if(insertCnt > 0) { // 회원가입을 성공 했을 때
     			model.addAttribute("msg", "회원 가입 성공!");
-    			model.addAttribute("target","main");
+    			model.addAttribute("target","./");
     			return "customer/success";
     		} else { // 회원가입을 실패 했을 때
     			model.addAttribute("msg", "회원가입 실패!");
@@ -286,7 +286,7 @@ public class CustomerController {
     		if(deleteCnt > 0) { // 회원탈퇴가 되었을 때 세션을 지우고 메인으로 리다이렉트
     			session.invalidate();
     			model.addAttribute("msg", "회원 탈퇴 완료!");
-    			model.addAttribute("target","main");
+    			model.addAttribute("target","./");
     			return "customer/success";
     		} else { // 패스워드를 비교했을 때 다르다면
     			model.addAttribute("msg", "회원 탈퇴 실패!");

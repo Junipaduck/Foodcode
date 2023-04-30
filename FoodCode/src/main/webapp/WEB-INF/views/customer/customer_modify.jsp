@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/uili.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
+    <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
+  
 
   <title>FOODCODE :회원 정보 수정</title>
   <script type="text/javascript">
@@ -36,7 +38,78 @@ function DeleteMember() {
 	location.href="customerDelete.me";
 	}
 }
-  </script>
+
+	$(function() {
+		$("#member_passwd2").on("change", function() {
+			let passwd = $("#member_passwd2").val();
+			let lengthRegex = /^[A-Za-z0-9!@#$%]{8,16}$/;
+			let engUpperRegex = /[A-Z]/;  // 대문자
+			let engLowerRegex = /[a-z]/;  // 대문자
+			let numberRegex = /[0-9]/;  // 대문자
+			let specRegex = /[!@#$%]/;  // 대문자
+			if(!lengthRegex.exec(passwd)){
+				passwdStatus = false;
+				$("#checkPasswdResult").html("영문자, 숫자, 특수문자 8 ~ 16자 필수").css('color','red');
+				$("#member_passwd2").select();
+			} else {
+				let count = 0;
+				if(engUpperRegex.exec(passwd)){
+					count++
+				}
+				
+				if(engLowerRegex.exec(passwd)){
+					count++
+				} 
+				
+				if(numberRegex.exec(passwd)){
+					count++
+				}
+				if(specRegex.exec(passwd)) {
+					count++
+				}
+				switch (count) {
+				case 0: case 1: $("#checkPasswdResult").html("사용 불가능한 패스워드").css('color','red'); passwdStatus = false; break;
+				case 2: $("#checkPasswdResult").html("위험").css('color','red'); passwdStatus = true; break;
+				case 3: $("#checkPasswdResult").html("보통").css('color','blue'); passwdStatus = true; break;
+				case 4: $("#checkPasswdResult").html("안전").css('color','green'); passwdStatus = true; break;
+	
+				}
+			}
+		});
+		$("#member_passwd2_1").on("change", function() {
+			let passwd2 = $("#member_passwd2_1").val();
+			let passwd = $("#member_passwd2").val();
+			if(passwd2 == passwd){
+				passwd2Status = true;
+				$("#checkPasswd2Result").text("비밀번호 일치").css('color','green');
+			} else {
+				passwd2Status = false;
+				$("#checkPasswd2Result").text("비밀번호 불일치").css('color','red');
+			}
+		});
+		
+		$("form").submit(function() {
+			if(!passwdStatus){
+				alert("패스워드를 확인하세요!");
+				$("#member_passwd2").focus();
+				return false;
+			} else if(!passwd2Status){
+				alert("패스워드가 일치하는지 확인하세요!");
+				$("#member_passwd2_1").focus();
+				return false;
+			}  else {
+				return true;
+			}
+		});
+		
+	});
+
+
+
+
+
+
+</script>
 </head>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 <body>
@@ -92,12 +165,12 @@ function DeleteMember() {
               <div class="form-group">
                 <label class="text-black" for="password">변경할 비밀번호</label>
                 <input type="password" class="form-control" id="member_passwd2" name="modifyMember">
-                <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
+                  <small id="checkPasswdResult"></small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="password">변경할 비밀번호확인</label>
                 <input type="password" class="form-control" id="member_passwd2_1" name="modifyMember2">
-                <small id="emailHelp" class="form-text text-muted">비밀번호를 다시 적어주세요.</small>
+                <small id="checkPasswd2Result"></small>
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">이름</label>
@@ -142,7 +215,6 @@ function DeleteMember() {
 		<jsp:include page="../inc/bottom.jsp"></jsp:include>
 	</footer>
 
-  <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
