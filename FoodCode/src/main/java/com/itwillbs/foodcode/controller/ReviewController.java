@@ -47,7 +47,7 @@ public class ReviewController {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("confirm('이미 리뷰를 작성하셨습니다!')");
+				out.println("alert('이미 리뷰를 작성하셨습니다!')");
 				out.println("history.back()");
 				out.println("</script>");
 				out.flush();
