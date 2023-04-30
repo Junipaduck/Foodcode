@@ -33,20 +33,13 @@
 		WHERE b.merchant_uid = #{merchant_uid};
 	</select>
 	
-<!-- 	<select id="selectMerchantUid"  resultType="com.itwillbs.foodcode.vo.BookingVO"> -->
-<!-- 		SELECT -->
-<!-- 			b.merchant_uid -->
-<!-- 			FROM booking b JOIN store s -->
-<!-- 			ON b.store_idx = s.store_idx -->
-<!-- 			WHERE b.booking_idx = #{booking_idx} -->
-<!-- 	</select> -->
 
 	<select id="selectMerchantUid"  resultType="string">
 		SELECT
 			b.merchant_uid
 			FROM booking b JOIN store s
 			ON b.store_idx = s.store_idx
-			WHERE b.booking_idx = 1
+			WHERE b.booking_idx = #{booking_idx}
 	</select>
 	
 	<insert id="insertPayList">
