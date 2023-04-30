@@ -115,7 +115,7 @@ function DeleteMember() {
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">이메일</label>
-                <input type="email" class="form-control" id="member_email" aria-describedby="emailHelp" value="${map.member.member_email}" name="member_email">
+                <input type="email" class="form-control" id="member_email" readonly="readonly" aria-describedby="emailHelp" value="${map.member.member_email}" name="member_email">
               </div>
               <div class="form-group">
                 <label class="text-black" for="email">성별</label>
