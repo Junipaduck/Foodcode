@@ -5,7 +5,7 @@
 	<select id="selectMemberList" resultType="com.itwillbs.foodcode.vo.MemberVO">
 		SELECT *
 			FROM member
-				WHERE member_type = 'c';
+				WHERE member_type = 'c' AND member_id != 'admin';
 	</select>
 	
 	<select id="selectOwnerList" resultType="com.itwillbs.foodcode.vo.MemberVO">
@@ -99,7 +99,7 @@
 	</delete>
 	
 	<select id="getReviewList" resultType="map">
-		SELECT r.review_idx, s.store_name, r.review_content, r.review_star, r.member_id, r.review_file
+		SELECT r.review_idx, s.store_name, r.review_content, r.review_star, r.member_id, r.review_file, r.review_report
 			FROM review r
 				JOIN store s ON r.store_idx = s.store_idx
 					WHERE r.delete_auth_status = 'Y'

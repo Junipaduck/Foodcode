@@ -42,6 +42,7 @@ function DeleteReview(review_idx) {
                                             <th>리뷰 평점</th>
                                             <th>작성자</th>
                                             <th>리뷰 사진</th>
+                                            <th>리뷰 삭제 사유</th>
                                             <th>삭제</th>
                                         </tr>
                                     </thead>
@@ -53,6 +54,7 @@ function DeleteReview(review_idx) {
                                             <th>리뷰 평점</th>
                                             <th>작성자</th>
                                             <th>리뷰 사진</th>
+                                            <th>리뷰 삭제 사유</th>
                                             <th>삭제</th>
                                         </tr>
                                     </tfoot>
@@ -70,6 +72,7 @@ function DeleteReview(review_idx) {
 												<c:set var="fileName" value="${fn:substring(reviewList.review_file, index + 1, length) }"/>
 												<img alt="등록된 사진이 없습니다." src="${pageContext.request.contextPath }/resources/upload/${fileName}" style="height: 50px;width: 50px;">
                                             </td>
+                                            <td>${reviewList.review_report }</td>
                                             <td align="center">
                                             	<a onclick="DeleteReview('${reviewList.review_idx }');" class="btn btn-danger btn-circle"">
                                            			 <i class="fas fa-comment-slash"></i>

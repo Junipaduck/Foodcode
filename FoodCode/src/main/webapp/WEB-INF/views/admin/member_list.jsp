@@ -7,13 +7,10 @@
 	function DeletePopup(member_idx, member_type, member_id) {
 		
 		var url = "adminMember_delete?member_idx="+member_idx+"&member_id="+member_id+"&member_type="+member_type
-		
 		var name = "DeletePopUp";
-		
 		var option = "width = 500, height = 200, top = 300, left = 200, location = yes"
 		
  		window.open(url, name, option);
-				
 	}
 </script>				
                 <!-- Begin Page Content -->
@@ -21,8 +18,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">일반 회원을 조회하는 테이블</h1>
-                    <p class="mb-4">이름, ID, 주소... 등 회원의 상세 정보를 출력하며 삭제 버튼을 이용하여 삭제 할 수있습니다. <a target="_blank"
-                            href="https://dynamic-alloy-db2.notion.site/687107f26f9040a1ba505c7124a83999?v=8fc1acc75e394c2abafc380ab2011bee">-임시 데이터 베이스 관련 링크(노션 회의록)-</a></p>
+                    <p class="mb-4">이름, ID, 주소... 등 회원의 상세 정보를 출력하며 삭제 버튼을 이용하여 삭제 할 수있습니다.</p>
 					
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">

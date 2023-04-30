@@ -51,7 +51,6 @@ $(function() {
 // 	                    className: 'btn'
 // 	                })
 // 	            );
-	        
 // 		}else{
 // 			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
 // 			$resultMsg.css('color','red');

@@ -21,8 +21,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">점주 조회 페이지</h1>
-                    <p class="mb-4">점주 상세 정보를 출력하며 삭제 버튼을 이용하여 삭제 할 수있습니다. <a target="_blank"
-                            href="https://drive.google.com/drive/folders/1LBM2HqUweQIpO8KZmK6BHsW6OI9pbt4N">-2팀 공유 드라이브 링크(Google 2Time Dirve)-</a></p>
+                    <p class="mb-4">이름, ID, 주소... 등 회원의 상세 정보를 출력하며 삭제 버튼을 이용하여 삭제 할 수있습니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">

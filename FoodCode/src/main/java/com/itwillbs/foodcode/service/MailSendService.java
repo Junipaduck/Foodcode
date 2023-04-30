@@ -49,7 +49,7 @@ public class MailSendService {
 					String content = 
 							"안녕하십니까 ! FoodCode 관리자입니다." + 	//html 형식으로 작성 ! 
 			                "<br><br>" + 
-						    "해당 식당 " + storeName + "은 경고입니다." + 
+						    "해당 식당 " + storeName + " 는 경고입니다." + 
 						    "<br>" + 
 						    "식당 청결 및 서비스에 신경 써 주시길 바랍니다."; //이메일 내용 삽입
 					mailSend(setFrom, toMail, title, content);

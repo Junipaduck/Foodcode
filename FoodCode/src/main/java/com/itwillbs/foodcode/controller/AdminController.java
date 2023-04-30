@@ -38,7 +38,7 @@ public class AdminController {
 	 private MailSendService mailService;
 	 
 	 @Autowired
-	 private ReportService reportService ;
+	 private ReportService reportService;
 	 
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminMain(Model model) {
