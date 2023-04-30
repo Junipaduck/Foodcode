@@ -207,6 +207,7 @@
 				s.store_name 
 				, s.store_content
 				, s.store_file
+				, s.store_idx
 				, IFNULL(ROUND(AVG(r.review_star)), '0.0') as review_star
 					FROM store s JOIN review r
 					ON s.store_idx = r.store_idx

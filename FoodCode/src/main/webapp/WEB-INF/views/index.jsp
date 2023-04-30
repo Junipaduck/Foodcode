@@ -261,7 +261,10 @@ google.charts.setOnLoadCallback(drawChart);
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row text-center justify-content-center mb-5">
-				<div class="col-lg-7"><h2 class="section-title text-center">지금 인기 있는 맛집 - 별점 평균 4점 이상</h2></div>
+				<div class="col-lg-7">
+					<h2 class="section-title text-center">지금 인기 있는 맛집 - 별점 평균 4점 이상</h2>
+					<p>가게명을 클릭하시면 가게 상세페이지로 이동합니다!</p>
+				</div>
 			</div>
 
 				<div class="owl-carousel owl-3-slider">
@@ -272,7 +275,8 @@ google.charts.setOnLoadCallback(drawChart);
 									<c:set var="fileName" value="${fn:substring(store.store_file, index + 1, length) }"/>
 									<a class="media-thumb" href="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" data-fancybox="gallery">
 										<div class="media-text">
-											<font color="white"><h2>${store.store_name }</h2></font>
+											<!-- 가게 명 클릭시 가게 상세 페이지로 이동  -->
+											<font color="white"><h2  onclick="location.href='store.so?store_idx=${store.store_idx}'" style="text-decoration: underline;">${store.store_name }</h2></font>
 											<span class="location"><font color="white">${store.store_content }</font></span>
 					    		           	<div class="review_star">
 								           		<c:if test="${not empty store.review_star }">
@@ -299,7 +303,7 @@ google.charts.setOnLoadCallback(drawChart);
 								           		</c:if>
 							           		</div>
 										</div>
-										<img alt="..." src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" style="height: 400px;width: 400px;">
+										<img alt="..." src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" style="height: 500px;width: 500px;">
 									</a> 
 								</div>
 			
