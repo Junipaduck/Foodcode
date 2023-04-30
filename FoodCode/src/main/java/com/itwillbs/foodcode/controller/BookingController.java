@@ -47,6 +47,12 @@ public class BookingController {
 	public ModelAndView booking(HttpSession session, Model model, StoreVO store, int store_idx) {
 		System.out.println("booking");
 		String id = (String)session.getAttribute("sId");
+		
+		if(id == null) { // 세션 아이디가 없을 경우 돌려보내기
+			model.addAttribute("msg", "예약하기는 로그인 후 이용하실 수 있습니다.");
+			return new ModelAndView("fail_back");
+		}
+		
 		MemberVO member = customerService.selectMember(id);
 		
 		List<StoreVO> storeInfo = storeService.selectStoreInfo(store, store_idx); 
@@ -65,6 +71,17 @@ public class BookingController {
 	@GetMapping(value = "bookingCheck.bo")
 	public String bookingCheck
 	(HttpSession session, Model model, StoreVO store, int store_idx, String booking_date, String booking_time, String booking_num, String booking_seat, String booking_content) {
+		
+		if(booking_date == null || booking_date == "") {
+			model.addAttribute("msg", "예약날짜는 필수 입력입니다.");
+			return "fail_back";
+		} 
+		
+		if(booking_time == null || booking_time == "") {
+			model.addAttribute("msg", "예약시간은 필수 입력입니다.");
+			return "fail_back";
+		}
+		
 		String id = (String)session.getAttribute("sId");
 		MemberVO member = customerService.selectMember(id);
 		
@@ -112,7 +129,9 @@ public class BookingController {
 		@ResponseBody
 		@GetMapping(value = "/bookingSeatCheck.bo")
 			public boolean bookingSeatCheck(@RequestParam int store_idx, @RequestParam String booking_date, @RequestParam String booking_time, @RequestParam String booking_num) {
-				System.out.println("bookingSeatCheck");
+			
+			System.out.println("bookingSeatCheck");
+			
 			int store_maxps = bookingService.getStore_maxps(store_idx);
 			
 //			System.out.println(store_idx + booking_date + booking_time + store_maxps);
