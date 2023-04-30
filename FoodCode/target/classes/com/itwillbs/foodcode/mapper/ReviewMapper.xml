@@ -21,6 +21,7 @@
 				,#{merchant_uid}
 				,'N' -- 리뷰 삭제 요청 대기 상태 
 				,'N' -- 리뷰 삭제 요청 사유 대기 상태
+				,#{booking_idx}
 			)
 	</insert>
 	
