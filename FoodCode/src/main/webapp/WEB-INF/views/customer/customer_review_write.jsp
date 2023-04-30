@@ -77,7 +77,7 @@
             		<%
             		String merchant_uid = request.getParameter("merchant_uid");
             		%>
-            		<input type="text" name="merchant_uid" value="${merchant_uid }">
+            		<input type="hidden" name="merchant_uid" value="${merchant_uid }">
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="customer_id">아이디</label> -->
 <!--                 <input type="text" class="form-control" id="customer_id" name="customer_id" aria-describedby="emailHelp"> -->
