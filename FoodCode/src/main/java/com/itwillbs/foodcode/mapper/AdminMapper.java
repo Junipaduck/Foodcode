@@ -49,6 +49,12 @@ public interface AdminMapper {
 
 	void addReportCount(String store_idx);
 
+	List<MemberVO> reverseMemberList();
+
+	List<OwnerVO> reverseOwnerList();
+
+	List<StoreVO> reverseStoreList();
+
 	
 
 	

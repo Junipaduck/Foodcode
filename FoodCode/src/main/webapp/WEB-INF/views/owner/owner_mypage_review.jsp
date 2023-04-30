@@ -153,8 +153,10 @@
 									</div>
 								</td>
 								<td>${review.review_date }</td>
-								<td><input type="button" value="점주답글달기"
-									onclick="location.href='ownerReplyForm.me'"> <input
+								<td>
+									<input type="text" name="store_idx" value="${review.store_idx }">
+									<input type="button" value="점주답글달기"
+									onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'"> <input
 									type="button" value="리뷰삭제요청"
 									onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">
 								</td>

@@ -74,7 +74,7 @@
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Form</h2>
             <!--  리뷰 작성 후 [방문후] 페이지로 되돌아가기 -->
-<%--             <input type="hidden" name="review_idx" value="${param.review_idx}" /> --%>
+<%--             <input type="hidden" name="store_idx" value="${param.store_idx}" /> --%>
             <form class="contact-form bg-white" action="ownerReplyPro.me">
 <!--               <div class="form-group"> -->
 <!--                 <label class="text-black" for="customer_id">아이디</label> -->

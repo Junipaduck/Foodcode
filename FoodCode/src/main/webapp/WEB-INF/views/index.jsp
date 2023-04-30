@@ -76,6 +76,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 											<select name="searchType" id="" class="form-control custom-select" style="width: 300px;">
 												<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
 												<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
+												<option value="store_address" <c:if test="${param.searchKeyword eq 'store_address'}">selected</c:if>>지역</option>
 											</select>
 										</div>
 
@@ -113,9 +114,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	<!-- 지도 -->
 <!-- 	<div id="map" style="width:600px;height:350px;  margin: auto;"></div> -->
 	<div class="map_wrap">
-	    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+	    <div id="map" style="width:80%;height:80%;position:relative;overflow:hidden;margin: auto;"></div>
 	
-	    <div id="menu_wrap" class="bg_white">
+	    <div id="menu_wrap" class="bg_white" style="margin-left: 180px;">
 	        <div class="option">
 	            <div>
 	                <form onsubmit="searchPlaces(); return false;">

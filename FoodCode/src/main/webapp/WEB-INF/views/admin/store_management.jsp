@@ -8,7 +8,6 @@
 
 <script type="text/javascript">
 
-
 	function Mail(member_email, store_name, store_idx) {
 		const eamil = member_email; // 이메일 주소값 얻어오기!
 		const storeName = store_name;
@@ -26,8 +25,6 @@
 		}); // end ajax
 	}
 	
-	
-	
 	function DeletePopup(store_license, owner_id, report_mail_count) {
 		
 		if(report_mail_count<5) {
@@ -42,7 +39,6 @@
 		var option = "width = 500, height = 200, top = 300, left = 200, location = yes"
 		
 			window.open(url, name, option);
-		
 				
 	}
 	

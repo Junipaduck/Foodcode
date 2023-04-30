@@ -196,8 +196,8 @@ function remove_tr(This) {//행 삭제
 						<th>${menu.menu_price }</th>
 						<th><img src="resources/menuImage${menu.menu_image_path }/${menu.menu_image}"></th>
 						<th>${menu.menu_content }</th>
-						<th><a href="#editEmployeeModal" class="btn btn-success" data-toggle="modal" data-menu_idx="${menu.menu_idx }" data-store_idx="${param.store_idx }" data-menu_name="${menu.menu_name }" data-menu_type="${menu.menu_type }" data-menu_price="${menu.menu_price }" data-menu_image="${menu.menu_image }" data-menu_content="${menu.menu_content }"><i class="material-icons">&#xE147;</i> <span>수정</span></a></th>
-						<th><a href="#deleteEmployeeModal"  class="btn btn-danger" data-toggle="modal" data-menu_idx="${menu.menu_idx}" data-store_idx="${param.store_idx}"><i class="material-icons">&#xE15C;</i> <span>삭제</span></a></th>
+						<th><a href="#editEmployeeModal" class="btn btn-success" style="font-size: 10px" data-toggle="modal" data-menu_idx="${menu.menu_idx }" data-store_idx="${param.store_idx }" data-menu_name="${menu.menu_name }" data-menu_type="${menu.menu_type }" data-menu_price="${menu.menu_price }" data-menu_image="${menu.menu_image }" data-menu_content="${menu.menu_content }"><i class="material-icons">&#xE147;</i> <span>수정</span></a></th>
+						<th><a href="#deleteEmployeeModal"  class="btn btn-danger" style="font-size: 10px" data-toggle="modal" data-menu_idx="${menu.menu_idx}" data-store_idx="${param.store_idx}"><i class="material-icons">&#xE15C;</i> <span>삭제</span></a></th>
 					</tr>
 					</c:forEach>
 					<input type="hidden" value="${param.store_idx }" name="store_idx">

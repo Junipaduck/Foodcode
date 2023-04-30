@@ -117,6 +117,26 @@
  				WHERE store_idx = ${store_idx};
 	</update>
 	
+	<select id="reverseMemberList" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT *
+			FROM member
+				WHERE member_type = 'c'
+					ORDER BY member_idx DESC;
+	
+	</select>
+	
+	<select id="reverseOwnerList" resultType="com.itwillbs.foodcode.vo.MemberVO">
+		SELECT *
+			FROM member
+				WHERE member_type = 'o'
+					ORDER BY member_idx DESC;
+	</select>
+	
+	<select id="reverseStoreList" resultType="com.itwillbs.foodcode.vo.StoreVO">
+		SELECT *
+			FROM store
+				ORDER BY store_idx DESC;
+	</select>
 	
 </mapper>
 
