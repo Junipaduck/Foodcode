@@ -60,6 +60,7 @@
 
 .btn btn-primary btn-block {
 	font-family: 'Noto Sans KR', sans-serif;
+	
 }
 </style>
 
@@ -155,8 +156,8 @@
 								<td>${review.review_date }</td>
 								<td>
 									<input type="hidden" name="store_idx" value="${review.store_idx }">
-									<input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'"> 
-									<input type="button" value="리뷰삭제요청" onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">
+									<button class="btn btn-outline-success" style="border-color: #28a745;padding-right: 10px; padding-left: 10px;" onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'">점주답글달기</button> 
+									<button class="btn btn-outline-danger" style="border-color: #fc7750;padding-right: 10px; padding-left: 10px;" onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">리뷰삭제요청</button>
 								</td>
 							</tr>
 						</c:forEach>
