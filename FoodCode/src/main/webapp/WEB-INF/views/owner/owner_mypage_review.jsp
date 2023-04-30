@@ -99,8 +99,8 @@
 	
 	
 	<div class="untree_co-section" style="padding-bottom: 20px;">
-		<div style="font-size: 25px;padding-left: 323px;">우리 가게 리뷰</div>
-    		<div class="container my-13">
+   		<div class="container my-13">
+			<h2 class="section-title mb-4"  style="font-size: 25px; color: #ff7a08;">우리 가게 리뷰</h2>
 			&nbsp; &nbsp; &nbsp;
 			<div align="center">
 				<table class="rwd-table" style="width:1200px;margin-left:30px;">
@@ -154,11 +154,9 @@
 								</td>
 								<td>${review.review_date }</td>
 								<td>
-									<input type="text" name="store_idx" value="${review.store_idx }">
-									<input type="button" value="점주답글달기"
-									onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'"> <input
-									type="button" value="리뷰삭제요청"
-									onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">
+									<input type="hidden" name="store_idx" value="${review.store_idx }">
+									<input type="button" value="점주답글달기" onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'"> 
+									<input type="button" value="리뷰삭제요청" onclick="location.href='ownerReviewDelete.me?review_idx=${review.review_idx}'">
 								</td>
 							</tr>
 						</c:forEach>
@@ -173,7 +171,7 @@
 	<section id="pageList">
 		<div class="w3-container">
 			<div class="w3-center" style="margin-left:18x">
-				<div class="w3-bar w3-border" style="margin-bottom: 30px;">
+				<div class="w3-bar w3-border" style="margin-bottom: 30px; margin-left: 155px;">
 					<c:choose>
 						<c:when test="${empty param.pageNum }">
 							<c:set var="pageNum" value="1" />
