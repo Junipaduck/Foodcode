@@ -114,8 +114,11 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </div>
 </form>
 
+<div style="margin-left: 520px;"> 
 <!-- <button onclick="requestPay()">결제하기</button> -->
-<button id="payMent">결제하기</button>
+<button id="payMent" class="btn btn-outline-success" style="margin-top: -79px; margin-left: 324px;">결제하기</button>
+<button class="btn btn-outline-success" style="margin-top: -79px; margin-left: 50px;" onclick="history.back()">다시 입력</button>
+</div>
 
 <script type="text/javascript">
 	

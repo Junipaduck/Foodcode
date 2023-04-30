@@ -100,16 +100,27 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 					</tr>
 				</tbody>
 			</table>
-			<div class="col-md-12 mt-3">
-                  <div class="form-group">
-					<input type="submit" value="확인" class="btn btn-primary py-3 px-5">
-                  </div>
-            </div>
 		</div>
 	</div>        
 </div>
 </form>
-
+			<div style="margin-left: 520px;"> 
+			<button id="escapeconfirm" class="btn btn-outline-success" style="margin-top: -79px; margin-left: 324px;">확인 했어요</button>
+			</div>
+			
+			<script>
+			document.getElementById("escapeconfirm").addEventListener('click',escapepage);
+			
+				function escapepage() {
+					if(!confirm("예약 전체 내역을 확인하시겠어요? 마이 페이지로 이동됩니다. \n취소시 메인으로 가져요")){
+						location.href="/foodcode"
+					} else {
+						location.href="customerBooking.me"
+					}
+				}
+			</script>
+			
+			
 <footer>
 	<jsp:include page="../inc/bottom.jsp"></jsp:include>
 </footer>

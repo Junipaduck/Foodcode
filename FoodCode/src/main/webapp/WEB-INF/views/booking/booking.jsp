@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/store.css"> 
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bookingradio.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bookingstyle.css">
   <!-- 테이블 외부 css 파일 경로 -->
   
   <!-- 메뉴 css -->
@@ -194,7 +194,7 @@
                     <h1 class="mb-5">${map.storeInfo[0].store_name } </h1>
                 </div>
   
-  <div class="untree_co-section">
+  <div class="untree_co-section" style="padding-top: 10px; ">
     <div class="container">
       <div class="row">
         <div class="col-lg-7">
@@ -203,7 +203,7 @@
 	          	<c:set var="length" value="${fn:length(store) }"/>
 				<c:set var="index" value="${fn:indexOf(store, '_') }"/>
 				<c:set var="fileName" value="${fn:substring(store, index + 1, length) }"/>
-	            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." class="img-fluid rounded-20" />
+	            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." class="img-fluid rounded-20" style="margin: 30px; margin-left: -1px; height: 442px; "/>
           	</c:forEach>
 <!--             <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid rounded-20"> -->
           </div>
@@ -320,13 +320,13 @@
 				</div>
 				<div class="form-group">
                 <label class="text-black2" for="etc">요청사항</label>
-                <textarea name="booking_content" class="form-control" id="booking_content" cols="30" rows="5"></textarea>
+                <textarea name="booking_content" class="form-control" id="booking_content" cols="30" rows="5" style="margin-left: 15px; width: 93%; height: 109px;"></textarea>
               </div>
               </div>
              </div>
                 <div class="col-md-12 mt-3">
                   <div class="form-group">
-                    <input type="submit" value="예약하기" class="btn btn-primary py-3 px-5">
+                    <input type="submit" value="예약하기" class="btn btn-primary py-3 px-5" style="margin-left: 100px;">
                   </div>
                 </div>
             </form>
