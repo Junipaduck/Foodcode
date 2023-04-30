@@ -103,6 +103,7 @@
 					booking_num = $("#booking_num").val();
 					$.ajax({
 		    			type : 'get',
+		    			async: false,
 		    			url : "bookingSeatCheck.bo?store_idx=" + store_idx + "&booking_date=" + booking_date + "&booking_time=" + booking_time + "&booking_num=" + booking_num, // GET방식
 		    			success : function (Check) {
 		    				if(Check){
@@ -240,7 +241,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">날짜</label>
-        				<input type="text" name="booking_date" id="booking_date" class="datepicker inp" placeholder="날짜를 선택 해주세요" readonly="true" style="text-align: center;" /> 
+        				<input type="text" name="booking_date" id="booking_date" class="datepicker inp" placeholder="날짜를 선택 해주세요" readonly="true" required="required" style="text-align: center;" /> 
 						<!-- 캘린더 옵션 { -->
 						<script>
 					    $.datepicker.setDefaults({
@@ -275,7 +276,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">시간</label>
-                    <input type="text" name="booking_time" id="booking_time" class="timepicker inp" readonly="true"/> 
+                    <input type="text" name="booking_time" id="booking_time" class="timepicker inp" readonly="true" required="required"/> 
 					 <!-- 시간 옵션 { -->
 					  <script>
 					  $('.timepicker').timepicker({
@@ -320,7 +321,7 @@
 				</div>
 				<div class="form-group">
                 <label class="text-black2" for="etc">요청사항</label>
-                <textarea name="booking_content" class="form-control" id="booking_content" cols="30" rows="5" style="margin-left: 15px; width: 93%; height: 109px;"></textarea>
+                <textarea name="booking_content" class="form-control" id="booking_content" cols="30" rows="5" placeholder="없음" style="margin-left: 15px; width: 93%; height: 109px;"></textarea>
               </div>
               </div>
              </div>
