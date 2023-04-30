@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MVC 게시판</title>
+<title>회원 삭제</title>
 <style>
 	#passForm {
 		width: 300px;

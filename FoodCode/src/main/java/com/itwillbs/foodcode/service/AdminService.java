@@ -130,6 +130,21 @@ public class AdminService {
 		mapper.addReportCount(store_idx);
 		
 	}
+	
+	
+
+	public List<MemberVO> reverseMemberList() {
+		
+		return mapper.reverseMemberList();
+	}
+
+	public List<OwnerVO> reverseOwnerList() {
+		return mapper.reverseOwnerList();
+	}
+
+	public List<StoreVO> reverseStoreList() {
+		return mapper.reverseStoreList();
+	}
 
 	
 }

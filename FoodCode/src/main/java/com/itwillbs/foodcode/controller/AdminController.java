@@ -45,17 +45,18 @@ public class AdminController {
 
 //		=====================메인 화면에서 띄울 리스트 객체============================
 		
-		List<MemberVO> memberList = adminService.getMemberList();
+		List<MemberVO> memberList = adminService.reverseMemberList();
 		model.addAttribute("memberList", memberList);
 		
-		List<OwnerVO> ownerList = adminService.getOwnerList();
+		List<OwnerVO> ownerList = adminService.reverseOwnerList();
 		model.addAttribute("ownerList", ownerList);
 	
-		List<StoreVO> storeList = adminService.getStoreList();
+		List<StoreVO> storeList = adminService.reverseStoreList();
 		model.addAttribute("storeList", storeList);
 		
 		List<NoticeVO> noticeList = noticeService.getNoticeList();
 		model.addAttribute("noticeList", noticeList);
+		
 		
 		List reportList = reportService.getReportList();
 		model.addAttribute("reportList", reportList);
