@@ -112,9 +112,9 @@ public class ReviewService {
 		return mapper.selectReplyCount(review_idx);
 	}
 
-	public int ownerReviewDelete(int review_idx) {
+	public int ownerReviewDelete(int review_idx, String review_report) {
 
-		return mapper.updateOwnerReview(review_idx);
+		return mapper.updateOwnerReview(review_idx, review_report);
 	}
 
 	// 메인 화면 리뷰 차트 추가 

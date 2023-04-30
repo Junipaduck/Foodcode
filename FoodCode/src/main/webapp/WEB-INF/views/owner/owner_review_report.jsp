@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FOODCODE : 가게신고</title>
+<title>FOODCODE : 리뷰 삭제 요청</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="../favicon.png">
@@ -164,6 +164,7 @@ color: #fff;
   <div class="table-box">
   	<form action="ownerReviewDelete.me" name="ownerReviewDelete" method="POST" enctype="multipart/form-data">
   	<input type="hidden" name="store_idx" value="${param.store_idx}" />
+	  	<input type="hidden" name="review_idx" value="${param.review_idx }">
 		    <table class="table table--min" cellspacing="0" cellpadding="0">
 		      <thead>
 		      <tr>
@@ -187,7 +188,6 @@ color: #fff;
 		      </tr>
 		      </tbody>
 		    </table>
-	  	<input type="hidden" name="review_idx" value="${param.review_idx }">
 		</form>
   </div>
  <!-- 신고양식 html 끝 --------------------------------------------------------------------------------->

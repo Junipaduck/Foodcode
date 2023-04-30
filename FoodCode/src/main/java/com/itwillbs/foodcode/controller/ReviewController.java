@@ -460,12 +460,12 @@ public class ReviewController {
     }
     
     @PostMapping(value = "/ownerReviewDelete.me")
-    public String ownerReviewDelete(@RequestParam int review_idx, HttpSession session, Model model, HttpServletResponse response) {
+    public String ownerReviewDelete(@RequestParam int review_idx, @RequestParam String review_report, HttpSession session, Model model, HttpServletResponse response) {
     	
     	
     	
     	// 삭제 버튼을 누르면 delete_auth_status를 "Y"로 변경 
-    	int reviewUpdateCount = reviewService.ownerReviewDelete(review_idx);
+    	int reviewUpdateCount = reviewService.ownerReviewDelete(review_idx, review_report);
     	
     	if(reviewUpdateCount > 0) { // 리뷰 삭제 신청이 성공하였을 경우 
 			try {
@@ -479,7 +479,7 @@ public class ReviewController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    		return "owner/owner_mypage_review";
+    		return "owner/owner_mypage";
     	} else {
     		model.addAttribute("msg", "리뷰 삭제 신청에 실패하였습니다!");
     		return "fail_back";

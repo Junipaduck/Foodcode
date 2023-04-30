@@ -53,7 +53,7 @@ public interface ReviewMapper {
 	int selectReplyCount(int review_idx);
 
 	// 점주 회원 리뷰 삭제 신청 버튼 
-	int updateOwnerReview(int review_idx);
+	int updateOwnerReview(@Param("review_idx") int review_idx, @Param("review_report") String review_report);
 
 	List<ReviewVO> reviewChart(StoreVO store);
 
