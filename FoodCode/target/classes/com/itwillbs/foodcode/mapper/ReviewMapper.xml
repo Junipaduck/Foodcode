@@ -20,6 +20,7 @@
 				,#{review_file_path}
 				,#{merchant_uid}
 				,'N' -- 리뷰 삭제 요청 대기 상태 
+				,'N' -- 리뷰 삭제 요청 사유 대기 상태
 			)
 	</insert>
 	
@@ -242,7 +243,7 @@
 	<update id="updateOwnerReview">
 		UPDATE review
 			SET
-			delete_auth_status = 'Y' 
+			delete_auth_status = 'Y', review_report = #{review_report} 
 			WHERE
 			review_idx = #{review_idx}	
 	</update>

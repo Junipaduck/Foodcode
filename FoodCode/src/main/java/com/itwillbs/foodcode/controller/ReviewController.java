@@ -431,9 +431,9 @@ public class ReviewController {
     	
     }
     
-    // 점주 회원 리뷰 삭제 요청
-    @GetMapping(value = "/ownerReviewDelete.me")
-    public String ownerReviewDelete(@RequestParam int review_idx, HttpSession session, Model model, HttpServletResponse response) {
+    // 리뷰 삭제 요청 버튼 클릭 시 
+    @GetMapping(value = "/ownerReviewReport.me")
+    public String ownerReviewReport(@RequestParam int review_idx, HttpSession session, Model model, HttpServletResponse response) {
     	
     	// 리뷰 삭제 요청 클릭시 update 구문을 실행하여 delete_auth_status를 "Y"로 변경한다. 
     	// 삭제 요청을 하지 않았을 시 항상 "N"인 상태 
@@ -442,7 +442,7 @@ public class ReviewController {
     	String id = (String)session.getAttribute("sId");
     	
     	if(id == null) {
-    		model.addAttribute("msg", "삭제 권한이 없습니다!");
+    		model.addAttribute("msg", "삭제 요청 권한이 없습니다!");
     		return "fail_back";
     	}
     	
@@ -456,6 +456,14 @@ public class ReviewController {
     		return "fail_back";
     	}
     	
+    	return "owner/owner_review_report";
+    }
+    
+    @PostMapping(value = "/ownerReviewDelete.me")
+    public String ownerReviewDelete(@RequestParam int review_idx, HttpSession session, Model model, HttpServletResponse response) {
+    	
+    	
+    	
     	// 삭제 버튼을 누르면 delete_auth_status를 "Y"로 변경 
     	int reviewUpdateCount = reviewService.ownerReviewDelete(review_idx);
     	
@@ -465,7 +473,6 @@ public class ReviewController {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("confirm('정말 리뷰 삭제 요청을 하시겠습니까?')");
-				out.println("history.back()");
 				out.println("</script>");
 				out.flush();
 			} catch (IOException e) {
