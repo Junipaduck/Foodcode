@@ -119,7 +119,8 @@ public class OwnerController {
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
 //    	List<ReviewVO> reviewList = reviewService.getOwnerReivewList(id);
     	
-		List<ReviewVO> reviewList = reviewService.getReviewList(searchType, searchKeyword, startRow, listLimit);
+//		List<ReviewVO> reviewList = reviewService.getReviewList(searchType, searchKeyword, startRow, listLimit);
+		List<ReviewVO> reviewList = reviewService.getOwnerReivewList(id, searchType, searchKeyword, startRow, listLimit);  
 
 		
 		// 1. 전체 게시물 수 조회 
@@ -146,7 +147,6 @@ public class OwnerController {
 		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
 		model.addAttribute("pageInfo", pageInfo);
 		
-		// 페이징 처리를 저장하는 PageInfo 객체 생성 
 		model.addAttribute("reviewList", reviewList);
     	
     	System.out.println("선정 테스트 : " + map.get("sId"));

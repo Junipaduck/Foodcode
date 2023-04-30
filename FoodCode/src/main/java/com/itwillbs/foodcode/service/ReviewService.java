@@ -60,9 +60,10 @@ public class ReviewService {
 		return mapper.selectMemberList(member);
 	}
 
-	public List<ReviewVO> getOwnerReivewList(String id) {
+	// 점주 마이페이지 리뷰 목록 조회
+	public List<ReviewVO> getOwnerReivewList(String id, String searchType, String searchKeyword, int startRow, int listLimit) {
 
-		return mapper.selectOwnerReviewList(id);
+		return mapper.selectOwnerReviewList(id, searchType, searchKeyword, startRow, listLimit);
 	}
 
 	// 리뷰 수정 시 파일 삭제
@@ -121,6 +122,11 @@ public class ReviewService {
 		
 		return mapper.reviewChart(store);
 	}
+
+//	public List<ReviewVO> getOwnerReviewList(String searchType, String searchKeyword, int startRow, int listLimit) {
+//
+//		return mapper.selectOwnerReviewList(searchKeyword);
+//	}
 	
 	
 //	public List<ReviewVO> getReviewList(int starRow, int listLimit) {
