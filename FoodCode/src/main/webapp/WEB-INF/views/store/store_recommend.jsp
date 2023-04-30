@@ -125,7 +125,7 @@ $(document).ready(function() {
    
    <div style="margin-left: 520px;"> 		
     <section id="buttonArea" style="margin-right: -3490px;">		
-		<form class="form222" action="store_recommend.so" style="margin-bottom: 10px; margin-top: -10px; margin-left: -87px;">
+		<form class="form222" action="store_recommend.so" style="margin-bottom: 10px; margin-top: -10px; margin-left: -78px;">
 				<select name="searchType" id="" class="custom-select" style="width: 5%; float: left;">
 					<option value="store_name" <c:if test="${param.searchKeyword eq 'store_name'}">selected</c:if>>가게명</option>
 					<option value="store_content" <c:if test="${param.searchKeyword eq 'store_content'}">selected</c:if>>가게소개글</option>
@@ -266,7 +266,9 @@ $(document).ready(function() {
 								                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store2.store_idx }'" alt="..." />
 								                            <div class="card-body p-4">
 								                                <div class="text-center">
-								                                    <h5 class="fw-bolder">${store2.store_name }</h5> <!-- 가게명 -->
+								                                    <h5 class="fw-bolder">${store2.store_name }
+								            							<img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${store2.review_star}</span>
+								                                    </h5> <!-- 가게명 -->
 								                                   	${store2.store_content } <!-- 가게상세내용 -->
 								                                </div>
 								                            </div>
@@ -307,7 +309,9 @@ $(document).ready(function() {
 						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store3.store_idx }'" alt="..." />
 						                            <div class="card-body p-4">
 						                                <div class="text-center">
-						                                    <h5 class="fw-bolder">${store3.store_name }</h5> <!-- 가게명 -->
+						                                    <h5 class="fw-bolder">${store3.store_name }
+														           <img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${store3.review_star}</span>
+						                                    </h5> <!-- 가게명 -->
 						                                   	${store3.store_content } <!-- 가게상세내용 -->
 						                                </div>
 						                            </div>
@@ -350,7 +354,9 @@ $(document).ready(function() {
 						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store4.store_idx }'" alt="..." />
 						                            <div class="card-body p-4">
 						                                <div class="text-center">
-						                                    <h5 class="fw-bolder">${store4.store_name }</h5> <!-- 가게명 -->
+						                                    <h5 class="fw-bolder">${store4.store_name }
+						                   				     <img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${store4.review_star}</span>
+						                                    </h5> <!-- 가게명 -->
 						                                   	${store4.store_content } <!-- 가게상세내용 -->
 						                                </div>
 						                            </div>
@@ -391,7 +397,9 @@ $(document).ready(function() {
 						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store5.store_idx }'" alt="..." />
 						                            <div class="card-body p-4">
 						                                <div class="text-center">
-						                                    <h5 class="fw-bolder">${store5.store_name }</h5> <!-- 가게명 -->
+						                                    <h5 class="fw-bolder">${store5.store_name }
+						                       			       <img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${store5.review_star}</span>
+						                                    </h5> <!-- 가게명 -->
 						                                   	${store5.store_content } <!-- 가게상세내용 -->
 						                                </div>
 						                            </div>
@@ -431,7 +439,9 @@ $(document).ready(function() {
 						                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/storeFileUpload/${fileName}" alt="..." onclick="location.href='store.so?store_idx=${store6.store_idx }'" alt="..." />
 						                            <div class="card-body p-4">
 						                                <div class="text-center">
-						                                    <h5 class="fw-bolder">${store6.store_name }</h5> <!-- 가게명 -->
+						                                    <h5 class="fw-bolder">${store6.store_name }
+											            		<img src="${pageContext.request.contextPath }/resources/images/star333.png" width="30px;" height="30px;"><span style="font-size: 20px; color: #ef2c00;"> ${store6.review_star}</span>
+						                                    </h5> <!-- 가게명 -->
 						                                   	${store6.store_content } <!-- 가게상세내용 -->
 						                                </div>
 						                            </div>
