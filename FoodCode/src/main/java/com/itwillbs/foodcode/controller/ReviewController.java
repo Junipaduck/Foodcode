@@ -38,7 +38,7 @@ public class ReviewController {
     public String customerReviewWrite(@RequestParam int store_idx, @RequestParam int booking_idx, Model model, HttpServletResponse response) {
     	System.out.println("왔니----------------------------------------------------");
     	
-      	// 이미 리뷰가 존재하는 지 판단을 위한 코드 
+      	// 이미 리뷰가 존재하는 지 판단을 위한 코드
     	// 리뷰를 count(*)해서 count 값이 0보다 큰 경우 - 즉, 리뷰가 존재할 경우 경고창 출력 후 이전페이지로 돌아감
     	int reviewCount = reviewService.getBookingCount(booking_idx);
     	System.out.println("-------------------------------------선정확인" + reviewCount);
