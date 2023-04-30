@@ -158,7 +158,10 @@ public class CustomerController {
 //    }
 
     @GetMapping(value = "/customerAfter.me")
-    public ModelAndView customerAfter(HttpSession session, Model model) {
+    public ModelAndView customerAfter(HttpSession session, Model model, HttpServletResponse response) {
+    	
+    
+
     	
         System.out.println("customerAfter.me");
         

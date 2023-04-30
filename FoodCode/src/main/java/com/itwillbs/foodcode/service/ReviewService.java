@@ -123,6 +123,12 @@ public class ReviewService {
 		return mapper.reviewChart(store);
 	}
 
+	// 리뷰가 존재하는 지 판단하기 위한 코드 
+	public int getBookingCount(int booking_idx) {
+		
+		return mapper.selectBookingCount(booking_idx);
+	}
+
 //	public List<ReviewVO> getOwnerReviewList(String searchType, String searchKeyword, int startRow, int listLimit) {
 //
 //		return mapper.selectOwnerReviewList(searchKeyword);

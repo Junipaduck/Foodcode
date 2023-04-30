@@ -57,6 +57,9 @@ public interface ReviewMapper {
 
 	List<ReviewVO> reviewChart(StoreVO store);
 
+	// 리뷰가 존재하는 지 판단하는 코드 
+	int selectBookingCount(int booking_idx);
+
 }
 
 

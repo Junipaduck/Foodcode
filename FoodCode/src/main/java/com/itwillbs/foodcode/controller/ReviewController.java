@@ -35,8 +35,27 @@ public class ReviewController {
 	
     // 예약관리 -> 방문후 -> 리뷰 
     @GetMapping(value = "/customerReviewWrite.me")
-    public String customerReviewWrite(@RequestParam int store_idx, @RequestParam int booking_idx, Model model) {
+    public String customerReviewWrite(@RequestParam int store_idx, @RequestParam int booking_idx, Model model, HttpServletResponse response) {
     	System.out.println("왔니----------------------------------------------------");
+    	
+      	// 이미 리뷰가 존재하는 지 판단을 위한 코드 
+    	// 리뷰를 count(*)해서 count 값이 0보다 큰 경우 - 즉, 리뷰가 존재할 경우 경고창 출력 후 이전페이지로 돌아감
+    	int reviewCount = reviewService.getBookingCount(booking_idx);
+    	System.out.println("-------------------------------------선정확인" + reviewCount);
+    	if(reviewCount > 0) {
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("confirm('이미 리뷰를 작성하셨습니다!')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
     	
 		// 리뷰 작성 시 merchant_uid 넘겨 주려고 
 //    	BookingVO booking = bookingService.getMerchantUid(booking_idx);
@@ -54,6 +73,7 @@ public class ReviewController {
     public String reviewWritePro(@RequestParam int store_idx, ReviewVO vo, @RequestParam String merchant_uid, Model model, HttpSession session) {
     	
     	
+
     	// 파일 업로드 경로 설정  
     	String uploadDir = "resources/upload"; // sts에서 저장되는 경로(이 곳에 실제로 파일이 업로드 되지는 않음) 
     	String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 파일이 저장되는 경로 

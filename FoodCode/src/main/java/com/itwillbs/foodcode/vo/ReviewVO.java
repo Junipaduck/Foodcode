@@ -209,8 +209,8 @@ public class ReviewVO {
 				+ ", delete_auth_status=" + delete_auth_status + ", review_count=" + review_count + ", booking_idx="
 				+ booking_idx + ", file=" + file + "]";
 	}
-	
-	
+
+
 	
 }
 

@@ -261,6 +261,13 @@
 				ORDER BY
 					review_count DESC;	
 	</select>
+	
+	<!-- 리뷰 중복 작성 판단을 위한 코드 -->
+	<select id="selectBookingCount" resultType="int">
+		SELECT COUNT(*)
+			FROM review
+			WHERE booking_idx = #{booking_idx}
+	</select>
 </mapper>
 
 
