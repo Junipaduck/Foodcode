@@ -135,8 +135,6 @@ public class CustomerController {
 		List bookingList = customerService.bookingList(sId); // 세션 아이디의 예약목록을 불러옴
 		map.put("bookingList",bookingList);
 		
-		List afterBookingList = customerService.afterBookingList(sId); // 세션 아이디의 지난 예약 목록을 불러옴
-		map.put("afterBookingList", afterBookingList);
 		
         return new ModelAndView("customer/customer_booking","map",map);
     }
@@ -170,12 +168,11 @@ public class CustomerController {
 			return new ModelAndView("customer/fail_back");
 		}
 		
-		List bookingList = customerService.bookingList(sId); // 세션 아이디의 예약목록을 불러옴
 		Map map = new HashMap();
-		map.put("bookingList",bookingList);
+		List afterBookingList = customerService.afterBookingList(sId); // 세션 아이디의 지난 예약 목록을 불러옴
+		map.put("afterBookingList", afterBookingList);
 		
 		
-		System.out.println(bookingList);
 		
 
         return new ModelAndView("customer/customer_after","map",map);

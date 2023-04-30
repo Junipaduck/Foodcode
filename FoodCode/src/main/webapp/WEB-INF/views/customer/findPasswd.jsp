@@ -157,11 +157,12 @@
       </div>
     </div>
   </div>
+  
   <div class="untree_co-section">
   
       </div>
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" style="padding-bottom: 180px;">
 
         <div class="col-lg-4">
           <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
@@ -169,23 +170,23 @@
             <form action="findPasswdPro.me" method="post" class="contact-form bg-white">
 			 <div class="form-group">
                 <label class="text-black" for="email">아이디</label>
-                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id">
+                <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id" style="width: 228px;">
                 <small id="emailHelp" class="form-text text-muted"></small>
               </div>
 			 <div class="form-group">
                 <label class="text-black" for="email">전화번호</label>
-                <input type="text" class="form-control" id="member_phone" aria-describedby="emailHelp" name="member_phone">
+                <input type="text" class="form-control" id="member_phone" aria-describedby="emailHelp" name="member_phone" style="width: 228px;">
                 <small id="emailHelp" class="form-text text-muted"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">이메일</label>
-                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp" style="width: 228px;">
                 <small id="checkEmailResult"></small><br>
                 <input type="button" value="인증하기" id="mail-Check-Btn">
               </div>
               <div class="form-group">
                 <label class="text-black">이메일 인증번호</label>
-                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp" style="width: 228px;">
               </div>
               <div class="form-group">
 				<span id="mail-check-warn"></span>
@@ -194,111 +195,15 @@
               <button type="button" class="btn btn-primary" onclick="history.back()">돌아가기</button>
 		</form>
           </div>
-
-          <div class="custom-block" data-aos="fade-up">
-            <h2 class="section-title">Social Icons</h2>
-            <ul class="list-unstyled social-icons light">
-              <li><a href="#"><span class="icon-facebook"></span></a></li>
-              <li><a href="#"><span class="icon-twitter"></span></a></li>
-              <li><a href="#"><span class="icon-linkedin"></span></a></li>
-              <li><a href="#"><span class="icon-google"></span></a></li>
-              <li><a href="#"><span class="icon-play"></span></a></li>
-            </ul>
-          </div> <!-- END .custom-block -->
-
         </div>
       </div>
 
 
-  <div class="py-5 cta-section">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-          <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-          <p class="mb-0"><a href="booking.po" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  	<!-- footer -->
+	<footer>
+		<jsp:include page="../inc/bottom.jsp"></jsp:include>
+	</footer>
 
-  <div class="site-footer">
-    <div class="inner first">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">About Tour</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
-            <div class="widget">
-              <ul class="list-unstyled social">
-                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                <li><a href="#"><span class="icon-instagram"></span></a></li>
-                <li><a href="#"><span class="icon-facebook"></span></a></li>
-                <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                <li><a href="#"><span class="icon-apple"></span></a></li>
-                <li><a href="#"><span class="icon-google"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2 pl-lg-5">
-            <div class="widget">
-              <h3 class="heading">Pages</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget">
-              <h3 class="heading">Resources</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">Contact</h3>
-              <ul class="list-unstyled quick-info links">
-                <li class="email"><a href="#">mail@example.com</a></li>
-                <li class="phone"><a href="#">+1 222 212 3819</a></li>
-                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="inner dark">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
 
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>

@@ -76,35 +76,34 @@
 				  		</td>
 			  		</tr>
 				<c:choose>
-					<c:when test="${not empty map.bookingList }">
+					<c:when test="${not empty map.afterBookingList }">
 					<tr>
-						<th class="td_left">예약번호</th>
-						<th class="td_left">가게명</th>
-						<th class="td_left">예약일</th>
-						<th class="td_left">예약시간</th>
-						<th class="td_left">인원 수</th>
-						<th class="td_left">선호 자리</th>
-						<th class="td_left">요청 사항</th>
-					</tr>
-					<c:forEach items="${map.bookingList }" var="booking">
-					<tr>
-						<td>${booking.booking_idx }</td>
-						<td>${booking.store_name }</td>
-						<td>${booking.booking_date }</td>
-						<td>${booking.booking_time }</td>
-						<td>${booking.booking_num }</td>
-						<td>${booking.booking_seat }</td>
-						<td>${booking.booking_content }</td>
-						<!-- 리뷰작성 버튼 클릭시 리뷰 작성 양식으로 이동 -->
-						
-						<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${booking.store_idx}&booking_idx=${booking.booking_idx }'"></td>
-					</tr>
-					</c:forEach>
-					</c:when>
+					<th class="td_left">예약번호</th>
+					<th class="td_left">가게명</th>
+					<th class="td_left">예약일</th>
+					<th class="td_left">예약시간</th>
+					<th class="td_left">인원 수</th>
+					<th class="td_left">선호 자리</th>
+					<th class="td_left">요청 사항</th>
+				</tr>
+				<c:forEach items="${map.afterBookingList }" var="afterBooking" end="2">
+				<tr>
+					<td>${afterBooking.booking_idx }</td>
+					<td>${afterBooking.store_name }</td>
+					<td>${afterBooking.booking_date }</td>
+					<td>${afterBooking.booking_time }</td>
+					<td>${afterBooking.booking_num }</td>
+					<td>${afterBooking.booking_seat }</td>
+					<td>${afterBooking.booking_content }</td>
+<%-- 					<td><input type="hidden" name="store_idx" value="${param.store_idx }"></td> --%>
+						<td><input type="button" value="리뷰작성" onclick="location.href='customerReviewWrite.me?store_idx=${afterBooking.store_idx}&booking_idx=${afterBooking.booking_idx }'"></td>
+				</tr>
+				</c:forEach>
+				</c:when>
 					<c:otherwise>
-					<tr><td align="center">이용하신 내역이 없어요!</td></tr>
+						<tr><td align="center">기간이 지난 예약이 없어요.</td></tr>
 					</c:otherwise>
-					</c:choose>
+				</c:choose>
 			</table>
 <%-- 		<input type="hidden" name="store_idx" value="${booking.store_idx}" /> --%>
 <%--       	<input type="hidden" name="booking_idx" value="${booking.booking_idx}" /> --%>

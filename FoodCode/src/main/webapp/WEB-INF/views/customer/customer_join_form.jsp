@@ -95,7 +95,7 @@
 			let specRegex = /[!@#$%]/;  // 대문자
 			if(!lengthRegex.exec(passwd)){
 				passwdStatus = false;
-				$("#checkPasswdResult").html("영문자, 숫자, 특수만자 8 ~ 16자 필수").css('color','red');
+				$("#checkPasswdResult").html("영문자, 숫자, 특수문자 8 ~ 16자 필수").css('color','red');
 				$("#member_passwd").select();
 			} else {
 				let count = 0;
@@ -319,43 +319,43 @@
             <form class="contact-form bg-white" action="customerJoinPro.me" method="post">
               <div class="form-group">
                 <label class="text-black">아이디</label>
-                <input type="text" class="form-control" id="member_id" name="member_id">
+                <input type="text" class="form-control" id="member_id" name="member_id" style="width: 328px;">
                 <small id="checkIdResult"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호</label>
-                <input type="password" class="form-control" id="member_passwd" name="member_passwd">
+                <input type="password" class="form-control" id="member_passwd" name="member_passwd" style="width: 328px;">
                   <small id="checkPasswdResult"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호확인</label>
-                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2">
+                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2" style="width: 328px;">
                 <small id="checkPasswd2Result"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">이름</label>
-                <input type="text" class="form-control" id="member_name" name="member_name" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_name" name="member_name" aria-describedby="emailHelp" style="width: 328px;">
                 <small id="checkNameResult"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">생년 월일</label>
-                <input type="text" class="form-control" id="member_birth" name="member_birth" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_birth" name="member_birth" aria-describedby="emailHelp" style="width: 328px;">
                 <small id="emailHelp"> - 기호 생략 ex)19000101</small>
               </div>
               <div class="form-group">
                 <label class="text-black">전화 번호</label>
-                <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp" style="width: 328px;">
                 <small id="emailHelp"> - 기호 생략 ex)01012341234</small>
               </div>
 		              <div class="form-group">
 		                <label class="text-black">이메일</label>
-		                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
+		                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp" style="width: 328px;">
 		                <small id="checkEmailResult"></small><br>
 		                <input type="button" value="인증하기" id="mail-Check-Btn">
 		              </div>
 		              <div class="form-group">
 		                <label class="text-black">이메일 인증번호</label>
-		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
+		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp" style="width: 328px;">
 		              </div>
 		              <div class="form-group">
 						<span id="mail-check-warn"></span>
