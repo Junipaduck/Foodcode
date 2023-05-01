@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,7 +123,11 @@ h2 {
 			        	${notice.notice_content } <!-- div태그 안에 공지사항 내용 -->
 			        </div>	
 	    		<br><hr>
-	    		
+	    			[첨부파일] 
+	    			<c:set var="length" value="${fn:length(notice.notice_file) }"/>
+					<c:set var="index" value="${fn:indexOf(notice.notice_file, '_') }"/>
+					<c:set var="fileName" value="${fn:substring(notice.notice_file, index + 1, length) }"/>
+					<a href="${pageContext.request.contextPath }/resources/storeFileUpload/${notice.notice_file}" download="${fileName }"><i style="text-decoration: underline;">${fileName }</i></a>
 	    </div>
     </div>
 </div>
