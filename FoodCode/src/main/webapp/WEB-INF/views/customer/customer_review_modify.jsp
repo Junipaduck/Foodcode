@@ -110,16 +110,21 @@
               <div class="form-group">
                 <label class="text-black" for="review_star">별점</label>
 				<div class="review_star">
-				  <input type="radio" id="review_star5" name="review_star" value="5" />
-				  <label for="review_star5" title="5점">☆</label>
-				  <input type="radio" id="review_star4" name="review_star" value="4" />
-				  <label for="review_star4" title="4점">☆</label>
-				  <input type="radio" id="review_star3" name="review_star" value="3" />
-				  <label for="review_star3" title="3점">☆</label>
-				  <input type="radio" id="review_star2" name="review_star" value="2" />
-				  <label for="review_star2" title="2점">☆</label>
-				  <input type="radio" id="review_star1" name="review_star" value="1" />
-				  <label for="review_star1" title="1점">☆</label>
+				
+					  <input type="radio" id="review_star5" name="review_star" value="5" <c:if test="${review.review_star eq 5 }">checked</c:if>/>
+					  <label for="review_star5" title="5점">☆</label>
+					  
+					  <input type="radio" id="review_star4" name="review_star" value="4" <c:if test="${review.review_star eq 4 }">checked</c:if>/>
+					  <label for="review_star4" title="4점">☆</label>
+					  
+					  <input type="radio" id="review_star3" name="review_star" value="3" <c:if test="${review.review_star eq 3 }">checked</c:if>/>
+					  <label for="review_star3" title="3점">☆</label>
+					  
+					  <input type="radio" id="review_star2" name="review_star" value="2" <c:if test="${review.review_star eq 2 }">checked</c:if>/>
+					  <label for="review_star2" title="2점">☆</label>
+					  
+					  <input type="radio" id="review_star1" name="review_star" value="1" <c:if test="${review.review_star eq 1 }">checked</c:if>/>
+					  <label for="review_star1" title="1점">☆</label>
 				</div>
 <!--                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> -->
                 <small id="emailHelp" class="form-text text-muted">1 ~ 5점 사이 별점을 선택하세요</small>
