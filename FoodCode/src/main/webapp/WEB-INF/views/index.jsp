@@ -116,7 +116,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	<div class="map_wrap">
 	    <div id="map" style="width:80%;height:80%;position:relative;overflow:hidden;margin: auto;"></div>
 	
-	    <div id="menu_wrap" class="bg_white" style="margin-left: 180px;">
+	    <div id="menu_wrap" class="bg_white" style="margin-left: 180px;height: 360px;">
 	        <div class="option">
 	            <div>
 	                <form onsubmit="searchPlaces(); return false;">
