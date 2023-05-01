@@ -6,5 +6,7 @@
 	let findId = confirm("${msg2}");
 	if(findId){
 	location.href = "${target}";
+	} else {
+	location.href = "${target2}";
 	}
 </script>

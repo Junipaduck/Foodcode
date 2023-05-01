@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/table2.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/radio.css">
 
-  <title>아이디 찾기</title>
+  <title>FOODCODE :아이디 찾기</title>
 </head>
 
 <body>

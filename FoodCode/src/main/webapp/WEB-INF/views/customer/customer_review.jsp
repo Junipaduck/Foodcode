@@ -138,7 +138,7 @@
   
 
 	<!-- footer -->
-	<div class="site-footer" style="margin-top: 400px">
+	<div class="site-footer" style="margin-top: 350px">
     <div class="inner first">
       <div class="container">
         <div class="row">
