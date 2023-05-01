@@ -12,8 +12,7 @@
 	}
 
 </script>    
-    
-    
+          </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -26,7 +25,10 @@
             </footer>
             <!-- End of Footer -->
 			
+        </div>
         <!-- End of Content Wrapper -->
+	
+    </div>
 	
     <!-- End of Page Wrapper -->
 	
