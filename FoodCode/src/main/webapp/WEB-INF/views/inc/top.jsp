@@ -22,20 +22,20 @@
 			success: function(result) {
 					console.log(result);
 					result.forEach((idArr, index) => {
-						if(idArr.member_type == 'o') {
-						let loginId = 
-							'<li class="has-children" style="color: rgba(255, 255, 255, 0.7)!important;font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;"><a href="mypage.me">' + idArr.member_id + '님</a>' +
-							'<ul class="dropdown">' +
-							'<li><a href="mypage.me" title="내식당">내 식당</a></li>' + 
-							'<li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>' + 
-							'<li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>' + 
-							'</ul>' + 
-							'</li>';
-						$("#sessionArea").html(loginId);
-						} else if(idArr.member_name == 'admin') {
+						if(idArr.member_id == 'admin') {
 							let loginId = 
 								'<li class="has-children" style="color: rgba(255, 255, 255, 0.7)!important;font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;">관리자님</li>'
 						$("#sessionArea").html(loginId);
+						} else if(idArr.member_type == 'o') {
+							let loginId = 
+								'<li class="has-children" style="color: rgba(255, 255, 255, 0.7)!important;font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;"><a href="mypage.me">' + idArr.member_id + '님</a>' +
+								'<ul class="dropdown">' +
+								'<li><a href="mypage.me" title="내식당">내 식당</a></li>' + 
+								'<li><a href="ownerModify.me" title="내정보">내 정보 수정</a></li>' + 
+								'<li><a href="ownerReview.me" title="리뷰">리뷰관리</a></li>' + 
+								'</ul>' + 
+								'</li>';
+							$("#sessionArea").html(loginId);
 						} else if(idArr.member_type == 'c') {
 							let loginId = 
 // 								'<div style="margin-top:100px">' + 
