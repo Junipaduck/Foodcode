@@ -33,6 +33,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/map.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 	<title>FOODCODE : MAIN</title>
