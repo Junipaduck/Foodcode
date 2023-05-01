@@ -43,8 +43,12 @@
 		UPDATE review 
 			SET
 			review_content = #{review_content}
+			<if test="review_star neq 0">
 			,review_star = #{review_star}
+			</if>
+			<if test="review_file neq null">
 			,review_file = #{review_file}
+			</if>
 			WHERE
 			review_idx = #{review_idx}
 	</update>
