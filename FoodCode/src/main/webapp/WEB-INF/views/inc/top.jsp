@@ -34,7 +34,7 @@
 						$("#sessionArea").html(loginId);
 						} else if(idArr.member_name == 'admin') {
 							let loginId = 
-								'<li style="color: rgba(255, 255, 255, 0.7)!important;font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;"><a href="#">관리자님</a>'
+								'<li class="has-children" style="color: rgba(255, 255, 255, 0.7)!important;font-size: 14px;padding: 10px 15px;display: inline-block;text-decoration: none !important;">관리자님</li>'
 						$("#sessionArea").html(loginId);
 						} else if(idArr.member_type == 'c') {
 							let loginId = 
