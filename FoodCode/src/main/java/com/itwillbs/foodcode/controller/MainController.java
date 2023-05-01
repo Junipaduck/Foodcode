@@ -157,7 +157,7 @@ public class MainController {
     		return "customer/kakao_join_form";
     	} else {
     		session.setAttribute("sId", id);
-    		return "./";
+    		return "redirect:/";
     	}
     	
 	}
