@@ -112,8 +112,9 @@ public class AdminController {
 	@GetMapping(value = "adminLogout.me")
     public String logout(HttpSession session) {
         session.invalidate();
-
-        return "redirect:/adminMain";
+        
+        
+        return "redirect:/";
     }
 	
 // ============== 각 항목 리스트===========================	

@@ -2,7 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
     
-     </div>
+    
+    
+<script type="text/javascript">
+
+	function logOut() {
+		alert("관리자 로그아웃 ! 메인으로 이동합니다");
+		location.href = "adminLogout.me";
+	}
+
+</script>    
+    
+    
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -15,10 +26,8 @@
             </footer>
             <!-- End of Footer -->
 			
-        </div>
         <!-- End of Content Wrapper -->
 	
-    </div>
     <!-- End of Page Wrapper -->
 	
     <!-- Scroll to Top Button-->
@@ -32,23 +41,22 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">로그인/로그아웃</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">정말요?</div>
+                <div class="modal-body">${sessionScope.sId }(관리자)님 로그아웃 하시겠습니까?</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    
                     <c:choose>
 					<c:when test="${empty sessionScope.sId }"> <%--비어 있다면--%>
 						<a class="btn btn-primary" href="${pageContext.request.contextPath }/adminLogin.me">Login</a>
 					</c:when>
 			 		<c:otherwise> <%-- 디폴트라면 --%>
-						 <a class="btn btn-primary" href="${pageContext.request.contextPath }/adminLogout.me">Logout</a>
+						 <a class="btn btn-primary" onclick="logOut()">로그아웃</a>
 					</c:otherwise>
 					</c:choose>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">돌아가기</button>
                 </div>
             </div>
         </div>

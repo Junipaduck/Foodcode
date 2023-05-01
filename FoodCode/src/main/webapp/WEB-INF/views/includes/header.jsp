@@ -29,6 +29,7 @@
 
 </head>
 
+
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -161,7 +162,9 @@
 						<a class="collapse-item" href="${pageContext.request.contextPath }/adminLogin.me">로그인</a>
 						</c:when>
 			 			<c:otherwise> <%-- 디폴트라면 --%>
-						<a class="collapse-item" href="${pageContext.request.contextPath }/adminLogout.me">로그아웃</a>
+<%-- 						<a class="collapse-item" href="${pageContext.request.contextPath }/adminLogout.me">로그아웃</a> --%>
+						<a class="collapse-item" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
+						
 						</c:otherwise>
 						</c:choose>
                         
