@@ -267,7 +267,7 @@
 					          			</div>
 					          			<div class="icon">
 					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-					           				&nbsp;&nbsp;&nbsp;${storeInfo.store_time }
+					           				&nbsp;&nbsp;&nbsp;${storeInfo.store_open } ~ ${storeInfo.store_close }
 					          			</div>
 					          			<div class="icon">
 					            			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9507" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>

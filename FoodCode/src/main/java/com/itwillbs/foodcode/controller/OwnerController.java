@@ -258,44 +258,49 @@ public class OwnerController {
 	}
 	
 	@PostMapping("/ownerStoreModifyPro.me")
-	public String storeModifyPro(StoreVO store, Model model, HttpSession session) {
-		
-		//---------- 파일 업로드 관련 작업 시작 -----------------------------------------------------------
-		String uploadDir = "/resources/storeFileUpload"; //프로젝트상의 가상 업로드 경로
-		String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
-		System.out.println("실제 업로드 경로 : " + saveDir);
-//				실제 업로드 경로(resources뒤에 띄어쓰기 되어있음) : C:\Users\HANABAE\workspace_sts\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\FoodCode\resourcees\ storeFileupload
-		try {
-			Date date = new Date(); //java.util.Date 클래스 사용하기
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			store.setStore_file_path("/" + sdf.format(date));
-			
-			saveDir = saveDir + store.getStore_file_path(); //실제 업로드 경로와 서브 디렉토리 경로 결합하여 저장
-			
-			Path path = Paths.get(saveDir);
-			Files.createDirectories(path);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		MultipartFile mFile = store.getFile(); //StoreVO 객체에 전달된 MultipartFile 단일파일 꺼내기
-		String originalFileName = mFile.getOriginalFilename();
-		
-		String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
-		System.out.println("UUID : " + uuid);
-		
-		store.setStore_file(uuid.substring(0, 8) + "_" + originalFileName);
-		System.out.println("실제 업로드 될 파일명 : " + store.getStore_file());
-		//---------- 파일 업로드 관련 작업 끝 ------------------------------------------------------------
-		int modifyStoreCnt = ownerService.modifyStore(store);
-		if(modifyStoreCnt > 0) {
-			return "redirect:/ownerPage.me";
-		} else {			
-			model.addAttribute("msg", "가게 정보 수정 실패!");
-			return "fail_back";
-		}
-	}
+    public String storeModifyPro(StoreVO store, Model model, HttpSession session, MultipartFile file) {
+        System.out.println(store);
+        System.out.println(file);
+//        return "";
+
+//        ---------- 파일 업로드 관련 작업 시작 -----------------------------------------------------------
+        String uploadDir = "/resources/storeFileUpload"; //프로젝트상의 가상 업로드 경로
+        String saveDir = session.getServletContext().getRealPath(uploadDir); //실제 업로드 경로
+        System.out.println("실제 업로드 경로 : " + saveDir);
+//                실제 업로드 경로(resources뒤에 띄어쓰기 되어있음) : C:\Users\HANABAE\workspace_sts.metadata.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\FoodCode\resourcees\ storeFileupload
+        if(file != null) {
+            try {
+                Date date = new Date(); //java.util.Date 클래스 사용하기
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                store.setStore_file_path("/" + sdf.format(date));
+
+                saveDir = saveDir + store.getStore_file_path(); //실제 업로드 경로와 서브 디렉토리 경로 결합하여 저장
+
+                Path path = Paths.get(saveDir);
+                Files.createDirectories(path);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            MultipartFile mFile = file; //StoreVO 객체에 전달된 MultipartFile 단일파일 꺼내기
+            String originalFileName = mFile.getOriginalFilename();
+
+            String uuid = UUID.randomUUID().toString(); //파일명 중복 방지를 위한 코드
+            System.out.println("UUID : " + uuid);
+
+            store.setStore_file(uuid.substring(0, 8) + "_" + originalFileName);
+            System.out.println("실제 업로드 될 파일명 : " + store.getStore_file());
+        }
+        //---------- 파일 업로드 관련 작업 끝 ------------------------------------------------------------
+        int modifyStoreCnt = ownerService.modifyStore(store);
+        if(modifyStoreCnt > 0) {
+            return "redirect:/ownerPage.me";
+        } else {
+            model.addAttribute("msg", "가게 정보 수정 실패!");
+            return "fail_back";
+        }
+    }
 	
 	// 점주 마이페이지 선택한 날짜에 해당하는 예약 조회
 	@ResponseBody

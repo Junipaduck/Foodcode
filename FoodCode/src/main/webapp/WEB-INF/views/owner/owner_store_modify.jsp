@@ -26,7 +26,12 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/daterangepicker.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aos.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-
+ <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
+<!-- 타임피커 cdn -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/timepicker.css">
+  
   <title>FOODCODE : 점주 가게 수정</title>
   
 <script type="text/javascript">
@@ -109,31 +114,31 @@
                	 </div>
               </div>
                <div class="form-group">
-                 <label class="text-black" for="storeType" >업종</label>
+                 <label class="text-black" for="store_type" >업종</label>
 <%--                  <input type="text" class="form-control" id="store_type" name="store_type" value="${store.store_type }" required="required"> --%>
                  <br>
 		                <div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio1" value="한식">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio1" value="한식" <c:if test="${store.store_type eq '한식' }">checked</c:if>/>
 						  <label class="form-check-label" for="inlineRadio1" style="font-size: 17px;">한식</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio2" value="일식">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio2" value="일식" <c:if test="${store.store_type eq '일식' }">checked</c:if>/>
 						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">일식</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio3" value="중식">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio3" value="중식" <c:if test="${store.store_type eq '중식' }">checked</c:if>/>
 						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">중식</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio4" value="양식">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio4" value="양식" <c:if test="${store.store_type eq '양식' }">checked</c:if>/>
 						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">양식</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio5" value="요리주점">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio5" value="요리주점" <c:if test="${store.store_type eq '요리주점' }">checked</c:if>/>
 						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">요리주점</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio6" value="카페/디저트">
+						  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio6" value="카페/디저트" <c:if test="${store.store_type eq '카페/디저트' }">checked</c:if>/>
 						  <label class="form-check-label" for="inlineRadio2" style="font-size: 17px;">카페/디저트</label>
 						</div>
                  <small id="small1" class="form-text text-muted">ex) 한식, 일식, 중식, 양식, 요리주점, 카페/디저트 중 택1 </small>
@@ -218,11 +223,45 @@
 <!--                   </div> -->
 <!--                	 </div> -->
               <!-- 기존 메뉴 탭 끝 -->
-              <div class="form-group">
+                   <div class="form-group">
                 <label class="text-black" for="storeTime" >영업시간</label>
-                <input type="text" class="form-control" name="store_time" id="store_time" value="${store.store_time }">
-                <small id="small7" class="form-text text-muted">ex) 09:00~22:00 형식으로 입력해주세요. </small>
               </div>
+
+              <div class="form-group">
+                 <input type="text" name="store_open" id="store_open" class="timepicker inp" readonly="true"/> 
+                 ~ 
+                 <input type="text" name="store_close" id="store_close" class="timepicker inp" readonly="true"/> 
+                 <small id="small8" class="form-text text-muted">예약이 가능한 영업시간을 선택해주세요. </small>
+              </div>
+<!--                     <input type="text" name="booking_time" id="booking_time"/>  -->
+					 <!-- 시간 옵션 { -->
+					  <script>
+					  $('.timepicker').timepicker({
+					    timeFormat: 'HH:mm',
+					    interval: 120,
+// 					    minTime: '10',
+// 					    maxTime: '24',
+					    defaultTime: '00',
+					    startTime: '00:00',
+					    dynamic: false,
+					    dropdown: true,
+					    scrollbar: true
+					   });
+					  </script>
+					  <!-- } -->
+					  
+<!-- 			<div class="col-md-6"> -->
+                  <div class="form-group">
+                    <label for="">인원</label>
+                    <div class="select-wrap one-third">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <input text="store_maxps" name="store_maxps id="store_maxps" class="form-control">
+                      <small id="small8" class="form-text text-muted">가게의 "좌석"수를 숫자로 입력해주세요 테이블 단위가 아닙니다 </small>
+<!--                       <select name="store_maxps" id="store_maxps" class="form-control"> -->
+<!--                       </select> -->
+                      </div>
+                    </div>
+<!--                   </div>		   -->
               <div class="form-group">
                 <label class="text-black" for="storeTime">가게 소개글</label>
                 <input type="text" class="form-control22" name="store_content" id="store_content" value="${store.store_content }" style="border: 2px solid #e9ecef; font-size: 16px; width:540px; height: 150px;">

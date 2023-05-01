@@ -149,11 +149,15 @@
 				,store_address = CONCAT(#{store_address1}, ' ', #{store_address2})
 				,store_type = #{store_type}
 				,store_content = #{store_content}
-				,store_time = #{store_time}
+				,store_open = #{store_open}
+				,store_close = #{store_close}
+				,store_maxps = #{store_maxps}
 				,store_license = #{store_license}
 				,store_etc = #{store_etc}
 				<if test="store_file != null and !store_file.equals('')">
 					,store_file = #{store_file}
+				</if>
+				<if test="store_file != null and !store_file.equals('')">
 					,store_file_path = #{store_file_path}
 				</if>
 			WHERE
