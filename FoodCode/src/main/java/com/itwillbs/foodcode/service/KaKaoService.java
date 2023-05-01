@@ -25,7 +25,7 @@ public class KaKaoService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=17cca8149886e3a10cca266bef314925");
-            sb.append("&redirect_uri=http://localhost:8089/foodcode/kakao");
+            sb.append("&redirect_uri=http://192.168.3.123:8089/FoodCode/kakao");
             sb.append("&code=" + code);
 
             bw.write(sb.toString());
