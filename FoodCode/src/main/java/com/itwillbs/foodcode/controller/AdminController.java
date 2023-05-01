@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.itwillbs.foodcode.service.AdminService;
 import com.itwillbs.foodcode.service.MailSendService;
@@ -41,9 +42,16 @@ public class AdminController {
 	 private ReportService reportService;
 	 
 	@RequestMapping(value = "adminMain", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminMain(Model model) {
+	public String adminMain(Model model, HttpSession session) {
 
 //		=====================메인 화면에서 띄울 리스트 객체============================
+		
+		String id = (String)session.getAttribute("sId");
+		
+		if(id == null || !id.equals("admin") ) { 
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		List<MemberVO> memberList = adminService.reverseMemberList();
 		model.addAttribute("memberList", memberList);
