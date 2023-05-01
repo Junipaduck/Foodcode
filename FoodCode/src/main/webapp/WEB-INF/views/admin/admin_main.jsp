@@ -260,7 +260,7 @@
 										  		<td>${storeList.store_idx }</td>
 										  		<td>${storeList.store_name }</td>
 										  		<td>${storeList.store_type }</td>
-										  		<td>${storeList.store_time }</td>
+										  		<td>${storeList.store_open } ~ ${storeList.store_close }</td>
 										  	</tr>
 										  </c:forEach>
 									  </table>

@@ -48,7 +48,7 @@
                                             <td>${storeList.store_phone}</td>
                                             <td>${storeList.store_address}</td>
                                             <td>${storeList.store_type}</td>
-                                            <td>${storeList.store_time}</td>
+                                            <td>${storeList.store_open } ~ ${storeList.store_close }</td>
                                             <td>${storeList.store_license}</td>
 <!--                                             <td> -->
 <%--                                             	<a href="adminCustomer_delect?customer_idx=${customerList.c_idx }" class="btn btn-danger btn-circle btn-lg"> --%>

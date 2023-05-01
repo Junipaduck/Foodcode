@@ -15,8 +15,17 @@
 	</select>
 	
 	<delete id="deleteMember">
-		DELETE FROM member
-			WHERE (member_idx = #{member_idx} AND member_id = #{member_id}) AND member_type = #{member_type};
+		DELETE member, store, booking, review, pay
+            FROM member 
+                LEFT JOIN booking 
+                    ON member.member_id = booking.member_id
+                LEFT JOIN review
+                    ON member.member_id = review.member_id
+                LEFT JOIN pay 
+                    ON member.member_id = pay.member_id
+                LEFT JOIN store 
+                	ON MEMBER.member_id = store.member_id 
+            WHERE (member.member_idx = #{member_idx} AND member.member_id = #{member_id}) AND member.member_type = #{member_type};
 	</delete>
 	
 	<select id="selectStoreList" resultType="com.itwillbs.foodcode.vo.StoreVO">
@@ -46,9 +55,21 @@
 	</select>
 	
 	<delete id="deleteStore">
-	DELETE
-	 FROM store
-	 	WHERE store_license = #{store_license} AND member_id = #{owner_id}
+		DELETE store, booking, review, menu, report
+			FROM store 
+				LEFT JOIN booking 
+					ON store.store_idx = booking.store_idx
+				LEFT JOIN review
+					ON store.store_idx = review.store_idx
+				LEFT JOIN menu 
+					ON store.store_idx = menu.store_idx
+				LEFT JOIN report 
+					ON store.store_idx = report.store_idx
+		WHERE store.store_license = #{store_license} AND store.member_id = #{owner_id}	
+	
+<!-- 	DELETE -->
+<!-- 	 FROM store -->
+<!-- 	 	WHERE store_license = #{store_license} AND member_id = #{owner_id} -->
 	</delete>
 	
 	

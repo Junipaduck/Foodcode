@@ -12,23 +12,23 @@
 	}
 
 </script>    
-          </div>
+           </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>여기는 풋 공간입니다.</span>
+                        <span>FoodCode 관리자 페이지</span>
                     </div>
                 </div>
             </footer>
             <!-- End of Footer -->
 			
-        </div>
+<!--         </div> -->
         <!-- End of Content Wrapper -->
 	
-    </div>
+<!--     </div> -->
 	
     <!-- End of Page Wrapper -->
 	
@@ -49,6 +49,33 @@
                     </button>
                 </div>
                 <div class="modal-body">${sessionScope.sId }(관리자)님 로그아웃 하시겠습니까?</div>
+                <div class="modal-footer">
+                    <c:choose>
+					<c:when test="${empty sessionScope.sId }"> <%--비어 있다면--%>
+						<a class="btn btn-primary" href="${pageContext.request.contextPath }/adminLogin.me">Login</a>
+					</c:when>
+			 		<c:otherwise> <%-- 디폴트라면 --%>
+						 <a class="btn btn-primary" onclick="logOut()">로그아웃</a>
+					</c:otherwise>
+					</c:choose>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">돌아가기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <!-- delete Modal-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">삭제</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">${sessionScope.sId }(관리자)님 삭제 하시겠습니까?</div>
                 <div class="modal-footer">
                     <c:choose>
 					<c:when test="${empty sessionScope.sId }"> <%--비어 있다면--%>
