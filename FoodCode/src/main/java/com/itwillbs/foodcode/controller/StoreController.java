@@ -74,6 +74,8 @@ public class StoreController {
 		List menuList = menuService.getMenuList(store_idx);
 		model.addAttribute("menuList", menuList);
 		
+
+		
 		return "store/store_information";
 	}
 	

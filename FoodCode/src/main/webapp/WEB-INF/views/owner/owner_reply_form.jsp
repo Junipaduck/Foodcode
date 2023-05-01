@@ -90,8 +90,6 @@
                 <input type="text" placeholder="${review.member_id}" readonly="readonly">
               </div>
                <div class="form-group">
-                <label class="text-black" for="review_idx">리뷰글번호</label>
-                <br>
                 <input type="hidden" placeholder="${param.review_idx}"  name="review_idx" value="${param.review_idx}" readonly="readonly">
               </div>
               <div class="form-group">

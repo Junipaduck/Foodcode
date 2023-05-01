@@ -129,6 +129,7 @@ public class ReviewService {
 		return mapper.selectBookingCount(booking_idx);
 	}
 
+
 //	public List<ReviewVO> getOwnerReviewList(String searchType, String searchKeyword, int startRow, int listLimit) {
 //
 //		return mapper.selectOwnerReviewList(searchKeyword);

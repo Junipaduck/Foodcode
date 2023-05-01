@@ -270,6 +270,8 @@
 			FROM review
 			WHERE booking_idx = #{booking_idx}
 	</select>
+	
+
 </mapper>
 
 

@@ -294,7 +294,6 @@ public class ReviewController {
     public String reviewList(ReviewVO review, 
     						 Model model,
     						 StoreVO store,
-    						 MemberVO member,
     						@RequestParam(defaultValue = "") String searchType,
     						@RequestParam(defaultValue = "") String searchKeyword,
     						@RequestParam(defaultValue = "1") int pageNum,
@@ -340,13 +339,13 @@ public class ReviewController {
 		// 페이징 처리를 저장하는 PageInfo 객체 생성 
 		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
 		
-		// 답글 달기 버튼 개인회원 / 점주회원 구분을 위한 코드 
-		model.addAttribute("member", new MemberVO());
+		// 답글 달기 버튼 개인회원 / 점주회원 구분을 위한 코드
 		
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("storeInfo", storeInfo);
     	
+
     	
     	return "store/store_review_list";
     }

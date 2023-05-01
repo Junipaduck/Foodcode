@@ -158,9 +158,9 @@
 	</tbody>
     </table>
     &nbsp;&nbsp;&nbsp;
-    <div align="center">
-	    <button type="submit" class="btn btn-primary" onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'">답글달기</button>
-    </div>
+<!--     <div align="center"> -->
+<%-- 	    <button type="submit" class="btn btn-primary" onclick="location.href='ownerReplyForm.me?review_idx=${review.review_idx}&store_idx=${review.store_idx }'">답글달기</button> --%>
+<!--     </div> -->
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     
