@@ -97,6 +97,10 @@
 			<td>${review.member_id }</td>
         </tr>
         <tr class="KOTRA-fontsize-80">
+			<th>업체명</th>
+			<td>${review.store_name }</td>
+        </tr>
+        <tr class="KOTRA-fontsize-80">
 			<th>리뷰작성일</th>
 			<td><fmt:formatDate value="${review.review_date }" pattern="yyyy년 MM월 dd일" /></td>
         </tr>

@@ -162,7 +162,7 @@ color: #fff;
 	</div>
 
   <div class="table-box">
-  	<form action="ownerReviewDelete.me" name="ownerReviewDelete" method="POST" enctype="multipart/form-data">
+  	<form action="ownerReview.me" name="ownerReview" method="POST" enctype="multipart/form-data">
   	<input type="hidden" name="store_idx" value="${param.store_idx}" />
 	  	<input type="hidden" name="review_idx" value="${param.review_idx }">
 		    <table class="table table--min" cellspacing="0" cellpadding="0">

@@ -216,8 +216,17 @@
 	
 	<!-- 글 상세정보 조회 -->
 	<select id="selectReview" resultType="com.itwillbs.foodcode.vo.ReviewVO">
-		SELECT *
-			FROM review
+		SELECT
+			r.member_id
+			,s.store_name
+			,r.review_date
+			,r.review_content
+			,r.review_star
+			,r.review_file
+			,r.review_file_path
+			,r.store_idx
+			FROM review r JOIN store s
+			ON r.store_idx = s.store_idx
 			WHERE review_idx = #{review_idx}	
 	</select>
 	
