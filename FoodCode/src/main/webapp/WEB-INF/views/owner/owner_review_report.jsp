@@ -174,21 +174,18 @@ color: #fff;
 		      <tbody>
 		      <tr>
 		        <td>
-		        	<textarea rows="5" cols="60" id="review_report" name="review_report"></textarea>
+		        	<textarea rows="11" cols="60" id="review_report" name="review_report"></textarea>
 				</td>
 		      </tr>
 
-		       <tr>
-		        <td>
-<!-- 		           <input type="radio" id="report_content5" value="기타" name="report_content"><label for="report_content5">　기타 (신고사유를 증명할 파일을 첨부해주세요.)</label> -->
-<!-- 		        	<textarea name="" class="form-control" id="message" name="report_content" cols="30" rows="5" placeholder="신고사유를 직접 작성해주세요."></textarea><br> -->
-<!-- 		            <input type="file" name="file"> -->
-		        	<button type="submit" class="btn btn-primary" style="background-color: #ff9507;">리뷰삭제요청</button> <!-- 클릭 시 "신고접수가 완료되었습니다." 알림창 띄우고 홈으로 이동 -->
-		        </td>
-		      </tr>
 		      </tbody>
 		    </table>
 		</form>
+<!-- 		           <input type="radio" id="report_content5" value="기타" name="report_content"><label for="report_content5">　기타 (신고사유를 증명할 파일을 첨부해주세요.)</label> -->
+<!-- 		        	<textarea name="" class="form-control" id="message" name="report_content" cols="30" rows="5" placeholder="신고사유를 직접 작성해주세요."></textarea><br> -->
+<!-- 		            <input type="file" name="file"> -->
+		<input type="button" class="btn btn-primary" style="background-color: #ff9507;margin-left: 630px;" onclick="location.href='ownerReview.me'" value="리뷰삭제요청">
+<!--        	<button type="submit" class="btn btn-primary" style="background-color: #ff9507;margin-left: 630px;" onclick="location.href=onwerReview.me">리뷰삭제요청</button> 클릭 시 "신고접수가 완료되었습니다." 알림창 띄우고 홈으로 이동 -->
   </div>
  <!-- 신고양식 html 끝 --------------------------------------------------------------------------------->
  

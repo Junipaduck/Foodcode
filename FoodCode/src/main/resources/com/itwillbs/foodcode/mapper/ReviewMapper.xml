@@ -225,6 +225,8 @@
 			,r.review_file
 			,r.review_file_path
 			,r.store_idx
+			,r.delete_auth_status
+			,r.booking_idx
 			FROM review r JOIN store s
 			ON r.store_idx = s.store_idx
 			WHERE review_idx = #{review_idx}	

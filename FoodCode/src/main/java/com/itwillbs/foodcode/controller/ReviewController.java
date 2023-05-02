@@ -471,6 +471,7 @@ public class ReviewController {
     	
     	// 이미 삭제 요청을 한 경우 
     	if(review.getDelete_auth_status().equals("Y")) {
+    		System.out.println("----------------------------------");
     		model.addAttribute("msg", "이미 삭제 요청이 접수되었습니다!");
     		return "fail_back";
     	}
