@@ -308,67 +308,48 @@
               </div>
               <div class="form-group">
                 <label class="text-black">아이디</label>
-                <input type="text" class="form-control" id="member_id" name="member_id">
+                <input type="text" class="form-control" id="member_id" name="member_id" style="width: 328px;">
                 <small id="checkIdResult"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호</label>
-                <input type="password" class="form-control" id="member_passwd" name="member_passwd">
+                <input type="password" class="form-control" id="member_passwd" name="member_passwd" style="width: 328px;">
                   <small id="checkPasswdResult"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">비밀번호확인</label>
-                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2">
+                <input type="password" class="form-control" id="member_passwd2" name="member_passwd2" style="width: 328px;">
                 <small id="checkPasswd2Result"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">이름</label>
-                <input type="text" class="form-control" id="member_name" name="member_name" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_name" name="member_name" aria-describedby="emailHelp" style="width: 328px;">
                 <small id="checkNameResult"></small>
               </div>
               <div class="form-group">
                 <label class="text-black">생년 월일</label>
-                <input type="text" class="form-control" id="member_birth" name="member_birth" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_birth" name="member_birth" aria-describedby="emailHelp" style="width: 328px;">
                 <small id="emailHelp"> - 기호 생략 ex)19000101</small>
               </div>
               <div class="form-group">
                 <label class="text-black">전화 번호</label>
-                <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp" style="width: 328px;">
                 <small id="emailHelp"> - 기호 생략 ex)01012341234</small>
               </div>
-             <c:choose>
-	             <c:when test="${not empty userInfo.email }">
 		              <div class="form-group">
 		                <label class="text-black">이메일</label>
-		                <input type="email" class="form-control" id="member_email" name="member_email" readonly="readonly" value="${userInfo.email }" aria-describedby="emailHelp">
+		                <input type="email" class="form-control" id="member_email" name="member_email" readonly="readonly" value="${userInfo.email }" aria-describedby="emailHelp" style="width: 328px;">
 		                <small id="emailHelp"> 카카오 로그인 시 사용되는 이메일이므로 변경 불가능 합니다.</small>
 		                <br>
 		                <input type="button" value="인증하기" id="mail-Check-Btn">
 		              </div>
 		              <div class="form-group">
 		                <label class="text-black">이메일 인증번호</label>
-		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
+		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp" style="width: 328px;">
 		              </div>
 		              <div class="form-group">
 						<span id="mail-check-warn"></span>
 					  </div>
-				  </c:when>
-				  <c:otherwise>
-		              <div class="form-group">
-		                <label class="text-black">이메일</label>
-		                <input type="email" class="form-control" id="member_email" name="member_email" aria-describedby="emailHelp">
-		                <small id="checkEmailResult"></small><br>
-		                <input type="button" value="인증하기" id="mail-Check-Btn">
-		              </div>
-		              <div class="form-group">
-		                <label class="text-black">이메일 인증번호</label>
-		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp">
-		              </div>
-		              <div class="form-group">
-						<span id="mail-check-warn"></span>
-					  </div>
-				  </c:otherwise>
-			  </c:choose>
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">

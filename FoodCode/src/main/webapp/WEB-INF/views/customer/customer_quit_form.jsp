@@ -85,7 +85,7 @@
             <form action="customerDeletePro.me" method="post" onsubmit="return confirmQuit()" class="contact-form bg-white">
 			 <div class="form-group">
                 <label class="text-black" for="email">패스워드</label>
-                <input type="password" class="form-control" id="member_passwd" aria-describedby="emailHelp" name="member_passwd">
+                <input type="password" class="form-control" id="member_passwd" aria-describedby="emailHelp" name="member_passwd" style="width: 328px;">
                 <small id="emailHelp" class="form-text text-muted">탈퇴하시려면 비밀번호를 입력해주세요</small>
               </div>
               <button type="submit" class="btn btn-primary">회원 탈퇴</button>
