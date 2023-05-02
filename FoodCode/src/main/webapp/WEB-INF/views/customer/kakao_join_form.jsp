@@ -336,20 +336,20 @@
                 <input type="text" class="form-control" id="member_phone" name="member_phone" aria-describedby="emailHelp" style="width: 328px;">
                 <small id="emailHelp"> - 기호 생략 ex)01012341234</small>
               </div>
-              <div class="form-group">
-                <label class="text-black">이메일</label>
-                <input type="email" class="form-control" id="member_email" name="member_email" readonly="readonly" value="${userInfo.email }" aria-describedby="emailHelp" style="width: 328px;">
-                <small id="emailHelp"> 카카오 로그인 시 사용되는 이메일이므로 변경 불가능 합니다.</small>
-                <br>
-                <input type="button" value="인증하기" id="mail-Check-Btn">
-              </div>
-              <div class="form-group">
-                <label class="text-black">이메일 인증번호</label>
-                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp" style="width: 328px;">
-              </div>
-              <div class="form-group">
-				<span id="mail-check-warn"></span>
-			  </div>
+		              <div class="form-group">
+		                <label class="text-black">이메일</label>
+		                <input type="email" class="form-control" id="member_email" name="member_email" readonly="readonly" value="${userInfo.email }" aria-describedby="emailHelp" style="width: 328px;">
+		                <small id="emailHelp"> 카카오 로그인 시 사용되는 이메일이므로 변경 불가능 합니다.</small>
+		                <br>
+		                <input type="button" value="인증하기" id="mail-Check-Btn">
+		              </div>
+		              <div class="form-group">
+		                <label class="text-black">이메일 인증번호</label>
+		                <input type="text" class="form-control" id="member_emailcheck" name="member_emailcheck" aria-describedby="emailHelp" style="width: 328px;">
+		              </div>
+		              <div class="form-group">
+						<span id="mail-check-warn"></span>
+					  </div>
               <div class="form-group">
                 <label class="text-black">성별</label>
                 <div class="select">
@@ -362,10 +362,21 @@
             </form>
           </div>
 
-		<!-- footer -->
+
+        </div>
+      </div>
+
+
+<!-- footer -->
 	<footer>
 		<jsp:include page="../inc/bottom.jsp"></jsp:include>
 	</footer>
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
   <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/popper.min.js"></script>
