@@ -315,10 +315,13 @@ public class CustomerController {
     }
     
     @GetMapping(value = "/customerBookingCanclePro.me")
-    public String customerBookingCanclePro(String booking_idx, Model model) {
+    public String customerBookingCanclePro(String booking_idx, Model model, HttpSession session) {
     	System.out.println(booking_idx);
     	int deleteCnt = customerService.customerBookingCancle(booking_idx);
     	if(deleteCnt > 0) {
+    		String sId = (String) session.getAttribute("sId");
+    		MemberVO member =  customerService.selectMember(sId);
+    		int deletePoint = customerService.deletePoint500(member);
     		model.addAttribute("msg", "예약 취소가 완료되었습니다.");
     		model.addAttribute("target", "customerBooking.me");
     		return "customer/success";

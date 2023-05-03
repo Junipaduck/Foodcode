@@ -46,4 +46,8 @@ public interface CustomerMapper {
 
 	int updateMemberFindPasswd(MemberVO member);
 
+	int updatePoint500(@Param("sId") String sId,@Param("vo2") MemberVO vo2);
+
+	int deletePoint500(MemberVO member);
+
 }

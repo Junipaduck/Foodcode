@@ -33,6 +33,9 @@ public class ReviewController {
 	@Autowired
 	private BookingService bookingService;
 	
+	@Autowired
+	private CustomerService customerService;
+	
     // 예약관리 -> 방문후 -> 리뷰 
     @GetMapping(value = "/customerReviewWrite.me")
     public String customerReviewWrite(@RequestParam int store_idx, @RequestParam int booking_idx, Model model, HttpServletResponse response) {
@@ -111,7 +114,8 @@ public class ReviewController {
     	// 리뷰 insert 코드 
     	
     	// 로그인 된 회원만 작성 가능하도록 세션 아이디 받아오기
-    	session.getAttribute("sId");
+    	String sId = (String) session.getAttribute("sId");
+    	// sId의 vo 정보 가져오기
     	vo.setMember_id(session.getAttribute("sId").toString()); // review 테이블 member_id
     	
     	// merchant_uid 저장하기 
@@ -122,6 +126,8 @@ public class ReviewController {
     	
     	if(insertCount > 0) { // 리뷰 작성 성공 시 [방문후] 페이지로 리다이렉트 
 
+    		MemberVO vo2 = customerService.selectMember(sId);
+    		int updatePoint = customerService.updatePoint(sId,vo2);
     		
     		try {
 				mFile.transferTo(new File(saveDir, vo.getReview_file()));
@@ -263,11 +269,14 @@ public class ReviewController {
     // 리뷰 삭제 
     // url 주소에 파라미터 넘기는 거 까먹지 말기 !!! 
     @RequestMapping(value = "/reviewDelete.me", method = {RequestMethod.GET, RequestMethod.POST})
-    public String reviewDelete(@RequestParam int review_idx, Model model, HttpServletResponse response) {
+    public String reviewDelete(@RequestParam int review_idx, Model model, HttpServletResponse response , HttpSession session) {
     	System.out.println(review_idx);
     	int deleteCount = reviewService.deleteReview(review_idx);
+    	String sId = (String) session.getAttribute("sId");
+    	MemberVO member = customerService.selectMember(sId);
     	if(deleteCount > 0) { // 리뷰 삭제 성공 시 [리뷰관리] 페이지로 이동
     		
+    		int deletePoint = customerService.deletePoint500(member);
     		// 리뷰 삭제 전 경고 문구 출력
 			try {
 				response.setContentType("text/html; charset=UTF-8");

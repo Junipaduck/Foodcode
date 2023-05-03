@@ -13,7 +13,30 @@ public class MemberVO {
 	private String member_birth;
 	private String member_gender;
 	private String member_join_date;
-	
+	private int member_point;
+	public MemberVO(int member_idx, String member_type, String member_name, String member_id, String member_passwd,
+			String member_phone, String member_email, String member_birth, String member_gender,
+			String member_join_date, int member_point) {
+		super();
+		this.member_idx = member_idx;
+		this.member_type = member_type;
+		this.member_name = member_name;
+		this.member_id = member_id;
+		this.member_passwd = member_passwd;
+		this.member_phone = member_phone;
+		this.member_email = member_email;
+		this.member_birth = member_birth;
+		this.member_gender = member_gender;
+		this.member_join_date = member_join_date;
+		this.member_point = member_point;
+	}
+	@Override
+	public String toString() {
+		return "MemberVO [member_idx=" + member_idx + ", member_type=" + member_type + ", member_name=" + member_name
+				+ ", member_id=" + member_id + ", member_passwd=" + member_passwd + ", member_phone=" + member_phone
+				+ ", member_email=" + member_email + ", member_birth=" + member_birth + ", member_gender="
+				+ member_gender + ", member_join_date=" + member_join_date + ", member_point=" + member_point + "]";
+	}
 	public int getMember_idx() {
 		return member_idx;
 	}
@@ -74,32 +97,19 @@ public class MemberVO {
 	public void setMember_join_date(String member_join_date) {
 		this.member_join_date = member_join_date;
 	}
-	@Override
-	public String toString() {
-		return "MemberVO [member_idx=" + member_idx + ", member_type=" + member_type + ", member_name=" + member_name
-				+ ", member_id=" + member_id + ", member_passwd=" + member_passwd + ", member_phone=" + member_phone
-				+ ", member_email=" + member_email + ", member_birth=" + member_birth + ", member_gender="
-				+ member_gender + ", member_join_date=" + member_join_date + "]";
+	public int getMember_point() {
+		return member_point;
 	}
-
+	public void setMember_point(int member_point) {
+		this.member_point = member_point;
+	}
 	public MemberVO() {
-		
-	}
-	public MemberVO(int member_idx, String member_type, String member_name, String member_id, String member_passwd,
-			String member_phone, String member_email, String member_birth, String member_gender,
-			String member_join_date) {
 		super();
-		this.member_idx = member_idx;
-		this.member_type = member_type;
-		this.member_name = member_name;
-		this.member_id = member_id;
-		this.member_passwd = member_passwd;
-		this.member_phone = member_phone;
-		this.member_email = member_email;
-		this.member_birth = member_birth;
-		this.member_gender = member_gender;
-		this.member_join_date = member_join_date;
 	}
+	
+	
+	
+	
 	
 	
 	

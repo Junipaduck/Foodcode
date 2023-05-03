@@ -74,6 +74,7 @@
             <li>생년월일 : ${map.member.member_birth}</li>
             <li>성별 : ${map.member.member_gender}</li>
             <li>가입일 : ${map.member.member_join_date}</li>
+            <li>포인트 : ${map.member.member_point}p</li>
           </ul>
           <hr>
           <button type="submit" class="btn btn-primary" onclick="location.href='customerModify.me'">수정</button>

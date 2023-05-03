@@ -112,18 +112,26 @@ public class BookingController {
 		@PostMapping(value = "bookingsuccess.bo")
 			public String bookingSuccess(HttpSession session, Model model, BookingVO booking, @RequestParam String merchant_uid, @RequestParam String pay_price) {
 			String id = (String)session.getAttribute("sId");
+			String sId = (String)session.getAttribute("sId");
+			MemberVO vo2 = customerService.selectMember(sId);
 			
 			System.out.println("고유결제번호 " + merchant_uid + " 결제 금액 " + pay_price);
 			
 			booking.setMember_id(id);
 			int insertBooking = bookingService.insertBooking(booking); 
-			
-			bookingService.insertPayList(id, merchant_uid, pay_price);
-			
-			List bookingList = bookingService.bookingList(id,merchant_uid);
-			model.addAttribute("bookingList", bookingList);
-			
-			return "booking/booking_success";
+			if(insertBooking > 0) {
+				int updatePoint = customerService.updatePoint(sId, vo2);
+				bookingService.insertPayList(id, merchant_uid, pay_price);
+				
+				List bookingList = bookingService.bookingList(id,merchant_uid);
+				model.addAttribute("bookingList", bookingList);
+				
+				return "booking/booking_success";
+				
+			} else {
+				model.addAttribute("msg", "결제에 실패했습니다");
+				return "customer/fail_back";
+			}
 		}
 	
 		@ResponseBody

@@ -108,4 +108,14 @@ public class CustomerService {
 	}
 
 
+	public int updatePoint(String sId, MemberVO vo2) {
+		return mapper.updatePoint500(sId,vo2);
+	}
+
+
+	public int deletePoint500(MemberVO member) {
+		return mapper.deletePoint500(member);
+	}
+
+
 }
